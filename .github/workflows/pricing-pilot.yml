@@ -1,0 +1,45 @@
+name: CardScan five-card pricing pilot
+on:
+  push:
+    paths:
+      - '.github/workflows/pricing-pilot.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cardscan-paid-pricing-pilot
+  cancel-in-progress: false
+jobs:
+  pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check server-side key
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "::error::Add OPENAI_API_KEY under repository Settings > Secrets and variables > Actions. Codespaces secrets are separate."
+            exit 1
+          fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r requirements-ai.txt
+      - name: Run mocked tests without API access
+        run: python -m unittest discover -s tests -q
+      - name: Run authorized five-card pilot
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python -m cardscan.ai.experiment --as-of "$(date -u +%F)" --settings experiments/ai-five/settings.json --execute --authorize-paid --verify-ebay --output local-evidence/ai-five/run
+      - name: Save evidence, costs, and ledger
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cardscan-pricing-pilot-${{ github.run_id }}-${{ github.run_attempt }}
+          path: local-evidence/
+          if-no-files-found: ignore
+          retention-days: 7
