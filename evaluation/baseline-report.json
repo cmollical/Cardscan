@@ -1,0 +1,100 @@
+{
+  "as_of": "2026-10-24",
+  "planned_cards": 20,
+  "cards_with_input": 0,
+  "valuations_emitted": 0,
+  "independently_scored_cards": 0,
+  "accepted_comps_independently_labeled": 0,
+  "accepted_comps_total": 0,
+  "annotation_coverage_pct": null,
+  "independently_assessed_cards": 0,
+  "exact_printing_match_accuracy_pct": null,
+  "condition_match_accuracy_pct": null,
+  "median_absolute_percentage_error": null,
+  "within_10_pct_rate": null,
+  "sufficient_evidence_pct_of_planned": 0.0,
+  "incorrect_or_unsupported_valuation_pct": null,
+  "status": "incomplete",
+  "cases": [
+    {
+      "id": "pokemon-01",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-02",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-03",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-04",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-05",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-06",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-07",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-08",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-09",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-10",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-11",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-12",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-13",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-14",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-15",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-16",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-17",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-18",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-19",
+      "status": "pending_evidence"
+    },
+    {
+      "id": "pokemon-20",
+      "status": "pending_evidence"
+    }
+  ]
+}

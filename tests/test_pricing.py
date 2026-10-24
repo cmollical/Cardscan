@@ -9,7 +9,10 @@ TODAY = date(2026, 10, 24)
 
 def sale(i, amount="100"):
     return Sale(CARD, Decimal(amount), Decimal("5"), TODAY,
-                f"https://example.com/test-{i}")
+                f"https://example.com/test-{i}", source="synthetic", transaction_id=str(i),
+                verified_by="synthetic fixture", verified_on=TODAY,
+                verification_notes="Synthetic test only", permission_reference="synthetic",
+                price_confirmed=True, condition_confirmed=True)
 
 class PricingTests(unittest.TestCase):
     def test_median_with_shipping(self):
@@ -40,3 +43,4 @@ class PricingTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

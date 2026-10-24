@@ -1,0 +1,325 @@
+{
+  "description": "20 real-card candidates; no verified sales or market prices. Tiers are sampling hypotheses only.",
+  "cases": [
+    {
+      "id": "pokemon-01",
+      "name": "Charizard",
+      "target": {
+        "game": "pokemon",
+        "set_name": "base set",
+        "number": "4/102",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "LP"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/base1-4",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "high"
+    },
+    {
+      "id": "pokemon-02",
+      "name": "Blastoise",
+      "target": {
+        "game": "pokemon",
+        "set_name": "base set",
+        "number": "2/102",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "MP"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/base1-2",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "high"
+    },
+    {
+      "id": "pokemon-03",
+      "name": "Venusaur",
+      "target": {
+        "game": "pokemon",
+        "set_name": "base set",
+        "number": "15/102",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "HP"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/base1-15",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "mid"
+    },
+    {
+      "id": "pokemon-04",
+      "name": "Pikachu",
+      "target": {
+        "game": "pokemon",
+        "set_name": "base set",
+        "number": "58/102",
+        "language": "english",
+        "edition": "unlimited yellow cheeks",
+        "finish": "non-holo",
+        "condition": "DMG"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/base1-58",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "low"
+    },
+    {
+      "id": "pokemon-05",
+      "name": "Flareon",
+      "target": {
+        "game": "pokemon",
+        "set_name": "jungle",
+        "number": "3/64",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "NM"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/base2-3",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "mid"
+    },
+    {
+      "id": "pokemon-06",
+      "name": "Snorlax",
+      "target": {
+        "game": "pokemon",
+        "set_name": "jungle",
+        "number": "11/64",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "LP"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/base2-11",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "mid"
+    },
+    {
+      "id": "pokemon-07",
+      "name": "Gengar",
+      "target": {
+        "game": "pokemon",
+        "set_name": "fossil",
+        "number": "5/62",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "MP"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/base3-5",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "mid"
+    },
+    {
+      "id": "pokemon-08",
+      "name": "Dragonite",
+      "target": {
+        "game": "pokemon",
+        "set_name": "fossil",
+        "number": "4/62",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "HP"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/base3-4",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "mid"
+    },
+    {
+      "id": "pokemon-09",
+      "name": "Dark Charizard",
+      "target": {
+        "game": "pokemon",
+        "set_name": "team rocket",
+        "number": "4/82",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "DMG"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/base5-4",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "mid"
+    },
+    {
+      "id": "pokemon-10",
+      "name": "Lugia",
+      "target": {
+        "game": "pokemon",
+        "set_name": "neo genesis",
+        "number": "9/111",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "LP"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/neo1-9",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "high"
+    },
+    {
+      "id": "pokemon-11",
+      "name": "Charizard",
+      "target": {
+        "game": "pokemon",
+        "set_name": "evolutions",
+        "number": "11/108",
+        "language": "english",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/xy12-11",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "mid"
+    },
+    {
+      "id": "pokemon-12",
+      "name": "Pikachu",
+      "target": {
+        "game": "pokemon",
+        "set_name": "vivid voltage",
+        "number": "25/185",
+        "language": "english",
+        "edition": "standard",
+        "finish": "non-holo",
+        "condition": "NM"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/swsh4-25",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "low"
+    },
+    {
+      "id": "pokemon-13",
+      "name": "Umbreon VMAX",
+      "target": {
+        "game": "pokemon",
+        "set_name": "evolving skies",
+        "number": "215/203",
+        "language": "english",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/swsh7-215",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "high"
+    },
+    {
+      "id": "pokemon-14",
+      "name": "Charizard V",
+      "target": {
+        "game": "pokemon",
+        "set_name": "brilliant stars",
+        "number": "154/172",
+        "language": "english",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "LP"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/swsh9-154",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "mid"
+    },
+    {
+      "id": "pokemon-15",
+      "name": "Lugia V",
+      "target": {
+        "game": "pokemon",
+        "set_name": "silver tempest",
+        "number": "186/195",
+        "language": "english",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/swsh12-186",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "high"
+    },
+    {
+      "id": "pokemon-16",
+      "name": "Miriam",
+      "target": {
+        "game": "pokemon",
+        "set_name": "scarlet & violet",
+        "number": "251/198",
+        "language": "english",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/sv01-251",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "mid"
+    },
+    {
+      "id": "pokemon-17",
+      "name": "Iono",
+      "target": {
+        "game": "pokemon",
+        "set_name": "paldea evolved",
+        "number": "269/193",
+        "language": "english",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "LP"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/sv02-269",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "mid"
+    },
+    {
+      "id": "pokemon-18",
+      "name": "Charizard ex",
+      "target": {
+        "game": "pokemon",
+        "set_name": "151",
+        "number": "199/165",
+        "language": "english",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/sv03.5-199",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "high"
+    },
+    {
+      "id": "pokemon-19",
+      "name": "Charmander",
+      "target": {
+        "game": "pokemon",
+        "set_name": "151",
+        "number": "4/165",
+        "language": "english",
+        "edition": "standard",
+        "finish": "reverse holo",
+        "condition": "MP"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/sv03.5-4",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "low"
+    },
+    {
+      "id": "pokemon-20",
+      "name": "Pidgey",
+      "target": {
+        "game": "pokemon",
+        "set_name": "obsidian flames",
+        "number": "162/197",
+        "language": "english",
+        "edition": "standard",
+        "finish": "non-holo",
+        "condition": "HP"
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/sv03-162",
+      "identity_review_status": "pending_physical_printing_review",
+      "sampling_tier_hypothesis": "low"
+    }
+  ]
+}
