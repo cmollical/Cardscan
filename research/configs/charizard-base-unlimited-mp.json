@@ -1,0 +1,18 @@
+{
+  "card_name": "Charizard",
+  "target": {
+    "game": "pokemon",
+    "set_name": "base set",
+    "number": "4/102",
+    "language": "english",
+    "edition": "unlimited",
+    "finish": "holo",
+    "condition": "MP"
+  },
+  "set_aliases": [
+    "Base Set (Unlimited)",
+    "Base"
+  ],
+  "reported_page_mapping_reviewed": true,
+  "pricecharting_url": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4"
+}

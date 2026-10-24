@@ -317,7 +317,11 @@ def qualify(target: Card, listing: Listing, *, set_aliases=(), standard_edition=
     title = listing.title
     if re.search(r'\b(proxy|replica|reproduction|custom|metal|jumbo|oversized|lot|bundle|signed|autograph|error|misprint)\b', title, re.I):
         reasons.append('nonstandard, reproduction, signed or bundled card')
-    if re.search(r'\b(PSA|BGS|CGC|SGC|TAG|ACE)\s*\d|\bgraded\b', title, re.I) or any(k in values for k in ('grade', 'professional grader')):
+    # A grader-name field alone is not a numeric grade. eBay seller templates
+    # may contain it alongside an explicit Ungraded condition or Graded=No.
+    if (re.search(r'\b(PSA|BGS|CGC|SGC|TAG|ACE)\s*\d|\bgraded\b', title, re.I)
+            or re.search(r'\d', values.get('grade', ''))
+            or normalized(values.get('graded', '')) == 'yes'):
         reasons.append('graded card')
     if not listing.sold:
         reasons.append('no explicit completed-sale confirmation')
@@ -351,11 +355,19 @@ def qualify(target: Card, listing: Listing, *, set_aliases=(), standard_edition=
     if finish != target.finish:
         reasons.append('finish mismatch, special variant or missing')
     edition = normalized(values.get('edition', ''))
+    # Vintage Unlimited must be explicitly stated; absence of a 1st-edition
+    # marker is never treated as evidence of Unlimited.
+    if target.edition == 'unlimited' and not edition:
+        edition_text = values.get('features', '') + ' ' + title
+        if re.search(r'\bunlimited\b', edition_text, re.I) and not re.search(
+                r'\b(first edition|1st edition|shadowless)\b', edition_text, re.I):
+            edition = 'unlimited'
     if not (edition == normalized(target.edition) or
             (target.edition == 'standard' and standard_edition and not edition
              and not re.search(r'\b(first edition|1st edition|shadowless|stamped|prize pack)\b', title, re.I))):
         reasons.append('edition unconfirmed; no vintage edition inference')
-    raw_condition = values.get('condition', '') + ' ' + values.get('condition ungraded', '')
+    raw_condition = (values.get('condition', '') + ' ' + values.get('condition ungraded', '')
+                     + ' ' + values.get('card condition', ''))
     conditions = [('NM', r'near[ -]?mint|\bNM\b'), ('LP', r'light(?:ly)?[ -]?play(?:ed)?|\bLP\b'),
                   ('MP', r'moderat(?:e|ely)[ -]?play(?:ed)?|\bMP\b'), ('HP', r'heavil?y?[ -]?play(?:ed)?|\bHP\b'),
                   ('DMG', r'\bdamaged\b|\bDMG\b')]

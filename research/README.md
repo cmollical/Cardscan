@@ -62,3 +62,20 @@ The next validation step is an independent review of exact identities, seller
 conditions and disjoint primary sale evidence against these estimates, then an
 expanded 20-card cohort. The earlier cohort also had an incorrect display name
 for Vivid Voltage 25/185 (Charizard, not Pikachu); that name is corrected.
+
+## Requested check: Base Set Unlimited Charizard 4/102, English MP
+
+On 2026-10-24, ten individually fetched eBay sold pages were evaluated with the
+90-day default window. Two qualified under seller-reported exact-field matching:
+$320 on 2026-10-23 UTC (item 257801645593) and $380 on 2026-10-10 UTC
+(item 327385385994). The engine returned **insufficient_evidence**, not a price,
+because three comps are required. Their arithmetic midpoint is $350, a descriptive
+two-comp reference only. Shipping and tax are excluded.
+
+The run exposed and fixed explicit Unlimited matching under eBay Features/title,
+a false graded classification based only on an orphan grader-name field, and
+missed conflicts between current Condition and legacy Card Condition fields.
+No missing vintage edition was inferred, and conflicting conditions stayed out.
+Detailed accepted/rejected evidence is in
+`results/charizard-base-unlimited-mp-2026-10-24.json`. The original secondary-only
+run remains archived separately. The suite now passes 47 tests.

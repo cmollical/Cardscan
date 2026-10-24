@@ -163,3 +163,20 @@ class OriginalLinkTests(unittest.TestCase):
                 '</td></tr></table></div>')
         self.assertEqual(discover_pricecharting(snapshot(html, final_url='https://www.pricecharting.com/game/example')),
                          ('https://www.ebay.com/itm/222222222222?nordt=true&rt=nc',))
+
+
+class VintageEvidenceTests(unittest.TestCase):
+    def test_unlimited_must_be_explicit(self):
+        listing = parse_ebay(snapshot())
+        target = replace(TARGET, edition='unlimited')
+        self.assertIsNone(qualify_listing(listing, target)[0])
+        explicit = replace(listing, specifics={**listing.specifics, 'Features': 'Unlimited',
+                                               'Professional Grader': 'Professional Sports Authenticator (PSA)'})
+        self.assertIsNotNone(qualify_listing(explicit, target)[0])
+        self.assertIsNone(qualify_listing(replace(explicit, title=explicit.title+' Shadowless'), target)[0])
+        self.assertIsNone(qualify_listing(replace(explicit, specifics={**explicit.specifics, 'Grade': '8'}), target)[0])
+
+    def test_conflicting_legacy_card_condition_rejected(self):
+        listing = parse_ebay(snapshot())
+        listing = replace(listing, specifics={**listing.specifics, 'Card Condition': 'Moderately Played'})
+        self.assertIsNone(qualify_listing(listing)[0])

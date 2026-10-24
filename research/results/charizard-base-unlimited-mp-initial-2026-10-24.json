@@ -1,0 +1,299 @@
+{
+  "scope": "personal_research",
+  "direct_verification": "not_attempted",
+  "target": {
+    "game": "pokemon",
+    "set_name": "base set",
+    "number": "4/102",
+    "language": "english",
+    "edition": "unlimited",
+    "finish": "holo",
+    "condition": "MP"
+  },
+  "secondary_reports": {
+    "status": "secondary_reports_only",
+    "as_of": "2026-10-24",
+    "max_age_days": 30,
+    "minimum_sales": 3,
+    "price_basis": "publisher_reported_card_sale_price_excluding_shipping_and_tax",
+    "source": {
+      "requested_url": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4",
+      "final_url": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4",
+      "observed_at": "2026-10-24T15:34:52.183614+00:00",
+      "sha256": "c6a02da10dfa40e646443085194c3ed500099f4b178ebc6db967065e321c18e6"
+    },
+    "groups": {
+      "ebay": {
+        "status": "insufficient_evidence",
+        "value": null,
+        "count": 0,
+        "records": [],
+        "outlier_publisher_record_ids": []
+      },
+      "tcgplayer": {
+        "status": "insufficient_evidence",
+        "value": null,
+        "count": 0,
+        "records": [],
+        "outlier_publisher_record_ids": []
+      }
+    },
+    "rejected_reports": [
+      {
+        "publisher_record_id": "ebay-327361917067",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-137435342376",
+        "reason": "ambiguous or missing reported amount"
+      },
+      {
+        "publisher_record_id": "ebay-327402103043",
+        "reason": "ambiguous or missing reported amount"
+      },
+      {
+        "publisher_record_id": "ebay-307240226721",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-387074452935",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-800803093689",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-960104885674",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-257801645593",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-336850862545",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-318192736930",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-820267022545",
+        "reason": "ambiguous or missing reported amount"
+      },
+      {
+        "publisher_record_id": "ebay-800692706532",
+        "reason": "ambiguous or missing reported amount"
+      },
+      {
+        "publisher_record_id": "ebay-860057864593",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-128151314346",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-327397959899",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-800799856979",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-900008639284",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-227572054554",
+        "reason": "ambiguous or missing reported amount"
+      },
+      {
+        "publisher_record_id": "ebay-960061825989",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-198640001656",
+        "reason": "ambiguous or missing reported amount"
+      },
+      {
+        "publisher_record_id": "ebay-327416464608",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-168805355923",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-880018188082",
+        "reason": "full collector number missing"
+      },
+      {
+        "publisher_record_id": "ebay-800796516695",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-128135861484",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-940029339098",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-377556105845",
+        "reason": "ambiguous or missing reported amount"
+      },
+      {
+        "publisher_record_id": "ebay-287656914898",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-407306972274",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-920061615248",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "tcgplayer-G83G3NvCzHj8",
+        "reason": "full collector number missing"
+      },
+      {
+        "publisher_record_id": "tcgplayer-65GKLO0knxi1",
+        "reason": "full collector number missing"
+      },
+      {
+        "publisher_record_id": "tcgplayer-vpMnAwL2hp0s",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-i3zvqIxqPc9g",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-EtHigsV+xKZi",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-cQCFLGVGXIwT",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-AN3cn4BpWq2A",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-Y2tdlrW+CdmL",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-xoyuF5k0x0dx",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-f1WCQ5akbQsC",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-z5cFSPYHXOW2",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-SXICICw4sjns",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-ZcW4h+XwAu4n",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-1oY8L9DBUAys",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-PGRWDuhK97/4",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-G/KiYfQ50F0y",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-+vmKjIv28eL5",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-o0IVxZ5XOrjI",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-iCXdusEgENfk",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-AP1IET8oy/2G",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-mVRZfYXIVN+K",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-4tSZDOyKzYb+",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-LlDdWjZX6q0a",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-K8jFrIw4S/4H",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-fxviXy4PxUwg",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-pRLhc/0pPYWU",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-K7mpy19M7tLh",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-0xjrOgZKQmxI",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-ptoS9Ita/XfT",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-Q3A6Ag6QhW7a",
+        "reason": "outside report window"
+      }
+    ],
+    "limitations": [
+      "Not independently verified at originating marketplace",
+      "Publisher row IDs are not proof of original transaction uniqueness",
+      "Product mapping supplies set, edition and finish; publisher mapping errors remain possible",
+      "Publisher USD amounts may be conversions; original currency is not established",
+      "No independent accuracy validation; do not pool this with the same direct eBay sales"
+    ]
+  },
+  "discovery": {
+    "requested_url": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4",
+    "final_url": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4",
+    "observed_at": "2026-10-24T15:34:52.183614+00:00",
+    "sha256": "c6a02da10dfa40e646443085194c3ed500099f4b178ebc6db967065e321c18e6",
+    "candidate_count": 30,
+    "role": "link_discovery_only_not_price_evidence"
+  }
+}
