@@ -1,0 +1,1 @@
+"""CardScan valuation prototype."""
