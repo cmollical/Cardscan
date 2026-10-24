@@ -79,3 +79,11 @@ No missing vintage edition was inferred, and conflicting conditions stayed out.
 Detailed accepted/rejected evidence is in
 `results/charizard-base-unlimited-mp-2026-10-24.json`. The original secondary-only
 run remains archived separately. The suite now passes 47 tests.
+
+## Direct TCGplayer follow-up
+
+The [direct sales-history investigation](../docs/tcgplayer-sales-investigation.md)
+located the exact five-row request and verified product/filter metadata. Metadata
+returned 200; sales returned 403 from this environment. No direct TCGplayer sales
+were retrieved. `python -m cardscan.tcgplayer_probe` reproduces the diagnostic
+without credentials, challenge solving, pagination or invented prices.

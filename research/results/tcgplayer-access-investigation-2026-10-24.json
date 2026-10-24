@@ -1,0 +1,41 @@
+{
+  "observed_on": "2026-10-24",
+  "observed_at": null,
+  "timestamp_note": "Exact timestamps were not recorded during the initial probe; no timestamp invented.",
+  "product_id": 42382,
+  "metadata_requests": {
+    "details": 200,
+    "filters": 200
+  },
+  "sales_request": {
+    "url": "https://mpapi.tcgplayer.com/v2/product/42382/latestsales",
+    "method": "POST",
+    "payload": {
+      "conditions": [
+        3
+      ],
+      "variants": [
+        11
+      ],
+      "languages": [
+        1
+      ],
+      "listingType": "All",
+      "limit": 5
+    },
+    "http_status": 403,
+    "body_observation": "403 Forbidden HTML response",
+    "live_sales_retrieved": false,
+    "retried": false,
+    "credentials_used": false,
+    "request_validation_tokens_generated": false
+  },
+  "source_sha256": {
+    "product_page": "6b6530c1fae4875c730e5c421bf1528198b0be0b240003bf41e02a32f157cdf1",
+    "application_bundle": "9d5acfd69155e125a444a713994beb18d1b1319cc417b99e92040f866dbb9475",
+    "product_component": "df31ba32b5493960fa62dee178067d03c0d72ffe441cd2df6ce58b9a5d3a9729",
+    "request_client": "f37fb3b27f09e30b0e7c7e59ee2cf6b36b11de3b2e2b8a17cb627a3dc82917a2",
+    "product_details": "8aa2ad5da664249632ce394cb87413c683b0effb8b1a9cd0a10a7fbf912e09ed",
+    "category_filters": "c03e29c294029f72fbd9146b6b61d32c91abbef8a4ba54875e46cc70a939d03d"
+  }
+}
