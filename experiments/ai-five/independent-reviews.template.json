@@ -1,0 +1,39 @@
+{
+  "cases": {
+    "modern-common": {
+      "target_identity_verified": false,
+      "reviewer": null,
+      "references": [],
+      "reviews": {},
+      "labels": {}
+    },
+    "modern-chase": {
+      "target_identity_verified": false,
+      "reviewer": null,
+      "references": [],
+      "reviews": {},
+      "labels": {}
+    },
+    "vintage-charizard-lp": {
+      "target_identity_verified": false,
+      "reviewer": null,
+      "references": [],
+      "reviews": {},
+      "labels": {}
+    },
+    "first-edition-gengar": {
+      "target_identity_verified": false,
+      "reviewer": null,
+      "references": [],
+      "reviews": {},
+      "labels": {}
+    },
+    "japanese-charizard": {
+      "target_identity_verified": false,
+      "reviewer": null,
+      "references": [],
+      "reviews": {},
+      "labels": {}
+    }
+  }
+}

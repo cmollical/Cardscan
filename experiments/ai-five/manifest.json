@@ -1,0 +1,91 @@
+{
+  "protocol": "five_card_v1",
+  "description": "Selected exact research targets; no collected sales or claimed liquidity. Foreign card tested in USD sales; do not invent FX. Identity reference pointers are not independently reviewed printing evidence.",
+  "cases": [
+    {
+      "id": "modern-common",
+      "category": "Modern inexpensive common",
+      "target": {
+        "game": "pokemon",
+        "name": "Charmander",
+        "set_name": "obsidian flames",
+        "number": "26/197",
+        "language": "english",
+        "edition": "standard",
+        "finish": "non-holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "identity_reference": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv03/26/",
+      "identity_review_status": "independent review pending"
+    },
+    {
+      "id": "modern-chase",
+      "category": "Modern special illustration rare",
+      "target": {
+        "game": "pokemon",
+        "name": "Charizard ex",
+        "set_name": "151",
+        "number": "199/165",
+        "language": "english",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "identity_reference": "https://www.pokemon.com/us/pokemon-tcg/pokemon-cards/series/sv3pt5/199/",
+      "identity_review_status": "independent review pending"
+    },
+    {
+      "id": "vintage-charizard-lp",
+      "category": "Vintage holo",
+      "target": {
+        "game": "pokemon",
+        "name": "Charizard",
+        "set_name": "base set",
+        "number": "4/102",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "LP",
+        "graded": false
+      },
+      "identity_reference": "https://www.tcgplayer.com/product/42382/pokemon-base-set-charizard",
+      "identity_review_status": "independent review pending"
+    },
+    {
+      "id": "first-edition-gengar",
+      "category": "Vintage English First Edition",
+      "target": {
+        "game": "pokemon",
+        "name": "Gengar",
+        "set_name": "fossil",
+        "number": "5/62",
+        "language": "english",
+        "edition": "first edition",
+        "finish": "holo",
+        "condition": "LP",
+        "graded": false
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/en/cards/base3-5",
+      "identity_review_status": "independent review pending"
+    },
+    {
+      "id": "japanese-charizard",
+      "category": "Foreign-language special art rare",
+      "target": {
+        "game": "pokemon",
+        "name": "Charizard ex",
+        "set_name": "pokemon card 151",
+        "number": "201/165",
+        "language": "japanese",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "identity_reference": "https://api.tcgdex.net/v2/ja/cards/sv2a-201",
+      "identity_review_status": "independent review pending"
+    }
+  ]
+}

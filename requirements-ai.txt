@@ -1,0 +1,3 @@
+# Optional AI research dependencies. Legacy standard-library workflows remain usable.
+openai>=2.0.0,<3
+pydantic>=2.8,<3

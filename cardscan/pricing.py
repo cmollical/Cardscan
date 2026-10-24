@@ -85,6 +85,7 @@ class Result:
     target: Card
     outlier_factor: Decimal
     allow_seller_reported: bool = False
+    verification_as_of: Optional[date] = None
     method: str = "median_item_price_v3"
 
     def to_dict(self):
@@ -122,7 +123,8 @@ def median_and_outliers(amounts: list[Decimal], factor: Decimal):
 def evaluate(target: Card, sales: Iterable[Sale], as_of: Optional[date] = None,
              max_age_days: int = 90, minimum_sales: int = 3,
              currency: str = "USD", outlier_factor: Decimal = Decimal("3"),
-             allow_seller_reported: bool = False) -> Result:
+             allow_seller_reported: bool = False,
+             verification_as_of: Optional[date] = None) -> Result:
     """No FX/condition multipliers. Extreme dispersion triggers review, not a price.
 
     The factor guard is a conservative heuristic, not a calibrated confidence score.
@@ -139,6 +141,9 @@ def evaluate(target: Card, sales: Iterable[Sale], as_of: Optional[date] = None,
     today = as_of or date.today()
     if type(today) is not date:
         raise ValueError("as_of must be a date")
+    verification_day = verification_as_of or today
+    if type(verification_day) is not date:
+        raise ValueError("verification_as_of must be a date")
     accepted, rejected = [], []
     seen_ids, seen_urls = set(), set()
     for sale in sales:
@@ -178,7 +183,7 @@ def evaluate(target: Card, sales: Iterable[Sale], as_of: Optional[date] = None,
             reasons.append("condition unconfirmed")
         if type(sale.sold_on) is not date or not 0 <= (today - sale.sold_on).days <= max_age_days:
             reasons.append("outside sale window")
-        if (type(sale.verified_on) is not date or sale.verified_on > today
+        if (type(sale.verified_on) is not date or sale.verified_on > verification_day
                 or (type(sale.sold_on) is date and sale.verified_on < sale.sold_on)):
             reasons.append("invalid verification date")
         if sale.key in seen_ids or (url is not None and url in seen_urls):
@@ -211,4 +216,4 @@ def evaluate(target: Card, sales: Iterable[Sale], as_of: Optional[date] = None,
         status = "research_estimate"
         reason += "; public seller-reported sales, condition not physically verified"
     return Result(value, tuple(accepted), tuple(rejected), reason, today, currency,
-                  minimum_sales, max_age_days, status, target, outlier_factor, allow_seller_reported)
+                  minimum_sales, max_age_days, status, target, outlier_factor, allow_seller_reported, verification_as_of)

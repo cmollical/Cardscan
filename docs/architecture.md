@@ -1,3 +1,7 @@
+> AI research extension: see [OpenAI pricing engine](openai-pricing-engine.md).
+> It reuses the deterministic core, adds opt-in Responses web research, and keeps
+> model candidates separate from independently substantiated sold evidence.
+
 # Pricing architecture
 
 The prototype now has two evidence paths, sharing item-price median/outlier

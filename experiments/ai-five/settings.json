@@ -1,0 +1,12 @@
+{
+  "model": "gpt-5.4-mini",
+  "max_search_calls": 2,
+  "max_output_tokens": 3000,
+  "timeout_seconds": 90,
+  "cache_ttl_seconds": 3600,
+  "per_request_limit_usd": "0.35",
+  "daily_limit_usd": "2.00",
+  "max_daily_requests": 10,
+  "minimum_sales": 3,
+  "max_age_days": 90
+}

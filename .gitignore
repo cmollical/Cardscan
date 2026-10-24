@@ -3,3 +3,10 @@ __pycache__/
 .venv/
 # Human evidence may contain private notes or permission documents.
 local-evidence/
+# Server-side credentials and local paid-research state must never be committed.
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal

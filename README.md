@@ -1,8 +1,25 @@
 # CardScan
 
-Personal Pokémon pricing research prototype. The current engine retrieves public
-sold-listing evidence and produces auditable estimates. **Market value excludes
-shipping and tax.** No paid API, subscription, scanner or PWA is required.
+Pokémon pricing research prototype with deterministic valuation and modular
+evidence providers. **Market value excludes shipping and tax.** Scanner, PWA
+and inventory work remain out of scope. Existing offline/public-page workflows
+are preserved.
+
+## AI market research (paid execution disabled by default)
+
+The new `OpenAIWebSearchProvider` uses the official Responses API with web search,
+strict evidence schemas, exact matching, separate sale/reference/asking-price
+evidence, independent verification, condition-specific caching and spending guards.
+No paid API experiment has been executed; real accuracy and costs remain unmeasured.
+
+```bash
+python -m cardscan.ai.experiment --as-of 2026-10-24
+```
+
+That command produces an offline five-card plan and makes no API calls. See
+[AI architecture, key setup, costs and experiment instructions](docs/openai-pricing-engine.md).
+Live execution requires explicit user authorization and two CLI flags. Model
+citations alone never confer verified-comp status.
 
 ## Get a price from public sale reports
 
