@@ -1,0 +1,19 @@
+{
+  "target": {
+    "game": "pokemon",
+    "set_name": "151",
+    "number": "199/165",
+    "language": "english",
+    "edition": "standard",
+    "finish": "holo",
+    "condition": "NM"
+  },
+  "set_aliases": [
+    "SV: Scarlet & Violet 151",
+    "Scarlet & Violet 151"
+  ],
+  "standard_edition_is_unambiguous": true,
+  "pricecharting_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199",
+  "card_name": "Charizard ex",
+  "reported_page_mapping_reviewed": true
+}

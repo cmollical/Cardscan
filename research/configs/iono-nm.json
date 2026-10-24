@@ -1,0 +1,20 @@
+{
+  "card_name": "Iono",
+  "target": {
+    "game": "pokemon",
+    "set_name": "paldea evolved",
+    "number": "269/193",
+    "language": "english",
+    "edition": "standard",
+    "finish": "holo",
+    "condition": "NM"
+  },
+  "set_aliases": [
+    "SV: Paldea Evolved",
+    "SV02: Paldea Evolved",
+    "Paldea Evolved"
+  ],
+  "standard_edition_is_unambiguous": true,
+  "reported_page_mapping_reviewed": true,
+  "pricecharting_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269"
+}

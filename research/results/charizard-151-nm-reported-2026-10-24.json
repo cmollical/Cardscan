@@ -1,0 +1,396 @@
+{
+  "scope": "personal_research",
+  "direct_verification": "not_attempted",
+  "target": {
+    "game": "pokemon",
+    "set_name": "151",
+    "number": "199/165",
+    "language": "english",
+    "edition": "standard",
+    "finish": "holo",
+    "condition": "NM"
+  },
+  "secondary_reports": {
+    "status": "secondary_reports_only",
+    "as_of": "2026-10-24",
+    "max_age_days": 30,
+    "minimum_sales": 3,
+    "price_basis": "publisher_reported_card_sale_price_excluding_shipping_and_tax",
+    "source": {
+      "requested_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199",
+      "final_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199",
+      "observed_at": "2026-10-24T15:05:13.491765+00:00",
+      "sha256": "ad3c09029fb3991b417472b0c121e7fd2ae71c8900a457195127f3e5493d1331"
+    },
+    "groups": {
+      "ebay": {
+        "status": "insufficient_evidence",
+        "value": null,
+        "count": 0,
+        "records": [],
+        "outlier_publisher_record_ids": []
+      },
+      "tcgplayer": {
+        "status": "secondary_research_estimate",
+        "value": "314.23",
+        "count": 6,
+        "records": [
+          {
+            "publisher_record_id": "tcgplayer-5m5akEtmi202",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-20",
+            "item_price": "297.99",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "151",
+              "199/165",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199#tcgplayer-5m5akEtmi202",
+            "row_sha256": "39fe61dc1ac0ed42c572c2ecd34f72d604661862c4d4ff356a12cb2c92ee6ddd",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-yJm/a6SIEqqE",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-19",
+            "item_price": "298.99",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "151",
+              "199/165",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199#tcgplayer-yJm%2Fa6SIEqqE",
+            "row_sha256": "829cdd3bf7a5d78033207f13b2e54a444242069d4c8a57de33d76cfc3a626f3b",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-GzmThX/n6Knb",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-14",
+            "item_price": "308.45",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "151",
+              "199/165",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199#tcgplayer-GzmThX%2Fn6Knb",
+            "row_sha256": "db3df38b42d0791120a1b03cc58c5dd5cf26b82d9d9c69d983ccb14912893a38",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-m9SlrweOJfU3",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-03",
+            "item_price": "320.00",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "151",
+              "199/165",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199#tcgplayer-m9SlrweOJfU3",
+            "row_sha256": "f752f2c7722c9723a9cf90728df2830a2887375c87634c34f149d6ed5474368e",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-zE3M2417wHST",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-09-28",
+            "item_price": "379.98",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "151",
+              "199/165",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199#tcgplayer-zE3M2417wHST",
+            "row_sha256": "adfdc06f9ae5067da7c40a60ef21e058eca3bbc69eb14eca86cc6f1a11928e5f",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-+VtRyPeenet/",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-09-27",
+            "item_price": "339.99",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "151",
+              "199/165",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199#tcgplayer-%2BVtRyPeenet%2F",
+            "row_sha256": "aed823d67abef508466e4d34953b0b0649c0fcb26e0fb52c2f4d9b7064410565",
+            "verification_level": "secondary_publisher_report"
+          }
+        ],
+        "outlier_publisher_record_ids": []
+      }
+    },
+    "rejected_reports": [
+      {
+        "publisher_record_id": "ebay-920057911358",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-940023635440",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-206641982064",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-307245020415",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-128146406577",
+        "reason": "ambiguous or missing reported amount"
+      },
+      {
+        "publisher_record_id": "ebay-128146460415",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-860038026094",
+        "reason": "full collector number missing"
+      },
+      {
+        "publisher_record_id": "ebay-257802273839",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-257805483437",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-327406315985",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-128146938591",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-168790166279",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-940022137833",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-298671912650",
+        "reason": "ambiguous or missing reported amount"
+      },
+      {
+        "publisher_record_id": "ebay-137857348718",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-407302135192",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-800786164747",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-377570994398",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-227567000691",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-407297708184",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-267814826627",
+        "reason": "ambiguous or missing reported amount"
+      },
+      {
+        "publisher_record_id": "ebay-960064742148",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-117473263895",
+        "reason": "ambiguous or missing reported amount"
+      },
+      {
+        "publisher_record_id": "ebay-227558676104",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-820222407400",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-820229027800",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-137855018947",
+        "reason": "ambiguous or missing reported amount"
+      },
+      {
+        "publisher_record_id": "ebay-287656673070",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-267806952981",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-117408376969",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "tcgplayer-SSGhPen+RUPA",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-SQethqwkg/4e",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-pmGV9mlnqRJq",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-X9uu+emWXOSj",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-Q4bW3trlAjph",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-tJspIliilTxv",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-oNye4W1vFCRl",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-PaqKIO4u+0Lm",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-xJfbIMqsdQyb",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-XhS9NBL7E84k",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-MZfMViZEEwLb",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-rJ7LJm+PyLSH",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-+06rmiwSdF+z",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-ZBCRkg00Sqr6",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-JQKXniCY53zy",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-zXYIz5tcXUzi",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-WUlxDZnn1dGe",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-48MlJ80WkXbD",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-XUMTahHhus6G",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-RSeBS2Ncb6Fy",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-LNv3YpsGX+Gk",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-y4AZAm0y2CO0",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-KpGOhNtaPIpj",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-Kfof/e/uOY4o",
+        "reason": "outside report window"
+      }
+    ],
+    "limitations": [
+      "Not independently verified at originating marketplace",
+      "Publisher row IDs are not proof of original transaction uniqueness",
+      "Product mapping supplies set, edition and finish; publisher mapping errors remain possible",
+      "Publisher USD amounts may be conversions; original currency is not established",
+      "No independent accuracy validation; do not pool this with the same direct eBay sales"
+    ]
+  },
+  "discovery": {
+    "requested_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199",
+    "final_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199",
+    "observed_at": "2026-10-24T15:05:13.491765+00:00",
+    "sha256": "ad3c09029fb3991b417472b0c121e7fd2ae71c8900a457195127f3e5493d1331",
+    "candidate_count": 30,
+    "role": "link_discovery_only_not_price_evidence"
+  }
+}

@@ -52,7 +52,7 @@ def parse_sale(record: dict, permissions: Mapping[str, str]) -> Sale:
         for key in ("sold", "graded", "bundle", "price_confirmed", "condition_confirmed", "refunded"):
             if type(record[key]) is not bool:
                 raise IngestionError(f"{key} must be a JSON boolean")
-        for key in ("currency", "source", "transaction_id", "url", "verified_by", "verification_notes", "permission_reference"):
+        for key in ("currency", "source", "transaction_id", "url", "verified_by", "verification_notes", "permission_reference", "verification_level"):
             if not isinstance(record[key], str) or not record[key].strip():
                 raise IngestionError(f"{key} must be nonempty text")
         reference = permissions.get(record["source"])
@@ -60,7 +60,7 @@ def parse_sale(record: dict, permissions: Mapping[str, str]) -> Sale:
             raise IngestionError("Source not approved for collection and commercial reuse")
         for key in ("item_price", "shipping"):
             if record[key] is None and key == "shipping":
-                continue  # Evaluator records an explicit unknown-shipping rejection.
+                continue  # Shipping is audit context; unknown shipping is allowed.
             if not isinstance(record[key], str):
                 raise IngestionError(f"{key} must be a decimal string")
             record[key] = Decimal(record[key])

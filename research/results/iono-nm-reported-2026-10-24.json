@@ -1,0 +1,508 @@
+{
+  "scope": "personal_research",
+  "direct_verification": "not_attempted",
+  "target": {
+    "game": "pokemon",
+    "set_name": "paldea evolved",
+    "number": "269/193",
+    "language": "english",
+    "edition": "standard",
+    "finish": "holo",
+    "condition": "NM"
+  },
+  "secondary_reports": {
+    "status": "secondary_reports_only",
+    "as_of": "2026-10-24",
+    "max_age_days": 30,
+    "minimum_sales": 3,
+    "price_basis": "publisher_reported_card_sale_price_excluding_shipping_and_tax",
+    "source": {
+      "requested_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269",
+      "final_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269",
+      "observed_at": "2026-10-24T15:05:15.963299+00:00",
+      "sha256": "7997cda8d351a664555547f2b7abaaee90f0e50f3183f28fe2b04b41ee262cf9"
+    },
+    "groups": {
+      "ebay": {
+        "status": "insufficient_evidence",
+        "value": null,
+        "count": 0,
+        "records": [],
+        "outlier_publisher_record_ids": []
+      },
+      "tcgplayer": {
+        "status": "secondary_research_estimate",
+        "value": "49.62",
+        "count": 13,
+        "records": [
+          {
+            "publisher_record_id": "tcgplayer-z/7y9o6WH26k",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-21",
+            "item_price": "44.06",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "paldea evolved",
+              "269/193",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269#tcgplayer-z%2F7y9o6WH26k",
+            "row_sha256": "9da8b4596002c866b1e46763d442eae64155658d551c328247994714306b6030",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-129cZmXOfbzf",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-20",
+            "item_price": "49.63",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "paldea evolved",
+              "269/193",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269#tcgplayer-129cZmXOfbzf",
+            "row_sha256": "7fda01119de9cb12dda482534176c7669c0d9566086971169d0802fc69489b1b",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-+YQLMeHA4ebJ",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-17",
+            "item_price": "46.03",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "paldea evolved",
+              "269/193",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269#tcgplayer-%2BYQLMeHA4ebJ",
+            "row_sha256": "a317c57eb8be6e8d951ebd88a9fe2b348af3e60d68706f9c02faf4d9f7c848be",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-cIsbWcP5SFVW",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-16",
+            "item_price": "49.62",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "paldea evolved",
+              "269/193",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269#tcgplayer-cIsbWcP5SFVW",
+            "row_sha256": "918b7ed01aa54b94a0725c8cfe86c996b4b5e9a30fc1e68e372cf40c8e7a1c10",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-K75Ul3Tpsrlg",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-15",
+            "item_price": "46.05",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "paldea evolved",
+              "269/193",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269#tcgplayer-K75Ul3Tpsrlg",
+            "row_sha256": "4ff6ebdb7782b90bf99849eece64e230d2b823e8e376dc2a140afe936323b062",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-YFkoiTbYLpsU",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-11",
+            "item_price": "45.00",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "paldea evolved",
+              "269/193",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269#tcgplayer-YFkoiTbYLpsU",
+            "row_sha256": "ed0083093281c9316e9b8ec73138fbae6008f593df45e818a0b805f17b02d528",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-/61vI0iSOO0J",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-06",
+            "item_price": "45.00",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "paldea evolved",
+              "269/193",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269#tcgplayer-%2F61vI0iSOO0J",
+            "row_sha256": "1ad493b0a5c618882b14d4503d6026a61889a5a99ad06edb920c9b08eba5f362",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-Q6F7fBYoa7U7",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-05",
+            "item_price": "46.50",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "paldea evolved",
+              "269/193",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269#tcgplayer-Q6F7fBYoa7U7",
+            "row_sha256": "95fc806f1ca60ed7172a1d9bca28e7f858435b21c1f2306a9b7613ea2a4c4b4e",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-gS0Mn4ijTpkk",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-02",
+            "item_price": "50.00",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "paldea evolved",
+              "269/193",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269#tcgplayer-gS0Mn4ijTpkk",
+            "row_sha256": "207c367e34f9e9e307fe951f6fea806aa186bbaf73c03fb0cb34d9975bd0ab61",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-CY8gidIStGD3",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-01",
+            "item_price": "53.40",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "paldea evolved",
+              "269/193",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269#tcgplayer-CY8gidIStGD3",
+            "row_sha256": "cc6d4f4f84d05d19b299883e7d02558c16aca84c519b906c0c7fd28c224340ea",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-WMCnZiN0Hc/v",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-09-26",
+            "item_price": "52.04",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "paldea evolved",
+              "269/193",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269#tcgplayer-WMCnZiN0Hc%2Fv",
+            "row_sha256": "a804a654e3706dbcb2f1a28da2773927e77dc10876984ef91b45341cd6d028fc",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-q12z5em8YvAJ",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-09-25",
+            "item_price": "56.06",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "paldea evolved",
+              "269/193",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269#tcgplayer-q12z5em8YvAJ",
+            "row_sha256": "d3c4d762242bf03acfb063fd7ac1da0a56edc928504226b46cb4cdc6a8139c36",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-XWbYPLkVjhZl",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-09-24",
+            "item_price": "56.06",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "paldea evolved",
+              "269/193",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269#tcgplayer-XWbYPLkVjhZl",
+            "row_sha256": "c1a12a9bda85b059f5bbb8f78f3be40d6e20793548d895f61b3e1b9753f958b8",
+            "verification_level": "secondary_publisher_report"
+          }
+        ],
+        "outlier_publisher_record_ids": []
+      }
+    },
+    "rejected_reports": [
+      {
+        "publisher_record_id": "ebay-227504434250",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-237135973555",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-366743487784",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-178531391427",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-287619244305",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-800716994492",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-327381333123",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-920026650712",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-336820286714",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-189057984098",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-377559825849",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-366732574961",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-820156764252",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-206602859364",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-227558926147",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-206598436889",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-206598435108",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-168706017404",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-377549124079",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-407256475720",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-168765483749",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-366713122734",
+        "reason": "ambiguous or missing reported amount"
+      },
+      {
+        "publisher_record_id": "ebay-298642464505",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-227542062397",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-366597439952",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-366681550716",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-377520938169",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-158371679882",
+        "reason": "ambiguous or missing reported amount"
+      },
+      {
+        "publisher_record_id": "ebay-128099314836",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-377522511441",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "tcgplayer-PiUukB27rV08",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-9MNPRUYaALk7",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-IlCD/Zb0QMmw",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-4AU6cGnm/UM7",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-V/MLN2p/l8ON",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-jME5/o6K2/sm",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-3T7O3xhhlYkU",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-6NoxACrleSXE",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-TV29XOdHE/HB",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-xD1XToI7dfcG",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-r6L+FJkHspXO",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-iWKO9OOMbnsW",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-U9DXEO5IAQkg",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-VlJDgaE1klEo",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-QVr+ubJoavqk",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-haoQzrGXCFsQ",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-Hp4V1ls8XK64",
+        "reason": "outside report window"
+      }
+    ],
+    "limitations": [
+      "Not independently verified at originating marketplace",
+      "Publisher row IDs are not proof of original transaction uniqueness",
+      "Product mapping supplies set, edition and finish; publisher mapping errors remain possible",
+      "Publisher USD amounts may be conversions; original currency is not established",
+      "No independent accuracy validation; do not pool this with the same direct eBay sales"
+    ]
+  },
+  "discovery": {
+    "requested_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269",
+    "final_url": "https://www.pricecharting.com/game/pokemon-paldea-evolved/iono-269",
+    "observed_at": "2026-10-24T15:05:15.963299+00:00",
+    "sha256": "7997cda8d351a664555547f2b7abaaee90f0e50f3183f28fe2b04b41ee262cf9",
+    "candidate_count": 30,
+    "role": "link_discovery_only_not_price_evidence"
+  }
+}

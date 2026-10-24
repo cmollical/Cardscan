@@ -1,0 +1,203 @@
+{
+  "scope": "personal_research",
+  "price_basis": "card_sale_price_only_excluding_shipping_and_tax",
+  "discovery": {
+    "requested_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199",
+    "final_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199",
+    "observed_at": "2026-10-24T15:01:55.130723+00:00",
+    "sha256": "ad3c09029fb3991b417472b0c121e7fd2ae71c8900a457195127f3e5493d1331",
+    "candidate_count": 30,
+    "role": "link_discovery_only_not_price_evidence"
+  },
+  "valuation": {
+    "value": null,
+    "accepted": [],
+    "rejected": [],
+    "reason": "Insufficient evidence: 0/3 qualified sales",
+    "as_of": "2026-10-24",
+    "currency": "USD",
+    "minimum_sales": 3,
+    "max_age_days": 90,
+    "status": "insufficient_evidence",
+    "target": {
+      "game": "pokemon",
+      "set_name": "151",
+      "number": "199/165",
+      "language": "english",
+      "edition": "standard",
+      "finish": "holo",
+      "condition": "NM"
+    },
+    "outlier_factor": "3",
+    "method": "median_item_price_v3"
+  },
+  "observations": [
+    {
+      "requested_url": "https://www.ebay.com/itm/920057911358",
+      "final_url": "https://www.ebay.com/itm/920057911358",
+      "observed_at": "2026-10-24T15:01:56.454228+00:00",
+      "sha256": "95cacf0eef835c9ad918f64fa47452a0f4de0628f551e46cb0b9cb32896d2e48",
+      "url": "https://www.ebay.com/itm/920057911358",
+      "item_id": "920057911358",
+      "title": "Pokemon Charizard EX Holo Rare Card 199/165 SV Scarlet & Violet 151",
+      "item_price": "299.95",
+      "currency": "USD",
+      "sold_on": "2026-11-20",
+      "seller_specifics": {
+        "Condition": "Ungraded - Near mint or better: Not in original packaging or professionally graded",
+        "Attribute/MTG:Color": "Fire",
+        "Rarity": "Rare",
+        "Game": "Pok\u00e9mon TCG",
+        "Set": "Sv: Scarlet & Violet 151",
+        "Character": "Charizard",
+        "Creature/Monster Type": "Dragon",
+        "Card Name": "Charizard ex",
+        "Manufacturer": "The Pok\u00e9mon Company",
+        "Card Type": "Pok\u00e9mon",
+        "Card Number": "199/165",
+        "Finish": "Holo",
+        "Country of Origin": "United States"
+      },
+      "shipping_quote_context_only": "Shipping: US $5.00 Shipping to authenticator, then to you . See details for shipping Located in: Oakland Gardens, NY, United States",
+      "rejections": [
+        "no explicit completed-sale confirmation",
+        "language mismatch or missing"
+      ]
+    },
+    {
+      "url": "https://www.ebay.com/itm/940023635440",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "url": "https://www.ebay.com/itm/206641982064",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "url": "https://www.ebay.com/itm/307245020415",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "url": "https://www.ebay.com/itm/128146406577",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "url": "https://www.ebay.com/itm/128146460415",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "url": "https://www.ebay.com/itm/860038026094",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "url": "https://www.ebay.com/itm/257802273839",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "url": "https://www.ebay.com/itm/257805483437",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "url": "https://www.ebay.com/itm/327406315985",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "url": "https://www.ebay.com/itm/128146938591",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "url": "https://www.ebay.com/itm/168790166279",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "url": "https://www.ebay.com/itm/940022137833",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "requested_url": "https://www.ebay.com/itm/298671912650",
+      "final_url": "https://www.ebay.com/itm/298671912650",
+      "observed_at": "2026-10-24T15:02:25.698896+00:00",
+      "sha256": "6238ce23752af143e793077f7dc017a8abdf4bde8c3447481d7163251df32144",
+      "url": "https://www.ebay.com/itm/298671912650",
+      "item_id": "298671912650",
+      "title": "Charizard EX (199) Pokemon Scarlet & Violet 151",
+      "item_price": "303.51",
+      "currency": "USD",
+      "sold_on": "2026-10-20",
+      "seller_specifics": {
+        "Condition": "Ungraded - Near Mint or Better: Not in original packaging or professionally graded",
+        "Game": "Pok\u00e9mon TCG",
+        "Set": "Scarlet & Violet",
+        "Character": "Charizard",
+        "Card Name": "Charizard ex",
+        "Stage": "Stage 2",
+        "Features": "Full Art",
+        "Card Type": "Pok\u00e9mon",
+        "Country of Origin": "United States"
+      },
+      "shipping_quote_context_only": "Shipping: C $10.00 (approx US $7.14) Shipping to authenticator, then to you . See details for shipping Located in: Thorold, Canada",
+      "rejections": [
+        "accepted offer amount requires independent confirmation",
+        "set mismatch or missing",
+        "collector number mismatch or missing",
+        "language mismatch or missing",
+        "finish mismatch, special variant or missing"
+      ]
+    },
+    {
+      "url": "https://www.ebay.com/itm/137857348718",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "url": "https://www.ebay.com/itm/407302135192",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "requested_url": "https://www.ebay.com/itm/800786164747",
+      "final_url": "https://www.ebay.com/itm/800786164747",
+      "observed_at": "2026-10-24T15:02:30.402161+00:00",
+      "sha256": "04222349e21e3650a3f729f74cae9cc153b17926a6a352f8e719075fa7556330",
+      "url": "https://www.ebay.com/itm/800786164747",
+      "item_id": "800786164747",
+      "title": "2023 Pokemon SV 151 Charizard ex Special Illustration Rare #199/165",
+      "item_price": "345.0",
+      "currency": "USD",
+      "sold_on": "2026-10-20",
+      "seller_specifics": {
+        "Condition": "Ungraded - Near mint or better: Not in original packaging or professionally graded",
+        "Rarity": "Rare",
+        "Game": "Pokemon",
+        "Card Name": "Charizard ex",
+        "Year Manufactured": "2023",
+        "Card Type": "Pok\u00e9mon",
+        "Card Number": "SV151",
+        "Country of Origin": "United States"
+      },
+      "shipping_quote_context_only": "Shipping: US $5.25 Shipping to authenticator, then to you . See details for shipping Located in: Rowland Heights, CA, United States",
+      "rejections": [
+        "game mismatch or missing",
+        "set mismatch or missing",
+        "collector number mismatch or missing",
+        "language mismatch or missing",
+        "finish mismatch, special variant or missing"
+      ]
+    },
+    {
+      "url": "https://www.ebay.com/itm/377570994398",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "url": "https://www.ebay.com/itm/227567000691",
+      "retrieval_error": "URL is not an individual eBay item page"
+    },
+    {
+      "url": "https://www.ebay.com/itm/407297708184",
+      "retrieval_error": "URL is not an individual eBay item page"
+    }
+  ],
+  "limitations": [
+    "Seller-reported condition, not physical inspection",
+    "Public sold status does not establish payment settlement or later refunds",
+    "Discovery is incomplete; this is not a census of recent sales",
+    "Market accuracy and +/-10% target have not been independently validated"
+  ]
+}

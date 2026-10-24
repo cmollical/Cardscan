@@ -15,9 +15,9 @@ def sale(i, amount="100"):
                 price_confirmed=True, condition_confirmed=True)
 
 class PricingTests(unittest.TestCase):
-    def test_median_with_shipping(self):
+    def test_median_excludes_shipping(self):
         result = evaluate(CARD, [sale(1, "100"), sale(2, "120"), sale(3, "110")], TODAY)
-        self.assertEqual(result.value, Decimal("115.00"))
+        self.assertEqual(result.value, Decimal("110.00"))
 
     def test_not_enough_sales(self):
         self.assertIsNone(evaluate(CARD, [sale(1)], TODAY).value)

@@ -5,7 +5,8 @@ and modern sets, all five conditions, ordinary/reverse/holo variants, and
 hypothesized low/mid/high price tiers. Tier labels are sampling hypotheses, not
 observed values. Identity links are review pointers, not proof of every listed
 physical variant. All identities require physical-printing review before scoring.
-No real market comps, prices, timestamps or accuracy claims are included.
+This evaluation cohort contains no reviewed holdout comps. Separate live research
+results now exist under `research/results`; they are not independent validation.
 
 ## Collect and freeze evidence
 
@@ -22,7 +23,7 @@ No real market comps, prices, timestamps or accuracy claims are included.
    three held-out exact sales in `reference.jsonl`. Use disjoint transaction
    IDs **and** URLs; manually check syndicated/relisted copies too. Reference
    `verified_by` must equal the independent reviewer. Prediction reviewers must
-   differ. Keep matched date ranges/region/shipping basis; no condition discounts.
+   differ. Keep matched date ranges/region and card-only price basis; no condition discounts.
 5. Independently review the target physical printing and mark `target_verified`
    only after that review. Save `adjudication.json` as below. Reviewer identity is an attestation, not
    software-authenticated independence. Preserve review notes/artifacts separately.

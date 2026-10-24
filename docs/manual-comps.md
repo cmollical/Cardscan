@@ -1,3 +1,7 @@
+> This is the original strict manual-review workflow. For the current personal
+> research mechanism, use [public-web research](../research/README.md); no permission
+> registry is required for that command. Shipping is excluded in both workflows.
+
 # Manual verified comparable ingestion
 
 This workflow does not authorize copying a marketplace. Use only publicly
@@ -21,7 +25,7 @@ cure restrictions on copying or combining that data.
    exclude buyer identities, addresses and payment details.
 5. Save one JSON object per line using **every** `Sale` field below. Money uses
    decimal strings. Booleans must be JSON booleans. Unknown shipping is `null`;
-   it will be rejected. Malformed lines fail the run with a line number.
+   it is allowed and never enters the valuation. Malformed lines fail the run with a line number.
 6. Run the CLI with a reproducible cutoff. Inspect every rejection and review
    state. Never fill missing comps to reach the configured minimum.
 
@@ -46,7 +50,8 @@ python -m cardscan.cli local-evidence/target.json local-evidence/comps.jsonl \
   "verified_by": "SYNTHETIC REVIEWER", "verified_on": "2026-10-24",
   "verification_notes": "SYNTHETIC ONLY; no verified market evidence",
   "permission_reference": "SYNTHETIC ONLY; no permission granted",
-  "price_confirmed": true, "condition_confirmed": true, "refunded": false
+  "price_confirmed": true, "condition_confirmed": true, "refunded": false,
+  "verification_level": "reviewed"
 }
 ```
 

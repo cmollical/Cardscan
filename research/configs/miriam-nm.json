@@ -1,0 +1,20 @@
+{
+  "card_name": "Miriam",
+  "target": {
+    "game": "pokemon",
+    "set_name": "scarlet & violet",
+    "number": "251/198",
+    "language": "english",
+    "edition": "standard",
+    "finish": "holo",
+    "condition": "NM"
+  },
+  "set_aliases": [
+    "SV01: Scarlet & Violet Base Set",
+    "Scarlet & Violet Base Set",
+    "Scarlet & Violet"
+  ],
+  "standard_edition_is_unambiguous": true,
+  "reported_page_mapping_reviewed": true,
+  "pricecharting_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251"
+}

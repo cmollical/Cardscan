@@ -32,7 +32,7 @@ class EvidenceTests(unittest.TestCase):
         for condition in ('NM', 'LP', 'MP', 'HP', 'DMG'):
             target = replace(CARD, condition=condition)
             comps = [replace(sale(i), card=target) for i in range(3)]
-            self.assertEqual(evaluate(target, comps, TODAY).value, Decimal('105.00'))
+            self.assertEqual(evaluate(target, comps, TODAY).value, Decimal('100.00'))
 
     def test_unknown_identity_and_condition(self):
         for field, value in [('finish', ''), ('edition', 'unknown'), ('condition', 'mint')]:
@@ -51,12 +51,17 @@ class EvidenceTests(unittest.TestCase):
 
     def test_invalid_money_and_unknown_shipping(self):
         for price, shipping in [(Decimal('NaN'), Decimal(0)), (Decimal('Infinity'), Decimal(0)),
-                                (Decimal('-1'), Decimal(0)), (Decimal(1), None),
+                                (Decimal('-1'), Decimal(0)),
                                 (Decimal(1), Decimal('-1')), (Decimal(1), Decimal('NaN'))]:
             with self.subTest(price=price, shipping=shipping):
                 result = evaluate(CARD, [replace(sale(1), item_price=price, shipping=shipping)], TODAY)
                 self.assertIsNone(result.value)
                 self.assertEqual(len(result.rejected), 1)
+
+    def test_unknown_and_high_shipping_do_not_change_market_value(self):
+        comps = [replace(sale(i), shipping=shipping) for i, shipping in enumerate(
+            (None, Decimal("0"), Decimal("999")))]
+        self.assertEqual(evaluate(CARD, comps, TODAY).value, Decimal("100.00"))
 
     def test_currency_and_unknown_flags(self):
         for changes in ({'currency': 'EUR'}, {'condition_confirmed': False}, {'price_confirmed': False},
@@ -90,7 +95,7 @@ class EvidenceTests(unittest.TestCase):
 
     def test_even_median_and_rounding(self):
         result = evaluate(CARD, [sale(1, '100'), sale(2, '100.01'), sale(3, '101'), sale(4, '102')], TODAY)
-        self.assertEqual(result.value, Decimal('105.51'))
+        self.assertEqual(result.value, Decimal('100.51'))
 
     def test_policy_configuration_cannot_force_one_comp_valuation(self):
         for changes in ({'minimum_sales': 0}, {'minimum_sales': 2}, {'minimum_sales': True},
@@ -101,7 +106,7 @@ class EvidenceTests(unittest.TestCase):
 
     def test_structured_audit_json(self):
         result = evaluate(CARD, [sale(i) for i in range(3)], TODAY).to_dict()
-        self.assertEqual(result['value'], '105.00')
+        self.assertEqual(result['value'], '100.00')
         self.assertEqual(result['accepted'][0]['url'], sale(0).url)
         json.dumps(result, allow_nan=False)
 
@@ -135,7 +140,7 @@ class IngestionTests(unittest.TestCase):
             command = [sys.executable, '-m', 'cardscan.cli', str(root / 'target.json'),
                        str(root / 'comps.jsonl'), str(root / 'permissions.json'), '--as-of', str(TODAY)]
             run = subprocess.run(command, capture_output=True, text=True, check=True)
-            self.assertEqual(json.loads(run.stdout)['value'], '105.00')
+            self.assertEqual(json.loads(run.stdout)['value'], '100.00')
             (root / 'comps.jsonl').write_text(json.dumps(record()) + '\n{}')
             run = subprocess.run(command, capture_output=True, text=True)
             self.assertEqual(run.returncode, 2)

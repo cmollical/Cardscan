@@ -1,0 +1,525 @@
+{
+  "scope": "personal_research",
+  "direct_verification": "not_attempted",
+  "target": {
+    "game": "pokemon",
+    "set_name": "scarlet & violet",
+    "number": "251/198",
+    "language": "english",
+    "edition": "standard",
+    "finish": "holo",
+    "condition": "NM"
+  },
+  "secondary_reports": {
+    "status": "secondary_reports_only",
+    "as_of": "2026-10-24",
+    "max_age_days": 30,
+    "minimum_sales": 3,
+    "price_basis": "publisher_reported_card_sale_price_excluding_shipping_and_tax",
+    "source": {
+      "requested_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251",
+      "final_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251",
+      "observed_at": "2026-10-24T15:05:15.049297+00:00",
+      "sha256": "d01df7567b94fcfe959347161ba394d0098530e35e14b5e7071d27a19b5b56b5"
+    },
+    "groups": {
+      "ebay": {
+        "status": "insufficient_evidence",
+        "value": null,
+        "count": 1,
+        "records": [
+          {
+            "publisher_record_id": "ebay-267801894676",
+            "reported_marketplace": "ebay",
+            "sold_on": "2026-10-07",
+            "item_price": "20.49",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "scarlet & violet",
+              "251/198",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251#ebay-267801894676",
+            "row_sha256": "43c92671e6d3547698e58e8a209bedbfb85ae666cbe1130139540236d15b9f18",
+            "verification_level": "secondary_publisher_report"
+          }
+        ],
+        "outlier_publisher_record_ids": []
+      },
+      "tcgplayer": {
+        "status": "secondary_research_estimate",
+        "value": "17.80",
+        "count": 13,
+        "records": [
+          {
+            "publisher_record_id": "tcgplayer-zPV912zS6/h7",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-21",
+            "item_price": "17.67",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "scarlet & violet",
+              "251/198",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251#tcgplayer-zPV912zS6%2Fh7",
+            "row_sha256": "189a9ded4dde4a56929df576fdfebe61777d8c3f9227fc7a05f975f9548aefe6",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-dQ1KdgDkSs+o",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-20",
+            "item_price": "17.70",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "scarlet & violet",
+              "251/198",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251#tcgplayer-dQ1KdgDkSs%2Bo",
+            "row_sha256": "f1e6c7d0cfba931e59cd9ec8e4a8649b824c64f6b4a79e6bdac005ea1ede4d9b",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-hGayRlTIMkV9",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-16",
+            "item_price": "17.90",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "scarlet & violet",
+              "251/198",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251#tcgplayer-hGayRlTIMkV9",
+            "row_sha256": "f994773658c9bbf804d97390353dfbfb8e977793b225014dde5dc5b4768f8f1f",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-rsQfACumbHDA",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-15",
+            "item_price": "18.20",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "scarlet & violet",
+              "251/198",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251#tcgplayer-rsQfACumbHDA",
+            "row_sha256": "ebf368a7ac0d940ea9b91c42270d8b78f3158e0688092d56636eba6a92c0d9b8",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-oElkVhhGFVEY",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-11",
+            "item_price": "16.55",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "scarlet & violet",
+              "251/198",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251#tcgplayer-oElkVhhGFVEY",
+            "row_sha256": "53f5aaef798f7f0473acd60fb239eb43fea116316f2178ec66aed1f7fff6dd12",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-9tWiiBXYL7tJ",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-10",
+            "item_price": "27.28",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "scarlet & violet",
+              "251/198",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251#tcgplayer-9tWiiBXYL7tJ",
+            "row_sha256": "203a2e8272f971c5404254fdbca7c852f8ebce04c0d10e687ad09b4a757baf7b",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-4SlImFB3J8Xp",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-07",
+            "item_price": "16.90",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "scarlet & violet",
+              "251/198",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251#tcgplayer-4SlImFB3J8Xp",
+            "row_sha256": "74f1a70ec066b9d1b0cf2d8edadaf7218687b1452551813ce85cabbf1a7f5ef5",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-nUfayV3PLsrt",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-06",
+            "item_price": "17.80",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "scarlet & violet",
+              "251/198",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251#tcgplayer-nUfayV3PLsrt",
+            "row_sha256": "d3c3027289a80087e7519f25ac47206ff4220fe1123106010ac6b8a0567e7cb2",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-nBWtNPUEy7Ms",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-05",
+            "item_price": "17.80",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "scarlet & violet",
+              "251/198",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251#tcgplayer-nBWtNPUEy7Ms",
+            "row_sha256": "433fb1bc739cdb46a2b9511d174ba36e3017efec972d57f404380964890c73f6",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-wxukq+BcEpmo",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-02",
+            "item_price": "22.90",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "scarlet & violet",
+              "251/198",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251#tcgplayer-wxukq%2BBcEpmo",
+            "row_sha256": "29b65712f72c85e75a46a94b2fdce7a7227550681af18ba91ec745c995c04708",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-EimEsFoRSQDK",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-10-01",
+            "item_price": "19.60",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "scarlet & violet",
+              "251/198",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251#tcgplayer-EimEsFoRSQDK",
+            "row_sha256": "45e1071bd5a1535908a03d6fd50dc416ffcda1f4d5b15f7f3bffc33ffb17d158",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-9kifWy1mmLN8",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-09-27",
+            "item_price": "16.31",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "scarlet & violet",
+              "251/198",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251#tcgplayer-9kifWy1mmLN8",
+            "row_sha256": "6a0b888a04365f07b163e61e7fbd503c9728e6a65673f91fbbc38f5cb3ad52d4",
+            "verification_level": "secondary_publisher_report"
+          },
+          {
+            "publisher_record_id": "tcgplayer-7GbjE5Xr6//v",
+            "reported_marketplace": "tcgplayer",
+            "sold_on": "2026-09-26",
+            "item_price": "15.00",
+            "currency": "USD",
+            "condition": "NM",
+            "language": "english",
+            "printing_mapping": [
+              "pokemon",
+              "scarlet & violet",
+              "251/198",
+              "english",
+              "standard",
+              "holo"
+            ],
+            "source_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251#tcgplayer-7GbjE5Xr6%2F%2Fv",
+            "row_sha256": "898c652c3f63411001a37d25464002c1a4fe666efd0718482fda6c8162cefb3d",
+            "verification_level": "secondary_publisher_report"
+          }
+        ],
+        "outlier_publisher_record_ids": []
+      }
+    },
+    "rejected_reports": [
+      {
+        "publisher_record_id": "ebay-407263475967",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-168797475726",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-206642551186",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-327347013823",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-377506688264",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-287646866980",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-147639358928",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-336838718453",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-900016004721",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-820222804369",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-307223054642",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-377370031356",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-189020202688",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-318909434313",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-407278612504",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-800771217363",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-820094733848",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-206595990582",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-137797303330",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-407271659097",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-128105611111",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-366703090296",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-327381333119",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-198671722835",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-307209439788",
+        "reason": "condition missing, contradictory or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-398257677390",
+        "reason": "ambiguous or missing reported amount"
+      },
+      {
+        "publisher_record_id": "ebay-366651186756",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-307207842045",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "ebay-366696420218",
+        "reason": "language missing or mismatched"
+      },
+      {
+        "publisher_record_id": "tcgplayer-iw7XdOb1SO7/",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-szv2hNr1TXix",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-f55SaXqAcv9Q",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-5/W4mJP85abX",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-BvtuwsxWEVDW",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-nW1EbPGBiyO1",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-cpUdz8oXkEMb",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-vPfT+bzx22YT",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-CKVkOmmn6yNv",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-Rcsa7h1uYAk/",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-lSbSC4wqoAp8",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-M/0nl0XDgrCQ",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-37eb54Jqo6+v",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-INdBMmbrwq1t",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-OT6Yw3L3PBJp",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-IPInEvBfyS3/",
+        "reason": "outside report window"
+      },
+      {
+        "publisher_record_id": "tcgplayer-FPIVDmmuRG6f",
+        "reason": "outside report window"
+      }
+    ],
+    "limitations": [
+      "Not independently verified at originating marketplace",
+      "Publisher row IDs are not proof of original transaction uniqueness",
+      "Product mapping supplies set, edition and finish; publisher mapping errors remain possible",
+      "Publisher USD amounts may be conversions; original currency is not established",
+      "No independent accuracy validation; do not pool this with the same direct eBay sales"
+    ]
+  },
+  "discovery": {
+    "requested_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251",
+    "final_url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet/miriam-251",
+    "observed_at": "2026-10-24T15:05:15.049297+00:00",
+    "sha256": "d01df7567b94fcfe959347161ba394d0098530e35e14b5e7071d27a19b5b56b5",
+    "candidate_count": 30,
+    "role": "link_discovery_only_not_price_evidence"
+  }
+}

@@ -48,7 +48,7 @@ def evidence_url(url: str) -> str:
 class Sale:
     card: Card
     item_price: Decimal
-    shipping: Optional[Decimal]  # None is unknown, never free shipping.
+    shipping: Optional[Decimal]  # Audit context only; excluded from market value.
     sold_on: date
     url: str
     sold: bool = True
@@ -60,18 +60,15 @@ class Sale:
     verified_by: str = ""
     verified_on: Optional[date] = None
     verification_notes: str = ""  # Actual paid price, condition and printing evidence.
-    permission_reference: str = ""  # Reviewed grant/license permitting collection AND commercial reuse.
+    permission_reference: str = ""  # Personal research asserts no commercial license.
     price_confirmed: bool = False  # False for hidden best offers and asking prices.
     condition_confirmed: bool = False
     refunded: bool = False
+    verification_level: str = "reviewed"  # Or seller_reported from public listing extraction.
 
     @property
     def key(self):
         return (self.source, self.transaction_id)
-
-    @property
-    def total(self):
-        return self.item_price + self.shipping
 
 
 @dataclass(frozen=True)
@@ -87,7 +84,8 @@ class Result:
     status: str
     target: Card
     outlier_factor: Decimal
-    method: str = "median_item_plus_shipping_v2"
+    allow_seller_reported: bool = False
+    method: str = "median_item_price_v3"
 
     def to_dict(self):
         def encode(value):
@@ -113,9 +111,18 @@ def _valid_money(value, positive=False):
             and (value > 0 if positive else value >= 0))
 
 
+def median_and_outliers(amounts: list[Decimal], factor: Decimal):
+    """Shared arithmetic for reviewed evidence and clearly labeled research data."""
+    center = median(amounts)
+    flagged = tuple(i for i, amount in enumerate(amounts)
+                    if amount < center / factor or amount > center * factor)
+    return center.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP), flagged
+
+
 def evaluate(target: Card, sales: Iterable[Sale], as_of: Optional[date] = None,
              max_age_days: int = 90, minimum_sales: int = 3,
-             currency: str = "USD", outlier_factor: Decimal = Decimal("3")) -> Result:
+             currency: str = "USD", outlier_factor: Decimal = Decimal("3"),
+             allow_seller_reported: bool = False) -> Result:
     """No FX/condition multipliers. Extreme dispersion triggers review, not a price.
 
     The factor guard is a conservative heuristic, not a calibrated confidence score.
@@ -148,8 +155,14 @@ def evaluate(target: Card, sales: Iterable[Sale], as_of: Optional[date] = None,
             reasons.append("refunded or unknown refund status")
         if sale.currency != currency:
             reasons.append("currency mismatch; FX unavailable")
-        if not _valid_money(sale.item_price, positive=True) or not _valid_money(sale.shipping):
-            reasons.append("invalid price or unknown shipping")
+        if not _valid_money(sale.item_price, positive=True):
+            reasons.append("invalid item price")
+        if sale.shipping is not None and not _valid_money(sale.shipping):
+            reasons.append("invalid shipping context")
+        if sale.verification_level not in {"reviewed", "seller_reported"}:
+            reasons.append("unknown verification level")
+        if sale.verification_level == "seller_reported" and not allow_seller_reported:
+            reasons.append("seller-reported evidence requires research mode")
         try:
             url = evidence_url(sale.url)
         except ValueError:
@@ -157,8 +170,8 @@ def evaluate(target: Card, sales: Iterable[Sale], as_of: Optional[date] = None,
             reasons.append("missing evidence URL")
         if not all(isinstance(v, str) and v.strip() for v in (
                 sale.source, sale.transaction_id, sale.verified_by,
-                sale.verification_notes, sale.permission_reference)):
-            reasons.append("missing verification or reuse permission provenance")
+                sale.verification_notes)):
+            reasons.append("missing verification provenance")
         if sale.price_confirmed is not True:
             reasons.append("actual paid price unconfirmed")
         if sale.condition_confirmed is not True:
@@ -180,10 +193,10 @@ def evaluate(target: Card, sales: Iterable[Sale], as_of: Optional[date] = None,
     value = None
     reason = f"Insufficient evidence: {len(accepted)}/{minimum_sales} qualified sales"
     if len(accepted) >= minimum_sales:
-        amounts = [s.total for s in accepted]
-        center = median(amounts)
+        amounts = [s.item_price for s in accepted]
+        center, outlier_indices = median_and_outliers(amounts, outlier_factor)
         # Do not silently trim real sales or convert a thin market into false certainty.
-        flagged = [s for s in accepted if s.total < center / outlier_factor or s.total > center * outlier_factor]
+        flagged = [accepted[i] for i in outlier_indices]
         if flagged:
             status = "review_required"
             reason = "Extreme price dispersion; inspect outliers before valuation"
@@ -193,6 +206,9 @@ def evaluate(target: Card, sales: Iterable[Sale], as_of: Optional[date] = None,
         else:
             value = center.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
             status = "valued"
-            reason = "Median of exact verified completed sales, including known shipping; excludes tax"
+            reason = "Median card sale price; excludes shipping and tax"
+    if value is not None and any(s.verification_level == "seller_reported" for s in accepted):
+        status = "research_estimate"
+        reason += "; public seller-reported sales, condition not physically verified"
     return Result(value, tuple(accepted), tuple(rejected), reason, today, currency,
-                  minimum_sales, max_age_days, status, target, outlier_factor)
+                  minimum_sales, max_age_days, status, target, outlier_factor, allow_seller_reported)

@@ -1,6 +1,13 @@
+> Update, 2026-10-24: the user has changed the prototype to personal research.
+> Public-page retrieval is now implemented. PriceCharting public sold-report rows
+> are accessible without its paid API; individual eBay pages can expose sold
+> status, explicit dates and seller attributes. The original assessment below
+> concerned commercial reuse and API access, and must not be read as a technical
+> inability to retrieve public data. See [actual retrieval results](../research/README.md).
+
 # Pricing source research — 2026-10-24
 
-## Decision
+## Original commercial-prototype assessment (superseded for personal research)
 
 No source reviewed establishes a new developer's access to free, commercially
 reusable, exact-printing NM/LP/MP/HP/DMG completed-sale evidence at scale.

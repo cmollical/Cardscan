@@ -1,55 +1,52 @@
 # CardScan
 
-Free-first trading card valuation prototype. Pokémon is the first supported game; the domain model supports additional TCGs.
+Personal Pokémon pricing research prototype. The current engine retrieves public
+sold-listing evidence and produces auditable estimates. **Market value excludes
+shipping and tax.** No paid API, subscription, scanner or PWA is required.
 
-## Phase 1: Pricing validation
+## Get a price from public sale reports
 
-The first milestone is **not** automated valuation from unverified web snippets. It is a reproducible comparable-sale evaluator that accepts independently verified sale records and explains why each record was accepted or rejected.
+Requires Python 3.10+, standard library only:
 
-- Match game, set, collector number, language, edition, finish, and condition.
-- Exclude graded cards, active listings, bundles, and mismatched printings.
-- Calculate median of accepted sold prices including shipping.
-- Return **insufficient evidence** when fewer than 3 qualified sales exist.
-- Keep original sale URLs and timestamps for auditability.
-- No scraping, paid API keys, or invented comps.
+```bash
+python -m cardscan.research research/configs/charizard-151-nm.json \
+  --as-of 2026-10-24 --reports-only
+```
 
-## Run locally
+This fetches the public PriceCharting page, extracts dated sale records attributed
+to eBay/TCGplayer, matches the configured printing, condition and language, and
+calculates separate marketplace medians over 30 days. It does not use the guide
+price or pretend that publisher reports are independently verified transactions.
 
-Requires Python 3.10+.
+To also fetch individual eBay pages for direct checks:
+
+```bash
+python -m cardscan.research research/configs/charizard-151-nm.json \
+  --as-of 2026-10-24 --limit 12
+```
+
+Exact dimensions are checked against seller attributes. Unknowns, redirects to
+active product pages, hidden accepted offers, proxies and contradictory condition
+labels are rejected. Access challenges stop the affected retrieval; no bypass.
+Source URLs, actual observation times, raw-page hashes and reasons are preserved.
+Snapshots stay locally under ignored `local-evidence/`; extracted results are in
+[research/results](research/results).
+
+See [research results and limitations](research/README.md),
+[architecture](docs/architecture.md) and [source research](docs/pricing-sources.md).
+
+## Verification
 
 ```bash
 python -m unittest discover -s tests -v
 python -m cardscan.demo
 ```
 
-All sample prices in the demo are synthetic test fixtures, **not live market values**.
+The demo is synthetic. Tests include a minimized real eBay page fixture and
+synthetic adversarial records. They check software behavior, not market accuracy.
 
-## Next milestone
-
-Test 20 real Pokémon cards with independently verified sold-listing evidence, measure rejection precision and comp error, then explore permitted free source integrations and a mobile PWA.
-
-
-## Research engine (first improvement)
-
-See [pricing-source research](docs/pricing-sources.md), [architecture](docs/architecture.md)
-and the [manual verified-comps workflow](docs/manual-comps.md).
-
-No live pricing provider is enabled. Public website access and an open-source
-SDK do not establish commercial pricing-data rights. The new offline provider
-requires reviewed permission references and explicit verification metadata.
-Missing shipping, mixed currencies and unconfirmed paid prices are rejected.
-Extreme price dispersion triggers review rather than a misleading price.
-
-```bash
-python -m cardscan.cli TARGET.json COMPS.jsonl PERMISSIONS.json --as-of 2026-10-24
-python -m cardscan.validation evaluation/manifest.json local-evidence/evaluation \
-  evaluation/permissions.json --as-of 2026-10-24
-```
-
-The [20-card evaluation protocol](evaluation/README.md) includes a real-card
-candidate cohort and independent holdout metrics. No legally approved real sale
-records have been obtained: **market accuracy and the ±10% target are unvalidated**.
-The baseline report is an empty-evidence dry run, not a real-market benchmark.
-Only USD item price plus known shipping, excluding tax, is implemented. Catalog
-lookup requires a reviewed caller-supplied catalog; physical identification and
-complete catalog coverage are not implemented. No scanner or PWA work has begun.
+The original [manual review CLI](docs/manual-comps.md) and
+[20-card independent evaluation protocol](evaluation/README.md) remain available.
+**The ±10% accuracy target is unvalidated.** Current research values are based on
+seller/publisher reports; they do not prove physical condition, payment settlement
+or absence of later refunds. No full inventory interface or PWA has been built.
