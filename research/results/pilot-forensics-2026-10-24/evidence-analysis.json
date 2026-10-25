@@ -1,0 +1,2229 @@
+{
+  "protocol": "pilot_forensics_v1",
+  "artifact_sha256": "91c674bd4c3a2885453511cddc974096484d1692660e8ac342dd7fe49b3c725a",
+  "artifact_id": 12568485590,
+  "run_id": 40114686775,
+  "attempt": 2,
+  "scope": "Retained API output and ledger only. No marketplace page bodies, original snippets, independent reviews or source snapshots exist in this artifact. Candidate text is an unverified model claim.",
+  "bucket_definitions": {
+    "unverified_potential_references": "Discovery leads only, including purported sales; not verified Tier 2 benchmarks.",
+    "active_listings": "Model-classified asking prices; actual page/status unverified.",
+    "unusable_evidence": "Redundant duplicate claim; not proof of a separate transaction."
+  },
+  "counts": {
+    "verified_completed_sales": 0,
+    "verified_published_references": 0,
+    "unverified_potential_references": 17,
+    "active_listings": 2,
+    "incorrect_or_mismatched_cards": 0,
+    "unusable_evidence": 1
+  },
+  "requests": [
+    {
+      "case_id": "modern-common",
+      "target": {
+        "game": "pokemon",
+        "name": "Charmander",
+        "set_name": "obsidian flames",
+        "number": "26/197",
+        "language": "english",
+        "edition": "standard",
+        "finish": "non-holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "request_id": "9be4df65fcf14dbfbbec69d896509571",
+      "response_id": "resp_025bf9a4ea40758c016adce6d86ae487d18beb0a7fc211a142",
+      "response_status": "completed",
+      "provider_status": "researched",
+      "provider_error": null,
+      "max_tool_calls": 2,
+      "actions": [
+        {
+          "id": "ws_025bf9a4ea40758c016adce6d9749487d18146f56cbeab157b",
+          "status": "completed",
+          "action": {
+            "type": "search",
+            "queries": [
+              "site:ebay.com/itm pokemon obsidian flames 26/197 charmander sold completed NM non-holo",
+              "site:tcgplayer.com obsidian flames 26/197 charmander sales",
+              "site:pricecharting.com pokemon obsidian flames charmander 26/197 sales",
+              "pokemon obsidian flames 26/197 charmander sold ebay"
+            ],
+            "query": "site:ebay.com/itm pokemon obsidian flames 26/197 charmander sold completed NM non-holo",
+            "sources": [
+              {
+                "type": "url",
+                "url": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26"
+              },
+              {
+                "type": "url",
+                "url": "https://tcgcharts.com/pokemon/obsidian-flames/charmander-26"
+              },
+              {
+                "type": "url",
+                "url": "https://www.thelabtcg.com/card/509703%3ANormal"
+              },
+              {
+                "type": "url",
+                "url": "https://www.tcgberg.com/cards/charmander-26-obsidian-flames-normal"
+              },
+              {
+                "type": "url",
+                "url": "https://gradevalue.com/market/cards/pokemon/obsidian-flames/charmander-026"
+              },
+              {
+                "type": "url",
+                "url": "https://lastsold.com/en/sets/obsidian-flames/glumanda-026"
+              },
+              {
+                "type": "url",
+                "url": "https://tcgindex.io/pokemon/card/pokemon-sv03-obsidian-flames-charmander-common"
+              },
+              {
+                "type": "url",
+                "url": "https://valudex.co.uk/sets/obsidian-flames/cards/charmander-026-197-non-holo"
+              },
+              {
+                "type": "url",
+                "url": "https://www.pokemoncardscanner.com/card/sv3-26"
+              },
+              {
+                "type": "url",
+                "url": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-holo-26"
+              },
+              {
+                "type": "url",
+                "url": "https://pooka.app/card/en-sv3-26/Charmander"
+              },
+              {
+                "type": "url",
+                "url": "https://poketrace.com/cards/charmander-obsidian-flames-026-eu"
+              },
+              {
+                "type": "url",
+                "url": "https://assets.pokemon.com/assets/cms2-en-uk/pdf/trading-card-game/checklist/obf_web_cardlist_en.pdf"
+              },
+              {
+                "type": "url",
+                "url": "https://www.codedyellow.com/Pdf/ObsidianFlamesRarity.pdf"
+              },
+              {
+                "type": "url",
+                "url": "https://bahiratpatil.com/kcfinder/upload/files/95245825196.pdf"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/PokeInvesting/comments/1ipw6uc"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1wpnoy3/us_us_h_a_ton_of_vintage_25th_anniversary_modern/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/PokemonInvesting/comments/1mxtoac/there_are_currently_only_6_obsidian_flames_pc/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/15rh5un"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pokemon/comments/1nrlsx1"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/PokemonCardValue/comments/1j1wj64"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/PokemonTCG_Singapore/comments/1ofevrn"
+              },
+              {
+                "type": "url",
+                "url": "https://slabmethod.com/wp-content/uploads/2025/10/Cardsaway-Evolve-Series-7-Checklist-1.pdf"
+              },
+              {
+                "type": "url",
+                "url": "https://docs.ebay.com/document/bbada3c8-3947-4703-ae37-04a389fd2ada"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pokemoncardcollectors/comments/1rxg8m4/can_anyone_tell_ne_what_boxpack_i_can_get_this_in/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pokemoncards/comments/1gbyz2f"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/PokeInvesting/comments/1n0ygj9"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ws_025bf9a4ea40758c016adce6dc1fa487d1ac4fe719b2d1a876",
+          "status": "completed",
+          "action": {
+            "type": "open_page",
+            "url": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26"
+          }
+        }
+      ],
+      "reported_tool_usage": {
+        "image_gen": {
+          "input_tokens": 0,
+          "input_tokens_details": {
+            "image_tokens": 0,
+            "text_tokens": 0
+          },
+          "output_tokens": 0,
+          "output_tokens_details": {
+            "image_tokens": 0,
+            "text_tokens": 0
+          },
+          "total_tokens": 0
+        },
+        "web_search": {
+          "num_requests": 1
+        }
+      },
+      "reported_billing": {
+        "payer": "openai"
+      },
+      "usage": {
+        "input_tokens": 14217,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 1474,
+        "output_tokens_details": {
+          "reasoning_tokens": 650
+        },
+        "total_tokens": 15691
+      },
+      "original_estimate_usd": "0.03729575",
+      "search_action_estimate_usd": "0.02729575",
+      "note": "Action-based estimate is not an invoice; raw billing.payer does not establish customer charge."
+    },
+    {
+      "case_id": "modern-chase",
+      "target": {
+        "game": "pokemon",
+        "name": "Charizard ex",
+        "set_name": "151",
+        "number": "199/165",
+        "language": "english",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "request_id": "2377a074a1c74e24aab59f6a879f159f",
+      "response_id": "resp_0dbff2165edaa3e6016adce6e208a887d19d4833c3e1c4f23b",
+      "response_status": "completed",
+      "provider_status": "researched",
+      "provider_error": null,
+      "max_tool_calls": 2,
+      "actions": [
+        {
+          "id": "ws_0dbff2165edaa3e6016adce6e2973487d1bb878c597f4ee37f",
+          "status": "completed",
+          "action": {
+            "type": "search",
+            "queries": [
+              "site:ebay.com/itm pokemon 151 199/165 english standard holo NM charizard ex sold completed",
+              "site:tcgplayer.com pokemon 151 199/165 english standard holo NM charizard ex latest sales",
+              "site:pricecharting.com pokemon 151 199/165 english standard holo NM charizard ex historic sales",
+              "pokemon 151 199/165 english standard holo NM charizard ex recent completed sales"
+            ],
+            "query": "site:ebay.com/itm pokemon 151 199/165 english standard holo NM charizard ex sold completed",
+            "sources": [
+              {
+                "type": "url",
+                "url": "https://valuemycard.com/card/517045-charizard-ex-pokemon-sv-scarlet-violet-151"
+              },
+              {
+                "type": "url",
+                "url": "https://www.binderdex.com/cards/charizard-ex-sv-151-199165"
+              },
+              {
+                "type": "url",
+                "url": "https://chartmon.com/pokemon/en/card/151/charizard-ex/9a6992e8-eefc-4211-87cf-8f65ea357d44/sales-history"
+              },
+              {
+                "type": "url",
+                "url": "https://ripandhold.com/cards/charizard-ex-151-199/charizard-ex-151-199-unlimited"
+              },
+              {
+                "type": "url",
+                "url": "https://thelabtcg.com/card/517045%3AHolofoil"
+              },
+              {
+                "type": "url",
+                "url": "https://pokedealfinder.uk/cards/sv-151/199165-charizard-ex/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.tcgplayer.com/search/pokemon/product?q=Charizard+ex+-+199%2F165"
+              },
+              {
+                "type": "url",
+                "url": "https://www.collectaio.com/item/sv-scarlet-violet-151-charizard-ex-199-165-199-165?variation=5171"
+              },
+              {
+                "type": "url",
+                "url": "https://www.tcgplayer.com/product/517045/pokemon-sv-scarlet-and-violet-151-charizard-ex-199-165?Language=English&page=1"
+              },
+              {
+                "type": "url",
+                "url": "https://tcgcharts.com/pokemon/151/charizard-ex-199"
+              },
+              {
+                "type": "url",
+                "url": "https://lastsold.com/uk/sets/151/charizard-ex-199"
+              },
+              {
+                "type": "url",
+                "url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199?q=charizard+ex+199"
+              },
+              {
+                "type": "url",
+                "url": "https://assets.pokemon.com/assets/cms2-en-uk/pdf/trading-card-game/checklist/mew_web_cardlist_en.pdf"
+              },
+              {
+                "type": "url",
+                "url": "https://mktg-assets.tcgplayer.com/web/reports/2023/2023-Cyber-Weekend-Report.pdf"
+              },
+              {
+                "type": "url",
+                "url": "https://www.codedyellow.com/Pdf/SV151Rarity.pdf"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1rxonxv/usush_151_cards_graded_others_w_paypal_open_to/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1flmbxc"
+              },
+              {
+                "type": "url",
+                "url": "https://bahiratpatil.com/kcfinder/upload/files/95245825196.pdf"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1r0k0ii/us_us_h_englishjp_singles_swsh_sv_jp_vintage_151/"
+              },
+              {
+                "type": "url",
+                "url": "https://docs.ebay.com/document/bbada3c8-3947-4703-ae37-04a389fd2ada"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1wk9kei/us_ww_h_jp_singles_w_jp_singles_paypal/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgcollections/comments/1o588ub/complete_for_now_english_151_grandmaster_set/"
+              },
+              {
+                "type": "url",
+                "url": "https://auctions.cullensofsurrey.co.uk/print-catalogue/50bb3fe74ef96805a0a2dafed2562cb7/3bb700f725ca82bfcefb7be9cfca17b6/tcg-sale-a-collection-of-pokemon-magic-the-gathering-ot/"
+              },
+              {
+                "type": "url",
+                "url": "https://en.wikipedia.org/wiki/List_of_most_expensive_cards_from_collectible_card_games"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/u_jclozano87/comments/1rxeic6/usus_h_graded_raw_151_cards_more_w_paypalsealed/"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ws_0dbff2165edaa3e6016adce6e4d12887d192d1307e5186cbb0",
+          "status": "completed",
+          "action": {
+            "type": "open_page",
+            "url": "https://ripandhold.com/cards/charizard-ex-151-199/charizard-ex-151-199-unlimited"
+          }
+        }
+      ],
+      "reported_tool_usage": {
+        "image_gen": {
+          "input_tokens": 0,
+          "input_tokens_details": {
+            "image_tokens": 0,
+            "text_tokens": 0
+          },
+          "output_tokens": 0,
+          "output_tokens_details": {
+            "image_tokens": 0,
+            "text_tokens": 0
+          },
+          "total_tokens": 0
+        },
+        "web_search": {
+          "num_requests": 1
+        }
+      },
+      "reported_billing": {
+        "payer": "openai"
+      },
+      "usage": {
+        "input_tokens": 14053,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 4480
+        },
+        "output_tokens": 2038,
+        "output_tokens_details": {
+          "reasoning_tokens": 804
+        },
+        "total_tokens": 16091
+      },
+      "original_estimate_usd": "0.03668675",
+      "search_action_estimate_usd": "0.02668675",
+      "note": "Action-based estimate is not an invoice; raw billing.payer does not establish customer charge."
+    },
+    {
+      "case_id": "vintage-charizard-lp",
+      "target": {
+        "game": "pokemon",
+        "name": "Charizard",
+        "set_name": "base set",
+        "number": "4/102",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "LP",
+        "graded": false
+      },
+      "request_id": "367134e52e6d4f799b40e1685eac4244",
+      "response_id": "resp_06527d19c253e51c016adce6ec383887d1bc44a9f6508c0708",
+      "response_status": "completed",
+      "provider_status": "invalid_response",
+      "provider_error": "Search call count outside configured limits",
+      "max_tool_calls": 2,
+      "actions": [
+        {
+          "id": "ws_06527d19c253e51c016adce6ed459087d19f344cba87815e50",
+          "status": "completed",
+          "action": {
+            "type": "search",
+            "queries": [
+              "site:ebay.com/itm pokemon base set 4/102 english unlimited holo LP charizard sold completed",
+              "site:tcgplayer.com pokemon base set 4/102 english unlimited holo LP charizard latest sales",
+              "site:pricecharting.com pokemon base set 4/102 english unlimited holo LP charizard historic sales",
+              "pokemon base set 4/102 english unlimited holo LP charizard recent completed sales other reputable marketplaces"
+            ],
+            "query": "site:ebay.com/itm pokemon base set 4/102 english unlimited holo LP charizard sold completed",
+            "sources": [
+              {
+                "type": "url",
+                "url": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4"
+              },
+              {
+                "type": "url",
+                "url": "https://cardtrack.com/pokemon/card/base/charizard-4"
+              },
+              {
+                "type": "url",
+                "url": "https://pokett.app/cards/charizard-base-set-4"
+              },
+              {
+                "type": "url",
+                "url": "https://www.pulllist.org/cards/base1-4"
+              },
+              {
+                "type": "url",
+                "url": "https://pokeforecast.com/cards/base-set-unlimited/004-charizard/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.collectaio.com/item/base-set-charizard-004-102?variation=30932"
+              },
+              {
+                "type": "url",
+                "url": "https://thehobbygrail.com/market/charizard-base-4-unl-psa9"
+              },
+              {
+                "type": "url",
+                "url": "https://lastsold.com/en/sets/base-set/charizard-4-play"
+              },
+              {
+                "type": "url",
+                "url": "https://valuemycard.com/card/106999-charizard-pokemon-base-set-shadowless"
+              },
+              {
+                "type": "url",
+                "url": "https://lastsold.com/en/sets/base-set/charizard-4"
+              },
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/itm/307050263313"
+              },
+              {
+                "type": "url",
+                "url": "https://pokemarketcap.com/cards/charizard-4-base-set-unlimited-9f0a78c9"
+              },
+              {
+                "type": "url",
+                "url": "https://en.wikipedia.org/wiki/Base_Set_%28Pok%C3%A9mon%29"
+              },
+              {
+                "type": "url",
+                "url": "https://pdf.secdatabase.com/1750/0001688804-25-000002.pdf"
+              },
+              {
+                "type": "url",
+                "url": "https://bahiratpatil.com/kcfinder/upload/files/95245825196.pdf"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/PokeGrading/comments/1x64zq6/grade_check_base_set_unlimited_charizard_4102/"
+              },
+              {
+                "type": "url",
+                "url": "https://lenislek-hobby.com/files/file/xuluzawovab.pdf"
+              },
+              {
+                "type": "url",
+                "url": "https://en.wikipedia.org/wiki/List_of_most_expensive_cards_from_collectible_card_games"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/PokeInvesting/comments/1le4lmz/complete_unlimited_base_setworth_1100/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1x2uto9/us_us_h_cgc_10_pikachu_collection_base_set/"
+              },
+              {
+                "type": "url",
+                "url": "https://haeurope.b-cdn.net/catalog/V183.pdf"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ws_06527d19c253e51c016adce6efd2b887d1bb1479abe620ce7a",
+          "status": "completed",
+          "action": {
+            "type": "open_page",
+            "url": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4"
+          }
+        },
+        {
+          "id": "ws_06527d19c253e51c016adce6f1a87887d1b16727b0ad060542",
+          "status": "searching",
+          "action": {
+            "type": "open_page",
+            "url": null
+          }
+        }
+      ],
+      "reported_tool_usage": {
+        "image_gen": {
+          "input_tokens": 0,
+          "input_tokens_details": {
+            "image_tokens": 0,
+            "text_tokens": 0
+          },
+          "output_tokens": 0,
+          "output_tokens_details": {
+            "image_tokens": 0,
+            "text_tokens": 0
+          },
+          "total_tokens": 0
+        },
+        "web_search": {
+          "num_requests": 1
+        }
+      },
+      "reported_billing": {
+        "payer": "openai"
+      },
+      "usage": {
+        "input_tokens": 14447,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 4480
+        },
+        "output_tokens": 1181,
+        "output_tokens_details": {
+          "reasoning_tokens": 545
+        },
+        "total_tokens": 15628
+      },
+      "original_estimate_usd": "0.04312575",
+      "search_action_estimate_usd": "0.02312575",
+      "note": "Action-based estimate is not an invoice; raw billing.payer does not establish customer charge."
+    },
+    {
+      "case_id": "first-edition-gengar",
+      "target": {
+        "game": "pokemon",
+        "name": "Gengar",
+        "set_name": "fossil",
+        "number": "5/62",
+        "language": "english",
+        "edition": "first edition",
+        "finish": "holo",
+        "condition": "LP",
+        "graded": false
+      },
+      "request_id": "19ec7aee10c5482ebec346fab33c37c5",
+      "response_id": "resp_00b1dfc7cb04b0c3016adce6f52d8c87d1a176d107781b936f",
+      "response_status": "completed",
+      "provider_status": "researched",
+      "provider_error": null,
+      "max_tool_calls": 2,
+      "actions": [
+        {
+          "id": "ws_00b1dfc7cb04b0c3016adce6f6239487d18989cd84dd5cc0a1",
+          "status": "completed",
+          "action": {
+            "type": "search",
+            "queries": [
+              "site:ebay.com/itm pokemon fossil 5/62 english first edition holo LP gengar sold completed",
+              "site:tcgplayer.com pokemon fossil 5/62 english first edition holo LP gengar latest sales",
+              "site:pricecharting.com pokemon fossil 5/62 english first edition holo LP gengar historic sales",
+              "pokemon fossil 5/62 english first edition holo LP gengar recent completed sales other reputable marketplaces"
+            ],
+            "query": "site:ebay.com/itm pokemon fossil 5/62 english first edition holo LP gengar sold completed",
+            "sources": [
+              {
+                "type": "url",
+                "url": "https://www.collectaio.com/item/fossil-gengar-5-05-62"
+              },
+              {
+                "type": "url",
+                "url": "https://lastsold.com/en/sets/fossil/gengar-5-1st"
+              },
+              {
+                "type": "url",
+                "url": "https://www.pulllist.org/cards/base3-5"
+              },
+              {
+                "type": "url",
+                "url": "https://pokett.app/cards/gengar-fossil-1st-edition-5"
+              },
+              {
+                "type": "url",
+                "url": "https://www.pokevalues.com/card/gengar-5-fossil-05"
+              },
+              {
+                "type": "url",
+                "url": "https://www.pricecharting.com/game/pokemon-fossil/gengar-1st-edition-5"
+              },
+              {
+                "type": "url",
+                "url": "https://tcgcharts.com/pokemon/fossil/gengar-1st-edition-5"
+              },
+              {
+                "type": "url",
+                "url": "https://poketrace.com/cards/gengar-5--fossil-1st_Edition_Holofoil"
+              },
+              {
+                "type": "url",
+                "url": "https://cardtrack.com/pokemon/card/fossil/gengar-5"
+              },
+              {
+                "type": "url",
+                "url": "https://folio.fyi/licences/pokemon/en/fossil/gengar-1st-edition-5"
+              },
+              {
+                "type": "url",
+                "url": "https://slabverdict.com/prices/gengar-5-fossil-en-05/"
+              },
+              {
+                "type": "url",
+                "url": "https://evoterminal.com/card/106521"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/PokeGrading/comments/1t63bnk/psa_grade_guarantee_service_gengar_fossil_1st/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.milehighcardco.com/DownloadData/RealizedPrice118.pdf?id=699"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1w9j4xt/us_us_h_paypal_w_gengars_only_997_left_till_i/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1rfu9rq/us_us_h_1st_ed_hooh_and_misdreavus_german_neo/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/PokeInvesting/comments/1x4tlv0/thoughts_on_this_card_and_maybe_in_general_this/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/IsMyPokemonCardFake/comments/1stmmg2/1st_edition_holo_fossil_gengar_562_ebay_posting/"
+              },
+              {
+                "type": "url",
+                "url": "https://slabmethod.com/wp-content/uploads/2025/10/Cardsaway_Archaic_Series_1-1.pdf"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ws_00b1dfc7cb04b0c3016adce6f9391c87d1ad2783c34eaa93dd",
+          "status": "completed",
+          "action": {
+            "type": "search",
+            "queries": [
+              "\"Gengar 5/62\" \"LP\" \"1st Edition\" eBay sold",
+              "\"Fossil Gengar\" \"LP\" \"1st Edition\" sold eBay",
+              "site:ebay.com/itm \"Gengar 5/62\" \"LP\" \"1st Edition\"",
+              "site:pricecharting.com \"Gengar - 5/62 - Pokemon Fossil 1st Edition Holo Rare Card WOTC LP\""
+            ],
+            "query": "\"Gengar 5/62\" \"LP\" \"1st Edition\" eBay sold",
+            "sources": [
+              {
+                "type": "url",
+                "url": "https://www.pricecharting.com/game/pokemon-fossil/gengar-1st-edition-5"
+              },
+              {
+                "type": "url",
+                "url": "https://lastsold.com/en/sets/fossil/gengar-5-1st"
+              },
+              {
+                "type": "url",
+                "url": "https://www.pricecharting.com/game/pokemon-fossil/gengar-1st-edition-20"
+              },
+              {
+                "type": "url",
+                "url": "https://www.collectaio.com/item/fossil-gengar-5-05-62"
+              },
+              {
+                "type": "url",
+                "url": "https://cardtrack.com/pokemon/card/fossil/gengar-5"
+              },
+              {
+                "type": "url",
+                "url": "https://valudex.co.uk/sets/fossil-1st-edition/cards/gengar-5-62-holo"
+              },
+              {
+                "type": "url",
+                "url": "https://pokemoncardscanner.app/card/base3-5"
+              },
+              {
+                "type": "url",
+                "url": "https://pokett.app/cards/gengar-fossil-1st-edition-20"
+              },
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/itm/168691650774"
+              },
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/itm/317567089774"
+              },
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/sch/i.html?_nkw=first+edition+gengar+fossil&_sop=12"
+              },
+              {
+                "type": "url",
+                "url": "https://www.collectaio.com/item/fossil-gengar-5-05-62?variation=31605"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1rfu9rq/us_us_h_1st_ed_hooh_and_misdreavus_german_neo/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1w9j4xt/us_us_h_paypal_w_gengars_only_997_left_till_i/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1ug9zg9/us_us_h_slabs_and_singles_w_paypal_gs/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1wfp3t9/us_ww_h_paypal_w_final_8_gengars_needed_for_eng/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1rbyhsv/us_us_h_a_ton_of_mainly_vintage_slabs_and_singles/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/ymwrki"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1f2k5cf"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/o2fprc"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1pg7yt3/us_us_h_master_ex_sandstorm_set_wotc_first/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/Pokemoncardappraisal/comments/1ukuy3t/childhood_collection/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.gazette-drouot.com/telechargement/catalogue?venteId=143572"
+              },
+              {
+                "type": "url",
+                "url": "https://auctions.cullensofsurrey.co.uk/print-catalogue/8367d77197a28f3f33f228d146d09a99/3bb700f725ca82bfcefb7be9cfca17b6/final-toy-model-auction-of-the-year-pokmon-mtg-sports/"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/1h0iepx"
+              },
+              {
+                "type": "url",
+                "url": "https://www.reddit.com/r/pkmntcgtrades/comments/okhj8o"
+              },
+              {
+                "type": "url",
+                "url": "https://haeurope.b-cdn.net/catalog/V181.pdf"
+              }
+            ]
+          }
+        }
+      ],
+      "reported_tool_usage": {
+        "image_gen": {
+          "input_tokens": 0,
+          "input_tokens_details": {
+            "image_tokens": 0,
+            "text_tokens": 0
+          },
+          "output_tokens": 0,
+          "output_tokens_details": {
+            "image_tokens": 0,
+            "text_tokens": 0
+          },
+          "total_tokens": 0
+        },
+        "web_search": {
+          "num_requests": 2
+        }
+      },
+      "reported_billing": {
+        "payer": "openai"
+      },
+      "usage": {
+        "input_tokens": 13678,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 4480
+        },
+        "output_tokens": 1264,
+        "output_tokens_details": {
+          "reasoning_tokens": 680
+        },
+        "total_tokens": 14942
+      },
+      "original_estimate_usd": "0.0329225",
+      "search_action_estimate_usd": "0.0329225",
+      "note": "Action-based estimate is not an invoice; raw billing.payer does not establish customer charge."
+    },
+    {
+      "case_id": "japanese-charizard",
+      "target": {
+        "game": "pokemon",
+        "name": "Charizard ex",
+        "set_name": "pokemon card 151",
+        "number": "201/165",
+        "language": "japanese",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "request_id": "c04eaebbed2743e5960ae73b9d216e43",
+      "response_id": "resp_096b9d040118a0f1016adce6fe504887d186e660845d8bf5be",
+      "response_status": "completed",
+      "provider_status": "invalid_response",
+      "provider_error": "Search call count outside configured limits",
+      "max_tool_calls": 2,
+      "actions": [
+        {
+          "id": "ws_096b9d040118a0f1016adce6ff3adc87d1ad7d19cd9f1bfab8",
+          "status": "completed",
+          "action": {
+            "type": "search",
+            "queries": [
+              "site:ebay.com/itm pokemon card 151 201/165 japanese charizard ex sold completed NM",
+              "site:tcgplayer.com pokemon card 151 201/165 japanese charizard ex sales",
+              "site:pricecharting.com pokemon card 151 201/165 japanese charizard ex historic sales",
+              "\"Pokemon Card 151\" 201/165 Charizard ex Japanese sold"
+            ],
+            "query": "site:ebay.com/itm pokemon card 151 201/165 japanese charizard ex sold completed NM",
+            "sources": [
+              {
+                "type": "url",
+                "url": "https://slabverdict.com/prices/charizard-ex-sv2a-pokemon-card-151-jp-201/"
+              },
+              {
+                "type": "url",
+                "url": "https://valuemycard.com/card/566544-charizard-ex-pokemon-japan-sv2a-pokemon-card-151"
+              },
+              {
+                "type": "url",
+                "url": "https://thelabtcg.com/card/566544%3AHolofoil"
+              },
+              {
+                "type": "url",
+                "url": "https://sokumise.com/en/pokemon"
+              },
+              {
+                "type": "url",
+                "url": "https://www.pricecharting.com/game/pokemon-japanese-scarlet-%26-violet-151/charizard-ex-201"
+              },
+              {
+                "type": "url",
+                "url": "https://lastsold.com/en/sets/pokemon-card-151/charizard-ex-201"
+              },
+              {
+                "type": "url",
+                "url": "https://folio.fyi/licences/pokemon/jp/pokemon-card-151/charizard-ex-201"
+              },
+              {
+                "type": "url",
+                "url": "https://tcgduck.com/en/cards/47886"
+              },
+              {
+                "type": "url",
+                "url": "https://poketrace.com/cards/charizard-ex-japanese--sv2a-pokemon-card-151-Holofoil-201-165"
+              },
+              {
+                "type": "url",
+                "url": "https://www.tcgplayer.com/product/566544/pokemon-japan-sv2a-pokemon-card-151-charizard-ex-201-165?Language=all&page=1"
+              },
+              {
+                "type": "url",
+                "url": "https://magery.com/w?q=Charizard+ex+201%2F165+Sv2a%3A+Pokemon+Card+151+Holo+%28Japanese%29+NM"
+              },
+              {
+                "type": "url",
+                "url": "https://www.cardprice.com/card/charizard-ex-pokemon-card-151-japanese-201"
+              },
+              {
+                "type": "url",
+                "url": "https://mktg-assets.tcgplayer.com/web/reports/2023/2023-Cyber-Weekend-Report.pdf"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ws_096b9d040118a0f1016adce700b38887d1a49fe8b6926f8859",
+          "status": "completed",
+          "action": {
+            "type": "search",
+            "queries": [
+              "site:ebay.com/itm \"Charizard ex\" \"201/165\" Japanese sold NM",
+              "site:ebay.com/itm \"Pokemon Card 151\" \"201/165\" \"Charizard ex\" sold",
+              "site:ebay.com/itm \"Charizard ex\" \"SV2a\" \"201/165\" \"sold\"",
+              "site:ebay.com/itm \"201/165\" \"Charizard ex\" \"Japanese\" \"Near Mint\""
+            ],
+            "query": "site:ebay.com/itm \"Charizard ex\" \"201/165\" Japanese sold NM",
+            "sources": [
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/itm/388184641220"
+              },
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/itm/377538824693"
+              },
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/itm/314651077203"
+              },
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/itm/800117314012"
+              },
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/itm/298489269956"
+              },
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/itm/407226075923"
+              },
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/itm/168491196322"
+              },
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/itm/317629537928"
+              },
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/itm/406840480871"
+              },
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/itm/147129228473"
+              },
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/itm/366594948463"
+              },
+              {
+                "type": "url",
+                "url": "https://www.ebay.com/itm/398270547505"
+              }
+            ]
+          }
+        },
+        {
+          "id": "ws_096b9d040118a0f1016adce7028b9487d1a361918e87fe0b33",
+          "status": "searching",
+          "action": {
+            "type": "open_page",
+            "url": null
+          }
+        }
+      ],
+      "reported_tool_usage": {
+        "image_gen": {
+          "input_tokens": 0,
+          "input_tokens_details": {
+            "image_tokens": 0,
+            "text_tokens": 0
+          },
+          "output_tokens": 0,
+          "output_tokens_details": {
+            "image_tokens": 0,
+            "text_tokens": 0
+          },
+          "total_tokens": 0
+        },
+        "web_search": {
+          "num_requests": 2
+        }
+      },
+      "reported_billing": {
+        "payer": "openai"
+      },
+      "usage": {
+        "input_tokens": 11753,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 4480
+        },
+        "output_tokens": 1474,
+        "output_tokens_details": {
+          "reasoning_tokens": 952
+        },
+        "total_tokens": 13227
+      },
+      "original_estimate_usd": "0.04242375",
+      "search_action_estimate_usd": "0.03242375",
+      "note": "Action-based estimate is not an invoice; raw billing.payer does not establish customer charge."
+    }
+  ],
+  "candidates": [
+    {
+      "id": "C1",
+      "case_id": "modern-common",
+      "claim_id": "bae55f44dd1dc2d4d38da680067903292f8022af4649db140889f1d40cfaf681",
+      "retained_by_original_provider": true,
+      "raw_pointer": "requests[0].audit.response.output[5].content[0].text/candidates/0",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "Charmander",
+          "set_name": "Obsidian Flames",
+          "number": "26/197",
+          "language": "english",
+          "edition": "standard",
+          "finish": "non-holo",
+          "condition": "NM",
+          "graded": false
+        },
+        "source_name": "PriceCharting",
+        "source_record_id": null,
+        "url": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26",
+        "item_price": "0.99",
+        "shipping": null,
+        "currency": "USD",
+        "sold_on": "2026-09-26",
+        "bundle": null,
+        "quantity": 1,
+        "price_is_item_only": true,
+        "access": "full_page",
+        "evidence_summary": "Completed eBay sale for Charmander #26 Near Mint English; title indicates Obsidian Flames 026/197 and the sold price was $0.99.",
+        "missing_information": []
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [
+        "not an explicit single-card transaction",
+        "missing genuine source record ID"
+      ],
+      "provider_rejection": null,
+      "offline_qualification_replay": [
+        "not an explicit single-card transaction",
+        "missing genuine source record ID"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "Title paraphrase claims NM; no original title or non-holo evidence retained.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "Title paraphrase claims NM; no original title or non-holo evidence retained."
+    },
+    {
+      "id": "C2",
+      "case_id": "modern-common",
+      "claim_id": "f0e273bd450c491835009341d8fb84ae40995de388c8a66556226b1dc34a9b44",
+      "retained_by_original_provider": true,
+      "raw_pointer": "requests[0].audit.response.output[5].content[0].text/candidates/1",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "Charmander",
+          "set_name": "Obsidian Flames",
+          "number": "26/197",
+          "language": "english",
+          "edition": "standard",
+          "finish": "non-holo",
+          "condition": "NM",
+          "graded": false
+        },
+        "source_name": "PriceCharting",
+        "source_record_id": null,
+        "url": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26",
+        "item_price": "1.16",
+        "shipping": null,
+        "currency": "USD",
+        "sold_on": "2026-09-25",
+        "bundle": null,
+        "quantity": 1,
+        "price_is_item_only": true,
+        "access": "full_page",
+        "evidence_summary": "Completed eBay sale for Charmander 026/197; the listing title matches Obsidian Flames Charmander and sold for $1.16.",
+        "missing_information": []
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [
+        "not an explicit single-card transaction",
+        "missing genuine source record ID"
+      ],
+      "provider_rejection": null,
+      "offline_qualification_replay": [
+        "not an explicit single-card transaction",
+        "missing genuine source record ID"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "Paraphrase names card only; structured NM/non-holo unsupported by retained source material.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "Paraphrase names card only; structured NM/non-holo unsupported by retained source material."
+    },
+    {
+      "id": "C3",
+      "case_id": "modern-common",
+      "claim_id": "7e2c9317cc5b3df85a0404343e48f1cd137eeb17f49bc6139d2c4e77a19de0e0",
+      "retained_by_original_provider": true,
+      "raw_pointer": "requests[0].audit.response.output[5].content[0].text/candidates/2",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "Charmander",
+          "set_name": "Obsidian Flames",
+          "number": "26/197",
+          "language": "english",
+          "edition": "standard",
+          "finish": "non-holo",
+          "condition": "NM",
+          "graded": false
+        },
+        "source_name": "PriceCharting",
+        "source_record_id": null,
+        "url": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26",
+        "item_price": "1.00",
+        "shipping": null,
+        "currency": "USD",
+        "sold_on": "2026-09-13",
+        "bundle": null,
+        "quantity": 1,
+        "price_is_item_only": true,
+        "access": "full_page",
+        "evidence_summary": "Completed eBay sale for Charmander 026/197; the sold listing title matches the requested card and the price was $1.00.",
+        "missing_information": []
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [
+        "not an explicit single-card transaction",
+        "missing genuine source record ID"
+      ],
+      "provider_rejection": null,
+      "offline_qualification_replay": [
+        "not an explicit single-card transaction",
+        "missing genuine source record ID"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "Paraphrase names card only; structured NM/non-holo unsupported by retained source material.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "Paraphrase names card only; structured NM/non-holo unsupported by retained source material."
+    },
+    {
+      "id": "C4",
+      "case_id": "modern-common",
+      "claim_id": "90d72c695aa9ab6162d5c5329f7b8a1ed16abe6022b078704e51333709eff8de",
+      "retained_by_original_provider": true,
+      "raw_pointer": "requests[0].audit.response.output[5].content[0].text/candidates/3",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "Charmander",
+          "set_name": "Obsidian Flames",
+          "number": "26/197",
+          "language": "english",
+          "edition": "standard",
+          "finish": "non-holo",
+          "condition": "NM",
+          "graded": false
+        },
+        "source_name": "PriceCharting",
+        "source_record_id": null,
+        "url": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26",
+        "item_price": "0.99",
+        "shipping": null,
+        "currency": "USD",
+        "sold_on": "2026-09-11",
+        "bundle": null,
+        "quantity": 1,
+        "price_is_item_only": true,
+        "access": "full_page",
+        "evidence_summary": "Completed eBay sale for Charmander 026/197; title matches Obsidian Flames Charmander and it sold as a single card for $0.99.",
+        "missing_information": []
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [
+        "not an explicit single-card transaction",
+        "missing genuine source record ID"
+      ],
+      "provider_rejection": null,
+      "offline_qualification_replay": [
+        "not an explicit single-card transaction",
+        "missing genuine source record ID"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "Paraphrase calls it single-card but bundle is null; no original condition/finish support.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "Paraphrase calls it single-card but bundle is null; no original condition/finish support."
+    },
+    {
+      "id": "M1",
+      "case_id": "modern-chase",
+      "claim_id": "32bb5f12b8749a4115b4ed38a7c9b2af10c4a662206b5d0be409d960f9084d4f",
+      "retained_by_original_provider": true,
+      "raw_pointer": "requests[1].audit.response.output[5].content[0].text/candidates/0",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "charizard ex",
+          "set_name": "151",
+          "number": "199/165",
+          "language": "English",
+          "edition": "standard",
+          "finish": "holo",
+          "condition": "NM",
+          "graded": false
+        },
+        "source_name": "PriceCharting",
+        "source_record_id": null,
+        "url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199?q=charizard+ex+199",
+        "item_price": "269.29",
+        "shipping": null,
+        "currency": "USD",
+        "sold_on": "2026-10-19",
+        "bundle": null,
+        "quantity": null,
+        "price_is_item_only": null,
+        "access": "snippet",
+        "evidence_summary": "Completed eBay sale shown as NM-MT for Charizard ex 199/165 from Pokémon 151.",
+        "missing_information": [
+          "exact marketplace listing ID",
+          "shipping amount",
+          "whether tax was included"
+        ]
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [
+        "not an explicit single-card transaction",
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID"
+      ],
+      "provider_rejection": null,
+      "offline_qualification_replay": [
+        "not an explicit single-card transaction",
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "Paraphrase says NM-MT; mapping to NM is not independently supported.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "Paraphrase says NM-MT; mapping to NM is not independently supported."
+    },
+    {
+      "id": "M2",
+      "case_id": "modern-chase",
+      "claim_id": "021ba72031105cce13862e9aac48efd30555c99796f9ad37d0b9992f0796c30f",
+      "retained_by_original_provider": true,
+      "raw_pointer": "requests[1].audit.response.output[5].content[0].text/candidates/1",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "charizard ex",
+          "set_name": "151",
+          "number": "199/165",
+          "language": "English",
+          "edition": "standard",
+          "finish": "holo",
+          "condition": "NM",
+          "graded": false
+        },
+        "source_name": "PriceCharting",
+        "source_record_id": null,
+        "url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199?q=charizard+ex+199",
+        "item_price": "329.99",
+        "shipping": null,
+        "currency": "USD",
+        "sold_on": "2026-10-18",
+        "bundle": null,
+        "quantity": null,
+        "price_is_item_only": null,
+        "access": "snippet",
+        "evidence_summary": "Completed eBay sale for Charizard ex 199/165 from Pokémon 151; the snippet does not expose a finer raw-condition label beyond the card being listed among recent sales.",
+        "missing_information": [
+          "exact raw condition",
+          "exact marketplace listing ID",
+          "shipping amount",
+          "whether tax was included"
+        ]
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [
+        "not an explicit single-card transaction",
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID"
+      ],
+      "provider_rejection": null,
+      "offline_qualification_replay": [
+        "not an explicit single-card transaction",
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "Explicit contradiction: NM field versus exact raw condition missing.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "Explicit contradiction: NM field versus exact raw condition missing."
+    },
+    {
+      "id": "M3",
+      "case_id": "modern-chase",
+      "claim_id": "e267b3635d357aeeb9e35356324203de4877fefd1ae65bc77e0c51827f691c48",
+      "retained_by_original_provider": true,
+      "raw_pointer": "requests[1].audit.response.output[5].content[0].text/candidates/2",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "charizard ex",
+          "set_name": "151",
+          "number": "199/165",
+          "language": "English",
+          "edition": "standard",
+          "finish": "holo",
+          "condition": "NM",
+          "graded": false
+        },
+        "source_name": "PriceCharting",
+        "source_record_id": null,
+        "url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199?q=charizard+ex+199",
+        "item_price": "290.00",
+        "shipping": null,
+        "currency": "USD",
+        "sold_on": "2026-10-18",
+        "bundle": null,
+        "quantity": null,
+        "price_is_item_only": null,
+        "access": "snippet",
+        "evidence_summary": "Completed eBay sale for Charizard ex 199/165 from Pokémon 151; recent-sales snippet shows the sold price but not the precise raw-condition qualifier in the line shown.",
+        "missing_information": [
+          "exact raw condition",
+          "exact marketplace listing ID",
+          "shipping amount",
+          "whether tax was included"
+        ]
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [
+        "not an explicit single-card transaction",
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID"
+      ],
+      "provider_rejection": null,
+      "offline_qualification_replay": [
+        "not an explicit single-card transaction",
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "Explicit contradiction: NM field versus exact raw condition missing.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "Explicit contradiction: NM field versus exact raw condition missing."
+    },
+    {
+      "id": "M4",
+      "case_id": "modern-chase",
+      "claim_id": "caf0514c67e6177e4131e2d3f01ef7dcb63ad63758a0aedc3de36152a5787495",
+      "retained_by_original_provider": true,
+      "raw_pointer": "requests[1].audit.response.output[5].content[0].text/candidates/3",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "charizard ex",
+          "set_name": "151",
+          "number": "199/165",
+          "language": "English",
+          "edition": "standard",
+          "finish": "holo",
+          "condition": "NM",
+          "graded": false
+        },
+        "source_name": "Rip & Hold",
+        "source_record_id": null,
+        "url": "https://ripandhold.com/cards/charizard-ex-151-199/charizard-ex-151-199-unlimited",
+        "item_price": "365.00",
+        "shipping": null,
+        "currency": "USD",
+        "sold_on": "2026-09-30",
+        "bundle": null,
+        "quantity": null,
+        "price_is_item_only": null,
+        "access": "full_page",
+        "evidence_summary": "Recent eBay completed sale for Charizard ex 199/165 listed as Raw (ungraded).",
+        "missing_information": [
+          "exact marketplace listing ID",
+          "shipping amount",
+          "whether tax was included",
+          "precise raw condition beyond ungraded"
+        ]
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [
+        "not an explicit single-card transaction",
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID"
+      ],
+      "provider_rejection": null,
+      "offline_qualification_replay": [
+        "not an explicit single-card transaction",
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "Explicit contradiction: NM field versus only raw/ungraded known.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "Explicit contradiction: NM field versus only raw/ungraded known."
+    },
+    {
+      "id": "M5",
+      "case_id": "modern-chase",
+      "claim_id": "6b94d726d224601f1fbe6ac2198935f390a92aa86e340ffd295e38b229a2f54f",
+      "retained_by_original_provider": true,
+      "raw_pointer": "requests[1].audit.response.output[5].content[0].text/candidates/4",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "charizard ex",
+          "set_name": "151",
+          "number": "199/165",
+          "language": "English",
+          "edition": "standard",
+          "finish": "holo",
+          "condition": "NM",
+          "graded": false
+        },
+        "source_name": "Rip & Hold",
+        "source_record_id": null,
+        "url": "https://ripandhold.com/cards/charizard-ex-151-199/charizard-ex-151-199-unlimited",
+        "item_price": "280.00",
+        "shipping": null,
+        "currency": "USD",
+        "sold_on": "2026-09-20",
+        "bundle": null,
+        "quantity": null,
+        "price_is_item_only": null,
+        "access": "full_page",
+        "evidence_summary": "Recent eBay completed sale for Charizard ex 199/165 listed as Raw (ungraded).",
+        "missing_information": [
+          "exact marketplace listing ID",
+          "shipping amount",
+          "whether tax was included",
+          "precise raw condition beyond ungraded"
+        ]
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [
+        "not an explicit single-card transaction",
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID"
+      ],
+      "provider_rejection": null,
+      "offline_qualification_replay": [
+        "not an explicit single-card transaction",
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "Explicit contradiction: NM field versus only raw/ungraded known.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "Explicit contradiction: NM field versus only raw/ungraded known."
+    },
+    {
+      "id": "M6",
+      "case_id": "modern-chase",
+      "claim_id": "11422c24998ac3e247cb6479253c91d097bd5dbf65f8246914cc0a8be2d57a0a",
+      "retained_by_original_provider": true,
+      "raw_pointer": "requests[1].audit.response.output[5].content[0].text/candidates/5",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "charizard ex",
+          "set_name": "151",
+          "number": "199/165",
+          "language": "English",
+          "edition": "standard",
+          "finish": "holo",
+          "condition": "NM",
+          "graded": false
+        },
+        "source_name": "Rip & Hold",
+        "source_record_id": null,
+        "url": "https://ripandhold.com/cards/charizard-ex-151-199/charizard-ex-151-199-unlimited",
+        "item_price": "335.50",
+        "shipping": null,
+        "currency": "USD",
+        "sold_on": "2026-09-15",
+        "bundle": null,
+        "quantity": null,
+        "price_is_item_only": null,
+        "access": "full_page",
+        "evidence_summary": "Recent eBay completed sale for Charizard ex 199/165 listed as Raw (ungraded).",
+        "missing_information": [
+          "exact marketplace listing ID",
+          "shipping amount",
+          "whether tax was included",
+          "precise raw condition beyond ungraded"
+        ]
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [
+        "not an explicit single-card transaction",
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID"
+      ],
+      "provider_rejection": null,
+      "offline_qualification_replay": [
+        "not an explicit single-card transaction",
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "Explicit contradiction: NM field versus only raw/ungraded known.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "Explicit contradiction: NM field versus only raw/ungraded known."
+    },
+    {
+      "id": "V1",
+      "case_id": "vintage-charizard-lp",
+      "claim_id": "21eda67d9a45f60ec4b7a6eeed3cdadf28a0abf1fb558521fc70c61cd04a18a9",
+      "retained_by_original_provider": false,
+      "raw_pointer": "requests[2].audit.response.output[6].content[0].text/candidates/0",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "charizard",
+          "set_name": "base set",
+          "number": "4/102",
+          "language": "english",
+          "edition": "unlimited",
+          "finish": "holo",
+          "condition": "LP",
+          "graded": false
+        },
+        "source_name": "lastsold.com",
+        "source_record_id": null,
+        "url": "https://lastsold.com/en/sets/base-set/charizard-4",
+        "item_price": "$532.98",
+        "shipping": null,
+        "currency": "USD",
+        "sold_on": "2026-10-07",
+        "bundle": false,
+        "quantity": 1,
+        "price_is_item_only": true,
+        "access": "snippet",
+        "evidence_summary": "Completed eBay sale matched by lastsold as RAW LP for Charizard 4/102 Base Set on 2026-10-07. Title snippet indicates an English raw lightly played listing.",
+        "missing_information": [
+          "source_record_id",
+          "shipping amount",
+          "full page confirmation of exact title text",
+          "explicit confirmation that the matched listing was unlimited in the source snippet"
+        ]
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [],
+      "provider_rejection": "Search call count outside configured limits",
+      "offline_qualification_replay": [
+        "missing genuine source record ID",
+        "invalid money"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "LP claimed; missing_information admits Unlimited is not explicit. Price includes dollar symbol.",
+      "printing_assessment": "Incomplete source support admitted for edition and/or language; not a confirmed mismatch.",
+      "condition_assessment": "LP claimed; missing_information admits Unlimited is not explicit. Price includes dollar symbol."
+    },
+    {
+      "id": "V2",
+      "case_id": "vintage-charizard-lp",
+      "claim_id": "06af34dba6996a60b69775f1834de032804b6b4ad32350fc7b417471ce8845e0",
+      "retained_by_original_provider": false,
+      "raw_pointer": "requests[2].audit.response.output[6].content[0].text/candidates/1",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "charizard",
+          "set_name": "base set",
+          "number": "4/102",
+          "language": "english",
+          "edition": "unlimited",
+          "finish": "holo",
+          "condition": "LP",
+          "graded": false
+        },
+        "source_name": "lastsold.com",
+        "source_record_id": null,
+        "url": "https://lastsold.com/en/sets/base-set/charizard-4-play",
+        "item_price": "$498.18",
+        "shipping": null,
+        "currency": "USD",
+        "sold_on": "2026-10-22",
+        "bundle": false,
+        "quantity": 1,
+        "price_is_item_only": true,
+        "access": "snippet",
+        "evidence_summary": "Recent eBay match shown by lastsold for Charizard 4/102 Base Set Unlimited Holo Rare, labeled RAW LP in the snippet.",
+        "missing_information": [
+          "source_record_id",
+          "shipping amount",
+          "whether this is a completed sale versus a newly listed item in the snippet",
+          "full page confirmation of exact title text"
+        ]
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [],
+      "provider_rejection": "Search call count outside configured limits",
+      "offline_qualification_replay": [
+        "missing genuine source record ID",
+        "invalid money"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "LP claimed; completed-sale status explicitly uncertain despite completed_sale kind. Dollar-symbol price.",
+      "printing_assessment": "Incomplete source support admitted for edition and/or language; not a confirmed mismatch.",
+      "condition_assessment": "LP claimed; completed-sale status explicitly uncertain despite completed_sale kind. Dollar-symbol price."
+    },
+    {
+      "id": "V3",
+      "case_id": "vintage-charizard-lp",
+      "claim_id": "fb2e3fb117bec9b24048cba053b86814435e2cf2ea6c8cc3acd59f38e62caa21",
+      "retained_by_original_provider": false,
+      "raw_pointer": "requests[2].audit.response.output[6].content[0].text/candidates/2",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "charizard",
+          "set_name": "base set",
+          "number": "4/102",
+          "language": "english",
+          "edition": "unlimited",
+          "finish": "holo",
+          "condition": "LP",
+          "graded": false
+        },
+        "source_name": "lastsold.com",
+        "source_record_id": null,
+        "url": "https://lastsold.com/en/sets/base-set/charizard-4",
+        "item_price": "$449.36",
+        "shipping": null,
+        "currency": "USD",
+        "sold_on": "2026-10-08",
+        "bundle": false,
+        "quantity": 1,
+        "price_is_item_only": true,
+        "access": "full_page",
+        "evidence_summary": "Completed eBay sale matched by lastsold as RAW LP; title text in the page line indicates Charizard 4/102 Base Set Holo, with English/LP context in the listing row.",
+        "missing_information": [
+          "source_record_id",
+          "shipping amount",
+          "explicit unlimited wording in the row text",
+          "whether the card was English from the visible row alone"
+        ]
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [],
+      "provider_rejection": "Search call count outside configured limits",
+      "offline_qualification_replay": [
+        "missing genuine source record ID",
+        "invalid money"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "LP claimed; both English and Unlimited explicitly uncertain. Dollar-symbol price.",
+      "printing_assessment": "Incomplete source support admitted for edition and/or language; not a confirmed mismatch.",
+      "condition_assessment": "LP claimed; both English and Unlimited explicitly uncertain. Dollar-symbol price."
+    },
+    {
+      "id": "V4",
+      "case_id": "vintage-charizard-lp",
+      "claim_id": "24eb0aa03948d5f65e032941800c531a3a9686e2061b98daafc247905f9eff01",
+      "retained_by_original_provider": false,
+      "raw_pointer": "requests[2].audit.response.output[6].content[0].text/candidates/3",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "charizard",
+          "set_name": "base set",
+          "number": "4/102",
+          "language": "english",
+          "edition": "unlimited",
+          "finish": "holo",
+          "condition": "LP",
+          "graded": false
+        },
+        "source_name": "lastsold.com",
+        "source_record_id": null,
+        "url": "https://lastsold.com/en/sets/base-set/charizard-4",
+        "item_price": "$532.98",
+        "shipping": null,
+        "currency": "USD",
+        "sold_on": "2026-10-07",
+        "bundle": false,
+        "quantity": 1,
+        "price_is_item_only": true,
+        "access": "full_page",
+        "evidence_summary": "Completed eBay sale matched by lastsold as RAW LP; the page row includes Charizard 4/102 Base Set Holo Rare and indicates English context in the adjacent row metadata.",
+        "missing_information": [
+          "source_record_id",
+          "shipping amount",
+          "explicit unlimited wording in the row text",
+          "whether the sale was exactly English unlimited from the visible row alone"
+        ]
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unusable_evidence",
+      "duplicate_of": "V1",
+      "actual_candidate_rejections": [],
+      "provider_rejection": "Search call count outside configured limits",
+      "offline_qualification_replay": [
+        "missing genuine source record ID",
+        "invalid money"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "Same source URL, date and amount as V1; not another comp. Language/edition uncertain. Dollar-symbol price.",
+      "printing_assessment": "Incomplete source support admitted for edition and/or language; not a confirmed mismatch.",
+      "condition_assessment": "Same source URL, date and amount as V1; not another comp. Language/edition uncertain. Dollar-symbol price."
+    },
+    {
+      "id": "G1",
+      "case_id": "first-edition-gengar",
+      "claim_id": "6ddc8f3c5f62c4fbcc7426311b0d067413392aee8debf960d29ee5dfb32e7a6d",
+      "retained_by_original_provider": true,
+      "raw_pointer": "requests[3].audit.response.output[4].content[0].text/candidates/0",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "gengar",
+          "set_name": "fossil",
+          "number": "5/62",
+          "language": "english",
+          "edition": "first edition",
+          "finish": "holo",
+          "condition": "LP",
+          "graded": false
+        },
+        "source_name": "CollectAIO",
+        "source_record_id": null,
+        "url": "https://www.collectaio.com/item/fossil-gengar-5-05-62",
+        "item_price": "335.62",
+        "shipping": "5.62",
+        "currency": "USD",
+        "sold_on": "2026-09-06",
+        "bundle": false,
+        "quantity": 1,
+        "price_is_item_only": false,
+        "access": "snippet",
+        "evidence_summary": "Matched a 1st Edition Fossil Gengar LP eBay sale with item price and separate shipping shown in the listing summary.",
+        "missing_information": [
+          "source_record_id"
+        ]
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID"
+      ],
+      "provider_rejection": null,
+      "offline_qualification_replay": [
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "LP/First Edition asserted by paraphrase only. Card-only flag false despite summary mentioning separate shipping.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "LP/First Edition asserted by paraphrase only. Card-only flag false despite summary mentioning separate shipping."
+    },
+    {
+      "id": "G2",
+      "case_id": "first-edition-gengar",
+      "claim_id": "57931043aa293156034d059624bf8b95b9c9ae2995fdd0d80ae42cd8d5db8cb5",
+      "retained_by_original_provider": true,
+      "raw_pointer": "requests[3].audit.response.output[4].content[0].text/candidates/1",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "gengar",
+          "set_name": "fossil",
+          "number": "5/62",
+          "language": "english",
+          "edition": "first edition",
+          "finish": "holo",
+          "condition": "LP",
+          "graded": false
+        },
+        "source_name": "lastsold.com",
+        "source_record_id": null,
+        "url": "https://lastsold.com/en/sets/fossil/gengar-5-1st",
+        "item_price": "739.21",
+        "shipping": null,
+        "currency": null,
+        "sold_on": "2026-10-22",
+        "bundle": false,
+        "quantity": 1,
+        "price_is_item_only": null,
+        "access": "snippet",
+        "evidence_summary": "Recent eBay sold snapshot labeled RAW LP for 1st Edition Fossil Gengar 5/62.",
+        "missing_information": [
+          "currency",
+          "source_record_id",
+          "shipping"
+        ]
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID",
+        "USD comparable required; no inferred FX conversion"
+      ],
+      "provider_rejection": null,
+      "offline_qualification_replay": [
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID",
+        "USD comparable required; no inferred FX conversion"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "RAW LP asserted by paraphrase; original currency unknown.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "RAW LP asserted by paraphrase; original currency unknown."
+    },
+    {
+      "id": "G3",
+      "case_id": "first-edition-gengar",
+      "claim_id": "0e869f3c847545274cab9a73ebf013dc45fccd3dd33f23ddad6150ba8711107b",
+      "retained_by_original_provider": true,
+      "raw_pointer": "requests[3].audit.response.output[4].content[0].text/candidates/2",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "gengar",
+          "set_name": "fossil",
+          "number": "5/62",
+          "language": "english",
+          "edition": "first edition",
+          "finish": "holo",
+          "condition": "LP",
+          "graded": false
+        },
+        "source_name": "PriceCharting",
+        "source_record_id": null,
+        "url": "https://www.pricecharting.com/game/pokemon-fossil/gengar-1st-edition-5",
+        "item_price": "602.88",
+        "shipping": null,
+        "currency": null,
+        "sold_on": null,
+        "bundle": false,
+        "quantity": 1,
+        "price_is_item_only": null,
+        "access": "snippet",
+        "evidence_summary": "PriceCharting shows an LP eBay entry for 1st Edition Fossil Gengar 5/62 at this price in its recent sales list.",
+        "missing_information": [
+          "currency",
+          "sold_on",
+          "source_record_id",
+          "shipping"
+        ]
+      },
+      "source_type": "pricing_aggregator",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID",
+        "USD comparable required; no inferred FX conversion",
+        "missing or invalid actual sale date"
+      ],
+      "provider_rejection": null,
+      "offline_qualification_replay": [
+        "card-only paid price unconfirmed",
+        "missing genuine source record ID",
+        "USD comparable required; no inferred FX conversion",
+        "missing or invalid actual sale date"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "LP asserted by paraphrase; sale date and currency unknown. Recent-sales row is not a published benchmark.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "LP asserted by paraphrase; sale date and currency unknown. Recent-sales row is not a published benchmark."
+    },
+    {
+      "id": "J1",
+      "case_id": "japanese-charizard",
+      "claim_id": "04afd821533eeafc9b7eb1fe00a37d6fa4436b0dccf82e8dec008fc451b45275",
+      "retained_by_original_provider": false,
+      "raw_pointer": "requests[4].audit.response.output[7].content[0].text/candidates/0",
+      "candidate": {
+        "kind": "completed_sale",
+        "identity": {
+          "game": "pokemon",
+          "name": "charizard ex",
+          "set_name": "Pokemon Card 151",
+          "number": "201/165",
+          "language": "Japanese",
+          "edition": "standard",
+          "finish": "Holo",
+          "condition": "Near mint or better",
+          "graded": false
+        },
+        "source_name": "eBay",
+        "source_record_id": "388184641220",
+        "url": "https://www.ebay.com/itm/388184641220",
+        "item_price": "699.99",
+        "shipping": "25.00",
+        "currency": "USD",
+        "sold_on": "2026-09-01",
+        "bundle": false,
+        "quantity": 1,
+        "price_is_item_only": true,
+        "access": "snippet",
+        "evidence_summary": "eBay sold listing for Charizard ex 201/165 SAR from SV2a Pokemon Card 151. Listing states ungraded near mint or better and sold on Tue, Sep 1, 2026.",
+        "missing_information": []
+      },
+      "source_type": "primary_marketplace",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "completed_sale",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "unverified_potential_references",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [],
+      "provider_rejection": "Search call count outside configured limits",
+      "offline_qualification_replay": [
+        "condition mismatch or unknown"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "Near mint or better is a source-label claim, not canonical NM; no independent page. Promising primary-source lead.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "Near mint or better is a source-label claim, not canonical NM; no independent page. Promising primary-source lead."
+    },
+    {
+      "id": "J2",
+      "case_id": "japanese-charizard",
+      "claim_id": "239f4b74521706da1f4e21686d758cd8f44a0b04039ab7c17b19da39ed1ad928",
+      "retained_by_original_provider": false,
+      "raw_pointer": "requests[4].audit.response.output[7].content[0].text/candidates/1",
+      "candidate": {
+        "kind": "active_listing",
+        "identity": {
+          "game": "pokemon",
+          "name": "charizard ex",
+          "set_name": "Pokemon Card 151",
+          "number": "201/165",
+          "language": "Japanese",
+          "edition": "standard",
+          "finish": "Holo",
+          "condition": "Near mint or better",
+          "graded": false
+        },
+        "source_name": "eBay",
+        "source_record_id": "314651077203",
+        "url": "https://www.ebay.com/itm/314651077203",
+        "item_price": "735.99",
+        "shipping": "135.00",
+        "currency": "USD",
+        "sold_on": null,
+        "bundle": false,
+        "quantity": 1,
+        "price_is_item_only": true,
+        "access": "snippet",
+        "evidence_summary": "eBay listing for Charizard ex SAR 201/165 SV2a Pokemon Card 151, showing ungraded near mint or better and a buy-it-now asking price.",
+        "missing_information": [
+          "sold_on",
+          "bundle confirmation",
+          "whether price included any offer acceptance"
+        ]
+      },
+      "source_type": "primary_marketplace",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "active_listing",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "active_listings",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [],
+      "provider_rejection": "Search call count outside configured limits",
+      "offline_qualification_replay": [
+        "condition mismatch or unknown",
+        "not a completed sale",
+        "missing or invalid actual sale date"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "Unverified buy-it-now ask; bundle false conflicts with missing bundle confirmation.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "Unverified buy-it-now ask; bundle false conflicts with missing bundle confirmation."
+    },
+    {
+      "id": "J3",
+      "case_id": "japanese-charizard",
+      "claim_id": "68a637a63d16152079c5cf5add64dfb35dda6a7e3ba5b8f5756d25e6407f76ad",
+      "retained_by_original_provider": false,
+      "raw_pointer": "requests[4].audit.response.output[7].content[0].text/candidates/2",
+      "candidate": {
+        "kind": "active_listing",
+        "identity": {
+          "game": "pokemon",
+          "name": "charizard ex",
+          "set_name": "Pokemon Card 151",
+          "number": "201/165",
+          "language": "Japanese",
+          "edition": "standard",
+          "finish": "Holo",
+          "condition": "Near mint or better",
+          "graded": false
+        },
+        "source_name": "eBay",
+        "source_record_id": "298489269956",
+        "url": "https://www.ebay.com/itm/298489269956",
+        "item_price": "399.99",
+        "shipping": "0.00",
+        "currency": "USD",
+        "sold_on": null,
+        "bundle": false,
+        "quantity": 1,
+        "price_is_item_only": true,
+        "access": "snippet",
+        "evidence_summary": "eBay listing for Charizard ex 201/165 SV2a: Pokemon Card 151 Pokemon Japanese Holo NM, marked ungraded near mint or better.",
+        "missing_information": [
+          "sold_on",
+          "bundle confirmation",
+          "whether price reflects accepted offer versus asking price"
+        ]
+      },
+      "source_type": "primary_marketplace",
+      "price_independently_substantiated": false,
+      "printing_independently_substantiated": false,
+      "condition_independently_substantiated": false,
+      "source_document_retained": false,
+      "claimed_price_category": "active_listing",
+      "verified_price_category": "unknown",
+      "analysis_bucket": "active_listings",
+      "duplicate_of": null,
+      "actual_candidate_rejections": [],
+      "provider_rejection": "Search call count outside configured limits",
+      "offline_qualification_replay": [
+        "condition mismatch or unknown",
+        "not a completed sale",
+        "missing or invalid actual sale date"
+      ],
+      "rejection_assessment": "Appropriate abstention for claimed sold transaction; no verified published benchmark to reclassify.",
+      "analyst_notes": "Unverified ask; bundle false conflicts with missing bundle confirmation; offer versus ask uncertain.",
+      "printing_assessment": "Coherent target claim, not source-verified; all printing dimensions require source support.",
+      "condition_assessment": "Unverified ask; bundle false conflicts with missing bundle confirmation; offer versus ask uncertain."
+    }
+  ]
+}

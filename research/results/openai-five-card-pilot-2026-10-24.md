@@ -1,5 +1,12 @@
 # First authorized OpenAI web-search pilot — 2026-10-24
 
+Follow-up: the [full forensic analysis](../../docs/pricing-evidence-forensics.md)
+recovers seven additional discarded claims and shows that the two surplus web
+output items were unfinished page-open attempts, not third completed searches.
+It distinguishes the original conservative estimate below from a $0.14245450
+search-action estimate; neither is an independently reconciled invoice. This
+original run report is retained as history, not silently rewritten.
+
 Run: https://github.com/cmollical/Cardscan/actions/runs/40114686775/attempts/2
 Code: bac237d9912f270af78c590d300e907816ef781b
 Evidence artifact: https://github.com/cmollical/Cardscan/actions/runs/40114686775/artifacts/12568485590

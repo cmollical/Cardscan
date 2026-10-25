@@ -10,7 +10,12 @@ are preserved.
 The new `OpenAIWebSearchProvider` uses the official Responses API with web search,
 strict evidence schemas, exact matching, separate sale/reference/asking-price
 evidence, independent verification, condition-specific caching and spending guards.
-No paid API experiment has been executed; real accuracy and costs remain unmeasured.
+The first authorized five-card pilot completed on October 24, 2026: no verified
+valuations, with a $0.19245450 conservative API estimate. Independent pricing
+accuracy remains unmeasured. The [forensic analysis](docs/pricing-evidence-forensics.md)
+recovers all 20 candidate claims, corrects search-action accounting, and proposes
+separate verified-reference pricing. [Experiment 2](experiments/reference-first-v2/PLAN.md)
+is a design only and has no paid authorization.
 
 ```bash
 python -m cardscan.ai.experiment --as-of 2026-10-24

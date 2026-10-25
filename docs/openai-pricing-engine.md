@@ -4,9 +4,20 @@
 
 `OpenAIWebSearchProvider` uses the official Python SDK's Responses API with the
 built-in `web_search` tool and a strict JSON schema. It returns **evidence
-candidates**, not model-calculated valuations. No paid API call has been executed
-for this implementation. API compatibility, cost and market accuracy have not
-been established by live calls; the tests and SDK integration use mocks.
+candidates**, not model-calculated valuations. The first authorized five-card
+pilot completed on October 24, 2026; all requests returned usage, but no verified
+valuation was established. See the [original results](../research/results/openai-five-card-pilot-2026-10-24.md)
+and [forensic analysis](pricing-evidence-forensics.md) for actual costs, recovered
+candidates and accounting limitations. Market accuracy remains unmeasured.
+Routine tests and the offline SDK integration use mocks.
+
+The forensic assignment added twelve offline tests (102 total) and a test-only
+reference-contract specification. It did not change the production provider,
+completed-sale validation or estimator. In particular, the current estimator
+counts all web output items, including page opens and unfinished attempts, as
+search fees. Do not treat that count as a verified number of billable searches.
+The existing reservation policy also blocks a strictly enforced $0.15 experiment
+before any request. No additional paid experiment is authorized.
 
 The older public-page and manual workflows remain intact. No scanner, inventory
 integration or PWA has been added. Shipping and tax remain **excluded** from
