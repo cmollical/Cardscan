@@ -1,0 +1,9 @@
+{
+  "_fixture_notice": "SYNTHETIC CONTRACT FIXTURE. Not a real source or real market success.",
+  "game": "pokemon", "name": "Charizard ex", "set_name": "151", "number": "199/165",
+  "language": "english", "edition": "standard", "finish": "holo", "graded": false,
+  "condition": "NM", "price": "100.00", "currency": "USD",
+  "price_type": "published_market_reference",
+  "price_basis": "card_only_excluding_shipping_and_tax",
+  "published_at": "2026-10-25T00:00:00+00:00"
+}

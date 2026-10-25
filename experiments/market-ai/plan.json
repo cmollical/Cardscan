@@ -1,0 +1,115 @@
+{
+  "status": "not_run_requires_new_paid_authorization",
+  "as_of": "2026-10-25",
+  "paid_api_calls": 0,
+  "settings": {
+    "model": "gpt-5.4-mini",
+    "max_search_calls": 2,
+    "max_output_tokens": 4000,
+    "timeout_seconds": 90,
+    "cache_ttl_seconds": 0,
+    "per_request_limit_usd": "0.35",
+    "daily_limit_usd": "2.00",
+    "max_daily_requests": 5,
+    "minimum_sales": 3,
+    "max_age_days": 90
+  },
+  "experiment_budget_target_usd": "2.00",
+  "conservative_per_request_reserve_usd": "0.338",
+  "five_full_reservations_usd": "1.690",
+  "illustrative_per_attempt_usd": "0.0365",
+  "illustrative_five_attempts_usd": "0.1825",
+  "illustration": "10k uncached input tokens, 2k output tokens, two search actions. Not measured usage or invoice.",
+  "cases": [
+    {
+      "id": "modern-common",
+      "target": {
+        "game": "pokemon",
+        "name": "Charmander",
+        "set_name": "obsidian flames",
+        "number": "26/197",
+        "language": "english",
+        "edition": "standard",
+        "finish": "non-holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "status": "not_run",
+      "estimate": null,
+      "estimated_api_cost_usd": null,
+      "latency_seconds": null
+    },
+    {
+      "id": "modern-chase",
+      "target": {
+        "game": "pokemon",
+        "name": "Charizard ex",
+        "set_name": "151",
+        "number": "199/165",
+        "language": "english",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "status": "not_run",
+      "estimate": null,
+      "estimated_api_cost_usd": null,
+      "latency_seconds": null
+    },
+    {
+      "id": "vintage-charizard-lp",
+      "target": {
+        "game": "pokemon",
+        "name": "Charizard",
+        "set_name": "base set",
+        "number": "4/102",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "LP",
+        "graded": false
+      },
+      "status": "not_run",
+      "estimate": null,
+      "estimated_api_cost_usd": null,
+      "latency_seconds": null
+    },
+    {
+      "id": "first-edition-gengar",
+      "target": {
+        "game": "pokemon",
+        "name": "Gengar",
+        "set_name": "fossil",
+        "number": "5/62",
+        "language": "english",
+        "edition": "first edition",
+        "finish": "holo",
+        "condition": "LP",
+        "graded": false
+      },
+      "status": "not_run",
+      "estimate": null,
+      "estimated_api_cost_usd": null,
+      "latency_seconds": null
+    },
+    {
+      "id": "japanese-charizard",
+      "target": {
+        "game": "pokemon",
+        "name": "Charizard ex",
+        "set_name": "pokemon card 151",
+        "number": "201/165",
+        "language": "japanese",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "status": "not_run",
+      "estimate": null,
+      "estimated_api_cost_usd": null,
+      "latency_seconds": null
+    }
+  ]
+}

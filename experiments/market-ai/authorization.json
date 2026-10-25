@@ -1,0 +1,7 @@
+{
+  "authorized": false,
+  "experiment_id": "market-ai-five-v1",
+  "budget_usd": "2.00",
+  "base_commit": null,
+  "approval_note": "NOT AUTHORIZED. Change only after new explicit user approval for this experiment."
+}

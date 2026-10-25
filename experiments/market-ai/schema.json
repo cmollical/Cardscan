@@ -1,0 +1,431 @@
+{
+  "$defs": {
+    "MarketSource": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "source_name": {
+          "title": "Source Name",
+          "type": "string"
+        },
+        "url": {
+          "title": "Url",
+          "type": "string"
+        },
+        "reported_price": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reported Price"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Currency"
+        },
+        "price_type": {
+          "enum": [
+            "completed_sale_report",
+            "published_market_reference",
+            "active_asking_price",
+            "unknown"
+          ],
+          "title": "Price Type",
+          "type": "string"
+        },
+        "price_meaning": {
+          "anyOf": [
+            {
+              "maxLength": 300,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Price Meaning"
+        },
+        "observed_identity": {
+          "$ref": "#/$defs/ObservedIdentity"
+        },
+        "condition_scope": {
+          "enum": [
+            "explicit_condition",
+            "generic_ungraded",
+            "mixed",
+            "unknown"
+          ],
+          "title": "Condition Scope",
+          "type": "string"
+        },
+        "condition_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Condition Label"
+        },
+        "source_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Source Date"
+        },
+        "date_meaning": {
+          "enum": [
+            "sale_date",
+            "published_update",
+            "listing_observation",
+            "unknown"
+          ],
+          "title": "Date Meaning",
+          "type": "string"
+        },
+        "price_basis": {
+          "enum": [
+            "item_only",
+            "includes_shipping",
+            "unknown"
+          ],
+          "title": "Price Basis",
+          "type": "string"
+        },
+        "observation_kind": {
+          "enum": [
+            "search_result",
+            "page_content",
+            "unknown"
+          ],
+          "title": "Observation Kind",
+          "type": "string"
+        },
+        "source_summary": {
+          "anyOf": [
+            {
+              "maxLength": 400,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Source Summary"
+        },
+        "missing_information": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Information",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "source_name",
+        "url",
+        "reported_price",
+        "currency",
+        "price_type",
+        "price_meaning",
+        "observed_identity",
+        "condition_scope",
+        "condition_label",
+        "source_date",
+        "date_meaning",
+        "price_basis",
+        "observation_kind",
+        "source_summary",
+        "missing_information"
+      ],
+      "title": "MarketSource",
+      "type": "object"
+    },
+    "ObservedIdentity": {
+      "additionalProperties": false,
+      "properties": {
+        "game": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Game"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Name"
+        },
+        "set_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Set Name"
+        },
+        "number": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Number"
+        },
+        "language": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Language"
+        },
+        "edition": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Edition"
+        },
+        "finish": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Finish"
+        },
+        "condition": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Condition"
+        },
+        "graded": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Graded"
+        }
+      },
+      "required": [
+        "game",
+        "name",
+        "set_name",
+        "number",
+        "language",
+        "edition",
+        "finish",
+        "condition",
+        "graded"
+      ],
+      "title": "ObservedIdentity",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "card_identity": {
+      "$ref": "#/$defs/ObservedIdentity"
+    },
+    "requested_condition": {
+      "enum": [
+        "NM",
+        "LP",
+        "MP",
+        "HP",
+        "DMG"
+      ],
+      "title": "Requested Condition",
+      "type": "string"
+    },
+    "estimated_market_value": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Estimated Market Value"
+    },
+    "estimated_low": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Estimated Low"
+    },
+    "estimated_high": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Estimated High"
+    },
+    "currency": {
+      "const": "USD",
+      "title": "Currency",
+      "type": "string"
+    },
+    "valuation_type": {
+      "enum": [
+        "condition_specific_market_estimate",
+        "provisional_condition_estimate",
+        "generic_ungraded_reference",
+        "insufficient_evidence"
+      ],
+      "title": "Valuation Type",
+      "type": "string"
+    },
+    "evidence_quality": {
+      "enum": [
+        "limited",
+        "mixed",
+        "corroborated_reports",
+        "insufficient"
+      ],
+      "title": "Evidence Quality",
+      "type": "string"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/MarketSource"
+      },
+      "maxItems": 8,
+      "title": "Sources",
+      "type": "array"
+    },
+    "supporting_source_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Supporting Source Ids",
+      "type": "array"
+    },
+    "reasoning_summary": {
+      "maxLength": 1200,
+      "minLength": 1,
+      "title": "Reasoning Summary",
+      "type": "string"
+    },
+    "assumptions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Assumptions",
+      "type": "array"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    },
+    "recommendation": {
+      "enum": [
+        "usable_estimate",
+        "review_recommended",
+        "insufficient_evidence"
+      ],
+      "title": "Recommendation",
+      "type": "string"
+    },
+    "review_recommended": {
+      "title": "Review Recommended",
+      "type": "boolean"
+    },
+    "insufficient_evidence": {
+      "title": "Insufficient Evidence",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "card_identity",
+    "requested_condition",
+    "estimated_market_value",
+    "estimated_low",
+    "estimated_high",
+    "currency",
+    "valuation_type",
+    "evidence_quality",
+    "sources",
+    "supporting_source_ids",
+    "reasoning_summary",
+    "assumptions",
+    "limitations",
+    "recommendation",
+    "review_recommended",
+    "insufficient_evidence"
+  ],
+  "title": "MarketEstimate",
+  "type": "object"
+}

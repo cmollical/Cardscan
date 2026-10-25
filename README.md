@@ -7,6 +7,14 @@ are preserved.
 
 ## AI market research (paid execution disabled by default)
 
+A separate **[AI market-estimation experiment](docs/ai-market-estimation.md)** now
+uses ChatGPT-style research and synthesis without requiring authenticated sales.
+It labels estimates, generic references, assumptions and unverified source claims
+explicitly. Its new five-card run is **not authorized or executed**. The existing
+strict engine remains unchanged. Independent [source-verification adapters](docs/reference-verification.md)
+are also preserved. Full mocked suite: **156 tests pass**; this is not evidence
+of real-world pricing accuracy.
+
 The new `OpenAIWebSearchProvider` uses the official Responses API with web search,
 strict evidence schemas, exact matching, separate sale/reference/asking-price
 evidence, independent verification, condition-specific caching and spending guards.

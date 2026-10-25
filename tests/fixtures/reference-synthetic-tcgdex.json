@@ -1,0 +1,8 @@
+{
+  "_fixture_notice": "SYNTHETIC TCGdex-shaped fixture, not live market evidence.",
+  "id": "sv03.5-199", "localId": "199", "name": "Charizard ex",
+  "set": {"name": "151", "id": "sv03.5", "cardCount": {"official": 165, "total": 207}},
+  "variants": {"firstEdition": false, "holo": true, "normal": false, "reverse": false},
+  "pricing": {"tcgplayer": {"unit": "USD", "updated": "2026-10-25T00:00:00+00:00",
+    "holofoil": {"productId": 517045, "marketPrice": 100.00}}}
+}

@@ -1,0 +1,152 @@
+{
+  "modern-common": {
+    "target_identity": {
+      "game": "pokemon",
+      "set_name": "obsidian flames",
+      "number": "26/197",
+      "language": "english",
+      "edition": "standard",
+      "finish": "non-holo",
+      "condition": "NM",
+      "name": "charmander",
+      "graded": false
+    },
+    "condition": "NM",
+    "currency": "USD",
+    "as_of": null,
+    "reference_price": null,
+    "reviewer": null,
+    "reviewed_on": null,
+    "independently_established": false,
+    "reference_origin": null,
+    "used_agent_estimate_as_reference": null,
+    "evidence_urls": [],
+    "evidence_notes": "",
+    "output_review": {
+      "correct_printing": null,
+      "correct_condition_handling": null,
+      "unsupported_pricing_claims": null,
+      "source_relevance": {}
+    }
+  },
+  "modern-chase": {
+    "target_identity": {
+      "game": "pokemon",
+      "set_name": "151",
+      "number": "199/165",
+      "language": "english",
+      "edition": "standard",
+      "finish": "holo",
+      "condition": "NM",
+      "name": "charizard ex",
+      "graded": false
+    },
+    "condition": "NM",
+    "currency": "USD",
+    "as_of": null,
+    "reference_price": null,
+    "reviewer": null,
+    "reviewed_on": null,
+    "independently_established": false,
+    "reference_origin": null,
+    "used_agent_estimate_as_reference": null,
+    "evidence_urls": [],
+    "evidence_notes": "",
+    "output_review": {
+      "correct_printing": null,
+      "correct_condition_handling": null,
+      "unsupported_pricing_claims": null,
+      "source_relevance": {}
+    }
+  },
+  "vintage-charizard-lp": {
+    "target_identity": {
+      "game": "pokemon",
+      "set_name": "base set",
+      "number": "4/102",
+      "language": "english",
+      "edition": "unlimited",
+      "finish": "holo",
+      "condition": "LP",
+      "name": "charizard",
+      "graded": false
+    },
+    "condition": "LP",
+    "currency": "USD",
+    "as_of": null,
+    "reference_price": null,
+    "reviewer": null,
+    "reviewed_on": null,
+    "independently_established": false,
+    "reference_origin": null,
+    "used_agent_estimate_as_reference": null,
+    "evidence_urls": [],
+    "evidence_notes": "",
+    "output_review": {
+      "correct_printing": null,
+      "correct_condition_handling": null,
+      "unsupported_pricing_claims": null,
+      "source_relevance": {}
+    }
+  },
+  "first-edition-gengar": {
+    "target_identity": {
+      "game": "pokemon",
+      "set_name": "fossil",
+      "number": "5/62",
+      "language": "english",
+      "edition": "first edition",
+      "finish": "holo",
+      "condition": "LP",
+      "name": "gengar",
+      "graded": false
+    },
+    "condition": "LP",
+    "currency": "USD",
+    "as_of": null,
+    "reference_price": null,
+    "reviewer": null,
+    "reviewed_on": null,
+    "independently_established": false,
+    "reference_origin": null,
+    "used_agent_estimate_as_reference": null,
+    "evidence_urls": [],
+    "evidence_notes": "",
+    "output_review": {
+      "correct_printing": null,
+      "correct_condition_handling": null,
+      "unsupported_pricing_claims": null,
+      "source_relevance": {}
+    }
+  },
+  "japanese-charizard": {
+    "target_identity": {
+      "game": "pokemon",
+      "set_name": "pokemon card 151",
+      "number": "201/165",
+      "language": "japanese",
+      "edition": "standard",
+      "finish": "holo",
+      "condition": "NM",
+      "name": "charizard ex",
+      "graded": false
+    },
+    "condition": "NM",
+    "currency": "USD",
+    "as_of": null,
+    "reference_price": null,
+    "reviewer": null,
+    "reviewed_on": null,
+    "independently_established": false,
+    "reference_origin": null,
+    "used_agent_estimate_as_reference": null,
+    "evidence_urls": [],
+    "evidence_notes": "",
+    "output_review": {
+      "correct_printing": null,
+      "correct_condition_handling": null,
+      "unsupported_pricing_claims": null,
+      "source_relevance": {}
+    }
+  }
+}

@@ -1,0 +1,45 @@
+name: Experimental AI market estimation
+on:
+  push:
+    branches: [main]
+    paths: ['experiments/market-ai/authorization.json']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cardscan-paid-pricing-pilot
+  cancel-in-progress: false
+jobs:
+  experiment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-ai.txt
+      - name: Mocked tests without credentials
+        run: python -m unittest discover -s tests -q
+      - name: Check one-shot approval
+        id: approval
+        run: python scripts/market_workflow_gate.py
+      - name: Offline plan when not approved
+        if: steps.approval.outputs.execute != 'true'
+        run: python -m cardscan.ai.market_experiment --as-of "$(date -u +%F)" --settings experiments/market-ai/settings.json
+      - name: Execute explicitly approved experiment
+        if: steps.approval.outputs.execute == 'true'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/market_workflow_gate.py --execute
+      - name: Preserve results and budget ledger
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-market-estimate-${{ github.run_id }}-${{ github.run_attempt }}
+          path: local-evidence/market-ai/
+          if-no-files-found: ignore
+          retention-days: 7
