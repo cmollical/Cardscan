@@ -1,4 +1,4 @@
-name: Offline pricing backend tests
+name: TallyBinder offline tests
 on:
   push:
     branches: [main]
@@ -27,3 +27,22 @@ jobs:
           name: offline-local-pricing-benchmark
           path: local-evidence/ci-local-benchmark.json
           retention-days: 7
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install frontend dependencies
+        run: npm ci --prefix frontend
+      - name: Frontend types, offline unit tests and production build
+        working-directory: frontend
+        run: |
+          npm run typecheck
+          npm test
+          npm run build
+      - name: Install browser for synthetic mobile workflow tests
+        working-directory: frontend
+        run: npx playwright install --with-deps chromium
+      - name: Mobile workflow with temporary database and AI disabled
+        working-directory: frontend
+        run: npm run test:e2e

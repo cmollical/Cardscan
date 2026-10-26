@@ -1,92 +1,58 @@
-# CardScan
+# TallyBinder
 
-Pokémon pricing research prototype with deterministic valuation and modular
-evidence providers. **Market value excludes shipping and tax.** Scanner, PWA
-and inventory work remain out of scope. Existing offline/public-page workflows
-are preserved.
+Mobile Pokémon card intake, exact-condition market references, and personal inventory.
+The repository remains `cmollical/Cardscan`; internal Python imports remain `cardscan`.
 
-## AI market research (paid execution disabled by default)
+Capture front and back photos, manually select an exact catalog printing (or request
+optional AI suggestions), confirm condition, retrieve a local SKU market reference,
+and approve a listing. Review cards in a durable intake queue while capturing more.
+The app never turns generic ungraded prices into condition-specific prices.
+Market values exclude shipping and tax; your chosen selling price is separate.
 
-A separate **[AI market-estimation experiment](docs/ai-market-estimation.md)** now
-uses ChatGPT-style research and synthesis without requiring authenticated sales.
-It labels estimates, generic references, assumptions and unverified source claims
-explicitly. Its [first authorized five-card run](research/results/ai-market-five-2026-10-25.md)
-produced five AI proposals, all rejected by validation; none is independently
-validated. The existing
-strict engine remains unchanged. Independent [source-verification adapters](docs/reference-verification.md)
-are also preserved. The [offline normalization replay](docs/market-normalization-and-benchmarks.md)
-retains **3 provisional estimates**, abstains on **2**, and approves **0**; no new
-paid API calls were made. Full offline suite: **188 tests pass**; this is not evidence
-of real-world pricing accuracy.
+**Personal research MVP.** Provider commercial licensing remains unresolved. AI
+photo interpretation requires human review and does not constitute professional grading.
+No paid AI calls are needed for the complete manual workflow.
 
-The new `OpenAIWebSearchProvider` uses the official Responses API with web search,
-strict evidence schemas, exact matching, separate sale/reference/asking-price
-evidence, independent verification, condition-specific caching and spending guards.
-The first authorized five-card pilot completed on October 24, 2026: no verified
-valuations, with a $0.19245450 conservative API estimate. Independent pricing
-accuracy remains unmeasured. The [forensic analysis](docs/pricing-evidence-forensics.md)
-recovers all 20 candidate claims, corrects search-action accounting, and proposes
-separate verified-reference pricing. [Experiment 2](experiments/reference-first-v2/PLAN.md)
-is a design only and has no paid authorization.
+## Start locally
+
+Python 3.12+ and Node.js 22+ recommended. From the repository root:
 
 ```bash
-python -m cardscan.ai.experiment --as-of 2026-10-24
+python -m venv .venv
+. .venv/bin/activate
+pip install -r requirements-local.txt -r requirements-ai.txt -r requirements-history.txt
+python -m cardscan.local_pricing.cli --db local-evidence/tallybinder.sqlite init
+python -m cardscan.local_pricing.cli --db local-evidence/tallybinder.sqlite seed
+export TALLYBINDER_DB="$PWD/local-evidence/tallybinder.sqlite"
+export TALLYBINDER_AI_ENABLED=false
+uvicorn cardscan.local_pricing.api:app --host 127.0.0.1 --port 8000 --workers 1
 ```
 
-That command produces an offline five-card plan and makes no API calls. See
-[AI architecture, key setup, costs and experiment instructions](docs/openai-pricing-engine.md).
-Live execution requires explicit user authorization and two CLI flags. Model
-citations alone never confer verified-comp status.
-
-## Get a price from public sale reports
-
-Requires Python 3.10+, standard library only:
+In a second terminal:
 
 ```bash
-python -m cardscan.research research/configs/charizard-151-nm.json \
-  --as-of 2026-10-24 --reports-only
+cd frontend
+npm ci
+npm run dev
 ```
 
-This fetches the public PriceCharting page, extracts dated sale records attributed
-to eBay/TCGplayer, matches the configured printing, condition and language, and
-calculates separate marketplace medians over 30 days. It does not use the guide
-price or pretend that publisher reports are independently verified transactions.
+Open http://localhost:3000. The seed command imports **dated October 26, 2026
+source excerpts**, not live prices or a complete catalog. To use an existing database,
+back it up, run `init` against its path to apply non-destructive migrations, and point
+`TALLYBINDER_DB` at that path. No provider requests run during normal app use.
 
-To also fetch individual eBay pages for direct checks:
+See **[mobile setup and operating guide](docs/tallybinder-mobile.md)** for iPhone
+HTTPS testing, installation, configuration, API routes, security, tests and deployment
+options. Backend API docs: http://127.0.0.1:8000/docs.
 
-```bash
-python -m cardscan.research research/configs/charizard-151-nm.json \
-  --as-of 2026-10-24 --limit 12
-```
+## Preserved pricing work
 
-Exact dimensions are checked against seller attributes. Unknowns, redirects to
-active product pages, hidden accepted offers, proxies and contradictory condition
-labels are rejected. Access challenges stop the affected retrieval; no bypass.
-Source URLs, actual observation times, raw-page hashes and reasons are preserved.
-Snapshots stay locally under ignored `local-evidence/`; extracted results are in
-[research/results](research/results).
+- [Local pricing database and controlled synchronization](docs/local-pricing-backend.md)
+- [Backend readiness and 15-set expansion](docs/backend-readiness-2026-10-26.md)
+- [Source verification](docs/reference-verification.md)
+- [Historical research README](research/historical/cardscan-readme-before-tallybinder.md)
 
-See [research results and limitations](research/README.md),
-[architecture](docs/architecture.md) and [source research](docs/pricing-sources.md).
-
-## Verification
-
-```bash
-python -m unittest discover -s tests -v
-python -m cardscan.demo
-```
-
-The demo is synthetic. Tests include a minimized real eBay page fixture and
-synthetic adversarial records. They check software behavior, not market accuracy.
-
-The original [manual review CLI](docs/manual-comps.md) and
-[20-card independent evaluation protocol](evaluation/README.md) remain available.
-**The ±10% accuracy target is unvalidated.** Current research values are based on
-seller/publisher reports; they do not prove physical condition, payment settlement
-or absence of later refunds. No full inventory interface or PWA has been built.
-
-Structured API investigation: [working condition-SKU proof of concept and provider comparison](docs/alternative-pricing-apis.md) (2026-10-26). Free TCGTracking and TCGCSV adapters are separate from valuation; retrieved references are not automatically approved prices.
-
-[Local SQLite pricing backend, read-only HTTP API, mandatory append-only history, sync and archive backfill plan](docs/local-pricing-backend.md) are implemented for personal research. No paid service or scanner is required.
-
-[Backend readiness and bounded 15-set expansion](docs/backend-readiness-2026-10-26.md): 21,735 SKUs; historical archive access is currently withdrawn by TCGCSV. Updated sync requires `--execute`; use `--dry-run` for offline planning.
+Existing deterministic valuation, AI research experiments, source evidence, and
+append-only price histories are preserved. Historical archive backfill is not part
+of this milestone. No repository rename, production deployment, Square integration,
+full-catalog import, paid AI execution or hosted scheduler is performed.

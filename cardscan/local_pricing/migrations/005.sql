@@ -1,0 +1,10 @@
+CREATE TABLE app_media(id TEXT PRIMARY KEY,owner_id TEXT NOT NULL,content_hash TEXT NOT NULL,filename TEXT NOT NULL UNIQUE,mime TEXT NOT NULL,width INTEGER NOT NULL,height INTEGER NOT NULL,bytes INTEGER NOT NULL,created_at TEXT NOT NULL,UNIQUE(owner_id,content_hash));
+CREATE TABLE intake_sessions(id TEXT PRIMARY KEY,owner_id TEXT NOT NULL,created_at TEXT NOT NULL,name TEXT NOT NULL);
+CREATE TABLE intake_cards(id TEXT PRIMARY KEY,owner_id TEXT NOT NULL,session_id TEXT NOT NULL REFERENCES intake_sessions(id),revision INTEGER NOT NULL DEFAULT 1,fields_json TEXT NOT NULL,front_id TEXT REFERENCES app_media(id),back_id TEXT REFERENCES app_media(id),pricing_json TEXT,created_at TEXT NOT NULL,updated_at TEXT NOT NULL);
+CREATE INDEX intake_owner_queue ON intake_cards(owner_id,updated_at DESC,id);
+CREATE TABLE vision_jobs(id TEXT PRIMARY KEY,owner_id TEXT NOT NULL,intake_id TEXT NOT NULL REFERENCES intake_cards(id),intake_revision INTEGER NOT NULL,kind TEXT NOT NULL CHECK(kind IN ('identify','condition')),status TEXT NOT NULL,model TEXT NOT NULL,reserved_usd TEXT NOT NULL,estimated_cost_usd TEXT,usage_json TEXT,result_json TEXT,error TEXT,created_at TEXT NOT NULL,finished_at TEXT,UNIQUE(owner_id,intake_id,kind,intake_revision));
+CREATE INDEX vision_daily_budget ON vision_jobs(owner_id,created_at);
+CREATE TABLE inventory_listings(id TEXT PRIMARY KEY,owner_id TEXT NOT NULL,intake_id TEXT NOT NULL UNIQUE REFERENCES intake_cards(id),revision INTEGER NOT NULL,payload_json TEXT NOT NULL,created_at TEXT NOT NULL,updated_at TEXT NOT NULL,deleted_at TEXT);
+CREATE INDEX inventory_owner ON inventory_listings(owner_id,updated_at DESC);
+CREATE TABLE inventory_versions(id INTEGER PRIMARY KEY,listing_id TEXT NOT NULL REFERENCES inventory_listings(id),revision INTEGER NOT NULL,payload_json TEXT NOT NULL,created_at TEXT NOT NULL,UNIQUE(listing_id,revision));
+PRAGMA user_version=5;

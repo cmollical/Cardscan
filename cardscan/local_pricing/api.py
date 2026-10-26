@@ -1,4 +1,4 @@
-"""Local read-only FastAPI; serve on loopback. Never synchronizes on requests."""
+"""TallyBinder local pricing and personal intake API. Never syncs on requests."""
 import os
 import sqlite3
 from fastapi.responses import JSONResponse
@@ -9,11 +9,11 @@ from .database import Database
 from .lookup import Lookup
 
 
-def create_app(path=None):
-    db=Database(path or os.environ.get('CARDSCAN_PRICING_DB','local-evidence/pricing.sqlite'))
+def create_app(path=None,*,media_root=None,vision_settings=None,vision_provider=None):
+    db=Database(path or os.environ.get('TALLYBINDER_DB',os.environ.get('CARDSCAN_PRICING_DB','local-evidence/pricing.sqlite')))
     lookup=Lookup(db)
-    app=FastAPI(title='CardScan local pricing research API',version='1.0',
-                description='Read-only provider-reported market references. Personal research only; no automatic inventory approval.')
+    app=FastAPI(title='TallyBinder API',version='1.0',
+                description='Pokémon catalog, auditable market references, card intake and personal inventory. AI results require human confirmation.')
 
     @app.exception_handler(sqlite3.Error)
     async def database_error(request,exc):
@@ -77,6 +77,10 @@ def create_app(path=None):
     def sync_status():
         return {'items':db.sync_status(),'freshness_basis':'set export, not individual sale age','commercial_rights_established':False}
 
+    from cardscan.app.routes import register
+    from cardscan.app.limits import BodyLimits
+    register(app,db,media_root=media_root,settings=vision_settings,vision_provider=vision_provider)
+    app.add_middleware(BodyLimits)
     return app
 
 

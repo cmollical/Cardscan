@@ -127,7 +127,9 @@ class ExpansionTests(unittest.TestCase):
             row.update(provider_sku_id='9876543',edition=None,finish=None,raw_variant_json=json_text({'var':'1st Edition'}))
             c.execute('INSERT INTO skus('+','.join(row)+') VALUES('+','.join('?' for _ in row)+')',tuple(row.values()))
             # Recreate the exact version-3 state for testing the upgrade only.
-            c.execute('DROP TABLE sku_attribute_reviews');c.execute('PRAGMA user_version=3')
+            c.execute('DROP TABLE sku_attribute_reviews')
+            for table in ('inventory_versions','inventory_listings','vision_jobs','intake_cards','intake_sessions','app_media'):c.execute('DROP TABLE '+table)
+            c.execute('PRAGMA user_version=3')
             before=[tuple(x) for x in c.execute('SELECT * FROM observations ORDER BY id')]
         self.db.migrate()
         with self.db.connect(readonly=True) as c:
