@@ -10,7 +10,9 @@ are preserved.
 A separate **[AI market-estimation experiment](docs/ai-market-estimation.md)** now
 uses ChatGPT-style research and synthesis without requiring authenticated sales.
 It labels estimates, generic references, assumptions and unverified source claims
-explicitly. Its new five-card run is **not authorized or executed**. The existing
+explicitly. Its [first authorized five-card run](research/results/ai-market-five-2026-10-25.md)
+produced five AI proposals, all rejected by validation; none is independently
+validated. The existing
 strict engine remains unchanged. Independent [source-verification adapters](docs/reference-verification.md)
 are also preserved. Full mocked suite: **156 tests pass**; this is not evidence
 of real-world pricing accuracy.

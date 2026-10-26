@@ -2,7 +2,9 @@
 
 This is a separate pricing experiment, implemented on 2026-10-25. It asks an
 OpenAI web-search agent to synthesize a value and range like a collector researching
-a card. **No live paid run of this provider has been executed or authorized.**
+a card. The [first authorized paid run](../research/results/ai-market-five-2026-10-25.md)
+completed five requests for a conservative $0.18680975 estimate. The model proposed
+five prices; validation accepted none. Authorization is consumed and disabled.
 Mocked test outputs demonstrate contracts and behavior, not real pricing accuracy.
 
 ## How it differs from verified-sales pricing
@@ -108,7 +110,8 @@ The harness imports the original manifest unchanged: English Obsidian Flames
 Charmander 26/197 standard non-holo NM; English 151 Charizard ex 199/165 standard
 holo NM; English Base Set Unlimited Charizard 4/102 holo LP; English First Edition
 Fossil Gengar 5/62 holo LP; Japanese Pokémon Card 151 Charizard ex 201/165 standard
-holo NM. All raw. There are no live estimates for this new method yet.
+holo NM. All raw. The first live proposals are retained in the results report as
+unvalidated model output, with original rejection reasons.
 
 Offline plan, no credentials or API calls:
 
@@ -225,7 +228,8 @@ synthetic key and an in-memory response. It made no network or paid API requests
 An offline plan/schema consistency check and disabled-authorization check passed.
 The SDK check does not establish live source coverage or valuation accuracy.
 
-Next: authorize the bounded five-card pilot, inspect every source claim and estimate,
-then collect independent collector/shop reference prices. Measure real error and
+Next: replay the saved first-run responses offline to fix representation/normalization
+gaps, inspect every source claim, and collect independent collector/shop reference
+prices. Further paid experiments require new authorization. Measure real error and
 cost per accepted useful estimate before deciding whether to expand the approach.
 No claim of meeting the ±10% target is made.

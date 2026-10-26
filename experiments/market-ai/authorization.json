@@ -1,7 +1,7 @@
 {
-  "authorized": true,
+  "authorized": false,
   "experiment_id": "market-ai-five-v1",
   "budget_usd": "2.00",
   "base_commit": "c3773b8a0980ae2087ab7e00f4fc9008ba07bd66",
-  "approval_note": "User explicitly authorized the new five-card experiment with a $2 total budget on 2026-10-25. One attempt per card; no automatic paid reruns."
+  "approval_note": "CONSUMED: user-authorized five requests completed in run 40231931432. No further paid requests or retries authorized by this file."
 }

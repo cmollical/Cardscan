@@ -1,0 +1,2264 @@
+{
+  "status": "completed_paid_research_not_validated_pricing",
+  "run_url": "https://github.com/cmollical/Cardscan/actions/runs/40231931432",
+  "commit": "6f4c542c02f0ef493b6e18d58ac4d324c29537ec",
+  "artifact_id": 12613078251,
+  "artifact_sha256": "8a7170f5709007caead30a5669e9468ef003627d1798a3216332b94fb2b76a5a",
+  "warning": "All proposed prices and source claims below are unverified AI output. No accepted condition-specific valuation or independently measured accuracy.",
+  "summary": {
+    "planned_cards": 5,
+    "paid_attempts": 5,
+    "returned_estimates": 0,
+    "generic_references": 0,
+    "provisional_estimates": 0,
+    "usable_recommendations_not_accuracy_proof": 0,
+    "coverage": 0.0,
+    "estimated_total_api_cost_usd": "0.18680975",
+    "estimated_cost_per_attempt_usd": "0.03736195",
+    "estimated_cost_per_usable_recommendation_usd": null,
+    "max_estimated_attempt_cost_usd": "0.04751325",
+    "average_latency_seconds": 17.0710653406,
+    "independent_accuracy": null,
+    "independently_verified_transactions": 0,
+    "strict_pilot_baseline": {
+      "valuations": 0,
+      "planned_cards": 5,
+      "original_estimate_usd": "0.19245450",
+      "search_action_estimate_usd": "0.14245450",
+      "average_latency_seconds": 9.596558991,
+      "note": "Historical comparison, not a contemporaneous accuracy control."
+    }
+  },
+  "search_action_estimated_total_usd": "0.12680975",
+  "cases": [
+    {
+      "case_id": "modern-common",
+      "target": {
+        "game": "pokemon",
+        "set_name": "obsidian flames",
+        "number": "26/197",
+        "language": "english",
+        "edition": "standard",
+        "finish": "non-holo",
+        "condition": "NM",
+        "name": "charmander",
+        "graded": false
+      },
+      "as_of": "2026-10-25",
+      "status": "invalid_estimate",
+      "estimate": null,
+      "quarantined_estimate": {
+        "card_identity": {
+          "game": "pokemon",
+          "name": "charmander",
+          "set_name": "obsidian flames",
+          "number": "26/197",
+          "language": "english",
+          "edition": "standard",
+          "finish": "non-holo",
+          "condition": "NM",
+          "graded": false
+        },
+        "requested_condition": "NM",
+        "estimated_market_value": "0.35",
+        "estimated_low": "0.25",
+        "estimated_high": "0.60",
+        "currency": "USD",
+        "valuation_type": "condition_specific_market_estimate",
+        "evidence_quality": "mixed",
+        "sources": [
+          {
+            "id": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26?utm_source=openai",
+            "source_name": "PriceCharting",
+            "url": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26",
+            "reported_price": "$1.07",
+            "currency": "USD",
+            "price_type": "published_market_reference",
+            "price_meaning": "Current ungraded market reference based on historic completed sales for Charmander #26 in Obsidian Flames.",
+            "observed_identity": {
+              "game": "pokemon",
+              "name": "Charmander",
+              "set_name": "Pokemon Obsidian Flames",
+              "number": "26",
+              "language": null,
+              "edition": null,
+              "finish": null,
+              "condition": null,
+              "graded": false
+            },
+            "condition_scope": "generic_ungraded",
+            "condition_label": null,
+            "source_date": null,
+            "date_meaning": "unknown",
+            "price_basis": "item_only",
+            "observation_kind": "page_content",
+            "source_summary": "Page lists an ungraded market price of $1.07 and separate graded values; it is the non-holo Charmander #26 page.",
+            "missing_information": [
+              "explicit finish not stated in source",
+              "exact condition not stated in source",
+              "source date not shown"
+            ]
+          },
+          {
+            "id": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26?utm_source=openai",
+            "source_name": "PriceCharting",
+            "url": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26",
+            "reported_price": "$0.34",
+            "currency": "USD",
+            "price_type": "completed_sale_report",
+            "price_meaning": "Recent completed sale shown for Charmander #26 Near Mint English on TCGplayer.",
+            "observed_identity": {
+              "game": "pokemon",
+              "name": "Charmander",
+              "set_name": "Pokemon Obsidian Flames",
+              "number": "26",
+              "language": "English",
+              "edition": null,
+              "finish": null,
+              "condition": "Near Mint",
+              "graded": false
+            },
+            "condition_scope": "explicit_condition",
+            "condition_label": "Near Mint",
+            "source_date": "2026-10-17",
+            "date_meaning": "sale_date",
+            "price_basis": "item_only",
+            "observation_kind": "page_content",
+            "source_summary": "Recent completed sale row for Charmander #26 Near Mint English on TCGplayer.",
+            "missing_information": [
+              "explicit finish not stated in source",
+              "edition not stated in source"
+            ]
+          },
+          {
+            "id": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26?utm_source=openai",
+            "source_name": "PriceCharting",
+            "url": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26",
+            "reported_price": "$0.40",
+            "currency": "USD",
+            "price_type": "completed_sale_report",
+            "price_meaning": "Recent completed sale shown for Charmander #26 Near Mint English on TCGplayer.",
+            "observed_identity": {
+              "game": "pokemon",
+              "name": "Charmander",
+              "set_name": "Pokemon Obsidian Flames",
+              "number": "26",
+              "language": "English",
+              "edition": null,
+              "finish": null,
+              "condition": "Near Mint",
+              "graded": false
+            },
+            "condition_scope": "explicit_condition",
+            "condition_label": "Near Mint",
+            "source_date": "2026-10-12",
+            "date_meaning": "sale_date",
+            "price_basis": "item_only",
+            "observation_kind": "page_content",
+            "source_summary": "Recent completed sale row for Charmander #26 Near Mint English on TCGplayer.",
+            "missing_information": [
+              "explicit finish not stated in source",
+              "edition not stated in source"
+            ]
+          },
+          {
+            "id": "https://www.ebay.com/p/10062149619?utm_source=openai",
+            "source_name": "eBay",
+            "url": "https://www.ebay.com/p/10062149619",
+            "reported_price": "$1.50",
+            "currency": "USD",
+            "price_type": "active_asking_price",
+            "price_meaning": "Current asking price shown in eBay listing snippets for Charmander 026/197 Obsidian Flames Near Mint.",
+            "observed_identity": {
+              "game": "pokemon",
+              "name": "Charmander",
+              "set_name": "Obsidian Flames",
+              "number": "026/197",
+              "language": null,
+              "edition": null,
+              "finish": null,
+              "condition": "Near Mint",
+              "graded": false
+            },
+            "condition_scope": "explicit_condition",
+            "condition_label": "Near Mint",
+            "source_date": null,
+            "date_meaning": "unknown",
+            "price_basis": "item_only",
+            "observation_kind": "search_result",
+            "source_summary": "Search-result snippets show active listings around $0.99 to $1.50 for near mint copies.",
+            "missing_information": [
+              "exact listing date unknown",
+              "explicit finish not stated in source"
+            ]
+          },
+          {
+            "id": "https://www.ebay.com/p/10062149619?utm_source=openai",
+            "source_name": "eBay",
+            "url": "https://www.ebay.com/p/10062149619",
+            "reported_price": "$0.99",
+            "currency": "USD",
+            "price_type": "active_asking_price",
+            "price_meaning": "Current asking price shown in eBay listing snippets for Charmander 026/197 Obsidian Flames Near Mint.",
+            "observed_identity": {
+              "game": "pokemon",
+              "name": "Charmander",
+              "set_name": "Obsidian Flames",
+              "number": "026/197",
+              "language": null,
+              "edition": null,
+              "finish": null,
+              "condition": "Near Mint",
+              "graded": false
+            },
+            "condition_scope": "explicit_condition",
+            "condition_label": "Near Mint",
+            "source_date": null,
+            "date_meaning": "unknown",
+            "price_basis": "item_only",
+            "observation_kind": "search_result",
+            "source_summary": "Search-result snippets show active listings around $0.99 to $1.50 for near mint copies.",
+            "missing_information": [
+              "exact listing date unknown",
+              "explicit finish not stated in source"
+            ]
+          }
+        ],
+        "supporting_source_ids": [
+          "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26?utm_source=openai"
+        ],
+        "reasoning_summary": "The exact card appears to be the non-holo Charmander #26 from Obsidian Flames. The strongest anchor is PriceCharting’s ungraded market reference of $1.07 and multiple recent completed sales for Near Mint English copies on TCGplayer at $0.34 and $0.40, plus eBay asking snippets around $0.99-$1.50. Because the best condition-matched completed sales are on TCGplayer and sit well below the ungraded reference, I weighted the estimate toward the completed-sale data while allowing a wider range to account for liquidity noise, small-card volatility, and the fact that the listed eBay asks are higher than the observed sales. This is a condition-specific estimate for Near Mint, but the finish is not explicitly stated by the sources, so that field is supported only by the requested printing, not directly observed.",
+        "assumptions": [
+          "The requested card is the standard English non-holo Charmander 26/197 from Obsidian Flames.",
+          "The TCGplayer Near Mint English sales shown by PriceCharting are representative of the requested condition.",
+          "Shipping and tax are excluded.",
+          "eBay snippets are supplemental asks, not completed sales."
+        ],
+        "limitations": [
+          "Source pages do not explicitly state finish for the completed-sale rows.",
+          "The eBay evidence is search-result snippet data, not independently verified sold transactions.",
+          "Only a few recent sales are visible in the retrieved snippet; market liquidity may be thin and noisy.",
+          "PriceCharting’s ungraded market reference is an aggregate reference, not a single transaction price."
+        ],
+        "recommendation": "usable_estimate",
+        "review_recommended": false,
+        "insufficient_evidence": false,
+        "source_audit": [
+          {
+            "source": {
+              "id": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26?utm_source=openai",
+              "source_name": "PriceCharting",
+              "url": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26",
+              "reported_price": "$1.07",
+              "currency": "USD",
+              "price_type": "published_market_reference",
+              "price_meaning": "Current ungraded market reference based on historic completed sales for Charmander #26 in Obsidian Flames.",
+              "observed_identity": {
+                "game": "pokemon",
+                "name": "Charmander",
+                "set_name": "Pokemon Obsidian Flames",
+                "number": "26",
+                "language": null,
+                "edition": null,
+                "finish": null,
+                "condition": null,
+                "graded": false
+              },
+              "condition_scope": "generic_ungraded",
+              "condition_label": null,
+              "source_date": null,
+              "date_meaning": "unknown",
+              "price_basis": "item_only",
+              "observation_kind": "page_content",
+              "source_summary": "Page lists an ungraded market price of $1.07 and separate graded values; it is the non-holo Charmander #26 page.",
+              "missing_information": [
+                "explicit finish not stated in source",
+                "exact condition not stated in source",
+                "source date not shown"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "set_name printing mismatch",
+              "number printing mismatch",
+              "Invalid reported source price"
+            ],
+            "warnings": [
+              "Unknown source identity fields: language, edition, finish",
+              "Source price missing",
+              "Source date unknown; freshness unconfirmed"
+            ],
+            "independently_verified": false
+          },
+          {
+            "source": {
+              "id": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26?utm_source=openai",
+              "source_name": "PriceCharting",
+              "url": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26",
+              "reported_price": "$0.34",
+              "currency": "USD",
+              "price_type": "completed_sale_report",
+              "price_meaning": "Recent completed sale shown for Charmander #26 Near Mint English on TCGplayer.",
+              "observed_identity": {
+                "game": "pokemon",
+                "name": "Charmander",
+                "set_name": "Pokemon Obsidian Flames",
+                "number": "26",
+                "language": "English",
+                "edition": null,
+                "finish": null,
+                "condition": "Near Mint",
+                "graded": false
+              },
+              "condition_scope": "explicit_condition",
+              "condition_label": "Near Mint",
+              "source_date": "2026-10-17",
+              "date_meaning": "sale_date",
+              "price_basis": "item_only",
+              "observation_kind": "page_content",
+              "source_summary": "Recent completed sale row for Charmander #26 Near Mint English on TCGplayer.",
+              "missing_information": [
+                "explicit finish not stated in source",
+                "edition not stated in source"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "set_name printing mismatch",
+              "number printing mismatch",
+              "Explicit condition not supported by a source label",
+              "Unreviewed or contradictory source condition label",
+              "Invalid reported source price"
+            ],
+            "warnings": [
+              "Unknown source identity fields: edition, finish",
+              "Source price missing"
+            ],
+            "independently_verified": false
+          },
+          {
+            "source": {
+              "id": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26?utm_source=openai",
+              "source_name": "PriceCharting",
+              "url": "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26",
+              "reported_price": "$0.40",
+              "currency": "USD",
+              "price_type": "completed_sale_report",
+              "price_meaning": "Recent completed sale shown for Charmander #26 Near Mint English on TCGplayer.",
+              "observed_identity": {
+                "game": "pokemon",
+                "name": "Charmander",
+                "set_name": "Pokemon Obsidian Flames",
+                "number": "26",
+                "language": "English",
+                "edition": null,
+                "finish": null,
+                "condition": "Near Mint",
+                "graded": false
+              },
+              "condition_scope": "explicit_condition",
+              "condition_label": "Near Mint",
+              "source_date": "2026-10-12",
+              "date_meaning": "sale_date",
+              "price_basis": "item_only",
+              "observation_kind": "page_content",
+              "source_summary": "Recent completed sale row for Charmander #26 Near Mint English on TCGplayer.",
+              "missing_information": [
+                "explicit finish not stated in source",
+                "edition not stated in source"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "set_name printing mismatch",
+              "number printing mismatch",
+              "Explicit condition not supported by a source label",
+              "Unreviewed or contradictory source condition label",
+              "Invalid reported source price"
+            ],
+            "warnings": [
+              "Unknown source identity fields: edition, finish",
+              "Source price missing"
+            ],
+            "independently_verified": false
+          },
+          {
+            "source": {
+              "id": "https://www.ebay.com/p/10062149619?utm_source=openai",
+              "source_name": "eBay",
+              "url": "https://www.ebay.com/p/10062149619",
+              "reported_price": "$1.50",
+              "currency": "USD",
+              "price_type": "active_asking_price",
+              "price_meaning": "Current asking price shown in eBay listing snippets for Charmander 026/197 Obsidian Flames Near Mint.",
+              "observed_identity": {
+                "game": "pokemon",
+                "name": "Charmander",
+                "set_name": "Obsidian Flames",
+                "number": "026/197",
+                "language": null,
+                "edition": null,
+                "finish": null,
+                "condition": "Near Mint",
+                "graded": false
+              },
+              "condition_scope": "explicit_condition",
+              "condition_label": "Near Mint",
+              "source_date": null,
+              "date_meaning": "unknown",
+              "price_basis": "item_only",
+              "observation_kind": "search_result",
+              "source_summary": "Search-result snippets show active listings around $0.99 to $1.50 for near mint copies.",
+              "missing_information": [
+                "exact listing date unknown",
+                "explicit finish not stated in source"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "partial_claimed_match",
+            "issues": [
+              "Explicit condition not supported by a source label",
+              "Unreviewed or contradictory source condition label",
+              "Invalid reported source price"
+            ],
+            "warnings": [
+              "Unknown source identity fields: language, edition, finish",
+              "Source price missing",
+              "Source date unknown; freshness unconfirmed",
+              "Supplementary context, not a market-clearing anchor"
+            ],
+            "independently_verified": false
+          },
+          {
+            "source": {
+              "id": "https://www.ebay.com/p/10062149619?utm_source=openai",
+              "source_name": "eBay",
+              "url": "https://www.ebay.com/p/10062149619",
+              "reported_price": "$0.99",
+              "currency": "USD",
+              "price_type": "active_asking_price",
+              "price_meaning": "Current asking price shown in eBay listing snippets for Charmander 026/197 Obsidian Flames Near Mint.",
+              "observed_identity": {
+                "game": "pokemon",
+                "name": "Charmander",
+                "set_name": "Obsidian Flames",
+                "number": "026/197",
+                "language": null,
+                "edition": null,
+                "finish": null,
+                "condition": "Near Mint",
+                "graded": false
+              },
+              "condition_scope": "explicit_condition",
+              "condition_label": "Near Mint",
+              "source_date": null,
+              "date_meaning": "unknown",
+              "price_basis": "item_only",
+              "observation_kind": "search_result",
+              "source_summary": "Search-result snippets show active listings around $0.99 to $1.50 for near mint copies.",
+              "missing_information": [
+                "exact listing date unknown",
+                "explicit finish not stated in source"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "partial_claimed_match",
+            "issues": [
+              "Explicit condition not supported by a source label",
+              "Unreviewed or contradictory source condition label",
+              "Invalid reported source price"
+            ],
+            "warnings": [
+              "Unknown source identity fields: language, edition, finish",
+              "Source price missing",
+              "Source date unknown; freshness unconfirmed",
+              "Supplementary context, not a market-clearing anchor"
+            ],
+            "independently_verified": false
+          }
+        ],
+        "policy_warnings": [
+          "Unknown source identity fields: language, edition, finish",
+          "Source price missing",
+          "Source date unknown; freshness unconfirmed",
+          "Unknown source identity fields: edition, finish",
+          "Source price missing",
+          "Unknown source identity fields: edition, finish",
+          "Source price missing"
+        ],
+        "independently_validated_accuracy": false,
+        "independent_transaction_count": 0,
+        "confidence_percentage": null,
+        "distinction": "AI market estimate; reported source facts are unverified AI extractions, not authenticated transactions."
+      },
+      "validation_errors": [
+        "Duplicate or empty source ID",
+        "Duplicate or empty source ID",
+        "Duplicate or empty source ID",
+        "Estimate relies on missing, mismatched, asking-only or unsupported evidence",
+        "Condition-specific estimate lacks explicit requested-condition evidence"
+      ],
+      "consulted_urls": [
+        "https://developer.ebay.com/cms/files/connect-2023/buy_apis.pdf",
+        "https://help.tcgplayer.com/hc/en-us/articles/115009506407-TCGplayer-App-FAQ",
+        "https://help.tcgplayer.com/hc/en-us/articles/213588017-TCGplayer-Market-Price",
+        "https://img.tcgplayer.com/emails/tcgplayer_direct/TCGplayerDirect_SellerShippingGuidelines.pdf",
+        "https://mktg-assets.tcgplayer.com/web/reports/2021/TCGplayer-Report-Holiday-Shopping-Trends-2021.pdf",
+        "https://mktg-assets.tcgplayer.com/web/seller/guides/Card-Conditioning-Standards.pdf",
+        "https://mktg-assets.tcgplayer.com/web/seller/guides/TR-2022-GAMA-Sell-Sheet.pdf",
+        "https://www.ebay.com/b/Charmander-026-197-SV03-Obsidian-Flames/2536/bn_7124582849",
+        "https://www.ebay.com/itm/127655340852",
+        "https://www.ebay.com/itm/186914654920",
+        "https://www.ebay.com/p/10062149619",
+        "https://www.pricecharting.com/console/pokemon-obsidian-flames",
+        "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-26",
+        "https://www.pricecharting.com/game/pokemon-obsidian-flames/charmander-holo-26",
+        "https://www.pricecharting.com/search-products?ignore-preferences=true&q=Charmander+OBF+026%2F197&type=prices",
+        "https://www.pricecharting.com/search-products?q=obsidian+flames&type=prices",
+        "https://www.pricecharting.com/search-products?q=pokemon+charmander+26%2F197&type=market"
+      ],
+      "retrieved_at": "2026-10-25T20:41:46.745070+00:00",
+      "response_id": "resp_0f396ec4b92d9408016ade697d22bc87d2a880136a39032c3c",
+      "response_model": "gpt-5.4-mini-2026-03-17",
+      "api_usage": {
+        "input_tokens": 10416,
+        "cached_input_tokens": 0,
+        "output_tokens": 1949,
+        "reasoning_tokens": 470,
+        "search_calls": 1,
+        "token_cost_usd": "0.0165825",
+        "search_cost_usd": "0.01",
+        "estimated_total_usd": "0.0265825",
+        "rate_date": "2026-10-24",
+        "model": "gpt-5.4-mini",
+        "billing_note": "Search content assumed included in reported input usage; all web-search output items charged conservatively. Reconcile with invoice."
+      },
+      "search_action_audit": {
+        "status": "diagnostic_only",
+        "web_output_items": 1,
+        "completed_actions": 1,
+        "completed_search_actions": 1,
+        "unfinished_actions": 0,
+        "reported_search_requests": 1,
+        "conservative_estimate_usd": "0.0265825",
+        "search_action_estimate_usd": "0.0265825",
+        "issues": [],
+        "note": "Not an invoice. Published search-action fee plus token estimate; production reserves and original estimator unchanged."
+      },
+      "estimated_api_cost_usd": "0.0265825",
+      "latency_seconds": 15.799775539000002
+    },
+    {
+      "case_id": "modern-chase",
+      "target": {
+        "game": "pokemon",
+        "set_name": "151",
+        "number": "199/165",
+        "language": "english",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM",
+        "name": "charizard ex",
+        "graded": false
+      },
+      "as_of": "2026-10-25",
+      "status": "invalid_estimate",
+      "estimate": null,
+      "quarantined_estimate": {
+        "card_identity": {
+          "game": "pokemon",
+          "name": "charizard ex",
+          "set_name": "151",
+          "number": "199/165",
+          "language": "english",
+          "edition": "standard",
+          "finish": "holo",
+          "condition": "NM",
+          "graded": false
+        },
+        "requested_condition": "NM",
+        "estimated_market_value": "345",
+        "estimated_low": "320",
+        "estimated_high": "370",
+        "currency": "USD",
+        "valuation_type": "condition_specific_market_estimate",
+        "evidence_quality": "mixed",
+        "sources": [
+          {
+            "id": "https://www.tcgplayer.com/search/pokemon/product?q=Charizard+ex+-+199%2F165&utm_source=openai",
+            "source_name": "TCGplayer search result for Charizard ex - 199/165",
+            "url": "https://www.tcgplayer.com/search/pokemon/product?q=Charizard+ex+-+199%2F165",
+            "reported_price": "366.83",
+            "currency": "USD",
+            "price_type": "published_market_reference",
+            "price_meaning": "Market Price for the Near Mint listing group shown in the result snippet.",
+            "observed_identity": {
+              "game": "Pokemon",
+              "name": "Charizard ex",
+              "set_name": "SV: Scarlet & Violet 151",
+              "number": "199/165",
+              "language": "English",
+              "edition": null,
+              "finish": "Holofoil",
+              "condition": "Near Mint",
+              "graded": false
+            },
+            "condition_scope": "explicit_condition",
+            "condition_label": "Near Mint",
+            "source_date": null,
+            "date_meaning": "unknown",
+            "price_basis": "item_only",
+            "observation_kind": "search_result",
+            "source_summary": "Search snippet shows 210 listings from $269.99 and Market Price $366.83 for Charizard ex - 199/165 in Near Mint.",
+            "missing_information": [
+              "No source date in snippet",
+              "Edition not explicitly stated",
+              "Snippet only, not a full page capture"
+            ]
+          },
+          {
+            "id": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199?q=charizard+ex+199&utm_source=openai",
+            "source_name": "PriceCharting card page for Charizard ex #199",
+            "url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199?q=charizard+ex+199",
+            "reported_price": "350.00",
+            "currency": "USD",
+            "price_type": "completed_sale_report",
+            "price_meaning": "Shown as a sold eBay example within the price guide snippet.",
+            "observed_identity": {
+              "game": "Pokemon",
+              "name": "Charizard ex",
+              "set_name": "Pokemon Scarlet & Violet 151",
+              "number": "199/165",
+              "language": "EN",
+              "edition": null,
+              "finish": "Holo",
+              "condition": null,
+              "graded": false
+            },
+            "condition_scope": "unknown",
+            "condition_label": null,
+            "source_date": null,
+            "date_meaning": "unknown",
+            "price_basis": "item_only",
+            "observation_kind": "search_result",
+            "source_summary": "Search snippet shows a $350.00 eBay sold example associated with Charizard ex #199/165.",
+            "missing_information": [
+              "No source date in snippet",
+              "Exact condition of the sold example not stated",
+              "Snippet only, not a full page capture"
+            ]
+          },
+          {
+            "id": "https://valuemycard.com/card/517045-charizard-ex-pokemon-sv-scarlet-violet-151?utm_source=openai",
+            "source_name": "ValueMyCard page for Charizard ex #199/165",
+            "url": "https://valuemycard.com/card/517045-charizard-ex-pokemon-sv-scarlet-violet-151",
+            "reported_price": "307.49",
+            "currency": "USD",
+            "price_type": "published_market_reference",
+            "price_meaning": "US-market reference shown on the page for Near Mint Holofoil.",
+            "observed_identity": {
+              "game": "Pokemon",
+              "name": "Charizard ex",
+              "set_name": "SV: Scarlet & Violet 151",
+              "number": "199/165",
+              "language": null,
+              "edition": null,
+              "finish": "Holofoil",
+              "condition": "Near Mint",
+              "graded": false
+            },
+            "condition_scope": "explicit_condition",
+            "condition_label": "Near Mint",
+            "source_date": "2026-10-21",
+            "date_meaning": "published_update",
+            "price_basis": "item_only",
+            "observation_kind": "page_content",
+            "source_summary": "Page states a TCGPlayer US-market reference of $307.49, updated 21 Oct 2026.",
+            "missing_information": [
+              "Page is an aggregator reference rather than a primary marketplace price",
+              "Observed language not stated"
+            ]
+          }
+        ],
+        "supporting_source_ids": [
+          "https://www.tcgplayer.com/search/pokemon/product?q=Charizard+ex+-+199%2F165&utm_source=openai",
+          "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199?q=charizard+ex+199&utm_source=openai",
+          "https://valuemycard.com/card/517045-charizard-ex-pokemon-sv-scarlet-violet-151?utm_source=openai"
+        ],
+        "reasoning_summary": "The requested printing and condition are supported by multiple references for Charizard ex 199/165 from Scarlet & Violet 151 in Near Mint Holofoil. TCGplayer's market price snippet is the strongest current published reference at $366.83, while PriceCharting shows a $350 sold example in its guide snippet and ValueMyCard shows a more recent TCGPlayer reference at $307.49. Because these are not perfectly identical marketplace measures and one source is an aggregator reference, I weighted them conservatively and estimated a current NM item-only market value around the mid-$340s, with a range spanning the lower recent reference and the higher TCGplayer market figure.",
+        "assumptions": [
+          "The card is the English, non-graded Charizard ex 199/165 from Scarlet & Violet 151.",
+          "The requested condition NM is comparable to the Near Mint references cited.",
+          "No shipping or tax is included in the estimate."
+        ],
+        "limitations": [
+          "Search snippets are less reliable than full page captures.",
+          "One cited source is an aggregator reference and not an independent marketplace.",
+          "The available evidence does not provide a fully verified completed-sale set for the exact requested condition."
+        ],
+        "recommendation": "usable_estimate",
+        "review_recommended": false,
+        "insufficient_evidence": false,
+        "source_audit": [
+          {
+            "source": {
+              "id": "https://www.tcgplayer.com/search/pokemon/product?q=Charizard+ex+-+199%2F165&utm_source=openai",
+              "source_name": "TCGplayer search result for Charizard ex - 199/165",
+              "url": "https://www.tcgplayer.com/search/pokemon/product?q=Charizard+ex+-+199%2F165",
+              "reported_price": "366.83",
+              "currency": "USD",
+              "price_type": "published_market_reference",
+              "price_meaning": "Market Price for the Near Mint listing group shown in the result snippet.",
+              "observed_identity": {
+                "game": "Pokemon",
+                "name": "Charizard ex",
+                "set_name": "SV: Scarlet & Violet 151",
+                "number": "199/165",
+                "language": "English",
+                "edition": null,
+                "finish": "Holofoil",
+                "condition": "Near Mint",
+                "graded": false
+              },
+              "condition_scope": "explicit_condition",
+              "condition_label": "Near Mint",
+              "source_date": null,
+              "date_meaning": "unknown",
+              "price_basis": "item_only",
+              "observation_kind": "search_result",
+              "source_summary": "Search snippet shows 210 listings from $269.99 and Market Price $366.83 for Charizard ex - 199/165 in Near Mint.",
+              "missing_information": [
+                "No source date in snippet",
+                "Edition not explicitly stated",
+                "Snippet only, not a full page capture"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "set_name printing mismatch",
+              "finish printing mismatch",
+              "Explicit condition not supported by a source label",
+              "Unreviewed or contradictory source condition label"
+            ],
+            "warnings": [
+              "Unknown source identity fields: edition",
+              "Source date unknown; freshness unconfirmed"
+            ],
+            "independently_verified": false
+          },
+          {
+            "source": {
+              "id": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199?q=charizard+ex+199&utm_source=openai",
+              "source_name": "PriceCharting card page for Charizard ex #199",
+              "url": "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199?q=charizard+ex+199",
+              "reported_price": "350.00",
+              "currency": "USD",
+              "price_type": "completed_sale_report",
+              "price_meaning": "Shown as a sold eBay example within the price guide snippet.",
+              "observed_identity": {
+                "game": "Pokemon",
+                "name": "Charizard ex",
+                "set_name": "Pokemon Scarlet & Violet 151",
+                "number": "199/165",
+                "language": "EN",
+                "edition": null,
+                "finish": "Holo",
+                "condition": null,
+                "graded": false
+              },
+              "condition_scope": "unknown",
+              "condition_label": null,
+              "source_date": null,
+              "date_meaning": "unknown",
+              "price_basis": "item_only",
+              "observation_kind": "search_result",
+              "source_summary": "Search snippet shows a $350.00 eBay sold example associated with Charizard ex #199/165.",
+              "missing_information": [
+                "No source date in snippet",
+                "Exact condition of the sold example not stated",
+                "Snippet only, not a full page capture"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "set_name printing mismatch",
+              "language printing mismatch"
+            ],
+            "warnings": [
+              "Unknown source identity fields: edition",
+              "Source date unknown; freshness unconfirmed"
+            ],
+            "independently_verified": false
+          },
+          {
+            "source": {
+              "id": "https://valuemycard.com/card/517045-charizard-ex-pokemon-sv-scarlet-violet-151?utm_source=openai",
+              "source_name": "ValueMyCard page for Charizard ex #199/165",
+              "url": "https://valuemycard.com/card/517045-charizard-ex-pokemon-sv-scarlet-violet-151",
+              "reported_price": "307.49",
+              "currency": "USD",
+              "price_type": "published_market_reference",
+              "price_meaning": "US-market reference shown on the page for Near Mint Holofoil.",
+              "observed_identity": {
+                "game": "Pokemon",
+                "name": "Charizard ex",
+                "set_name": "SV: Scarlet & Violet 151",
+                "number": "199/165",
+                "language": null,
+                "edition": null,
+                "finish": "Holofoil",
+                "condition": "Near Mint",
+                "graded": false
+              },
+              "condition_scope": "explicit_condition",
+              "condition_label": "Near Mint",
+              "source_date": "2026-10-21",
+              "date_meaning": "published_update",
+              "price_basis": "item_only",
+              "observation_kind": "page_content",
+              "source_summary": "Page states a TCGPlayer US-market reference of $307.49, updated 21 Oct 2026.",
+              "missing_information": [
+                "Page is an aggregator reference rather than a primary marketplace price",
+                "Observed language not stated"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "set_name printing mismatch",
+              "finish printing mismatch",
+              "Explicit condition not supported by a source label",
+              "Unreviewed or contradictory source condition label"
+            ],
+            "warnings": [
+              "Unknown source identity fields: language, edition"
+            ],
+            "independently_verified": false
+          }
+        ],
+        "policy_warnings": [
+          "Unknown source identity fields: edition",
+          "Source date unknown; freshness unconfirmed",
+          "Unknown source identity fields: edition",
+          "Source date unknown; freshness unconfirmed",
+          "Unknown source identity fields: language, edition"
+        ],
+        "independently_validated_accuracy": false,
+        "independent_transaction_count": 0,
+        "confidence_percentage": null,
+        "distinction": "AI market estimate; reported source facts are unverified AI extractions, not authenticated transactions."
+      },
+      "validation_errors": [
+        "Estimate relies on missing, mismatched, asking-only or unsupported evidence",
+        "Condition-specific estimate lacks explicit requested-condition evidence"
+      ],
+      "consulted_urls": [
+        "https://assets-global.website-files.com/6724d0089d4394538e0ccb41/680ce3235120df33e1a6fb67_11156633065.pdf",
+        "https://assets.pokemon.com/assets/cms2-en-uk/pdf/trading-card-game/checklist/mew_web_cardlist_en.pdf",
+        "https://cardlytics.app/charizard-ex-199-165-price",
+        "https://d1i787aglh9bmb.cloudfront.net/assets/img/sv-expansions/sv3dot5/download/en-us/SV03Pt5-Card-List-EN.pdf",
+        "https://dexicards.com/pokemon/cards/5736-charizard-ex",
+        "https://klxcards.com/card-library/pokemon/pokemon-151/199-165-charizard-ex-holo/",
+        "https://lastsold.com/en/sets/151/charizard-ex-199",
+        "https://manuals.plus/asin/B0CP8Z263V.pdf",
+        "https://pokebuck.com/en/cards/151/199-charizard-ex",
+        "https://pully.co.uk/cards/scarlet-violet-151/199-charizard-ex/",
+        "https://valuemycard.com/card/517045-charizard-ex-pokemon-sv-scarlet-violet-151",
+        "https://www.banktcg.com/cards/pokemon/scarlet-violet-151/charizard-ex-199",
+        "https://www.codedyellow.com/Pdf/SV151Numerical.pdf",
+        "https://www.codedyellow.com/Pdf/SV151Rarity.pdf",
+        "https://www.collectaio.com/item/sv-scarlet-violet-151-charizard-ex-199-165-199-165?variation=5171",
+        "https://www.pokemoncardprice.com/cards/charizard-ex-151-199/holofoil",
+        "https://www.pricecharting.com/game/pokemon-scarlet-%26-violet-151/charizard-ex-199?q=charizard+ex+199",
+        "https://www.reddit.com/r/IsMyPokemonCardFake/comments/1vqtkw2/complete_151_set_1k_listing_look_legit/",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1hsyt2n",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1jogo1d",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1pap9to/usush_151_hits_bubble_mew_tag_teams_modern_sealed/",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1rrbdn0/us_us_h_151_irs_sirs_slabs_promos_w_paypal_trades/",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1rxonxv/usush_151_cards_graded_others_w_paypal_open_to/",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1rxqsop/us_us_h_151_lot_and_dupes_w_pp_whole_lot_at_85/",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1wk9kei/us_ww_h_jp_singles_w_jp_singles_paypal/",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1wpi69r/us_us_h_151_etb_30th_anniversary_hits_low_to/",
+        "https://www.reddit.com/r/pokemoncardselling/comments/1wpi55r/us_us_h_151_etb_30th_anniversary_hits_low_to/",
+        "https://www.tcgplayer.com/search/pokemon/product?q=Charizard+ex+-+199%2F165"
+      ],
+      "retrieved_at": "2026-10-25T20:42:01.116391+00:00",
+      "response_id": "resp_03132bfae7c97d8b016ade698ae8cc87d294c915e6fa0916af",
+      "response_model": "gpt-5.4-mini-2026-03-17",
+      "api_usage": {
+        "input_tokens": 10362,
+        "cached_input_tokens": 4480,
+        "output_tokens": 1894,
+        "reasoning_tokens": 472,
+        "search_calls": 1,
+        "token_cost_usd": "0.0132705",
+        "search_cost_usd": "0.01",
+        "estimated_total_usd": "0.0232705",
+        "rate_date": "2026-10-24",
+        "model": "gpt-5.4-mini",
+        "billing_note": "Search content assumed included in reported input usage; all web-search output items charged conservatively. Reconcile with invoice."
+      },
+      "search_action_audit": {
+        "status": "diagnostic_only",
+        "web_output_items": 1,
+        "completed_actions": 1,
+        "completed_search_actions": 1,
+        "unfinished_actions": 0,
+        "reported_search_requests": 1,
+        "conservative_estimate_usd": "0.0232705",
+        "search_action_estimate_usd": "0.0232705",
+        "issues": [],
+        "note": "Not an invoice. Published search-action fee plus token estimate; production reserves and original estimator unchanged."
+      },
+      "estimated_api_cost_usd": "0.0232705",
+      "latency_seconds": 14.366128794999995
+    },
+    {
+      "case_id": "vintage-charizard-lp",
+      "target": {
+        "game": "pokemon",
+        "set_name": "base set",
+        "number": "4/102",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "LP",
+        "name": "charizard",
+        "graded": false
+      },
+      "as_of": "2026-10-25",
+      "status": "invalid_estimate",
+      "estimate": null,
+      "quarantined_estimate": {
+        "card_identity": {
+          "game": "pokemon",
+          "name": "charizard",
+          "set_name": "base set",
+          "number": "4/102",
+          "language": "english",
+          "edition": "unlimited",
+          "finish": "holo",
+          "condition": "LP",
+          "graded": false
+        },
+        "requested_condition": "LP",
+        "estimated_market_value": "$365",
+        "estimated_low": "$345",
+        "estimated_high": "$460",
+        "currency": "USD",
+        "valuation_type": "condition_specific_market_estimate",
+        "evidence_quality": "mixed",
+        "sources": [
+          {
+            "id": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4?utm_source=openai",
+            "source_name": "PriceCharting",
+            "url": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4",
+            "reported_price": "$367.79",
+            "currency": "USD",
+            "price_type": "completed_sale_report",
+            "price_meaning": "Reported completed-sale market reference for Charizard 4/102 Base Set Unlimited in Lightly Played condition.",
+            "observed_identity": {
+              "game": "Pokemon",
+              "name": "Charizard",
+              "set_name": "Base Set",
+              "number": "4/102",
+              "language": null,
+              "edition": "Unlimited",
+              "finish": "Holo Rare",
+              "condition": "Lightly Played",
+              "graded": false
+            },
+            "condition_scope": "explicit_condition",
+            "condition_label": "Lightly Played",
+            "source_date": "2026-10-24",
+            "date_meaning": "listing_observation",
+            "price_basis": "item_only",
+            "observation_kind": "search_result",
+            "source_summary": "Search snippet shows recent completed sales, including a Lightly Played Charizard 4/102 Base Set Unlimited at $367.79.",
+            "missing_information": [
+              "exact sale venue details",
+              "full listing context",
+              "shipping exclusion confirmation from source"
+            ]
+          },
+          {
+            "id": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4?utm_source=openai",
+            "source_name": "PriceCharting",
+            "url": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4",
+            "reported_price": "$349.99",
+            "currency": "USD",
+            "price_type": "completed_sale_report",
+            "price_meaning": "Reported completed-sale market reference for Charizard 4/102 Base Set Unlimited in Lightly Played condition.",
+            "observed_identity": {
+              "game": "Pokemon",
+              "name": "Charizard",
+              "set_name": "Base Set",
+              "number": "4/102",
+              "language": null,
+              "edition": "Unlimited",
+              "finish": "Holo Rare",
+              "condition": "Lightly Played",
+              "graded": false
+            },
+            "condition_scope": "explicit_condition",
+            "condition_label": "Lightly Played",
+            "source_date": "2026-10-23",
+            "date_meaning": "listing_observation",
+            "price_basis": "item_only",
+            "observation_kind": "search_result",
+            "source_summary": "Search snippet also shows a Lightly Played base-set unlimited Charizard sold at $349.99.",
+            "missing_information": [
+              "exact sale venue details",
+              "full listing context",
+              "shipping exclusion confirmation from source"
+            ]
+          },
+          {
+            "id": "https://www.ebay.com/itm/327385385994?utm_source=openai",
+            "source_name": "eBay",
+            "url": "https://www.ebay.com/itm/327385385994",
+            "reported_price": "$380.00",
+            "currency": "USD",
+            "price_type": "completed_sale_report",
+            "price_meaning": "Completed-sale report for the exact card family, but the observed condition is Moderately Played rather than Lightly Played.",
+            "observed_identity": {
+              "game": "Pokémon TCG",
+              "name": "Charizard",
+              "set_name": "Base Set",
+              "number": "4/102",
+              "language": null,
+              "edition": "Unlimited",
+              "finish": "Holo",
+              "condition": "Moderately played",
+              "graded": false
+            },
+            "condition_scope": "explicit_condition",
+            "condition_label": "Moderately played",
+            "source_date": "2026-10-09",
+            "date_meaning": "sale_date",
+            "price_basis": "item_only",
+            "observation_kind": "page_content",
+            "source_summary": "Sold listing for Base Set Charizard 4/102 Holo Unlimited WOTC at $380, condition observed as Moderately Played.",
+            "missing_information": [
+              "exact centering/foil wear details",
+              "whether condition is directly comparable to LP"
+            ]
+          },
+          {
+            "id": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4?utm_source=openai",
+            "source_name": "PriceCharting",
+            "url": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4",
+            "reported_price": "$470.00",
+            "currency": "USD",
+            "price_type": "completed_sale_report",
+            "price_meaning": "Reported completed-sale reference for a listing explicitly described as Lightly Played / LP in the search snippet context.",
+            "observed_identity": {
+              "game": "Pokemon",
+              "name": "Charizard",
+              "set_name": "Base Set",
+              "number": "4/102",
+              "language": null,
+              "edition": "Unlimited",
+              "finish": "Holo Rare",
+              "condition": "Lightly Played",
+              "graded": false
+            },
+            "condition_scope": "explicit_condition",
+            "condition_label": "Lightly Played",
+            "source_date": "2026-10-23",
+            "date_meaning": "listing_observation",
+            "price_basis": "item_only",
+            "observation_kind": "search_result",
+            "source_summary": "Search snippet includes a Base Set Unlimited Charizard described as LP with a reported price of $470.00.",
+            "missing_information": [
+              "whether price reflects accepted offer or closing bid",
+              "exact venue and item specifics"
+            ]
+          }
+        ],
+        "supporting_source_ids": [
+          "https://www.pricecharting.com/game/pokemon-base-set/charizard-4?utm_source=openai",
+          "https://www.ebay.com/itm/327385385994?utm_source=openai"
+        ],
+        "reasoning_summary": "I anchored the estimate to recent Lightly Played references for the exact card family and printing: PriceCharting search results surfaced LP completed-sale references at $349.99, $367.79, and $470.00, which bracket the likely market for Base Set unlimited Charizard 4/102 in LP. I treated the $470 reference as an upper-edge LP datapoint and the $349.99-$367.79 references as the core market band. I used the $380 eBay sale only as adjacent context because the observed condition was Moderately Played, not LP. This supports a condition-specific estimate for LP, but the evidence is still somewhat mixed because one key source is an aggregator snippet and the eBay comp is not the exact requested condition.",
+        "assumptions": [
+          "The requested card is English Base Set unlimited Charizard 4/102 holo, ungraded, in Lightly Played condition.",
+          "Source-reported prices are item-only and do not include shipping or tax.",
+          "PriceCharting search snippets reflect completed-sale references but are not independently verified transaction records.",
+          "The MP eBay sale is only a secondary contextual comp, not a direct LP anchor."
+        ],
+        "limitations": [
+          "PriceCharting page content could not be fully opened; evidence comes from search snippets.",
+          "One eBay comp is Moderately Played, so condition matching is imperfect.",
+          "LP condition can vary materially by surface wear, edge wear, and foil scratches, which are not fully visible from the snippets.",
+          "Market liquidity for vintage Charizard can swing with photo quality, authenticity confidence, and grading prospects."
+        ],
+        "recommendation": "usable_estimate",
+        "review_recommended": false,
+        "insufficient_evidence": false,
+        "source_audit": [
+          {
+            "source": {
+              "id": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4?utm_source=openai",
+              "source_name": "PriceCharting",
+              "url": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4",
+              "reported_price": "$367.79",
+              "currency": "USD",
+              "price_type": "completed_sale_report",
+              "price_meaning": "Reported completed-sale market reference for Charizard 4/102 Base Set Unlimited in Lightly Played condition.",
+              "observed_identity": {
+                "game": "Pokemon",
+                "name": "Charizard",
+                "set_name": "Base Set",
+                "number": "4/102",
+                "language": null,
+                "edition": "Unlimited",
+                "finish": "Holo Rare",
+                "condition": "Lightly Played",
+                "graded": false
+              },
+              "condition_scope": "explicit_condition",
+              "condition_label": "Lightly Played",
+              "source_date": "2026-10-24",
+              "date_meaning": "listing_observation",
+              "price_basis": "item_only",
+              "observation_kind": "search_result",
+              "source_summary": "Search snippet shows recent completed sales, including a Lightly Played Charizard 4/102 Base Set Unlimited at $367.79.",
+              "missing_information": [
+                "exact sale venue details",
+                "full listing context",
+                "shipping exclusion confirmation from source"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "finish printing mismatch",
+              "Explicit condition not supported by a source label",
+              "Unreviewed or contradictory source condition label",
+              "Invalid reported source price"
+            ],
+            "warnings": [
+              "Unknown source identity fields: language",
+              "Source price missing"
+            ],
+            "independently_verified": false
+          },
+          {
+            "source": {
+              "id": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4?utm_source=openai",
+              "source_name": "PriceCharting",
+              "url": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4",
+              "reported_price": "$349.99",
+              "currency": "USD",
+              "price_type": "completed_sale_report",
+              "price_meaning": "Reported completed-sale market reference for Charizard 4/102 Base Set Unlimited in Lightly Played condition.",
+              "observed_identity": {
+                "game": "Pokemon",
+                "name": "Charizard",
+                "set_name": "Base Set",
+                "number": "4/102",
+                "language": null,
+                "edition": "Unlimited",
+                "finish": "Holo Rare",
+                "condition": "Lightly Played",
+                "graded": false
+              },
+              "condition_scope": "explicit_condition",
+              "condition_label": "Lightly Played",
+              "source_date": "2026-10-23",
+              "date_meaning": "listing_observation",
+              "price_basis": "item_only",
+              "observation_kind": "search_result",
+              "source_summary": "Search snippet also shows a Lightly Played base-set unlimited Charizard sold at $349.99.",
+              "missing_information": [
+                "exact sale venue details",
+                "full listing context",
+                "shipping exclusion confirmation from source"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "finish printing mismatch",
+              "Explicit condition not supported by a source label",
+              "Unreviewed or contradictory source condition label",
+              "Invalid reported source price"
+            ],
+            "warnings": [
+              "Unknown source identity fields: language",
+              "Source price missing"
+            ],
+            "independently_verified": false
+          },
+          {
+            "source": {
+              "id": "https://www.ebay.com/itm/327385385994?utm_source=openai",
+              "source_name": "eBay",
+              "url": "https://www.ebay.com/itm/327385385994",
+              "reported_price": "$380.00",
+              "currency": "USD",
+              "price_type": "completed_sale_report",
+              "price_meaning": "Completed-sale report for the exact card family, but the observed condition is Moderately Played rather than Lightly Played.",
+              "observed_identity": {
+                "game": "Pokémon TCG",
+                "name": "Charizard",
+                "set_name": "Base Set",
+                "number": "4/102",
+                "language": null,
+                "edition": "Unlimited",
+                "finish": "Holo",
+                "condition": "Moderately played",
+                "graded": false
+              },
+              "condition_scope": "explicit_condition",
+              "condition_label": "Moderately played",
+              "source_date": "2026-10-09",
+              "date_meaning": "sale_date",
+              "price_basis": "item_only",
+              "observation_kind": "page_content",
+              "source_summary": "Sold listing for Base Set Charizard 4/102 Holo Unlimited WOTC at $380, condition observed as Moderately Played.",
+              "missing_information": [
+                "exact centering/foil wear details",
+                "whether condition is directly comparable to LP"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "game printing mismatch",
+              "Condition contradicts summary/missing-information",
+              "Explicit condition not supported by a source label",
+              "Unreviewed or contradictory source condition label",
+              "Invalid reported source price"
+            ],
+            "warnings": [
+              "Unknown source identity fields: language",
+              "Source price missing"
+            ],
+            "independently_verified": false
+          },
+          {
+            "source": {
+              "id": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4?utm_source=openai",
+              "source_name": "PriceCharting",
+              "url": "https://www.pricecharting.com/game/pokemon-base-set/charizard-4",
+              "reported_price": "$470.00",
+              "currency": "USD",
+              "price_type": "completed_sale_report",
+              "price_meaning": "Reported completed-sale reference for a listing explicitly described as Lightly Played / LP in the search snippet context.",
+              "observed_identity": {
+                "game": "Pokemon",
+                "name": "Charizard",
+                "set_name": "Base Set",
+                "number": "4/102",
+                "language": null,
+                "edition": "Unlimited",
+                "finish": "Holo Rare",
+                "condition": "Lightly Played",
+                "graded": false
+              },
+              "condition_scope": "explicit_condition",
+              "condition_label": "Lightly Played",
+              "source_date": "2026-10-23",
+              "date_meaning": "listing_observation",
+              "price_basis": "item_only",
+              "observation_kind": "search_result",
+              "source_summary": "Search snippet includes a Base Set Unlimited Charizard described as LP with a reported price of $470.00.",
+              "missing_information": [
+                "whether price reflects accepted offer or closing bid",
+                "exact venue and item specifics"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "finish printing mismatch",
+              "Explicit condition not supported by a source label",
+              "Unreviewed or contradictory source condition label",
+              "Invalid reported source price"
+            ],
+            "warnings": [
+              "Unknown source identity fields: language",
+              "Source price missing"
+            ],
+            "independently_verified": false
+          }
+        ],
+        "policy_warnings": [
+          "Unknown source identity fields: language",
+          "Source price missing",
+          "Unknown source identity fields: language",
+          "Source price missing",
+          "Unknown source identity fields: language",
+          "Source price missing",
+          "Unknown source identity fields: language",
+          "Source price missing"
+        ],
+        "independently_validated_accuracy": false,
+        "independent_transaction_count": 0,
+        "confidence_percentage": null,
+        "distinction": "AI market estimate; reported source facts are unverified AI extractions, not authenticated transactions."
+      },
+      "validation_errors": [
+        "Duplicate or empty source ID",
+        "Duplicate or empty source ID",
+        "Invalid estimated price",
+        "Invalid estimated price",
+        "Invalid estimated price",
+        "Missing estimate or inconsistent insufficient-evidence flags"
+      ],
+      "consulted_urls": [
+        "https://docs.ebay.com/document/bbada3c8-3947-4703-ae37-04a389fd2ada",
+        "https://img.tcgplayer.com/emails/tcgplayer_direct/TCGplayerDirect_SellerShippingGuidelines.pdf",
+        "https://img.tcgplayer.com/store/help/TCGplayerShippingReplaceCost.pdf",
+        "https://mktg-assets.tcgplayer.com/web/reports/2021/TCGplayer-Report-Holiday-Shopping-Trends-2021.pdf",
+        "https://mktg-assets.tcgplayer.com/web/seller/guides/Card-Conditioning-Standards.pdf",
+        "https://mktg-assets.tcgplayer.com/web/seller/guides/TR-2022-GAMA-Sell-Sheet.pdf",
+        "https://www.ebay.com/itm/158076191548?chn=ps&google_free_listing_action=view_item&mkcid=28&mkevt=1",
+        "https://www.ebay.com/itm/197292499173",
+        "https://www.ebay.com/itm/306762714747",
+        "https://www.ebay.com/itm/327385385994",
+        "https://www.ebay.com/itm/336822245658?campid=5338655631&customid=newlinks&mkcid=1&mkevt=1&mkrid=711-53200-19255-0&toolid=10001&var=0",
+        "https://www.ebay.com/itm/393344060201",
+        "https://www.ebay.com/sch/i.html?_nkw=charizard+base+set+unlimited+4%2F102&_sop=12",
+        "https://www.ebay.com/sch/i.html?_nkw=pokemon+base+set+unlimited+charizard&_sop=12",
+        "https://www.pricecharting.com/game/pokemon-base-set/charizard-1999-2000-4",
+        "https://www.pricecharting.com/game/pokemon-base-set/charizard-4",
+        "https://www.pricecharting.com/search-products?category=pokemon-cards&q=Charizard+Base+Set+4%2F102&type=prices",
+        "https://www.tcgplayer.com/categories/trading-and-collectible-card-games/pokemon/price-guides/base-set"
+      ],
+      "retrieved_at": "2026-10-25T20:42:17.901603+00:00",
+      "response_id": "resp_0bdd17f126824f48016ade69994c5087d295ba0995068c9f1e",
+      "response_model": "gpt-5.4-mini-2026-03-17",
+      "api_usage": {
+        "input_tokens": 10684,
+        "cached_input_tokens": 4480,
+        "output_tokens": 1932,
+        "reasoning_tokens": 667,
+        "search_calls": 3,
+        "token_cost_usd": "0.013683",
+        "search_cost_usd": "0.03",
+        "estimated_total_usd": "0.043683",
+        "rate_date": "2026-10-24",
+        "model": "gpt-5.4-mini",
+        "billing_note": "Search content assumed included in reported input usage; all web-search output items charged conservatively. Reconcile with invoice."
+      },
+      "search_action_audit": {
+        "status": "diagnostic_only",
+        "web_output_items": 3,
+        "completed_actions": 2,
+        "completed_search_actions": 1,
+        "unfinished_actions": 1,
+        "reported_search_requests": 1,
+        "conservative_estimate_usd": "0.043683",
+        "search_action_estimate_usd": "0.023683",
+        "issues": [],
+        "note": "Not an invoice. Published search-action fee plus token estimate; production reserves and original estimator unchanged."
+      },
+      "estimated_api_cost_usd": "0.043683",
+      "latency_seconds": 16.781480185999996
+    },
+    {
+      "case_id": "first-edition-gengar",
+      "target": {
+        "game": "pokemon",
+        "set_name": "fossil",
+        "number": "5/62",
+        "language": "english",
+        "edition": "first edition",
+        "finish": "holo",
+        "condition": "LP",
+        "name": "gengar",
+        "graded": false
+      },
+      "as_of": "2026-10-25",
+      "status": "invalid_estimate",
+      "estimate": null,
+      "quarantined_estimate": {
+        "card_identity": {
+          "game": "pokemon",
+          "name": "gengar",
+          "set_name": "fossil",
+          "number": "5/62",
+          "language": "english",
+          "edition": "first edition",
+          "finish": "holo",
+          "condition": "LP",
+          "graded": false
+        },
+        "requested_condition": "LP",
+        "estimated_market_value": "$320",
+        "estimated_low": "$275",
+        "estimated_high": "$470",
+        "currency": "USD",
+        "valuation_type": "condition_specific_market_estimate",
+        "evidence_quality": "mixed",
+        "sources": [
+          {
+            "id": "https://cardflip.io/cards/pokemon/fossil-1st-edition/gengar--base3-5-1st?utm_source=openai",
+            "source_name": "cardflip.io",
+            "url": "https://cardflip.io/cards/pokemon/fossil-1st-edition/gengar--base3-5-1st",
+            "reported_price": "$289.91",
+            "currency": "USD",
+            "price_type": "published_market_reference",
+            "price_meaning": "A Lightly Played copy is about this amount.",
+            "observed_identity": {
+              "game": "pokemon",
+              "name": "Gengar",
+              "set_name": "Fossil",
+              "number": "5/62",
+              "language": "English",
+              "edition": "1st Edition",
+              "finish": "Holo",
+              "condition": "Lightly Played",
+              "graded": false
+            },
+            "condition_scope": "explicit_condition",
+            "condition_label": "Lightly Played",
+            "source_date": null,
+            "date_meaning": "unknown",
+            "price_basis": "item_only",
+            "observation_kind": "search_result",
+            "source_summary": "Search result snippet for the 1st Edition Fossil Gengar page states a Lightly Played value near $289.91 and a Heavily Played value near $187.59.",
+            "missing_information": [
+              "fresh source date",
+              "full page verification"
+            ]
+          },
+          {
+            "id": "https://www.pokevalues.com/card/gengar-5-fossil-05?utm_source=openai",
+            "source_name": "PokeValues",
+            "url": "https://www.pokevalues.com/card/gengar-5-fossil-05",
+            "reported_price": "$460.96",
+            "currency": "USD",
+            "price_type": "published_market_reference",
+            "price_meaning": "Lightly played value shown on the page.",
+            "observed_identity": {
+              "game": "pokemon",
+              "name": "Gengar",
+              "set_name": "Fossil",
+              "number": "5/62",
+              "language": "English",
+              "edition": "1st Edition",
+              "finish": "Holo",
+              "condition": "Lightly Played",
+              "graded": false
+            },
+            "condition_scope": "explicit_condition",
+            "condition_label": "Lightly Played",
+            "source_date": "2026-09-09",
+            "date_meaning": "published_update",
+            "price_basis": "item_only",
+            "observation_kind": "search_result",
+            "source_summary": "Search snippet shows a lightly played value of $460.96 and recent high-end graded sale references on the same page.",
+            "missing_information": [
+              "methodology transparency",
+              "full page verification"
+            ]
+          },
+          {
+            "id": "https://lastsold.com/en/sets/fossil/gengar-5-1st",
+            "source_name": "lastsold.com",
+            "url": "https://lastsold.com/en/sets/fossil/gengar-5-1st",
+            "reported_price": "$341.40",
+            "currency": "USD",
+            "price_type": "completed_sale_report",
+            "price_meaning": "Median sold price across recent completed sales for this card page (condition-mixed in the shown summary).",
+            "observed_identity": {
+              "game": "pokemon",
+              "name": "Gengar",
+              "set_name": "Fossil",
+              "number": "5/62",
+              "language": "English",
+              "edition": "1st Edition",
+              "finish": "Holo",
+              "condition": null,
+              "graded": null
+            },
+            "condition_scope": "mixed",
+            "condition_label": null,
+            "source_date": "2026-10-21",
+            "date_meaning": "listing_observation",
+            "price_basis": "item_only",
+            "observation_kind": "page_content",
+            "source_summary": "Page states across 241 auctions the median was $586.77 and across 288 fixed-price sales $735.97; the overall median for fast-sale guidance was $341.40, with the cheapest genuine sales around $161.77.",
+            "missing_information": [
+              "condition-specific split for LP",
+              "sale-level details"
+            ]
+          },
+          {
+            "id": "https://billsarchive.com/fossil.html",
+            "source_name": "Bill's Archive",
+            "url": "https://billsarchive.com/fossil.html",
+            "reported_price": "$663.25",
+            "currency": "USD",
+            "price_type": "published_market_reference",
+            "price_meaning": "TCGplayer market price for the 1st Edition Holofoil printing.",
+            "observed_identity": {
+              "game": "pokemon",
+              "name": "Gengar",
+              "set_name": "Fossil",
+              "number": "5/62",
+              "language": null,
+              "edition": "1st Edition",
+              "finish": "Holo",
+              "condition": null,
+              "graded": null
+            },
+            "condition_scope": "unknown",
+            "condition_label": null,
+            "source_date": "2026-10-09",
+            "date_meaning": "published_update",
+            "price_basis": "item_only",
+            "observation_kind": "page_content",
+            "source_summary": "Bill's Archive lists Gengar 005/062 1st Ed at $663.25 and notes that set prices were collected on 9 October 2026 from TCGplayer market data.",
+            "missing_information": [
+              "condition-specific label",
+              "whether this corresponds to LP versus raw market"
+            ]
+          },
+          {
+            "id": "https://www.collectaio.com/item/fossil-gengar-5-05-62?utm_source=openai",
+            "source_name": "CollectAIO",
+            "url": "https://www.collectaio.com/item/fossil-gengar-5-05-62",
+            "reported_price": "$335.62",
+            "currency": "USD",
+            "price_type": "completed_sale_report",
+            "price_meaning": "eBay sale observation shown on the page.",
+            "observed_identity": {
+              "game": "pokemon",
+              "name": "Gengar",
+              "set_name": "Fossil",
+              "number": "5/62",
+              "language": "English",
+              "edition": "1st Edition",
+              "finish": "Holo",
+              "condition": null,
+              "graded": null
+            },
+            "condition_scope": "unknown",
+            "condition_label": null,
+            "source_date": "2026-09-06",
+            "date_meaning": "sale_date",
+            "price_basis": "item_only",
+            "observation_kind": "search_result",
+            "source_summary": "Search snippet shows an eBay sale observation of $335.62 for the 1st Edition English Fossil Gengar holo.",
+            "missing_information": [
+              "sale condition",
+              "verification of exact listing"
+            ]
+          }
+        ],
+        "supporting_source_ids": [
+          "https://cardflip.io/cards/pokemon/fossil-1st-edition/gengar--base3-5-1st?utm_source=openai",
+          "https://www.pokevalues.com/card/gengar-5-fossil-05?utm_source=openai",
+          "https://lastsold.com/en/sets/fossil/gengar-5-1st",
+          "https://billsarchive.com/fossil.html"
+        ],
+        "reasoning_summary": "The most directly relevant LP-specific reference is Cardflip’s lightly played figure near $289.91 for the exact 1st Edition Fossil Gengar holo, which anchors the lower end. A second LP reference from PokeValues is materially higher at $460.96, while broader recent sold-market summaries for the 1st Edition card page cluster around a $341.40 median and show genuine sales down to about $161.77. Bill’s Archive/TCGplayer market reference is much higher at $663.25, but it is a published market reference for the printing rather than an LP-specific comp. Blending the explicit LP refs with the recent sold context yields an LP estimate around $320, with a wider range to reflect source disagreement and liquidity/condition uncertainty.",
+        "assumptions": [
+          "The requested card is the English 1st Edition Fossil Gengar #5/62 holo, ungraded, and the LP label is the intended TCG-style condition.",
+          "Search-result snippets are treated as secondary source observations, not independently verified transaction records.",
+          "Shipping and tax are excluded.",
+          "No assumption is made that the TCGplayer market reference is condition-adjusted to LP."
+        ],
+        "limitations": [
+          "Source freshness for Cardflip’s LP figure is unclear because the snippet lacks a visible publication date.",
+          "Some sources are condition-specific while others are broader market references or mixed-condition sold summaries, so the estimate is partly synthesized rather than a direct quote.",
+          "Correlated aggregator sources may not be independent marketplaces.",
+          "The raw market for vintage holos can be thin, so realized prices may vary significantly with centering, surface wear, and buyer urgency."
+        ],
+        "recommendation": "usable_estimate",
+        "review_recommended": false,
+        "insufficient_evidence": false,
+        "source_audit": [
+          {
+            "source": {
+              "id": "https://cardflip.io/cards/pokemon/fossil-1st-edition/gengar--base3-5-1st?utm_source=openai",
+              "source_name": "cardflip.io",
+              "url": "https://cardflip.io/cards/pokemon/fossil-1st-edition/gengar--base3-5-1st",
+              "reported_price": "$289.91",
+              "currency": "USD",
+              "price_type": "published_market_reference",
+              "price_meaning": "A Lightly Played copy is about this amount.",
+              "observed_identity": {
+                "game": "pokemon",
+                "name": "Gengar",
+                "set_name": "Fossil",
+                "number": "5/62",
+                "language": "English",
+                "edition": "1st Edition",
+                "finish": "Holo",
+                "condition": "Lightly Played",
+                "graded": false
+              },
+              "condition_scope": "explicit_condition",
+              "condition_label": "Lightly Played",
+              "source_date": null,
+              "date_meaning": "unknown",
+              "price_basis": "item_only",
+              "observation_kind": "search_result",
+              "source_summary": "Search result snippet for the 1st Edition Fossil Gengar page states a Lightly Played value near $289.91 and a Heavily Played value near $187.59.",
+              "missing_information": [
+                "fresh source date",
+                "full page verification"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "edition printing mismatch",
+              "Explicit condition not supported by a source label",
+              "Unreviewed or contradictory source condition label",
+              "Invalid reported source price"
+            ],
+            "warnings": [
+              "Source price missing",
+              "Source date unknown; freshness unconfirmed"
+            ],
+            "independently_verified": false
+          },
+          {
+            "source": {
+              "id": "https://www.pokevalues.com/card/gengar-5-fossil-05?utm_source=openai",
+              "source_name": "PokeValues",
+              "url": "https://www.pokevalues.com/card/gengar-5-fossil-05",
+              "reported_price": "$460.96",
+              "currency": "USD",
+              "price_type": "published_market_reference",
+              "price_meaning": "Lightly played value shown on the page.",
+              "observed_identity": {
+                "game": "pokemon",
+                "name": "Gengar",
+                "set_name": "Fossil",
+                "number": "5/62",
+                "language": "English",
+                "edition": "1st Edition",
+                "finish": "Holo",
+                "condition": "Lightly Played",
+                "graded": false
+              },
+              "condition_scope": "explicit_condition",
+              "condition_label": "Lightly Played",
+              "source_date": "2026-09-09",
+              "date_meaning": "published_update",
+              "price_basis": "item_only",
+              "observation_kind": "search_result",
+              "source_summary": "Search snippet shows a lightly played value of $460.96 and recent high-end graded sale references on the same page.",
+              "missing_information": [
+                "methodology transparency",
+                "full page verification"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "edition printing mismatch",
+              "Explicit condition not supported by a source label",
+              "Unreviewed or contradictory source condition label",
+              "Invalid reported source price"
+            ],
+            "warnings": [
+              "Source price missing"
+            ],
+            "independently_verified": false
+          },
+          {
+            "source": {
+              "id": "https://lastsold.com/en/sets/fossil/gengar-5-1st",
+              "source_name": "lastsold.com",
+              "url": "https://lastsold.com/en/sets/fossil/gengar-5-1st",
+              "reported_price": "$341.40",
+              "currency": "USD",
+              "price_type": "completed_sale_report",
+              "price_meaning": "Median sold price across recent completed sales for this card page (condition-mixed in the shown summary).",
+              "observed_identity": {
+                "game": "pokemon",
+                "name": "Gengar",
+                "set_name": "Fossil",
+                "number": "5/62",
+                "language": "English",
+                "edition": "1st Edition",
+                "finish": "Holo",
+                "condition": null,
+                "graded": null
+              },
+              "condition_scope": "mixed",
+              "condition_label": null,
+              "source_date": "2026-10-21",
+              "date_meaning": "listing_observation",
+              "price_basis": "item_only",
+              "observation_kind": "page_content",
+              "source_summary": "Page states across 241 auctions the median was $586.77 and across 288 fixed-price sales $735.97; the overall median for fast-sale guidance was $341.40, with the cheapest genuine sales around $161.77.",
+              "missing_information": [
+                "condition-specific split for LP",
+                "sale-level details"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "edition printing mismatch",
+              "Invalid reported source price"
+            ],
+            "warnings": [
+              "Unknown source identity fields: graded",
+              "Source price missing"
+            ],
+            "independently_verified": false
+          },
+          {
+            "source": {
+              "id": "https://billsarchive.com/fossil.html",
+              "source_name": "Bill's Archive",
+              "url": "https://billsarchive.com/fossil.html",
+              "reported_price": "$663.25",
+              "currency": "USD",
+              "price_type": "published_market_reference",
+              "price_meaning": "TCGplayer market price for the 1st Edition Holofoil printing.",
+              "observed_identity": {
+                "game": "pokemon",
+                "name": "Gengar",
+                "set_name": "Fossil",
+                "number": "5/62",
+                "language": null,
+                "edition": "1st Edition",
+                "finish": "Holo",
+                "condition": null,
+                "graded": null
+              },
+              "condition_scope": "unknown",
+              "condition_label": null,
+              "source_date": "2026-10-09",
+              "date_meaning": "published_update",
+              "price_basis": "item_only",
+              "observation_kind": "page_content",
+              "source_summary": "Bill's Archive lists Gengar 005/062 1st Ed at $663.25 and notes that set prices were collected on 9 October 2026 from TCGplayer market data.",
+              "missing_information": [
+                "condition-specific label",
+                "whether this corresponds to LP versus raw market"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "edition printing mismatch",
+              "Invalid reported source price"
+            ],
+            "warnings": [
+              "Unknown source identity fields: language, graded",
+              "Source price missing"
+            ],
+            "independently_verified": false
+          },
+          {
+            "source": {
+              "id": "https://www.collectaio.com/item/fossil-gengar-5-05-62?utm_source=openai",
+              "source_name": "CollectAIO",
+              "url": "https://www.collectaio.com/item/fossil-gengar-5-05-62",
+              "reported_price": "$335.62",
+              "currency": "USD",
+              "price_type": "completed_sale_report",
+              "price_meaning": "eBay sale observation shown on the page.",
+              "observed_identity": {
+                "game": "pokemon",
+                "name": "Gengar",
+                "set_name": "Fossil",
+                "number": "5/62",
+                "language": "English",
+                "edition": "1st Edition",
+                "finish": "Holo",
+                "condition": null,
+                "graded": null
+              },
+              "condition_scope": "unknown",
+              "condition_label": null,
+              "source_date": "2026-09-06",
+              "date_meaning": "sale_date",
+              "price_basis": "item_only",
+              "observation_kind": "search_result",
+              "source_summary": "Search snippet shows an eBay sale observation of $335.62 for the 1st Edition English Fossil Gengar holo.",
+              "missing_information": [
+                "sale condition",
+                "verification of exact listing"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "edition printing mismatch",
+              "Invalid reported source price"
+            ],
+            "warnings": [
+              "Unknown source identity fields: graded",
+              "Source price missing"
+            ],
+            "independently_verified": false
+          }
+        ],
+        "policy_warnings": [
+          "Source price missing",
+          "Source date unknown; freshness unconfirmed",
+          "Source price missing",
+          "Unknown source identity fields: graded",
+          "Source price missing",
+          "Unknown source identity fields: language, graded",
+          "Source price missing"
+        ],
+        "independently_validated_accuracy": false,
+        "independent_transaction_count": 0,
+        "confidence_percentage": null,
+        "distinction": "AI market estimate; reported source facts are unverified AI extractions, not authenticated transactions."
+      },
+      "validation_errors": [
+        "Invalid estimated price",
+        "Invalid estimated price",
+        "Invalid estimated price",
+        "Missing estimate or inconsistent insufficient-evidence flags"
+      ],
+      "consulted_urls": [
+        "https://billsarchive.com/fossil.html",
+        "https://cardflip.io/cards/pokemon/fossil-1st-edition/gengar--base3-5-1st",
+        "https://lastsold.com/en/sets/fossil/gengar-5-1st",
+        "https://mycardpost.com/marketplace/pokemon/1999-fossil-gengar-holo-rare-562-lightly-played-english-pokemon-trading-card/1109177",
+        "https://pokedealfinder.uk/cards/fossil/562-gengar-1st-edition/",
+        "https://poketrace.com/cards/gengar-5--fossil-1st_Edition_Holofoil",
+        "https://tcgvibes.com/cards/542d625cde36",
+        "https://www.codedyellow.com/Pdf/FossilbyRarity.pdf",
+        "https://www.codedyellow.com/Pdf/Pokemon/Gengar-card-checklist.pdf",
+        "https://www.collectaio.com/item/fossil-gengar-5-05-62",
+        "https://www.pokevalues.com/card/gengar-5-fossil-05",
+        "https://www.pricecharting.com/game/pokemon-fossil/gengar-1st-edition-5",
+        "https://www.pulllist.org/cards/base3-5",
+        "https://www.reddit.com/r/GengarMasterSet/comments/1w4ocm3/only_1397_left_to_collect/",
+        "https://www.reddit.com/r/IsMyPokemonCardFake/comments/1dobk85",
+        "https://www.reddit.com/r/IsMyPokemonCardFake/comments/1stmmg2/1st_edition_holo_fossil_gengar_562_ebay_posting/",
+        "https://www.reddit.com/r/PokeInvesting/comments/1g9xlqn",
+        "https://www.reddit.com/r/PokemonMisprints/comments/18jz41j",
+        "https://www.reddit.com/r/PokemonTCG/comments/17gkdra",
+        "https://www.reddit.com/r/Pokemoncardappraisal/comments/1v3nycs/old_collection_inquiry/",
+        "https://www.reddit.com/r/pkmntcgcollections/comments/1x0wha5/1st_edition_fossil_hunt_completed/",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1hiz0ef",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1rbyhsv/us_us_h_a_ton_of_mainly_vintage_slabs_and_singles/",
+        "https://www.sportscardinvestor.com/cards/gengar-pokemon/1999-fossil-1st-edition-holo-05-62"
+      ],
+      "retrieved_at": "2026-10-25T20:42:39.561531+00:00",
+      "response_id": "resp_033fafc86c688254016ade69aa0a4c87d283ff75bd339e112e",
+      "response_model": "gpt-5.4-mini-2026-03-17",
+      "api_usage": {
+        "input_tokens": 14171,
+        "cached_input_tokens": 4480,
+        "output_tokens": 2202,
+        "reasoning_tokens": 736,
+        "search_calls": 3,
+        "token_cost_usd": "0.01751325",
+        "search_cost_usd": "0.03",
+        "estimated_total_usd": "0.04751325",
+        "rate_date": "2026-10-24",
+        "model": "gpt-5.4-mini",
+        "billing_note": "Search content assumed included in reported input usage; all web-search output items charged conservatively. Reconcile with invoice."
+      },
+      "search_action_audit": {
+        "status": "diagnostic_only",
+        "web_output_items": 3,
+        "completed_actions": 2,
+        "completed_search_actions": 1,
+        "unfinished_actions": 1,
+        "reported_search_requests": 1,
+        "conservative_estimate_usd": "0.04751325",
+        "search_action_estimate_usd": "0.02751325",
+        "issues": [],
+        "note": "Not an invoice. Published search-action fee plus token estimate; production reserves and original estimator unchanged."
+      },
+      "estimated_api_cost_usd": "0.04751325",
+      "latency_seconds": 21.65609467600001
+    },
+    {
+      "case_id": "japanese-charizard",
+      "target": {
+        "game": "pokemon",
+        "set_name": "pokemon card 151",
+        "number": "201/165",
+        "language": "japanese",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM",
+        "name": "charizard ex",
+        "graded": false
+      },
+      "as_of": "2026-10-25",
+      "status": "invalid_estimate",
+      "estimate": null,
+      "quarantined_estimate": {
+        "card_identity": {
+          "game": "pokemon",
+          "name": "Charizard ex",
+          "set_name": "Pokemon Card 151",
+          "number": "201/165",
+          "language": "Japanese",
+          "edition": "Standard",
+          "finish": "Holo",
+          "condition": "NM",
+          "graded": false
+        },
+        "requested_condition": "NM",
+        "estimated_market_value": "390",
+        "estimated_low": "380",
+        "estimated_high": "405",
+        "currency": "USD",
+        "valuation_type": "condition_specific_market_estimate",
+        "evidence_quality": "corroborated_reports",
+        "sources": [
+          {
+            "id": "https://thelabtcg.com/card/566544%3AHolofoil?utm_source=openai",
+            "source_name": "The Lab TCG",
+            "url": "https://thelabtcg.com/card/566544%3AHolofoil",
+            "reported_price": "388.35",
+            "currency": "USD",
+            "price_type": "published_market_reference",
+            "price_meaning": "TCGplayer market price as reproduced by the page for the Japanese Charizard ex 201/165.",
+            "observed_identity": {
+              "game": "pokemon",
+              "name": "Charizard ex",
+              "set_name": "Pokemon Card 151",
+              "number": "201/165",
+              "language": "Japanese",
+              "edition": null,
+              "finish": "Holofoil",
+              "condition": null,
+              "graded": false
+            },
+            "condition_scope": "explicit_condition",
+            "condition_label": "Near Mint",
+            "source_date": "2026-10-15",
+            "date_meaning": "published_update",
+            "price_basis": "item_only",
+            "observation_kind": "page_content",
+            "source_summary": "States that, as of 2026-10-15, the TCGplayer market price was $388.35 for this Japanese 201/165 Charizard ex.",
+            "missing_information": [
+              "edition not stated on source page",
+              "source is a market-reference mirror rather than the original marketplace page"
+            ]
+          },
+          {
+            "id": "https://valuemycard.com/card/566544-charizard-ex-pokemon-japan-sv2a-pokemon-card-151",
+            "source_name": "ValueMyCard",
+            "url": "https://valuemycard.com/card/566544-charizard-ex-pokemon-japan-sv2a-pokemon-card-151",
+            "reported_price": "392.37",
+            "currency": "USD",
+            "price_type": "completed_sale_report",
+            "price_meaning": "Reported market price for Near Mint Japanese holofoil sales in the page's sales history table; used as recent market context, not a quoted asking price.",
+            "observed_identity": {
+              "game": "pokemon",
+              "name": "Charizard ex",
+              "set_name": "Pokemon Card 151",
+              "number": "201/165",
+              "language": "Japanese",
+              "edition": null,
+              "finish": "Holofoil",
+              "condition": "Near Mint",
+              "graded": false
+            },
+            "condition_scope": "explicit_condition",
+            "condition_label": "Near Mint",
+            "source_date": "2026-09-17",
+            "date_meaning": "sale_date",
+            "price_basis": "item_only",
+            "observation_kind": "page_content",
+            "source_summary": "Recent Near Mint Japanese holofoil sales history shows market prices around $390-$392 in late Sep and early Oct 2026.",
+            "missing_information": [
+              "edition not stated on source page",
+              "transaction-level sale details are grouped rather than fully itemized"
+            ]
+          },
+          {
+            "id": "https://lastsold.com/en/sets/pokemon-card-151/charizard-ex-201",
+            "source_name": "LastSold",
+            "url": "https://lastsold.com/en/sets/pokemon-card-151/charizard-ex-201",
+            "reported_price": "390.28",
+            "currency": "USD",
+            "price_type": "completed_sale_report",
+            "price_meaning": "Market price derived from paid sales only; no asking prices included.",
+            "observed_identity": {
+              "game": "pokemon",
+              "name": "Charizard ex",
+              "set_name": "Pokemon Card 151",
+              "number": "201",
+              "language": "Japanese",
+              "edition": null,
+              "finish": "RAW",
+              "condition": "RAW",
+              "graded": false
+            },
+            "condition_scope": "generic_ungraded",
+            "condition_label": null,
+            "source_date": "2026-10-17",
+            "date_meaning": "published_update",
+            "price_basis": "item_only",
+            "observation_kind": "page_content",
+            "source_summary": "Reports a raw market price of $390.28 based on 156 sales, with the raw price history extending through 2026-10-17.",
+            "missing_information": [
+              "condition-specific grading not stated",
+              "exact listing-level identity details beyond set/card number"
+            ]
+          }
+        ],
+        "supporting_source_ids": [
+          "https://thelabtcg.com/card/566544%3AHolofoil?utm_source=openai",
+          "https://valuemycard.com/card/566544-charizard-ex-pokemon-japan-sv2a-pokemon-card-151",
+          "https://lastsold.com/en/sets/pokemon-card-151/charizard-ex-201"
+        ],
+        "reasoning_summary": "The best matches are for the exact Japanese SV2a Charizard ex 201/165 holofoil/SAR printing. A TCGplayer-derived market reference around $388.35 and recent Near Mint Japanese sales around $390-$392 cluster tightly, while LastSold shows a raw paid-sales-derived market price of $390.28. Because the requested card is explicitly NM and the matching sources align on the same printing, I used those condition-specific references to estimate a current item-only NM market value near $390.",
+        "assumptions": [
+          "The requested 'Pokemon Card 151' refers to the Japanese SV2a set and the 201/165 Charizard ex SAR/holofoil printing shown in the sources.",
+          "The condition match is Near Mint and the listed references are sufficiently representative of NM raw copies.",
+          "Shipping, tax, and grading premiums/discounts are excluded."
+        ],
+        "limitations": [
+          "Source pages are aggregators, not direct marketplace exports; market-reference figures are therefore secondary.",
+          "One source reports a raw market price without explicitly stating Near Mint, so it is supportive but not purely condition-specific.",
+          "No directly verified live asking-price snapshot was available in the gathered sources."
+        ],
+        "recommendation": "usable_estimate",
+        "review_recommended": false,
+        "insufficient_evidence": false,
+        "source_audit": [
+          {
+            "source": {
+              "id": "https://thelabtcg.com/card/566544%3AHolofoil?utm_source=openai",
+              "source_name": "The Lab TCG",
+              "url": "https://thelabtcg.com/card/566544%3AHolofoil",
+              "reported_price": "388.35",
+              "currency": "USD",
+              "price_type": "published_market_reference",
+              "price_meaning": "TCGplayer market price as reproduced by the page for the Japanese Charizard ex 201/165.",
+              "observed_identity": {
+                "game": "pokemon",
+                "name": "Charizard ex",
+                "set_name": "Pokemon Card 151",
+                "number": "201/165",
+                "language": "Japanese",
+                "edition": null,
+                "finish": "Holofoil",
+                "condition": null,
+                "graded": false
+              },
+              "condition_scope": "explicit_condition",
+              "condition_label": "Near Mint",
+              "source_date": "2026-10-15",
+              "date_meaning": "published_update",
+              "price_basis": "item_only",
+              "observation_kind": "page_content",
+              "source_summary": "States that, as of 2026-10-15, the TCGplayer market price was $388.35 for this Japanese 201/165 Charizard ex.",
+              "missing_information": [
+                "edition not stated on source page",
+                "source is a market-reference mirror rather than the original marketplace page"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "finish printing mismatch",
+              "Explicit condition not supported by a source label",
+              "Unreviewed or contradictory source condition label"
+            ],
+            "warnings": [
+              "Unknown source identity fields: edition"
+            ],
+            "independently_verified": false
+          },
+          {
+            "source": {
+              "id": "https://valuemycard.com/card/566544-charizard-ex-pokemon-japan-sv2a-pokemon-card-151",
+              "source_name": "ValueMyCard",
+              "url": "https://valuemycard.com/card/566544-charizard-ex-pokemon-japan-sv2a-pokemon-card-151",
+              "reported_price": "392.37",
+              "currency": "USD",
+              "price_type": "completed_sale_report",
+              "price_meaning": "Reported market price for Near Mint Japanese holofoil sales in the page's sales history table; used as recent market context, not a quoted asking price.",
+              "observed_identity": {
+                "game": "pokemon",
+                "name": "Charizard ex",
+                "set_name": "Pokemon Card 151",
+                "number": "201/165",
+                "language": "Japanese",
+                "edition": null,
+                "finish": "Holofoil",
+                "condition": "Near Mint",
+                "graded": false
+              },
+              "condition_scope": "explicit_condition",
+              "condition_label": "Near Mint",
+              "source_date": "2026-09-17",
+              "date_meaning": "sale_date",
+              "price_basis": "item_only",
+              "observation_kind": "page_content",
+              "source_summary": "Recent Near Mint Japanese holofoil sales history shows market prices around $390-$392 in late Sep and early Oct 2026.",
+              "missing_information": [
+                "edition not stated on source page",
+                "transaction-level sale details are grouped rather than fully itemized"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "finish printing mismatch",
+              "Explicit condition not supported by a source label",
+              "Unreviewed or contradictory source condition label"
+            ],
+            "warnings": [
+              "Unknown source identity fields: edition"
+            ],
+            "independently_verified": false
+          },
+          {
+            "source": {
+              "id": "https://lastsold.com/en/sets/pokemon-card-151/charizard-ex-201",
+              "source_name": "LastSold",
+              "url": "https://lastsold.com/en/sets/pokemon-card-151/charizard-ex-201",
+              "reported_price": "390.28",
+              "currency": "USD",
+              "price_type": "completed_sale_report",
+              "price_meaning": "Market price derived from paid sales only; no asking prices included.",
+              "observed_identity": {
+                "game": "pokemon",
+                "name": "Charizard ex",
+                "set_name": "Pokemon Card 151",
+                "number": "201",
+                "language": "Japanese",
+                "edition": null,
+                "finish": "RAW",
+                "condition": "RAW",
+                "graded": false
+              },
+              "condition_scope": "generic_ungraded",
+              "condition_label": null,
+              "source_date": "2026-10-17",
+              "date_meaning": "published_update",
+              "price_basis": "item_only",
+              "observation_kind": "page_content",
+              "source_summary": "Reports a raw market price of $390.28 based on 156 sales, with the raw price history extending through 2026-10-17.",
+              "missing_information": [
+                "condition-specific grading not stated",
+                "exact listing-level identity details beyond set/card number"
+              ]
+            },
+            "verification_status": "unverified_ai_extraction",
+            "api_returned_url": true,
+            "identity_match": "mismatched",
+            "issues": [
+              "number printing mismatch",
+              "finish printing mismatch",
+              "Condition contradicts summary/missing-information",
+              "Non-specific condition scope cannot assert requested condition"
+            ],
+            "warnings": [
+              "Unknown source identity fields: edition"
+            ],
+            "independently_verified": false
+          }
+        ],
+        "policy_warnings": [
+          "Unknown source identity fields: edition",
+          "Unknown source identity fields: edition",
+          "Unknown source identity fields: edition"
+        ],
+        "independently_validated_accuracy": false,
+        "independent_transaction_count": 0,
+        "confidence_percentage": null,
+        "distinction": "AI market estimate; reported source facts are unverified AI extractions, not authenticated transactions."
+      },
+      "validation_errors": [
+        "Estimate relies on missing, mismatched, asking-only or unsupported evidence",
+        "Condition-specific estimate lacks explicit requested-condition evidence"
+      ],
+      "consulted_urls": [
+        "https://admin.nordenson.com/archive-library-706/files?ID=qqA78-1278&title=tcgplayer-151-price-guide.pdf",
+        "https://assets.pokemon.com/assets/cms2-en-uk/pdf/trading-card-game/checklist/mew_web_cardlist_en.pdf",
+        "https://d1i787aglh9bmb.cloudfront.net/assets/img/sv-expansions/sv3dot5/download/en-us/SV03Pt5-Card-List-EN.pdf",
+        "https://lastsold.com/en/sets/pokemon-card-151/charizard-ex-201",
+        "https://manuals.plus/asin/B0CP8Z263V.pdf",
+        "https://pokecardworth.com/cards/sv2a-pokemon-card-151-charizard-ex-japanese-201-165-holofoil",
+        "https://poketrace.com/cards/charizard-ex-japanese--sv2a-pokemon-card-151-Holofoil-201-165",
+        "https://slabverdict.com/prices/charizard-ex-sv2a-pokemon-card-151-jp-201/",
+        "https://sokumise.com/en/pokemon",
+        "https://tcgduck.com/en/cards/47886",
+        "https://thelabtcg.com/card/566544%3AHolofoil",
+        "https://valuemycard.com/card/566544-charizard-ex-pokemon-japan-sv2a-pokemon-card-151",
+        "https://www.cardprice.com/card/charizard-ex-pokemon-card-151-japanese-201",
+        "https://www.eliteauctions.org/print-catalogue/56DFB853F0889CE6FDE9291276902CF5/1DAD09680FE122841B8E6C1F4CC703F8/pop-culture-collectables-to-include-pokmon-cards-spor-lot-48/",
+        "https://www.pricecharting.com/game/pokemon-japanese-scarlet-%26-violet-151/charizard-ex-201",
+        "https://www.reddit.com/r/PokeGrading/comments/1x5xlio/151_raw_prices_japanese_vs_english_worth_grading/",
+        "https://www.reddit.com/r/PokemonInvestor/comments/1x5xnuy/151_in_japanese_vs_english_the_big_ex_cards_cost/",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1flmc19/us_us_h_jpn_sv_151_misc_eng_jpn_singles_w_jpn_sv/",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1fpgwa1",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1kmef2e",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1ktly5c",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1vs5vby/us_ww_h_jp_singles_w_jp_singles_paypal/",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1vxndwp/us_ww_h_jp_singles_w_jp_singles_paypal/",
+        "https://www.reddit.com/r/pkmntcgtrades/comments/1wk9kei/us_ww_h_jp_singles_w_jp_singles_paypal/",
+        "https://www.reddit.com/r/pokemoncardselling/comments/1mvyuke",
+        "https://www.tcgplayer.com/product/566544/pokemon-japan-sv2a-pokemon-card-151-charizard-ex-201-165?Language=all&page=1",
+        "https://www.tcgpursuit.app/card/pokemonjp/pokemon-card-151",
+        "https://www.youtube.com/watch?v=0PQI2NU8gLk",
+        "https://www.youtube.com/watch?v=dR_f9EewMs8"
+      ],
+      "retrieved_at": "2026-10-25T20:42:56.316407+00:00",
+      "response_id": "resp_06f6168d2d4064a7016ade69bfcc8087d289245bfbd596b885",
+      "response_model": "gpt-5.4-mini-2026-03-17",
+      "api_usage": {
+        "input_tokens": 14906,
+        "cached_input_tokens": 4480,
+        "output_tokens": 1690,
+        "reasoning_tokens": 670,
+        "search_calls": 3,
+        "token_cost_usd": "0.0157605",
+        "search_cost_usd": "0.03",
+        "estimated_total_usd": "0.0457605",
+        "rate_date": "2026-10-24",
+        "model": "gpt-5.4-mini",
+        "billing_note": "Search content assumed included in reported input usage; all web-search output items charged conservatively. Reconcile with invoice."
+      },
+      "search_action_audit": {
+        "status": "diagnostic_only",
+        "web_output_items": 3,
+        "completed_actions": 2,
+        "completed_search_actions": 1,
+        "unfinished_actions": 1,
+        "reported_search_requests": 1,
+        "conservative_estimate_usd": "0.0457605",
+        "search_action_estimate_usd": "0.0257605",
+        "issues": [],
+        "note": "Not an invoice. Published search-action fee plus token estimate; production reserves and original estimator unchanged."
+      },
+      "estimated_api_cost_usd": "0.0457605",
+      "latency_seconds": 16.751847507000008
+    }
+  ]
+}
