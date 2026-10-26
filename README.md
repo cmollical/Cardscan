@@ -13,6 +13,22 @@ Market values exclude shipping and tax; your chosen selling price is separate.
 photo interpretation requires human review and does not constitute professional grading.
 No paid AI calls are needed for the complete manual workflow.
 
+## Cloud deployment preparation
+
+The recommended architecture is **Vercel Hobby + an Oracle Always Free ARM VM**,
+with persistent SQLite/photos and a separate vision worker. A single-VM frontend
+fallback is included. This remains conditional on account eligibility, free capacity
+and actual cloud acceptance; nothing has been publicly deployed.
+
+- [Deployment runbook and required owner actions](docs/cloud-deployment.md)
+- [Official free-tier limits and capacity comparison](docs/free-tier-hosting-research.md)
+- [Architecture decision](docs/cloud-deployment-decision.md)
+
+Cloud mode adds secure browser sessions, restart-safe queued work, frozen per-job
+budgets, bounded daily synchronization, and checksummed database/photo backups.
+Local development remains supported below. No paid AI call or hosting upgrade was
+performed during deployment preparation.
+
 ## Start locally
 
 Python 3.12+ and Node.js 22+ recommended. From the repository root:

@@ -1,0 +1,84 @@
+{
+  "database_bytes": 58052608,
+  "counts": {
+    "sets": 15,
+    "products": 3509,
+    "skus": 21735,
+    "observations": 25812,
+    "documents": 62
+  },
+  "observation_storage_bytes": 29863936,
+  "bytes_per_observation_including_indexes": 1156.98,
+  "document_storage_bytes": 13357056,
+  "source_set_scopes": [
+    [
+      "3",
+      "1373"
+    ],
+    [
+      "3",
+      "1396"
+    ],
+    [
+      "3",
+      "23120"
+    ],
+    [
+      "3",
+      "23228"
+    ],
+    [
+      "3",
+      "23237"
+    ],
+    [
+      "3",
+      "2848"
+    ],
+    [
+      "3",
+      "604"
+    ],
+    [
+      "3",
+      "630"
+    ],
+    [
+      "3",
+      "635"
+    ],
+    [
+      "85",
+      "23599"
+    ],
+    [
+      "85",
+      "23601"
+    ],
+    [
+      "85",
+      "23645"
+    ],
+    [
+      "85",
+      "23722"
+    ],
+    [
+      "85",
+      "23723"
+    ],
+    [
+      "85",
+      "23909"
+    ]
+  ],
+  "observation_storage_objects": [
+    "sqlite_autoindex_observations_1",
+    "observation_latest",
+    "observation_generic",
+    "snapshot_sku",
+    "snapshot_product",
+    "product_subtype_history",
+    "observations"
+  ]
+}

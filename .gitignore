@@ -17,3 +17,8 @@ frontend/out/
 frontend/test-results/
 frontend/playwright-report/
 *.tsbuildinfo
+# Cloud operator credentials; committed examples contain no credentials.
+deploy/*.env
+deploy/*.env.*
+!deploy/*.env.example
+*.pem

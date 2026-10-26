@@ -4,7 +4,7 @@ No web search, price inference or automatic identity/condition approval.
 """
 
 import base64
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from decimal import Decimal
 import json
 import os
@@ -206,6 +206,8 @@ class Jobs:
             and not os.getenv("OPENAI_API_KEY")
         ):
             raise AppError("ai_credentials_unavailable_use_manual_search", 503)
+        if (self.db.path.parent / ".ai-restore-hold").exists():
+            raise AppError("vision_restore_cost_review_required", 503)
         intake = self.store.intake(id)
         if intake["revision"] != value.expected_revision:
             raise AppError("intake_revision_conflict", 409)
@@ -238,7 +240,7 @@ class Jobs:
             ):
                 raise AppError("vision_daily_budget_exhausted", 429)
             c.execute(
-                "INSERT INTO vision_jobs(id,owner_id,intake_id,intake_revision,kind,status,model,reserved_usd,created_at) VALUES(?,?,?,?,?,'queued',?,?,?)",
+                "INSERT INTO vision_jobs(id,owner_id,intake_id,intake_revision,kind,status,model,reserved_usd,created_at,settings_json) VALUES(?,?,?,?,?,'queued',?,?,?,?)",
                 (
                     job,
                     self.store.owner,
@@ -248,6 +250,7 @@ class Jobs:
                     self.settings.model,
                     str(reserve),
                     now,
+                    json.dumps(asdict(self.settings)),
                 ),
             )
         return self.get(job), True
@@ -255,11 +258,36 @@ class Jobs:
     def run(self, id):
         # A job owns at most one API attempt. Interrupted/unknown usage retains its reserve.
         with self.db.transaction() as c:
+            pending = c.execute(
+                "SELECT * FROM vision_jobs WHERE id=? AND status='queued'", (id,)
+            ).fetchone()
+            if not pending:
+                return False
+            now = utc()
+            attempted = c.execute(
+                "SELECT estimated_cost_usd,reserved_usd FROM vision_jobs WHERE owner_id=? AND substr(started_at,1,10)=?",
+                (pending["owner_id"], now[:10]),
+            ).fetchall()
+            total = sum(
+                (
+                    Decimal(x["estimated_cost_usd"] or x["reserved_usd"])
+                    for x in attempted
+                ),
+                Decimal(0),
+            )
+            if len(attempted) >= self.settings.daily_jobs or total + Decimal(
+                pending["reserved_usd"]
+            ) > Decimal(self.settings.daily_limit):
+                c.execute(
+                    "UPDATE vision_jobs SET error='execution_daily_budget_wait' WHERE id=?",
+                    (id,),
+                )
+                return False
             if not c.execute(
-                "UPDATE vision_jobs SET status='running' WHERE id=? AND status='queued'",
-                (id,),
+                "UPDATE vision_jobs SET status='running',started_at=?,error=NULL WHERE id=? AND status='queued'",
+                (now, id),
             ).rowcount:
-                return
+                return False
         usage = None
         cost = None
         try:
@@ -270,7 +298,20 @@ class Jobs:
             paths = [self.media.file(intake["front_id"])]
             if job["kind"] == "condition":
                 paths.append(self.media.file(intake["back_id"]))
-            response = self.provider.research(job["kind"], paths)
+            # Each queued authorization retains its model/rates, even after a redeploy.
+            if not job.get("settings_json"):
+                raise AppError("legacy_job_settings_missing_manual_review", 409)
+            settings = VisionSettings(**json.loads(job["settings_json"]))
+            if settings.model != job["model"] or settings.reserve() > Decimal(
+                job["reserved_usd"]
+            ):
+                raise AppError("job_settings_reservation_mismatch", 409)
+            provider = (
+                OpenAIVisionProvider(settings)
+                if isinstance(self.provider, OpenAIVisionProvider)
+                else self.provider
+            )
+            response = provider.research(job["kind"], paths)
             usage = response.get("usage")
             if not isinstance(usage, dict) or any(
                 type(usage.get(k)) is not int or usage[k] < 0
@@ -279,15 +320,14 @@ class Jobs:
                 raise ValueError("Usage unavailable; reservation held")
             cost = str(
                 (
-                    Decimal(usage["input_tokens"]) * Decimal(self.settings.input_rate)
-                    + Decimal(usage["output_tokens"])
-                    * Decimal(self.settings.output_rate)
+                    Decimal(usage["input_tokens"]) * Decimal(settings.input_rate)
+                    + Decimal(usage["output_tokens"]) * Decimal(settings.output_rate)
                 )
                 / 1_000_000
             )
             if (
-                usage["input_tokens"] > self.settings.max_input_tokens
-                or usage["output_tokens"] > self.settings.max_output_tokens
+                usage["input_tokens"] > settings.max_input_tokens
+                or usage["output_tokens"] > settings.max_output_tokens
             ):
                 raise ValueError("Usage exceeded reservation assumptions")
             schema = Identification if job["kind"] == "identify" else Assessment
@@ -327,6 +367,8 @@ class Jobs:
                     "UPDATE vision_jobs SET status='failed',error=?,usage_json=?,estimated_cost_usd=?,finished_at=? WHERE id=?",
                     (error, json.dumps(usage) if usage else None, cost, utc(), id),
                 )
+
+        return True
 
     def cross_reference(self, result):
         candidates = []
@@ -369,10 +411,15 @@ class Jobs:
         result["catalog_candidates"] = candidates[:20]
         return result
 
-    def recover(self):
+    def recover(self, *, running_only=False):
         # Single-worker personal app: never automatically retry potentially billed jobs.
         with self.db.transaction() as c:
             c.execute(
-                "UPDATE vision_jobs SET status='interrupted',error='server_restarted_reserve_held',finished_at=? WHERE status IN ('queued','running')",
+                "UPDATE vision_jobs SET status='interrupted',error='server_restarted_reserve_held',finished_at=? WHERE "
+                + (
+                    "status='running'"
+                    if running_only
+                    else "status IN ('queued','running')"
+                ),
                 (utc(),),
             )

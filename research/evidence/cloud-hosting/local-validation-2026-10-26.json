@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-26",
+  "public_deployment": false,
+  "paid_AI_calls": 0,
+  "backend_tests_passed": 291,
+  "frontend_unit_tests_passed": 14,
+  "mobile_chromium_tests_passed": 4,
+  "typescript": "passed",
+  "production_build": "passed",
+  "container_contract": {
+    "status": "passed",
+    "local_only": true,
+    "api_image": "tallybinder-api:cloud-test",
+    "frontend_image": "tallybinder-frontend:cloud-test",
+    "checks": [
+      "private_auth",
+      "worker_restart_heartbeat_AI_disabled",
+      "Next_cookie_forwarding_headers",
+      "image_upload_7_9_MB",
+      "exact_SKU",
+      "inventory_CSV",
+      "API_restart_persistence",
+      "container_replacement_persistence",
+      "photo_persistence",
+      "backup_restore_history"
+    ],
+    "historical_rows_preserved": 42,
+    "paid_AI_calls": 0
+  },
+  "migration": [
+    {
+      "path": "local-evidence/tallybinder.sqlite",
+      "schema_version": 5,
+      "observations": 25812,
+      "observations_sha256": "0edb007e86e893bcb365e4872a9ab1235b1c0bf2181579be5be42cd6cfdefd5e"
+    },
+    {
+      "path": "local-evidence/cloud-ready/data/database.sqlite",
+      "schema_version": 6,
+      "observations": 25812,
+      "observations_sha256": "0edb007e86e893bcb365e4872a9ab1235b1c0bf2181579be5be42cd6cfdefd5e"
+    }
+  ],
+  "full_restore_drill": {
+    "destination": "/workspace/Cardscan/local-evidence/cloud-ready/full-restore-drill-guarded",
+    "photos": 0,
+    "schema_version": 5,
+    "ai_resume_requires_cost_review": true,
+    "quarantined_jobs": 0,
+    "historical_rows": 25812,
+    "product_rows": 3509
+  },
+  "compose_configurations": "both valid",
+  "caddy_configurations": "both valid",
+  "ARM_dependency_wheels": "resolved; not native ARM execution",
+  "restore_paid_job_safeguard": "quarantine pending authorizations; require external usage review before resuming AI"
+}

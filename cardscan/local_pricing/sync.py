@@ -64,7 +64,7 @@ class DailyClient:
                          ON CONFLICT(url) DO UPDATE SET last_attempt_at=excluded.last_attempt_at,next_attempt_at=excluded.next_attempt_at,
                          request_count=request_count+1,status='attempting' ''',(url,self.now,next_time))
         self.requests+=1;self.sleep(.15)
-        headers={'User-Agent':'CardScanLocalResearch/1.0','Accept':'application/json,text/plain;q=0.8'}
+        headers={'User-Agent':'TallyBinderPersonalSync/1.0','Accept':'application/json,text/plain;q=0.8'}
         if old.get('etag'):headers['If-None-Match']=old['etag']
         if old.get('last_modified'):headers['If-Modified-Since']=old['last_modified']
         try:

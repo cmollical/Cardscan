@@ -8,7 +8,7 @@ permissions:
 jobs:
   offline:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install test dependencies
-        run: python -m pip install -r requirements-ai.txt -r requirements-local.txt -r requirements-history.txt
+        run: python -m pip install -r requirements-cloud.txt -r requirements-history.txt
       - name: Full offline suite (no credentials or provider calls)
         run: python -m unittest discover -s tests -q
       - name: Portable saved-evidence lookup benchmark
@@ -46,3 +46,9 @@ jobs:
       - name: Mobile workflow with temporary database and AI disabled
         working-directory: frontend
         run: npm run test:e2e
+      - name: Build real production containers (no credentials)
+        run: |
+          docker build -f deploy/Dockerfile.api -t tallybinder-api:cloud-test .
+          docker build -f deploy/Dockerfile.frontend -t tallybinder-frontend:cloud-test .
+      - name: Private container persistence and backup/restore contract
+        run: python scripts/test_cloud_containers.py

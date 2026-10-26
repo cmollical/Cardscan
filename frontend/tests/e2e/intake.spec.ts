@@ -153,3 +153,50 @@ test("PWA metadata, mobile layout, camera-denial fallback and API failure", asyn
   await page.getByRole("button", { name: "Inventory", exact: true }).click();
   await expect(page.getByRole("status")).toContainText("database unavailable");
 });
+
+test("cloud sign-in exchanges the access key without storing it in localStorage", async ({
+  page,
+}) => {
+  let signed = false;
+  let submitted = "";
+  await page.route("**/api/backend/app/config", (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        ai_enabled: false,
+        model: null,
+        access_token_required: true,
+        auth_mode: "session",
+        authenticated: signed,
+        max_reservation_usd: null,
+      }),
+    }),
+  );
+  await page.route("**/api/backend/auth/login", async (route) => {
+    submitted = route.request().postDataJSON().access_key;
+    signed = true;
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: '{"authenticated":true}',
+    });
+  });
+  await page.goto("/");
+  await expect(
+    page.getByRole("button", { name: "Sign in securely", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByLabel("App access token")
+    .fill("synthetic-cloud-access-key-for-browser-test");
+  await page
+    .getByRole("button", { name: "Sign in securely", exact: true })
+    .click();
+  await expect(
+    page.getByRole("heading", { name: "Your collection, in order." }),
+  ).toBeVisible();
+  expect(submitted).toBe("synthetic-cloud-access-key-for-browser-test");
+  expect(
+    await page.evaluate(() => localStorage.getItem("tallybinder.accessToken")),
+  ).toBeNull();
+});

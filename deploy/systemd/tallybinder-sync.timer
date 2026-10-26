@@ -1,0 +1,9 @@
+[Unit]
+Description=Refresh only approved TallyBinder sets at least 24 hours apart
+[Timer]
+OnBootSec=5min
+OnUnitInactiveSec=24h
+AccuracySec=1min
+Unit=tallybinder-sync.service
+[Install]
+WantedBy=timers.target

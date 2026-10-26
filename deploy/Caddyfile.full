@@ -1,0 +1,20 @@
+{
+	email {$TALLYBINDER_ACME_EMAIL}
+}
+{$TALLYBINDER_HOST} {
+	request_body {
+		max_size 9MB
+	}
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy same-origin
+	}
+	handle_path /api/backend/* {
+		reverse_proxy api:8000
+	}
+	handle {
+		reverse_proxy frontend:3000
+	}
+}

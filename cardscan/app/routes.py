@@ -41,9 +41,7 @@ def register(app, db, *, media_root=None, settings=None, vision_provider=None):
     )
 
     def access(request: Request):
-        if token and not hmac.compare_digest(
-            request.headers.get("authorization", ""), "Bearer " + token
-        ):
+        if token and not app.state.security.authenticated(request):
             raise HTTPException(401, detail={"code": "access_token_required"})
         if request.method not in ("GET", "HEAD"):
             if request.headers.get("x-tallybinder-client") != "web":
@@ -63,11 +61,23 @@ def register(app, db, *, media_root=None, settings=None, vision_provider=None):
         )
 
     @app.get("/app/config")
-    def config():
+    def config(request: Request):
         return {
             "product_name": "TallyBinder",
+            "auth_mode": (
+                "session" if app.state.security.settings.production else "bearer"
+            ),
+            "authenticated": app.state.security.authenticated(
+                request, allow_bearer=not app.state.security.settings.production
+            ),
             "ai_enabled": jobs.settings.enabled
-            and (vision_provider is not None or bool(os.getenv("OPENAI_API_KEY"))),
+            and (vision_provider is not None or bool(os.getenv("OPENAI_API_KEY")))
+            and not (db.path.parent / ".ai-restore-hold").exists(),
+            "ai_pause_reason": (
+                "restore_cost_review_required"
+                if (db.path.parent / ".ai-restore-hold").exists()
+                else None
+            ),
             "model": jobs.settings.model if jobs.settings.enabled else None,
             "max_reservation_usd": (
                 str(jobs.settings.reserve()) if jobs.settings.enabled else None
@@ -118,7 +128,7 @@ def register(app, db, *, media_root=None, settings=None, vision_provider=None):
     @router.post("/intake/{id}/jobs")
     def job(id: UUID, value: JobWrite, tasks: BackgroundTasks):
         record, new = jobs.enqueue(id, value)
-        if new:
+        if new and os.getenv("TALLYBINDER_JOB_MODE", "background") == "background":
             tasks.add_task(jobs.run, record["id"])
         return record
 
@@ -170,7 +180,11 @@ def register(app, db, *, media_root=None, settings=None, vision_provider=None):
 
     @asynccontextmanager
     async def lifespan(application):
-        if db.path.exists() and db.health()["status"] == "ok":
+        if (
+            os.getenv("TALLYBINDER_JOB_MODE", "background") == "background"
+            and db.path.exists()
+            and db.health()["status"] == "ok"
+        ):
             jobs.recover()
         async with previous_lifespan(application):
             yield

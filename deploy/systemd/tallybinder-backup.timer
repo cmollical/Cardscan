@@ -1,0 +1,8 @@
+[Unit]
+Description=TallyBinder daily private backup
+[Timer]
+OnCalendar=*-*-* 11:00:00 UTC
+Persistent=true
+RandomizedDelaySec=5min
+[Install]
+WantedBy=timers.target

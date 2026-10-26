@@ -1,0 +1,97 @@
+{
+  "retrieved_on": "2026-10-26",
+  "method": "Public official documentation retrieval; no account or cloud resource created",
+  "sources": [
+    {
+      "key": "oracle-free",
+      "url": "https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm",
+      "status": 200,
+      "bytes": 53867,
+      "sha256": "e7441b7cae59fd11fed5aa67dbbea3b7c54cca9ff083152f2e2e1b55a68adfbe"
+    },
+    {
+      "key": "oracle-faq",
+      "url": "https://www.oracle.com/cloud/free/faq/",
+      "status": 200,
+      "bytes": 60416,
+      "sha256": "74b0422300af2351256adb553ff9c22e753421a47ad83411a42c2754216aa36f"
+    },
+    {
+      "key": "vercel-hobby",
+      "url": "https://vercel.com/docs/plans/hobby",
+      "status": 200,
+      "bytes": 11316,
+      "sha256": "a7a0003a1aaaa7e82c6e90165f7f5023b1069d448a8bbc0b7e5b068df8edc14e"
+    },
+    {
+      "key": "vercel-limits",
+      "url": "https://vercel.com/docs/limits",
+      "status": 200,
+      "bytes": 61307,
+      "sha256": "556446a802096117b8678aff835601f8a3f95948e23f5380bbf2429cb1a5daac"
+    },
+    {
+      "key": "vercel-functions",
+      "url": "https://vercel.com/docs/functions/limitations",
+      "status": 200,
+      "bytes": 18649,
+      "sha256": "0eea41ee2008ccf1cc7f75203740a54d5eb7a984fd016958f7c4777b9173c638"
+    },
+    {
+      "key": "supabase-free",
+      "url": "https://supabase.com/pricing",
+      "status": 200,
+      "bytes": 387495,
+      "sha256": "a6ca8a8dd0ce523bf74d24a97b55af529a1e46712781dd17102f8ec25aa55e54"
+    },
+    {
+      "key": "neon-free",
+      "url": "https://neon.com/pricing",
+      "status": 200,
+      "bytes": 673049,
+      "sha256": "69c8e3973ae91db8d75f26036bb863da380b542d6e97f6d2d823186cf9c8c270"
+    },
+    {
+      "key": "cloudflare-r2",
+      "url": "https://developers.cloudflare.com/r2/pricing/",
+      "status": 200,
+      "bytes": 146396,
+      "sha256": "3068286a157fed0e1ce334e39970d62d686371e1717bffaa631c167fe3acd6d3"
+    },
+    {
+      "key": "cloudflare-workers",
+      "url": "https://developers.cloudflare.com/workers/platform/limits/",
+      "status": 200,
+      "bytes": 250914,
+      "sha256": "d965ce12d71211a01a79dad9283afd53568b538909c6ca394cd1e295265367eb"
+    },
+    {
+      "key": "render-free",
+      "url": "https://render.com/docs/free",
+      "status": 200,
+      "bytes": 374492,
+      "sha256": "b152a5dfc1ce8b8508bc2de4c88a0947ccceb7f98480efcdb1c23fe905748ed8"
+    },
+    {
+      "key": "gcp-free",
+      "url": "https://cloud.google.com/free/docs/free-cloud-features",
+      "status": 200,
+      "bytes": 182230,
+      "sha256": "4a13c1defd20a45895a649144022c980267031a301dabd4e7a6a3fc937e917da"
+    },
+    {
+      "key": "hetzner",
+      "url": "https://www.hetzner.com/cloud/",
+      "status": 200,
+      "bytes": 122563,
+      "sha256": "c25586e5ee2f0741674a8a0031eeecd2a00edfedfce0bd40c1e558805e29f5d8"
+    },
+    {
+      "key": "vercel-rewrites",
+      "url": "https://vercel.com/docs/rewrites",
+      "status": 200,
+      "bytes": 19054,
+      "sha256": "fe7aa4fcffb829008bc5ce5f9b86ffb5e0ccfab2ad930857a7b5b61b0d8042dd"
+    }
+  ]
+}

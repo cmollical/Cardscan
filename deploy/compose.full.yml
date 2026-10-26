@@ -1,0 +1,6 @@
+# Optional single-VM frontend. Use --profile full with both compose files.
+services:
+  edge:
+    volumes:
+      - ./Caddyfile.full:/etc/caddy/Caddyfile:ro
+    depends_on: {frontend: {condition: service_started}}

@@ -42,7 +42,7 @@ class Database:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with self.connect() as c:
             version = c.execute('PRAGMA user_version').fetchone()[0]
-            if version > 5:
+            if version > 6:
                 raise ValueError('Database newer than supported schema')
             if version == 0:
                 # executescript transaction includes migration and version atomically.
@@ -55,6 +55,8 @@ class Database:
                 c.executescript('BEGIN IMMEDIATE;\n' + Path(__file__).with_name('migrations').joinpath('004.sql').read_text() + '\nCOMMIT;')
             if version < 5:
                 c.executescript('BEGIN IMMEDIATE;\n' + Path(__file__).with_name('migrations').joinpath('005.sql').read_text() + '\nCOMMIT;')
+            if version < 6:
+                c.executescript('BEGIN IMMEDIATE;\n' + Path(__file__).with_name('migrations').joinpath('006.sql').read_text() + '\nCOMMIT;')
             c.execute('PRAGMA journal_mode=WAL')
 
     @contextmanager
@@ -92,6 +94,6 @@ class Database:
     def health(self):
         with self.connect(readonly=True) as c:
             version = c.execute('PRAGMA user_version').fetchone()[0]
-            return {'status':'ok' if version == 5 else 'schema_mismatch','schema_version':version,
+            return {'status':'ok' if version == 6 else 'schema_mismatch','schema_version':version,
                     'products':c.execute('SELECT COUNT(*) FROM products').fetchone()[0],
                     'skus':c.execute('SELECT COUNT(*) FROM skus').fetchone()[0]}

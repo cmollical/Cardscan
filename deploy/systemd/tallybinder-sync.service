@@ -1,0 +1,10 @@
+[Unit]
+Description=TallyBinder bounded daily provider synchronization
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+[Service]
+Type=oneshot
+ExecStart=/opt/tallybinder/deploy/run-daily.sh
+TimeoutStartSec=40min
+UMask=0077

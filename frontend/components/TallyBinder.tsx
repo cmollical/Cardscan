@@ -46,6 +46,9 @@ type View =
   | "inventory"
   | "settings";
 type Config = {
+  auth_mode?: "session" | "bearer";
+  ai_pause_reason?: string | null;
+  authenticated?: boolean;
   ai_enabled: boolean;
   model: string | null;
   access_token_required: boolean;
@@ -210,6 +213,17 @@ export default function TallyBinder() {
         setReady(true);
         const cfg = await request<Config>("/app/config");
         if (alive) setConfig(cfg);
+        if (cfg.auth_mode === "session") {
+          localStorage.removeItem("tallybinder.accessToken");
+          setAccessToken("");
+          if (!cfg.authenticated) {
+            setNotice(
+              "Sign in with your personal access key to connect your cloud binder.",
+            );
+            go("settings");
+            return;
+          }
+        }
         const remote = await request<{ items: ServerDraft[]; total: number }>(
           "/intake?limit=100",
         );
@@ -1601,8 +1615,19 @@ export default function TallyBinder() {
                     AI credentials and spending limits are configured on your
                     backend. Never enter an OpenAI key here.
                   </p>
+                  {config?.ai_pause_reason && (
+                    <p className="notice">
+                      AI is paused pending operator review of API usage after a
+                      backup restore. Manual identification and pricing remain
+                      available.
+                    </p>
+                  )}
                   <label className="field">
-                    <span>Personal app access token (optional)</span>
+                    <span>
+                      {config?.auth_mode === "session"
+                        ? "Personal access key"
+                        : "Personal app access token (optional)"}
+                    </span>
                     <input
                       aria-label="App access token"
                       type="password"
@@ -1614,15 +1639,47 @@ export default function TallyBinder() {
                   <button
                     className="secondary full"
                     onClick={() => {
-                      localStorage.setItem(
-                        "tallybinder.accessToken",
-                        accessToken,
-                      );
-                      location.reload();
+                      if (config?.auth_mode === "session") {
+                        void request("/auth/login", {
+                          method: "POST",
+                          body: JSON.stringify({ access_key: accessToken }),
+                        })
+                          .then(() => {
+                            localStorage.removeItem("tallybinder.accessToken");
+                            location.reload();
+                          })
+                          .catch((e) => setNotice(message(e)));
+                      } else {
+                        localStorage.setItem(
+                          "tallybinder.accessToken",
+                          accessToken,
+                        );
+                        location.reload();
+                      }
                     }}
                   >
-                    Save access token & reconnect
+                    {config?.auth_mode === "session"
+                      ? "Sign in securely"
+                      : "Save access token & reconnect"}
                   </button>
+                  {config?.auth_mode === "session" && (
+                    <>
+                      <p className="caption">
+                        Your key is exchanged for a secure, HttpOnly session
+                        cookie and is not saved in browser storage.
+                      </p>
+                      <button
+                        className="text-button"
+                        onClick={() =>
+                          void request("/auth/logout", { method: "POST" })
+                            .then(() => location.reload())
+                            .catch((e) => setNotice(message(e)))
+                        }
+                      >
+                        Sign out of cloud binder
+                      </button>
+                    </>
+                  )}
                 </section>
                 <section className="panel">
                   <h2>Keep TallyBinder close.</h2>
@@ -1755,8 +1812,12 @@ function JobPanel({
       <span className="eyebrow">PHOTO RESEARCH · HUMAN REVIEW REQUIRED</span>
       {job.status === "queued" || job.status === "running" ? (
         <p>
-          <LoaderCircle size={16} className="spin" /> Researching photos. You
-          can keep scanning.
+          <LoaderCircle size={16} className="spin" />{" "}
+          {job.status === "queued"
+            ? "Queued for photo research."
+            : "Researching photos."}{" "}
+          You can keep scanning.{" "}
+          {job.error ? job.error.replaceAll("_", " ") : ""}
         </p>
       ) : job.status !== "completed" ? (
         <p>

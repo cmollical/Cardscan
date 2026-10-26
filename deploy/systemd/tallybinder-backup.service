@@ -1,0 +1,10 @@
+[Unit]
+Description=TallyBinder consistent database/photos and encrypted off-VM backup
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+[Service]
+Type=oneshot
+ExecStart=/opt/tallybinder/deploy/run-backup.sh
+TimeoutStartSec=1h
+UMask=0077

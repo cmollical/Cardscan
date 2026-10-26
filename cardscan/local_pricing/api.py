@@ -21,7 +21,10 @@ def create_app(path=None,*,media_root=None,vision_settings=None,vision_provider=
 
     @app.get('/health')
     def health():
-        try:return db.health()
+        try:
+            result=db.health()
+            if result['status']!='ok':raise ValueError('Database migration required')
+            return result
         except Exception:raise HTTPException(503,detail={'code':'database_unavailable'})
 
     @app.get('/cards/search')
@@ -81,6 +84,8 @@ def create_app(path=None,*,media_root=None,vision_settings=None,vision_provider=
     from cardscan.app.limits import BodyLimits
     register(app,db,media_root=media_root,settings=vision_settings,vision_provider=vision_provider)
     app.add_middleware(BodyLimits)
+    from cardscan.app.security import configure
+    configure(app)
     return app
 
 

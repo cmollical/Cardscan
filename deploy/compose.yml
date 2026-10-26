@@ -1,0 +1,82 @@
+name: tallybinder
+x-api: &api
+  image: tallybinder-api:${TALLYBINDER_RELEASE:-local}
+  build:
+    context: ..
+    dockerfile: deploy/Dockerfile.api
+  env_file: ${TALLYBINDER_ENV_FILE:-/srv/tallybinder/config/app.env}
+  volumes:
+    - ${TALLYBINDER_DATA_DIR:-/srv/tallybinder/data}:/data
+  read_only: true
+  tmpfs: [/tmp:size=64m,mode=1777]
+  user: '10001:10001'
+  init: true
+  restart: unless-stopped
+  stop_grace_period: 100s
+  security_opt: [no-new-privileges:true]
+  cap_drop: [ALL]
+  mem_limit: 2g
+  cpus: 1.0
+  logging:
+    driver: json-file
+    options: {max-size: 10m, max-file: '3'}
+services:
+  api:
+    <<: *api
+    healthcheck:
+      test: [CMD, python, -c, 'import urllib.request; urllib.request.urlopen("http://127.0.0.1:8000/health", timeout=5)']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  worker:
+    <<: *api
+    command: [python, -m, cardscan.ops.worker]
+    healthcheck:
+      test: [CMD, python, -c, 'import os,time,pathlib; p=pathlib.Path(os.environ["TALLYBINDER_DB"]+".vision.heartbeat"); assert p.exists() and time.time()-float(p.read_text())<180']
+      interval: 30s
+      timeout: 5s
+      start_period: 90s
+      retries: 3
+    depends_on: {api: {condition: service_healthy}}
+  admin:
+    <<: *api
+    profiles: [admin]
+    restart: 'no'
+    volumes:
+      - ${TALLYBINDER_DATA_DIR:-/srv/tallybinder/data}:/data
+      - ${TALLYBINDER_CONFIG_DIR:-/srv/tallybinder/config}:/config:ro
+      - ${TALLYBINDER_BACKUP_DIR:-/srv/tallybinder/backups}:/backups
+    entrypoint: [python, -m, cardscan.ops]
+    command: [check]
+  frontend:
+    profiles: [full]
+    image: tallybinder-frontend:${TALLYBINDER_RELEASE:-local}
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.frontend
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs: [/tmp:size=32m,mode=1777]
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    mem_limit: 1g
+    cpus: 0.75
+  edge:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    ports: ['80:80', '443:443']
+    environment:
+      TALLYBINDER_HOST: ${TALLYBINDER_HOST:?Set the HTTPS API hostname}
+      TALLYBINDER_ACME_EMAIL: ${TALLYBINDER_ACME_EMAIL:?Set certificate contact email}
+    volumes:
+      - ./Caddyfile.api:/etc/caddy/Caddyfile:ro
+      - ${TALLYBINDER_TLS_DIR:-/srv/tallybinder/tls}:/data
+      - caddy_config:/config
+    depends_on: {api: {condition: service_healthy}}
+    mem_limit: 256m
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}
+volumes:
+  caddy_config:
