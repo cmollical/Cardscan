@@ -1,0 +1,544 @@
+{
+  "scope": "Source URLs, response hashes, retrieval times and errors; full responses retained locally, not redistributed",
+  "requests": [
+    {
+      "url": "https://api.pokemontcg.io/v2/cards/base1-4",
+      "retrieved_at": "2026-10-26T15:31:45.058873+00:00",
+      "status": 500,
+      "error": "HTTPError"
+    },
+    {
+      "url": "https://api.pokemontcg.io/v2/cards/base3-5",
+      "retrieved_at": "2026-10-26T15:31:45.906901+00:00",
+      "status": 500,
+      "error": "HTTPError"
+    },
+    {
+      "url": "https://api.pokemontcg.io/v2/cards/sv3-26",
+      "retrieved_at": "2026-10-26T15:31:43.393509+00:00",
+      "status": 500,
+      "error": "HTTPError"
+    },
+    {
+      "url": "https://api.pokemontcg.io/v2/cards/sv3pt5-199",
+      "retrieved_at": "2026-10-26T15:31:44.073549+00:00",
+      "status": 200,
+      "final_url": "https://api.pokemontcg.io/v2/cards/sv3pt5-199",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": null,
+      "sha256": "8c14edab549bb82a84100ec19671d46ca3c17980950b0e72cc3e96af269a245b",
+      "file": "c8d7884eaeb0.body"
+    },
+    {
+      "url": "https://api.tcgapi.dev/v1/games",
+      "retrieved_at": "2026-10-26T15:31:39.681017+00:00",
+      "status": 200,
+      "final_url": "https://api.tcgapi.dev/v1/games",
+      "content_type": "application/json",
+      "last_modified": null,
+      "sha256": "0ebe57dcaa45e193e17945b3068dba8867699e4542c6a2177d41e60e493b52e4",
+      "file": "2fb319438835.body"
+    },
+    {
+      "url": "https://api.tcgdex.net/v2/en/cards/base1-4",
+      "retrieved_at": "2026-10-26T15:30:12.843398+00:00",
+      "status": 200,
+      "final_url": "https://api.tcgdex.net/v2/en/cards/base1-4",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": null,
+      "sha256": "3859afeb850c1b78cd897cfbe44b3629158f2e6646ae60ec5ffe584623302c55",
+      "file": "498bfc66009a.body"
+    },
+    {
+      "url": "https://api.tcgdex.net/v2/en/cards/base3-5",
+      "retrieved_at": "2026-10-26T15:30:13.336190+00:00",
+      "status": 200,
+      "final_url": "https://api.tcgdex.net/v2/en/cards/base3-5",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": null,
+      "sha256": "5d33378a50475bc73ff9f37505a4278103566138a6ed100fa67620f39a5d5648",
+      "file": "12c8036543b3.body"
+    },
+    {
+      "url": "https://api.tcgdex.net/v2/en/cards/sv03-026",
+      "retrieved_at": "2026-10-26T15:30:11.798649+00:00",
+      "status": 200,
+      "final_url": "https://api.tcgdex.net/v2/en/cards/sv03-026",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": null,
+      "sha256": "a2c95b7c7f7a268717c27c417c91a18a0ecac2e6ff58a749fc82ddf7ef9b15e2",
+      "file": "abe625ae1b5e.body"
+    },
+    {
+      "url": "https://api.tcgdex.net/v2/en/cards/sv03.5-199",
+      "retrieved_at": "2026-10-26T15:30:12.414816+00:00",
+      "status": 200,
+      "final_url": "https://api.tcgdex.net/v2/en/cards/sv03.5-199",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": null,
+      "sha256": "1c327bfc8ce642fc8887b1a48a76bad878e73b98496a50df813dd02b5db162dc",
+      "file": "5926c8a87633.body"
+    },
+    {
+      "url": "https://api.tcgdex.net/v2/ja/cards/sv2a-201",
+      "retrieved_at": "2026-10-26T15:30:13.695326+00:00",
+      "status": 200,
+      "final_url": "https://api.tcgdex.net/v2/ja/cards/sv2a-201",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": null,
+      "sha256": "533978ba78d2d2433eb524dcc4b11747e277e58b71e4829ddaed8bd3791ce7fa",
+      "file": "14e38657c50b.body"
+    },
+    {
+      "url": "https://docs.pokemontcg.io/api-reference/cards/card-object/",
+      "retrieved_at": "2026-10-26T15:30:31.634189+00:00",
+      "status": 200,
+      "final_url": "https://docs.pokemontcg.io/api-reference/cards/card-object/",
+      "content_type": "text/html",
+      "last_modified": "Sat, 28 May 2022 15:45:48 GMT",
+      "sha256": "ed452ed32abd6a16079548c0ebd1c961405c1a52e0a033132ac011002704a31c",
+      "file": "f090ea736b5c.body"
+    },
+    {
+      "url": "https://docs.pokemontcg.io/getting-started/rate-limits/",
+      "retrieved_at": "2026-10-26T15:30:30.768402+00:00",
+      "status": 200,
+      "final_url": "https://docs.pokemontcg.io/getting-started/rate-limits/",
+      "content_type": "text/html",
+      "last_modified": "Sat, 28 May 2022 15:45:49 GMT",
+      "sha256": "b05c687a87446bc22626ebe2cdfb467b6a836bee8c15e3ec2f64ea90d3899a20",
+      "file": "392f0bba1e2f.body"
+    },
+    {
+      "url": "https://justtcg.com/docs/api/cards",
+      "retrieved_at": "2026-10-26T15:30:29.702413+00:00",
+      "status": 200,
+      "final_url": "https://justtcg.com/docs/api/cards",
+      "content_type": "text/html; charset=utf-8",
+      "last_modified": null,
+      "sha256": "0eca4ee454bc1ae54b3d53eaaf77a76c5af9dfc90f36be05155b8ab519588fdb",
+      "file": "fd232900e9ee.body"
+    },
+    {
+      "url": "https://justtcg.com/docs/quickstart",
+      "status": 200,
+      "retrieved_at": "2026-10-26T15:28:30.329339+00:00",
+      "sha256": "1078e1fe6dc0884a133b60a371e27a6a483ac09303087238d08dc6f88fa2df4e",
+      "file": "80676c90486c.body"
+    },
+    {
+      "url": "https://justtcg.com/docs/rate-limits",
+      "status": 200,
+      "retrieved_at": "2026-10-26T15:29:12.356926+00:00",
+      "sha256": "5e732021a27acaa554b80e37aa1413b0d0c3798195280f6964e8ff2ee5484a59",
+      "file": "75a538548f7b.body"
+    },
+    {
+      "url": "https://justtcg.com/docs/schema/variant",
+      "status": 200,
+      "retrieved_at": "2026-10-26T15:29:11.506731+00:00",
+      "sha256": "d414a0ce04ab5286a994b5d03af4dabffef4b161bde83a234678d51e38d4fc4e",
+      "file": "a31d58a04bf9.body"
+    },
+    {
+      "url": "https://justtcg.com/docs/swagger.json",
+      "retrieved_at": "2026-10-26T15:30:30.246945+00:00",
+      "status": 200,
+      "final_url": "https://justtcg.com/docs/swagger.json",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": "Mon, 26 Oct 2026 15:30:30 GMT",
+      "sha256": "0c9bc43c7e504ba05eda75117b2233b2b2fefb109e8a821b69e6c89295048a26",
+      "file": "bae46e5c55d2.body"
+    },
+    {
+      "url": "https://justtcg.com/pricing",
+      "status": 200,
+      "retrieved_at": "2026-10-26T15:28:30.521625+00:00",
+      "sha256": "9e5ee8b20a96ad4d99d2a62fb12e472ad146cd691f2822563ab625819e6c728a",
+      "file": "89da9beb4959.body"
+    },
+    {
+      "url": "https://justtcg.com/terms",
+      "status": 200,
+      "retrieved_at": "2026-10-26T15:28:30.146291+00:00",
+      "sha256": "f50ace554a8acc00d5139078707cab6be49a22158fbf51cf12a50f1a27ed35f9",
+      "file": "1fd3ed7e7136.body"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/",
+      "retrieved_at": "2026-10-26T15:29:34.883635+00:00",
+      "status": 200,
+      "final_url": "https://openapi.tcgtracking.com/",
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "015691f4a4cd1cdb487f4620afa3f85eb59aa63d2f3dc67b94ad2e5b2a1497af",
+      "file": "4093b26c0334.body"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets",
+      "retrieved_at": "2026-10-26T15:29:35.895470+00:00",
+      "status": 200,
+      "final_url": "https://openapi.tcgtracking.com/v1/3/sets",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": "Mon, 26 Oct 2026 12:36:08 GMT",
+      "sha256": "5001890788b16d304ec472f307dfaaaca453cfd8481ce8d9e1087dd247bf4ab6",
+      "file": "04f6c82e425d.body"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/23228/cards",
+      "retrieved_at": "2026-10-26T15:30:09.900625+00:00",
+      "status": 200,
+      "final_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/cards",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": "Tue, 06 Oct 2026 12:38:00 GMT",
+      "sha256": "1ec13ba3c553b82caf22896acc33ebb00b5d97bfe10839bfb8d1193aeac60ed4",
+      "file": "1a7234cb5c21.body"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+      "retrieved_at": "2026-10-26T15:30:10.259413+00:00",
+      "status": 200,
+      "final_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": "Sun, 25 Oct 2026 17:39:35 GMT",
+      "sha256": "96c048e2c98b645676cc110ebebc60430aadb21737600db81839236a33d8b782",
+      "file": "953580750479.body"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/23237/cards",
+      "retrieved_at": "2026-10-26T15:30:10.735086+00:00",
+      "status": 200,
+      "final_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/cards",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": "Wed, 16 Sep 2026 13:35:38 GMT",
+      "sha256": "22387340de6025a63b719d5c7ddc4f6a4656b1ec1afc0e689c9d3a603f19f110",
+      "file": "bbcf1db617a5.body"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+      "retrieved_at": "2026-10-26T15:30:11.229077+00:00",
+      "status": 200,
+      "final_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": "Sun, 25 Oct 2026 17:39:36 GMT",
+      "sha256": "b928aad9dd82ac6292675500cab104c0677a95c121102a9d0d7bec99a3a29226",
+      "file": "ca81a17a297c.body"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/604/cards",
+      "retrieved_at": "2026-10-26T15:30:07.648379+00:00",
+      "status": 200,
+      "final_url": "https://openapi.tcgtracking.com/v1/3/sets/604/cards",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": "Wed, 16 Sep 2026 13:35:44 GMT",
+      "sha256": "09893e9d51ed192dd039e192cf49bee26ec673d6b833c39f22e106366bd51cc1",
+      "file": "1a205461a102.body"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/604/skus",
+      "retrieved_at": "2026-10-26T15:30:08.309895+00:00",
+      "status": 200,
+      "final_url": "https://openapi.tcgtracking.com/v1/3/sets/604/skus",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": "Sun, 25 Oct 2026 17:39:41 GMT",
+      "sha256": "e485d6b88a269e57c606c0f8485d002d76d66237124fa8a3a85043b285b0d057",
+      "file": "fa9b4a815b93.body"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/630/cards",
+      "retrieved_at": "2026-10-26T15:30:08.917499+00:00",
+      "status": 200,
+      "final_url": "https://openapi.tcgtracking.com/v1/3/sets/630/cards",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": "Wed, 16 Sep 2026 13:35:44 GMT",
+      "sha256": "a351f253b0ab10ef8508b664df44593fd41799fffc9e53470beaa7bcd8dbe3da",
+      "file": "073cc30f5823.body"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+      "retrieved_at": "2026-10-26T15:30:09.355903+00:00",
+      "status": 200,
+      "final_url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": "Sun, 25 Oct 2026 17:39:35 GMT",
+      "sha256": "a2f98161b8c32209b87d1444273d52037d3400c2129ee0b0e02592969cea455c",
+      "file": "3324ad1e6b93.body"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets/23599/cards",
+      "retrieved_at": "2026-10-26T15:30:28.128812+00:00",
+      "status": 200,
+      "final_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/cards",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": "Thu, 22 Oct 2026 14:58:53 GMT",
+      "sha256": "106b5452e85719e3b1ae5c498125a83685edac51b1c11e8f7b9f5f446e04818a",
+      "file": "a61c77d8d5b5.body"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+      "retrieved_at": "2026-10-26T15:30:28.649660+00:00",
+      "status": 200,
+      "final_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": "Sun, 25 Oct 2026 17:46:10 GMT",
+      "sha256": "36b0d50f08a016ee9f9e4ccb80651771c747ed3a09aee53bd54fa5ad7079d15c",
+      "file": "0b8e189ac813.body"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/categories",
+      "retrieved_at": "2026-10-26T15:29:35.369290+00:00",
+      "status": 200,
+      "final_url": "https://openapi.tcgtracking.com/v1/categories",
+      "content_type": "application/json; charset=utf-8",
+      "last_modified": "Mon, 26 Oct 2026 12:42:23 GMT",
+      "sha256": "5ecb20dcb8db5b911c938af7775102a9fdc4244dadd747ad8f6f6d1df3ceee76",
+      "file": "bb4cf14679f4.body"
+    },
+    {
+      "url": "https://tcgapi.dev/",
+      "status": 200,
+      "retrieved_at": "2026-10-26T15:28:30.803249+00:00",
+      "sha256": "ed97ae7738857533e41d3f25a3ae3934784d33eaa0d9c66507f4aa1e9ecfee0f",
+      "file": "559e68e5427d.body"
+    },
+    {
+      "url": "https://tcgapi.dev/authentication/",
+      "retrieved_at": "2026-10-26T15:31:40.486440+00:00",
+      "status": 200,
+      "final_url": "https://tcgapi.dev/authentication/",
+      "content_type": "text/html; charset=utf-8",
+      "last_modified": null,
+      "sha256": "c6025f37971a25a46e7abcd12fba873bd269f87f0ab5ca329d728779ea61ddcc",
+      "file": "205b5c65aa53.body"
+    },
+    {
+      "url": "https://tcgapi.dev/legal/terms/",
+      "status": 200,
+      "retrieved_at": "2026-10-26T15:29:10.911186+00:00",
+      "sha256": "a051d3ace29404e06523784bd08a5b9687d2930ec612a2099d38ffcf76e7c3f3",
+      "file": "53c9dbed3775.body"
+    },
+    {
+      "url": "https://tcgapi.dev/llms-full.txt",
+      "status": 200,
+      "retrieved_at": "2026-10-26T15:29:10.307441+00:00",
+      "sha256": "c07c2a620978a149eb58911fb6b4daba71d8c3a938dbb287964e91cb21ba190d",
+      "file": "6929382d82d2.body"
+    },
+    {
+      "url": "https://tcgapi.dev/rate-limits/",
+      "retrieved_at": "2026-10-26T15:31:41.170960+00:00",
+      "status": 404,
+      "error": "HTTPError"
+    },
+    {
+      "url": "https://tcgcsv.com/docs",
+      "status": 200,
+      "retrieved_at": "2026-10-26T15:28:30.165481+00:00",
+      "sha256": "e20936ac19f14d612ee5edd8e6cea8a9fed1b8645689fd802c4cd41149fa03e3",
+      "file": "202ba714eea3.body"
+    },
+    {
+      "url": "https://tcgcsv.com/faq",
+      "status": 200,
+      "retrieved_at": "2026-10-26T15:29:09.689327+00:00",
+      "sha256": "c1c3f20bf28d1d0376d9d6ff795ec9ca19dc67e4e28bf75d8679824500092e7f",
+      "file": "ed5e8d7b262f.body"
+    },
+    {
+      "url": "https://tcgcsv.com/last-updated.txt",
+      "status": 200,
+      "retrieved_at": "2026-10-26T15:29:09.343259+00:00",
+      "sha256": "adc6c33673b91f21cf51e5366bd7b3db7554d7046144473d13e74be9a311f3e2",
+      "file": "6da7a88b5d7d.body"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/23228/prices",
+      "retrieved_at": "2026-10-26T15:29:37.620974+00:00",
+      "status": 200,
+      "final_url": "https://tcgcsv.com/tcgplayer/3/23228/prices",
+      "content_type": "application/json",
+      "last_modified": "Sun, 25 Oct 2026 20:03:27 GMT",
+      "sha256": "b11fd17f75f2da8b7ed571bab7da3bf51377a9db40cba2ef4c2799a4624994e5",
+      "file": "edd37b430d5c.body"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/23228/products",
+      "retrieved_at": "2026-10-26T15:29:37.153357+00:00",
+      "status": 200,
+      "final_url": "https://tcgcsv.com/tcgplayer/3/23228/products",
+      "content_type": "application/json",
+      "last_modified": "Wed, 21 Oct 2026 20:02:53 GMT",
+      "sha256": "b491b378f1ca1d602a46ff45c0770af5174498ac5d2c5f4b90556b2297d0afba",
+      "file": "7242823ad4b3.body"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/23237/prices",
+      "retrieved_at": "2026-10-26T15:29:38.289430+00:00",
+      "status": 200,
+      "final_url": "https://tcgcsv.com/tcgplayer/3/23237/prices",
+      "content_type": "application/json",
+      "last_modified": "Sun, 25 Oct 2026 20:03:25 GMT",
+      "sha256": "89d98606b4c8088fac27bceff62a406ff6c9f3e3b17d2a993588a78eda31e0b7",
+      "file": "d4c2e491d275.body"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/23237/products",
+      "retrieved_at": "2026-10-26T15:29:37.940404+00:00",
+      "status": 200,
+      "final_url": "https://tcgcsv.com/tcgplayer/3/23237/products",
+      "content_type": "application/json",
+      "last_modified": "Thu, 22 Oct 2026 20:03:22 GMT",
+      "sha256": "448255c2c192a6948245806461fde37df0df1de55fed3ec335cd321a1b136036",
+      "file": "e551581ddda3.body"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/604/prices",
+      "retrieved_at": "2026-10-26T15:29:39.198153+00:00",
+      "status": 200,
+      "final_url": "https://tcgcsv.com/tcgplayer/3/604/prices",
+      "content_type": "application/json",
+      "last_modified": "Sun, 25 Oct 2026 20:03:41 GMT",
+      "sha256": "584876e4d6d15bd1efe66b5d686904a4dd1c210ef890b2274ab7672c562bf1ac",
+      "file": "fe2b2f8006cc.body"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/604/products",
+      "retrieved_at": "2026-10-26T15:29:38.729131+00:00",
+      "status": 200,
+      "final_url": "https://tcgcsv.com/tcgplayer/3/604/products",
+      "content_type": "application/json",
+      "last_modified": "Mon, 19 Oct 2026 20:03:34 GMT",
+      "sha256": "d36ae814e13a5b0520fa889f90363095f047d901348118786041045211477155",
+      "file": "f711b2389877.body"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/630/prices",
+      "retrieved_at": "2026-10-26T15:29:39.959057+00:00",
+      "status": 200,
+      "final_url": "https://tcgcsv.com/tcgplayer/3/630/prices",
+      "content_type": "application/json",
+      "last_modified": "Sun, 25 Oct 2026 20:03:41 GMT",
+      "sha256": "1e8567f7889deb053eb11bb1aaf53bbec2932aee2a5ef068c5e28930ee005f11",
+      "file": "dc38c20a787f.body"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/630/products",
+      "retrieved_at": "2026-10-26T15:29:39.580182+00:00",
+      "status": 200,
+      "final_url": "https://tcgcsv.com/tcgplayer/3/630/products",
+      "content_type": "application/json",
+      "last_modified": "Mon, 12 Oct 2026 20:03:11 GMT",
+      "sha256": "9cebb7e233640072077c33ba8dab2e2d6648cf8dd9aea9053a68f484209b0822",
+      "file": "d13f85972b56.body"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/groups",
+      "status": 200,
+      "retrieved_at": "2026-10-26T15:29:08.868419+00:00",
+      "sha256": "36766b358e7bbd16e80a669e6fc8aa46efbbddcbf74c886d89f4eafeb1d71bc9",
+      "file": "b4c05481bd01.body"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/85/23599/prices",
+      "retrieved_at": "2026-10-26T15:30:27.818045+00:00",
+      "status": 200,
+      "final_url": "https://tcgcsv.com/tcgplayer/85/23599/prices",
+      "content_type": "application/json",
+      "last_modified": "Sun, 25 Oct 2026 20:03:07 GMT",
+      "sha256": "9def777e71960a05789c487ce2f99f26cf3a75d388f825df050bc258e69f772e",
+      "file": "7de02d4b69d5.body"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/85/23599/products",
+      "retrieved_at": "2026-10-26T15:30:27.268395+00:00",
+      "status": 200,
+      "final_url": "https://tcgcsv.com/tcgplayer/85/23599/products",
+      "content_type": "application/json",
+      "last_modified": "Fri, 17 Jul 2026 20:02:40 GMT",
+      "sha256": "437d67c592397ab99d2fdd7b73625392364208c483ca7ad6ec276283dfe6167d",
+      "file": "5e3a84a7a404.body"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/85/groups",
+      "retrieved_at": "2026-10-26T15:29:36.668716+00:00",
+      "status": 200,
+      "final_url": "https://tcgcsv.com/tcgplayer/85/groups",
+      "content_type": "application/json",
+      "last_modified": "Sun, 25 Oct 2026 20:00:07 GMT",
+      "sha256": "d48ea645875df658b29b10b57dd60c66fd60c072f2e0e74477e0bb0a3e4437a9",
+      "file": "06dbb5b1516d.body"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/categories",
+      "status": 200,
+      "retrieved_at": "2026-10-26T15:29:08.437445+00:00",
+      "sha256": "df9e2f9731b2a985f38cb5575deb3c074778558036fd4e9a7107088965d24479",
+      "file": "b6027fe3c569.body"
+    },
+    {
+      "url": "https://tcgdex.dev/faq",
+      "retrieved_at": "2026-10-26T15:31:41.688049+00:00",
+      "status": 200,
+      "final_url": "https://tcgdex.dev/faq",
+      "content_type": "text/html",
+      "last_modified": "Mon, 28 Sep 2026 08:29:34 GMT",
+      "sha256": "3492830aae3b651ed49ea93c526b9f5bc6121dff0710b628ecfdbdb9ebca8fe1",
+      "file": "0222013de5a8.body"
+    },
+    {
+      "url": "https://tcgdex.dev/markets-prices",
+      "status": 200,
+      "retrieved_at": "2026-10-26T15:28:31.191148+00:00",
+      "sha256": "9838204d3c5455abc4494bc7b8166f23cd147847e9b6835b211e4ac5e158cfe2",
+      "file": "60ba9b7b3238.body"
+    },
+    {
+      "url": "https://tcgplayer.com/robots.txt",
+      "retrieved_at": "2026-10-26T15:30:33.186309+00:00",
+      "status": 200,
+      "final_url": "https://www.tcgplayer.com/robots.txt",
+      "content_type": "text/plain",
+      "last_modified": "Wed, 21 Oct 2026 15:50:07 GMT",
+      "sha256": "a581a1dde243c0f0baacd1121d6485f366a4727fe46bbc2c6dc6d7fbc789a0be",
+      "file": "ec3ae0bb35f0.body"
+    },
+    {
+      "url": "https://tcgtracking.com/",
+      "retrieved_at": "2026-10-26T15:30:29.292985+00:00",
+      "status": 200,
+      "final_url": "https://tcgtracking.com/",
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "dee578b4be338dbe29d559f0d11ecc7c6dcb085f32d9df4cf1f86d1a8ded0062",
+      "file": "539fcb603334.body"
+    },
+    {
+      "url": "https://tcgtracking.com/disclaimer.php",
+      "retrieved_at": "2026-10-26T15:31:42.983719+00:00",
+      "status": 200,
+      "final_url": "https://tcgtracking.com/disclaimer.php",
+      "content_type": "text/html; charset=UTF-8",
+      "last_modified": null,
+      "sha256": "576025d2961c363a239a91e8068327fb8027ca1e97d22cd4990c8ffdeb1e00b8",
+      "file": "d1458953a2bb.body"
+    },
+    {
+      "url": "https://www.pricecharting.com/api-documentation",
+      "status": 200,
+      "retrieved_at": "2026-10-26T15:28:30.495538+00:00",
+      "sha256": "e4641368b3138b02ce3fbcfe379900417d74fc2d0f9fb30adab274685a7eb1c9",
+      "file": "3de299ebed4c.body"
+    },
+    {
+      "url": "https://www.pricecharting.com/pricecharting-pro",
+      "retrieved_at": "2026-10-26T15:30:32.623256+00:00",
+      "status": 200,
+      "final_url": "https://www.pricecharting.com/pricecharting-pro",
+      "content_type": "text/html; charset=utf-8",
+      "last_modified": null,
+      "sha256": "b115ac8f3cbb2dbaf4630c84346a8a02aaffec14ec25635cd4f2746cc175be86",
+      "file": "0853544d2460.body"
+    }
+  ]
+}

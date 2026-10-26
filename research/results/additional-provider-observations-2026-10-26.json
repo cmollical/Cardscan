@@ -1,0 +1,554 @@
+{
+  "investigated_on": "2026-10-26",
+  "additional_observations": [
+    {
+      "provider": "tcgdex",
+      "case_id": "modern-common",
+      "source_url": "https://api.tcgdex.net/v2/en/cards/sv03-026",
+      "retrieved_at": "2026-10-26T15:30:11.798649+00:00",
+      "source_sha256": "a2c95b7c7f7a268717c27c417c91a18a0ecac2e6ff58a749fc82ddf7ef9b15e2",
+      "observed_identity": {
+        "id": "sv03-026",
+        "name": "Charmander",
+        "localId": "026",
+        "set": {
+          "cardCount": {
+            "official": 197,
+            "total": 230
+          },
+          "id": "sv03",
+          "logo": "https://assets.tcgdex.net/en/sv/sv03/logo",
+          "name": "Obsidian Flames",
+          "symbol": "https://assets.tcgdex.net/univ/sv/sv03/symbol"
+        },
+        "variants": {
+          "firstEdition": false,
+          "holo": true,
+          "normal": true,
+          "reverse": true,
+          "wPromo": false
+        }
+      },
+      "pricing": {
+        "cardmarket": {
+          "updated": "2026-10-25T22:54:32.718Z",
+          "unit": "EUR",
+          "idProduct": 725106,
+          "avg": 0.07,
+          "low": 0.02,
+          "trend": 0.07,
+          "avg1": 0.04,
+          "avg7": 0.06,
+          "avg30": 0.06,
+          "avg-holo": 0.24,
+          "low-holo": 0.02,
+          "trend-holo": 0.32,
+          "avg1-holo": 0.39,
+          "avg7-holo": 0.3,
+          "avg30-holo": 0.24
+        },
+        "tcgplayer": {
+          "unit": "USD",
+          "updated": "2026-10-14T22:55:09.414Z",
+          "reverse-holofoil": {
+            "productId": 509703,
+            "lowPrice": 0.09,
+            "midPrice": 0.38,
+            "highPrice": 10,
+            "marketPrice": 0.36,
+            "directLowPrice": 0.2
+          },
+          "normal": {
+            "productId": 509703,
+            "lowPrice": 0.01,
+            "midPrice": 0.25,
+            "highPrice": 20,
+            "marketPrice": 0.24,
+            "directLowPrice": 0.01
+          }
+        }
+      },
+      "condition_specific_price": null,
+      "limitations": [
+        "No NM/LP/MP/HP/DMG scope",
+        "Metadata locale is not proof of price-language or edition",
+        "firstEdition indicates an existing variant, not the edition of a price",
+        "No shipping/tax exclusion definition",
+        "Upstream commercial price rights unresolved"
+      ]
+    },
+    {
+      "provider": "tcgdex",
+      "case_id": "modern-chase",
+      "source_url": "https://api.tcgdex.net/v2/en/cards/sv03.5-199",
+      "retrieved_at": "2026-10-26T15:30:12.414816+00:00",
+      "source_sha256": "1c327bfc8ce642fc8887b1a48a76bad878e73b98496a50df813dd02b5db162dc",
+      "observed_identity": {
+        "id": "sv03.5-199",
+        "name": "Charizard ex",
+        "localId": "199",
+        "set": {
+          "cardCount": {
+            "official": 165,
+            "total": 207
+          },
+          "id": "sv03.5",
+          "logo": "https://assets.tcgdex.net/en/sv/sv03.5/logo",
+          "name": "151",
+          "symbol": "https://assets.tcgdex.net/univ/sv/sv03.5/symbol"
+        },
+        "variants": {
+          "firstEdition": false,
+          "holo": true,
+          "normal": false,
+          "reverse": false,
+          "wPromo": false
+        }
+      },
+      "pricing": {
+        "cardmarket": {
+          "updated": "2026-10-25T22:54:32.725Z",
+          "unit": "EUR",
+          "idProduct": 733794,
+          "avg": 386.27,
+          "low": 100.11,
+          "trend": 265.57,
+          "avg1": 339.33,
+          "avg7": 305.7,
+          "avg30": 345.18,
+          "avg-holo": null,
+          "low-holo": null,
+          "trend-holo": 0,
+          "avg1-holo": null,
+          "avg7-holo": null,
+          "avg30-holo": null
+        },
+        "tcgplayer": {
+          "unit": "USD",
+          "updated": "2026-10-14T22:55:09.651Z",
+          "holofoil": {
+            "productId": 517045,
+            "lowPrice": 296,
+            "midPrice": 354.07,
+            "highPrice": 10000,
+            "marketPrice": 324.63,
+            "directLowPrice": 326.26
+          }
+        }
+      },
+      "condition_specific_price": null,
+      "limitations": [
+        "No NM/LP/MP/HP/DMG scope",
+        "Metadata locale is not proof of price-language or edition",
+        "firstEdition indicates an existing variant, not the edition of a price",
+        "No shipping/tax exclusion definition",
+        "Upstream commercial price rights unresolved"
+      ]
+    },
+    {
+      "provider": "tcgdex",
+      "case_id": "vintage-charizard-lp",
+      "source_url": "https://api.tcgdex.net/v2/en/cards/base1-4",
+      "retrieved_at": "2026-10-26T15:30:12.843398+00:00",
+      "source_sha256": "3859afeb850c1b78cd897cfbe44b3629158f2e6646ae60ec5ffe584623302c55",
+      "observed_identity": {
+        "id": "base1-4",
+        "name": "Charizard",
+        "localId": "4",
+        "set": {
+          "cardCount": {
+            "official": 102,
+            "total": 102
+          },
+          "id": "base1",
+          "logo": "https://assets.tcgdex.net/en/base/base1/logo",
+          "name": "Base Set"
+        },
+        "variants": {
+          "firstEdition": true,
+          "holo": true,
+          "normal": false,
+          "reverse": false,
+          "wPromo": false
+        }
+      },
+      "pricing": {
+        "cardmarket": {
+          "updated": "2026-10-25T22:54:32.713Z",
+          "unit": "EUR",
+          "idProduct": 273699,
+          "avg": 458.1,
+          "low": 100,
+          "trend": 421.88,
+          "avg1": 325,
+          "avg7": 694.73,
+          "avg30": 434.6,
+          "avg-holo": null,
+          "low-holo": null,
+          "trend-holo": 123.63,
+          "avg1-holo": 207.4,
+          "avg7-holo": 129.55,
+          "avg30-holo": 202.71
+        },
+        "tcgplayer": {
+          "unit": "USD",
+          "updated": "2026-10-14T22:54:33.803Z",
+          "holofoil": {
+            "productId": 42382,
+            "lowPrice": 499.99,
+            "midPrice": 587.98,
+            "highPrice": 3499.1,
+            "marketPrice": 954.65,
+            "directLowPrice": null
+          }
+        }
+      },
+      "condition_specific_price": null,
+      "limitations": [
+        "No NM/LP/MP/HP/DMG scope",
+        "Metadata locale is not proof of price-language or edition",
+        "firstEdition indicates an existing variant, not the edition of a price",
+        "No shipping/tax exclusion definition",
+        "Upstream commercial price rights unresolved"
+      ]
+    },
+    {
+      "provider": "tcgdex",
+      "case_id": "first-edition-gengar",
+      "source_url": "https://api.tcgdex.net/v2/en/cards/base3-5",
+      "retrieved_at": "2026-10-26T15:30:13.336190+00:00",
+      "source_sha256": "5d33378a50475bc73ff9f37505a4278103566138a6ed100fa67620f39a5d5648",
+      "observed_identity": {
+        "id": "base3-5",
+        "name": "Gengar",
+        "localId": "5",
+        "set": {
+          "cardCount": {
+            "official": 62,
+            "total": 62
+          },
+          "id": "base3",
+          "logo": "https://assets.tcgdex.net/en/base/base3/logo",
+          "name": "Fossil",
+          "symbol": "https://assets.tcgdex.net/univ/base/base3/symbol"
+        },
+        "variants": {
+          "firstEdition": true,
+          "holo": true,
+          "normal": false,
+          "reverse": false,
+          "wPromo": false
+        }
+      },
+      "pricing": {
+        "cardmarket": {
+          "updated": "2026-10-25T22:54:32.718Z",
+          "unit": "EUR",
+          "idProduct": 273866,
+          "avg": 124.21,
+          "low": 29,
+          "trend": 113.54,
+          "avg1": 257.5,
+          "avg7": 131,
+          "avg30": 129.04,
+          "avg-holo": null,
+          "low-holo": null,
+          "trend-holo": 29.47,
+          "avg1-holo": 95,
+          "avg7-holo": 31.3,
+          "avg30-holo": 31.56
+        },
+        "tcgplayer": {
+          "unit": "USD",
+          "updated": "2026-10-14T22:54:34.477Z",
+          "1st-edition-holofoil": {
+            "productId": 106521,
+            "lowPrice": 249.99,
+            "midPrice": 374.99,
+            "highPrice": 799.99,
+            "marketPrice": 725,
+            "directLowPrice": null
+          },
+          "unlimited-holofoil": {
+            "productId": 106521,
+            "lowPrice": 130,
+            "midPrice": 200,
+            "highPrice": 1503.13,
+            "marketPrice": 223.38,
+            "directLowPrice": null
+          }
+        }
+      },
+      "condition_specific_price": null,
+      "limitations": [
+        "No NM/LP/MP/HP/DMG scope",
+        "Metadata locale is not proof of price-language or edition",
+        "firstEdition indicates an existing variant, not the edition of a price",
+        "No shipping/tax exclusion definition",
+        "Upstream commercial price rights unresolved"
+      ]
+    },
+    {
+      "provider": "tcgdex",
+      "case_id": "japanese-charizard",
+      "source_url": "https://api.tcgdex.net/v2/ja/cards/sv2a-201",
+      "retrieved_at": "2026-10-26T15:30:13.695326+00:00",
+      "source_sha256": "533978ba78d2d2433eb524dcc4b11747e277e58b71e4829ddaed8bd3791ce7fa",
+      "observed_identity": {
+        "id": "SV2a-201",
+        "name": "リザードンex",
+        "localId": "201",
+        "set": {
+          "cardCount": {
+            "official": 165,
+            "total": 210
+          },
+          "id": "SV2a",
+          "name": "ポケモンカード151"
+        },
+        "variants": {
+          "firstEdition": false,
+          "holo": true,
+          "normal": false,
+          "reverse": false,
+          "wPromo": false
+        }
+      },
+      "pricing": {
+        "cardmarket": {
+          "updated": "2026-10-25T22:54:32.716Z",
+          "unit": "EUR",
+          "idProduct": 719654,
+          "avg": 371.11,
+          "low": 215,
+          "trend": 372.09,
+          "avg1": 370,
+          "avg7": 345.39,
+          "avg30": 365.17,
+          "avg-holo": null,
+          "low-holo": null,
+          "trend-holo": 0,
+          "avg1-holo": null,
+          "avg7-holo": null,
+          "avg30-holo": null
+        },
+        "tcgplayer": null
+      },
+      "condition_specific_price": null,
+      "limitations": [
+        "No NM/LP/MP/HP/DMG scope",
+        "Metadata locale is not proof of price-language or edition",
+        "firstEdition indicates an existing variant, not the edition of a price",
+        "No shipping/tax exclusion definition",
+        "Upstream commercial price rights unresolved"
+      ]
+    },
+    {
+      "provider": "pokemontcg.io",
+      "case_id": "modern-common",
+      "source_url": "https://api.pokemontcg.io/v2/cards/sv3-26",
+      "http_status": 500,
+      "retrieved_at": "2026-10-26T15:31:43.393509+00:00",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "pokemontcg.io",
+      "case_id": "modern-chase",
+      "source_url": "https://api.pokemontcg.io/v2/cards/sv3pt5-199",
+      "http_status": 200,
+      "retrieved_at": "2026-10-26T15:31:44.073549+00:00",
+      "condition_specific_price": null,
+      "source_sha256": "8c14edab549bb82a84100ec19671d46ca3c17980950b0e72cc3e96af269a245b",
+      "observed_identity": {
+        "id": "sv3pt5-199",
+        "name": "Charizard ex",
+        "number": "199"
+      },
+      "set_id": "sv3pt5",
+      "printed_total": 165,
+      "tcgplayer": {
+        "url": "https://prices.pokemontcg.io/tcgplayer/sv3pt5-199",
+        "updatedAt": "2026/10/15",
+        "prices": {
+          "holofoil": {
+            "low": 296.0,
+            "mid": 354.07,
+            "high": 10000.0,
+            "market": 323.37,
+            "directLow": 329.38
+          }
+        }
+      },
+      "cardmarket": {
+        "url": "https://prices.pokemontcg.io/cardmarket/sv3pt5-199",
+        "updatedAt": "2025/11/18",
+        "prices": {
+          "averageSellPrice": 273.51,
+          "lowPrice": 170.0,
+          "trendPrice": 235.71,
+          "germanProLow": 0.0,
+          "suggestedPrice": 0.0,
+          "reverseHoloSell": 0.0,
+          "reverseHoloLow": 0.0,
+          "reverseHoloTrend": 0.0,
+          "lowPriceExPlus": 183.99,
+          "avg1": 233.5,
+          "avg7": 273.75,
+          "avg30": 272.73,
+          "reverseHoloAvg1": 0.0,
+          "reverseHoloAvg7": 0.0,
+          "reverseHoloAvg30": 0.0
+        }
+      }
+    },
+    {
+      "provider": "pokemontcg.io",
+      "case_id": "vintage-charizard-lp",
+      "source_url": "https://api.pokemontcg.io/v2/cards/base1-4",
+      "http_status": 500,
+      "retrieved_at": "2026-10-26T15:31:45.058873+00:00",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "pokemontcg.io",
+      "case_id": "first-edition-gengar",
+      "source_url": "https://api.pokemontcg.io/v2/cards/base3-5",
+      "http_status": 500,
+      "retrieved_at": "2026-10-26T15:31:45.906901+00:00",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "pokemontcg.io",
+      "case_id": "japanese-charizard",
+      "status": "not_attempted_no_documented_japanese_target_id"
+    },
+    {
+      "provider": "tcgapi.dev",
+      "case_id": "modern-common",
+      "status": "not_tested",
+      "reason": "Card/pricing endpoints require a key; condition endpoint additionally requires paid Pro. Public games endpoint HTTP 200 only; no pricing calls made.",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "tcgapi.dev",
+      "case_id": "modern-chase",
+      "status": "not_tested",
+      "reason": "Card/pricing endpoints require a key; condition endpoint additionally requires paid Pro. Public games endpoint HTTP 200 only; no pricing calls made.",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "tcgapi.dev",
+      "case_id": "vintage-charizard-lp",
+      "status": "not_tested",
+      "reason": "Card/pricing endpoints require a key; condition endpoint additionally requires paid Pro. Public games endpoint HTTP 200 only; no pricing calls made.",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "tcgapi.dev",
+      "case_id": "first-edition-gengar",
+      "status": "not_tested",
+      "reason": "Card/pricing endpoints require a key; condition endpoint additionally requires paid Pro. Public games endpoint HTTP 200 only; no pricing calls made.",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "tcgapi.dev",
+      "case_id": "japanese-charizard",
+      "status": "not_tested",
+      "reason": "Card/pricing endpoints require a key; condition endpoint additionally requires paid Pro. Public games endpoint HTTP 200 only; no pricing calls made.",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "justtcg",
+      "case_id": "modern-common",
+      "status": "not_tested",
+      "reason": "All endpoints require own free personal key; none configured. No account created or API calls made.",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "justtcg",
+      "case_id": "modern-chase",
+      "status": "not_tested",
+      "reason": "All endpoints require own free personal key; none configured. No account created or API calls made.",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "justtcg",
+      "case_id": "vintage-charizard-lp",
+      "status": "not_tested",
+      "reason": "All endpoints require own free personal key; none configured. No account created or API calls made.",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "justtcg",
+      "case_id": "first-edition-gengar",
+      "status": "not_tested",
+      "reason": "All endpoints require own free personal key; none configured. No account created or API calls made.",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "justtcg",
+      "case_id": "japanese-charizard",
+      "status": "not_tested",
+      "reason": "All endpoints require own free personal key; none configured. No account created or API calls made.",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "pricecharting",
+      "case_id": "modern-common",
+      "status": "not_tested",
+      "reason": "Paid Legendary API/token required; no paid tier or pricing API calls made.",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "pricecharting",
+      "case_id": "modern-chase",
+      "status": "not_tested",
+      "reason": "Paid Legendary API/token required; no paid tier or pricing API calls made.",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "pricecharting",
+      "case_id": "vintage-charizard-lp",
+      "status": "not_tested",
+      "reason": "Paid Legendary API/token required; no paid tier or pricing API calls made.",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "pricecharting",
+      "case_id": "first-edition-gengar",
+      "status": "not_tested",
+      "reason": "Paid Legendary API/token required; no paid tier or pricing API calls made.",
+      "condition_specific_price": null
+    },
+    {
+      "provider": "pricecharting",
+      "case_id": "japanese-charizard",
+      "status": "not_tested",
+      "reason": "Paid Legendary API/token required; no paid tier or pricing API calls made.",
+      "condition_specific_price": null
+    }
+  ],
+  "manual_reference_observation": {
+    "source": "user manual TCGplayer observation supplied in this conversation",
+    "observed_on": "2026-10-26",
+    "case_id": "vintage-charizard-lp",
+    "condition": "LP",
+    "price_type": "condition_specific_market_reference",
+    "market_price_usd": "527.70",
+    "most_recent_sale_usd": "565.00",
+    "recent_sale_prices_usd": [
+      "565.00",
+      "500.00",
+      "500.00",
+      "499.99",
+      "534.99"
+    ],
+    "source_url": "https://www.tcgplayer.com/product/42382/pokemon-base-set-charizard",
+    "retrieved_via_api": false,
+    "independently_retrieved_by_cardscan": false,
+    "accuracy_ground_truth": false,
+    "note": "Dated user observation; timestamps, source capture and sale IDs not supplied. Not a live quote or independent accuracy dataset."
+  },
+  "paid_api_calls": 0,
+  "accuracy_metrics": null
+}

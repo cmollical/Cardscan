@@ -84,3 +84,5 @@ The original [manual review CLI](docs/manual-comps.md) and
 **The ±10% accuracy target is unvalidated.** Current research values are based on
 seller/publisher reports; they do not prove physical condition, payment settlement
 or absence of later refunds. No full inventory interface or PWA has been built.
+
+Structured API investigation: [working condition-SKU proof of concept and provider comparison](docs/alternative-pricing-apis.md) (2026-10-26). Free TCGTracking and TCGCSV adapters are separate from valuation; retrieved references are not automatically approved prices.

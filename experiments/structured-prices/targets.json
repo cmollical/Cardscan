@@ -1,0 +1,111 @@
+{
+  "reviewed_on": "2026-10-26",
+  "scope": "Five literal reviewed catalog bindings; no fuzzy matching, missing edition inference, or general coverage claim",
+  "bindings": [
+    {
+      "case_id": "modern-common",
+      "category_id": 3,
+      "set_id": 23228,
+      "product_id": 509703,
+      "source_name": "Charmander",
+      "source_set_name": "SV03: Obsidian Flames",
+      "source_number": "026/197",
+      "target": {
+        "game": "pokemon",
+        "name": "Charmander",
+        "set_name": "obsidian flames",
+        "number": "26/197",
+        "language": "english",
+        "edition": "standard",
+        "finish": "non-holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "review_source": "https://tcgcsv.com/tcgplayer/3/groups"
+    },
+    {
+      "case_id": "modern-chase",
+      "category_id": 3,
+      "set_id": 23237,
+      "product_id": 517045,
+      "source_name": "Charizard ex - 199/165",
+      "source_set_name": "SV: Scarlet & Violet 151",
+      "source_number": "199/165",
+      "target": {
+        "game": "pokemon",
+        "name": "Charizard ex",
+        "set_name": "151",
+        "number": "199/165",
+        "language": "english",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "review_source": "https://tcgcsv.com/tcgplayer/3/groups"
+    },
+    {
+      "case_id": "vintage-charizard-lp",
+      "category_id": 3,
+      "set_id": 604,
+      "product_id": 42382,
+      "source_name": "Charizard",
+      "source_set_name": "Base Set",
+      "source_number": "004/102",
+      "target": {
+        "game": "pokemon",
+        "name": "Charizard",
+        "set_name": "base set",
+        "number": "4/102",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "LP",
+        "graded": false
+      },
+      "review_source": "https://tcgcsv.com/tcgplayer/3/groups"
+    },
+    {
+      "case_id": "first-edition-gengar",
+      "category_id": 3,
+      "set_id": 630,
+      "product_id": 106521,
+      "source_name": "Gengar (5)",
+      "source_set_name": "Fossil",
+      "source_number": "05/62",
+      "target": {
+        "game": "pokemon",
+        "name": "Gengar",
+        "set_name": "fossil",
+        "number": "5/62",
+        "language": "english",
+        "edition": "first edition",
+        "finish": "holo",
+        "condition": "LP",
+        "graded": false
+      },
+      "review_source": "https://tcgcsv.com/tcgplayer/3/groups"
+    },
+    {
+      "case_id": "japanese-charizard",
+      "category_id": 85,
+      "set_id": 23599,
+      "product_id": 566544,
+      "source_name": "Charizard ex - 201/165",
+      "source_set_name": "SV2a: Pokemon Card 151",
+      "source_number": "201/165",
+      "target": {
+        "game": "pokemon",
+        "name": "Charizard ex",
+        "set_name": "pokemon card 151",
+        "number": "201/165",
+        "language": "japanese",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "review_source": "https://tcgcsv.com/tcgplayer/85/groups"
+    }
+  ]
+}

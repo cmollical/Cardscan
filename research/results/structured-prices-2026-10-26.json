@@ -1,0 +1,2227 @@
+{
+  "version": "structured-price-investigation-v1",
+  "paid_api_calls": 0,
+  "source_api_cost_usd": "0",
+  "mode": "offline_original_responses",
+  "observations": [
+    {
+      "provider": "tcgcsv",
+      "requested_identity": {
+        "game": "pokemon",
+        "name": "Charmander",
+        "set_name": "obsidian flames",
+        "number": "26/197",
+        "language": "english",
+        "edition": "standard",
+        "finish": "non-holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "product_id": 509703,
+      "source_urls": [
+        "https://tcgcsv.com/tcgplayer/3/23228/products",
+        "https://tcgcsv.com/tcgplayer/3/23228/prices"
+      ],
+      "status": "retrieved_generic_reference",
+      "price_type": "published_market_reference",
+      "independent_upstream_verification": false,
+      "eligible_for_automatic_valuation": false,
+      "fields": {
+        "name": {
+          "value": "Charmander",
+          "basis": "structured_metadata",
+          "locator": "/results/39/name",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23228/products",
+          "content_sha256": "b491b378f1ca1d602a46ff45c0770af5174498ac5d2c5f4b90556b2297d0afba"
+        },
+        "number": {
+          "value": "026/197",
+          "basis": "structured_metadata",
+          "locator": "/results/39/extendedData",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23228/products",
+          "content_sha256": "b491b378f1ca1d602a46ff45c0770af5174498ac5d2c5f4b90556b2297d0afba"
+        },
+        "product_url": {
+          "value": "https://www.tcgplayer.com/product/509703/pokemon-sv03-obsidian-flames-charmander",
+          "basis": "structured_metadata",
+          "locator": "/results/39/url",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23228/products",
+          "content_sha256": "b491b378f1ca1d602a46ff45c0770af5174498ac5d2c5f4b90556b2297d0afba"
+        },
+        "market_price": {
+          "value": "0.31",
+          "basis": "structured_metadata",
+          "locator": "/results/64/marketPrice",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23228/prices",
+          "content_sha256": "b11fd17f75f2da8b7ed571bab7da3bf51377a9db40cba2ef4c2799a4624994e5"
+        },
+        "finish": {
+          "value": "non-holo",
+          "basis": "structured_metadata",
+          "locator": "/results/64/subTypeName",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23228/prices",
+          "content_sha256": "b11fd17f75f2da8b7ed571bab7da3bf51377a9db40cba2ef4c2799a4624994e5"
+        },
+        "condition": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23228/prices",
+          "content_sha256": "b11fd17f75f2da8b7ed571bab7da3bf51377a9db40cba2ef4c2799a4624994e5"
+        },
+        "language": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23228/prices",
+          "content_sha256": "b11fd17f75f2da8b7ed571bab7da3bf51377a9db40cba2ef4c2799a4624994e5"
+        },
+        "edition": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23228/prices",
+          "content_sha256": "b11fd17f75f2da8b7ed571bab7da3bf51377a9db40cba2ef4c2799a4624994e5"
+        },
+        "graded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23228/prices",
+          "content_sha256": "b11fd17f75f2da8b7ed571bab7da3bf51377a9db40cba2ef4c2799a4624994e5"
+        },
+        "updated_at": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23228/prices",
+          "content_sha256": "b11fd17f75f2da8b7ed571bab7da3bf51377a9db40cba2ef4c2799a4624994e5"
+        },
+        "shipping_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23228/prices",
+          "content_sha256": "b11fd17f75f2da8b7ed571bab7da3bf51377a9db40cba2ef4c2799a4624994e5"
+        },
+        "tax_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23228/prices",
+          "content_sha256": "b11fd17f75f2da8b7ed571bab7da3bf51377a9db40cba2ef4c2799a4624994e5"
+        },
+        "currency": {
+          "value": "USD",
+          "basis": "inferred",
+          "locator": "/results/64",
+          "method": "USD explicitly documented at https://tcgcsv.com/docs",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23228/prices",
+          "content_sha256": "b11fd17f75f2da8b7ed571bab7da3bf51377a9db40cba2ef4c2799a4624994e5"
+        }
+      },
+      "related_rows": [
+        {
+          "productId": 509703,
+          "lowPrice": "0.02",
+          "midPrice": "0.36",
+          "highPrice": "10.0",
+          "marketPrice": "0.32",
+          "directLowPrice": "0.33",
+          "subTypeName": "Reverse Holofoil"
+        },
+        {
+          "productId": 509703,
+          "lowPrice": "0.01",
+          "midPrice": "0.28",
+          "highPrice": "20.0",
+          "marketPrice": "0.31",
+          "directLowPrice": "0.07",
+          "subTypeName": "Normal"
+        }
+      ],
+      "issues": [],
+      "limitations": [
+        "Product/subtype benchmark mixes conditions; cannot value requested condition",
+        "Language/edition/grading not established by price row",
+        "No per-price update timestamp; export build/HTTP dates are distinct",
+        "USD documented externally; no shipping/tax exclusion flag on marketPrice",
+        "Upstream commercial redistribution rights not established"
+      ],
+      "retrieved_at": "2026-10-26T15:29:37.620974+00:00",
+      "case_id": "modern-common",
+      "original_ai_proposal_usd": "0.35"
+    },
+    {
+      "provider": "tcgtracking",
+      "requested_identity": {
+        "game": "pokemon",
+        "name": "Charmander",
+        "set_name": "obsidian flames",
+        "number": "26/197",
+        "language": "english",
+        "edition": "standard",
+        "finish": "non-holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "product_id": 509703,
+      "source_urls": [
+        "https://openapi.tcgtracking.com/v1/3/sets/23228/cards",
+        "https://openapi.tcgtracking.com/v1/3/sets/23228/skus"
+      ],
+      "status": "retrieved_condition_reference",
+      "price_type": "published_market_reference",
+      "independent_upstream_verification": false,
+      "eligible_for_automatic_valuation": false,
+      "fields": {
+        "name": {
+          "value": "Charmander",
+          "basis": "structured_metadata",
+          "locator": "/products/33/name",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/cards",
+          "content_sha256": "1ec13ba3c553b82caf22896acc33ebb00b5d97bfe10839bfb8d1193aeac60ed4"
+        },
+        "number": {
+          "value": "026/197",
+          "basis": "structured_metadata",
+          "locator": "/products/33/number",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/cards",
+          "content_sha256": "1ec13ba3c553b82caf22896acc33ebb00b5d97bfe10839bfb8d1193aeac60ed4"
+        },
+        "set_name": {
+          "value": "SV03: Obsidian Flames",
+          "basis": "structured_metadata",
+          "locator": "/set_name",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/cards",
+          "content_sha256": "1ec13ba3c553b82caf22896acc33ebb00b5d97bfe10839bfb8d1193aeac60ed4"
+        },
+        "market_price": {
+          "value": "0.32",
+          "basis": "structured_metadata",
+          "locator": "/products/509703/7335315/mkt",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+          "content_sha256": "96c048e2c98b645676cc110ebebc60430aadb21737600db81839236a33d8b782"
+        },
+        "sku_id": {
+          "value": "7335315",
+          "basis": "structured_metadata",
+          "locator": "/products/509703/7335315",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+          "content_sha256": "96c048e2c98b645676cc110ebebc60430aadb21737600db81839236a33d8b782"
+        },
+        "condition": {
+          "value": "NM",
+          "basis": "structured_metadata",
+          "locator": "/products/509703/7335315/cnd",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+          "content_sha256": "96c048e2c98b645676cc110ebebc60430aadb21737600db81839236a33d8b782"
+        },
+        "language": {
+          "value": "english",
+          "basis": "structured_metadata",
+          "locator": "/products/509703/7335315/lng",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+          "content_sha256": "96c048e2c98b645676cc110ebebc60430aadb21737600db81839236a33d8b782"
+        },
+        "finish": {
+          "value": "non-holo",
+          "basis": "structured_metadata",
+          "locator": "/products/509703/7335315/var",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+          "content_sha256": "96c048e2c98b645676cc110ebebc60430aadb21737600db81839236a33d8b782"
+        },
+        "edition": {
+          "value": null,
+          "basis": "missing",
+          "locator": "/products/509703/7335315/var",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+          "content_sha256": "96c048e2c98b645676cc110ebebc60430aadb21737600db81839236a33d8b782"
+        },
+        "updated_at": {
+          "value": "2026-10-25T13:36:32-04:00",
+          "basis": "structured_metadata",
+          "locator": "/updated",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+          "content_sha256": "96c048e2c98b645676cc110ebebc60430aadb21737600db81839236a33d8b782"
+        },
+        "currency": {
+          "value": "USD",
+          "basis": "inferred",
+          "locator": "/products/509703/7335315/mkt",
+          "method": "TCGplayer-price convention; API does not emit currency",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+          "content_sha256": "96c048e2c98b645676cc110ebebc60430aadb21737600db81839236a33d8b782"
+        },
+        "shipping_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+          "content_sha256": "96c048e2c98b645676cc110ebebc60430aadb21737600db81839236a33d8b782"
+        },
+        "tax_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+          "content_sha256": "96c048e2c98b645676cc110ebebc60430aadb21737600db81839236a33d8b782"
+        },
+        "graded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+          "content_sha256": "96c048e2c98b645676cc110ebebc60430aadb21737600db81839236a33d8b782"
+        }
+      },
+      "related_rows": [
+        {
+          "sku_id": "7335315",
+          "source_row": {
+            "cnd": "NM",
+            "var": "Normal",
+            "var_a": "N",
+            "vid": 1,
+            "lng": "EN",
+            "mkt": "0.32",
+            "low": "0.04",
+            "hi": "1.49",
+            "cnt": 25
+          },
+          "selection_exclusions": []
+        },
+        {
+          "sku_id": "7335320",
+          "source_row": {
+            "cnd": "NM",
+            "var": "Reverse Holofoil",
+            "var_a": "RH",
+            "vid": 4,
+            "lng": "EN",
+            "mkt": "0.35",
+            "low": "0.1",
+            "hi": "0.79",
+            "cnt": 25
+          },
+          "selection_exclusions": [
+            "finish mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "7335316",
+          "source_row": {
+            "cnd": "LP",
+            "var": "Normal",
+            "var_a": "N",
+            "vid": 1,
+            "lng": "EN",
+            "mkt": "0.23",
+            "low": "0.1",
+            "hi": "0.4",
+            "cnt": 25
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "7335321",
+          "source_row": {
+            "cnd": "LP",
+            "var": "Reverse Holofoil",
+            "var_a": "RH",
+            "vid": 4,
+            "lng": "EN",
+            "mkt": "0.33",
+            "low": "0.17",
+            "hi": "0.5",
+            "cnt": 25
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown",
+            "finish mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "7335317",
+          "source_row": {
+            "cnd": "MP",
+            "var": "Normal",
+            "var_a": "N",
+            "vid": 1,
+            "lng": "EN",
+            "mkt": "0.13",
+            "low": "0.09",
+            "hi": "0.2",
+            "cnt": 5
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "7335322",
+          "source_row": {
+            "cnd": "MP",
+            "var": "Reverse Holofoil",
+            "var_a": "RH",
+            "vid": 4,
+            "lng": "EN",
+            "mkt": "0.22",
+            "low": "0.15",
+            "hi": "0.25",
+            "cnt": 4
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown",
+            "finish mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "7335318",
+          "source_row": {
+            "cnd": "HP",
+            "var": "Normal",
+            "var_a": "N",
+            "vid": 1,
+            "lng": "EN"
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown",
+            "no reported market price"
+          ]
+        },
+        {
+          "sku_id": "7335323",
+          "source_row": {
+            "cnd": "HP",
+            "var": "Reverse Holofoil",
+            "var_a": "RH",
+            "vid": 4,
+            "lng": "EN",
+            "mkt": "0.29",
+            "low": "0.23",
+            "hi": "0.35",
+            "cnt": 2
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown",
+            "finish mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "7335319",
+          "source_row": {
+            "cnd": "DMG",
+            "var": "Normal",
+            "var_a": "N",
+            "vid": 1,
+            "lng": "EN",
+            "mkt": "0.25",
+            "low": "0.25",
+            "hi": "0.25",
+            "cnt": 1
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "7335324",
+          "source_row": {
+            "cnd": "DMG",
+            "var": "Reverse Holofoil",
+            "var_a": "RH",
+            "vid": 4,
+            "lng": "EN",
+            "mkt": "0.79",
+            "low": "0.79",
+            "hi": "0.79",
+            "cnt": 1
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown",
+            "finish mismatch or unknown"
+          ]
+        }
+      ],
+      "issues": [],
+      "limitations": [
+        "Provider-reported benchmark, not independently authenticated TCGplayer data or transactions",
+        "Currency USD follows upstream convention; response has no currency field",
+        "No per-SKU sale date, sold count, methodology, shipping/tax definition or price-observation timestamp",
+        "Set update time is not proof of a recent sale or a fresh individual price",
+        "No automatic valuation; commercial reuse and upstream redistribution rights unresolved",
+        "Edition unspecified in source; not filled from requested standard edition"
+      ],
+      "retrieved_at": "2026-10-26T15:30:10.259413+00:00",
+      "case_id": "modern-common",
+      "original_ai_proposal_usd": "0.35"
+    },
+    {
+      "provider": "tcgcsv",
+      "requested_identity": {
+        "game": "pokemon",
+        "name": "Charizard ex",
+        "set_name": "151",
+        "number": "199/165",
+        "language": "english",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "product_id": 517045,
+      "source_urls": [
+        "https://tcgcsv.com/tcgplayer/3/23237/products",
+        "https://tcgcsv.com/tcgplayer/3/23237/prices"
+      ],
+      "status": "retrieved_generic_reference",
+      "price_type": "published_market_reference",
+      "independent_upstream_verification": false,
+      "eligible_for_automatic_valuation": false,
+      "fields": {
+        "name": {
+          "value": "Charizard ex - 199/165",
+          "basis": "structured_metadata",
+          "locator": "/results/213/name",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23237/products",
+          "content_sha256": "448255c2c192a6948245806461fde37df0df1de55fed3ec335cd321a1b136036"
+        },
+        "number": {
+          "value": "199/165",
+          "basis": "structured_metadata",
+          "locator": "/results/213/extendedData",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23237/products",
+          "content_sha256": "448255c2c192a6948245806461fde37df0df1de55fed3ec335cd321a1b136036"
+        },
+        "product_url": {
+          "value": "https://www.tcgplayer.com/product/517045/pokemon-sv-scarlet-and-violet-151-charizard-ex-199-165",
+          "basis": "structured_metadata",
+          "locator": "/results/213/url",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23237/products",
+          "content_sha256": "448255c2c192a6948245806461fde37df0df1de55fed3ec335cd321a1b136036"
+        },
+        "market_price": {
+          "value": "294.42",
+          "basis": "structured_metadata",
+          "locator": "/results/366/marketPrice",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23237/prices",
+          "content_sha256": "89d98606b4c8088fac27bceff62a406ff6c9f3e3b17d2a993588a78eda31e0b7"
+        },
+        "finish": {
+          "value": "holo",
+          "basis": "structured_metadata",
+          "locator": "/results/366/subTypeName",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23237/prices",
+          "content_sha256": "89d98606b4c8088fac27bceff62a406ff6c9f3e3b17d2a993588a78eda31e0b7"
+        },
+        "condition": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23237/prices",
+          "content_sha256": "89d98606b4c8088fac27bceff62a406ff6c9f3e3b17d2a993588a78eda31e0b7"
+        },
+        "language": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23237/prices",
+          "content_sha256": "89d98606b4c8088fac27bceff62a406ff6c9f3e3b17d2a993588a78eda31e0b7"
+        },
+        "edition": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23237/prices",
+          "content_sha256": "89d98606b4c8088fac27bceff62a406ff6c9f3e3b17d2a993588a78eda31e0b7"
+        },
+        "graded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23237/prices",
+          "content_sha256": "89d98606b4c8088fac27bceff62a406ff6c9f3e3b17d2a993588a78eda31e0b7"
+        },
+        "updated_at": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23237/prices",
+          "content_sha256": "89d98606b4c8088fac27bceff62a406ff6c9f3e3b17d2a993588a78eda31e0b7"
+        },
+        "shipping_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23237/prices",
+          "content_sha256": "89d98606b4c8088fac27bceff62a406ff6c9f3e3b17d2a993588a78eda31e0b7"
+        },
+        "tax_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23237/prices",
+          "content_sha256": "89d98606b4c8088fac27bceff62a406ff6c9f3e3b17d2a993588a78eda31e0b7"
+        },
+        "currency": {
+          "value": "USD",
+          "basis": "inferred",
+          "locator": "/results/366",
+          "method": "USD explicitly documented at https://tcgcsv.com/docs",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/23237/prices",
+          "content_sha256": "89d98606b4c8088fac27bceff62a406ff6c9f3e3b17d2a993588a78eda31e0b7"
+        }
+      },
+      "related_rows": [
+        {
+          "productId": 517045,
+          "lowPrice": "275.95",
+          "midPrice": "350.0",
+          "highPrice": "10000.0",
+          "marketPrice": "294.42",
+          "directLowPrice": "299.75",
+          "subTypeName": "Holofoil"
+        }
+      ],
+      "issues": [],
+      "limitations": [
+        "Product/subtype benchmark mixes conditions; cannot value requested condition",
+        "Language/edition/grading not established by price row",
+        "No per-price update timestamp; export build/HTTP dates are distinct",
+        "USD documented externally; no shipping/tax exclusion flag on marketPrice",
+        "Upstream commercial redistribution rights not established"
+      ],
+      "retrieved_at": "2026-10-26T15:29:38.289430+00:00",
+      "case_id": "modern-chase",
+      "original_ai_proposal_usd": "345"
+    },
+    {
+      "provider": "tcgtracking",
+      "requested_identity": {
+        "game": "pokemon",
+        "name": "Charizard ex",
+        "set_name": "151",
+        "number": "199/165",
+        "language": "english",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "product_id": 517045,
+      "source_urls": [
+        "https://openapi.tcgtracking.com/v1/3/sets/23237/cards",
+        "https://openapi.tcgtracking.com/v1/3/sets/23237/skus"
+      ],
+      "status": "retrieved_condition_reference",
+      "price_type": "published_market_reference",
+      "independent_upstream_verification": false,
+      "eligible_for_automatic_valuation": false,
+      "fields": {
+        "name": {
+          "value": "Charizard ex - 199/165",
+          "basis": "structured_metadata",
+          "locator": "/products/205/name",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/cards",
+          "content_sha256": "22387340de6025a63b719d5c7ddc4f6a4656b1ec1afc0e689c9d3a603f19f110"
+        },
+        "number": {
+          "value": "199/165",
+          "basis": "structured_metadata",
+          "locator": "/products/205/number",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/cards",
+          "content_sha256": "22387340de6025a63b719d5c7ddc4f6a4656b1ec1afc0e689c9d3a603f19f110"
+        },
+        "set_name": {
+          "value": "SV: Scarlet & Violet 151",
+          "basis": "structured_metadata",
+          "locator": "/set_name",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/cards",
+          "content_sha256": "22387340de6025a63b719d5c7ddc4f6a4656b1ec1afc0e689c9d3a603f19f110"
+        },
+        "market_price": {
+          "value": "294.42",
+          "basis": "structured_metadata",
+          "locator": "/products/517045/7436747/mkt",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+          "content_sha256": "b928aad9dd82ac6292675500cab104c0677a95c121102a9d0d7bec99a3a29226"
+        },
+        "sku_id": {
+          "value": "7436747",
+          "basis": "structured_metadata",
+          "locator": "/products/517045/7436747",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+          "content_sha256": "b928aad9dd82ac6292675500cab104c0677a95c121102a9d0d7bec99a3a29226"
+        },
+        "condition": {
+          "value": "NM",
+          "basis": "structured_metadata",
+          "locator": "/products/517045/7436747/cnd",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+          "content_sha256": "b928aad9dd82ac6292675500cab104c0677a95c121102a9d0d7bec99a3a29226"
+        },
+        "language": {
+          "value": "english",
+          "basis": "structured_metadata",
+          "locator": "/products/517045/7436747/lng",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+          "content_sha256": "b928aad9dd82ac6292675500cab104c0677a95c121102a9d0d7bec99a3a29226"
+        },
+        "finish": {
+          "value": "holo",
+          "basis": "structured_metadata",
+          "locator": "/products/517045/7436747/var",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+          "content_sha256": "b928aad9dd82ac6292675500cab104c0677a95c121102a9d0d7bec99a3a29226"
+        },
+        "edition": {
+          "value": null,
+          "basis": "missing",
+          "locator": "/products/517045/7436747/var",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+          "content_sha256": "b928aad9dd82ac6292675500cab104c0677a95c121102a9d0d7bec99a3a29226"
+        },
+        "updated_at": {
+          "value": "2026-10-25T13:36:32-04:00",
+          "basis": "structured_metadata",
+          "locator": "/updated",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+          "content_sha256": "b928aad9dd82ac6292675500cab104c0677a95c121102a9d0d7bec99a3a29226"
+        },
+        "currency": {
+          "value": "USD",
+          "basis": "inferred",
+          "locator": "/products/517045/7436747/mkt",
+          "method": "TCGplayer-price convention; API does not emit currency",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+          "content_sha256": "b928aad9dd82ac6292675500cab104c0677a95c121102a9d0d7bec99a3a29226"
+        },
+        "shipping_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+          "content_sha256": "b928aad9dd82ac6292675500cab104c0677a95c121102a9d0d7bec99a3a29226"
+        },
+        "tax_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+          "content_sha256": "b928aad9dd82ac6292675500cab104c0677a95c121102a9d0d7bec99a3a29226"
+        },
+        "graded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+          "content_sha256": "b928aad9dd82ac6292675500cab104c0677a95c121102a9d0d7bec99a3a29226"
+        }
+      },
+      "related_rows": [
+        {
+          "sku_id": "7436747",
+          "source_row": {
+            "cnd": "NM",
+            "var": "Holofoil",
+            "var_a": "H",
+            "vid": 3,
+            "lng": "EN",
+            "mkt": "294.42",
+            "low": 260,
+            "hi": "349.99",
+            "cnt": 25
+          },
+          "selection_exclusions": []
+        },
+        {
+          "sku_id": "7436748",
+          "source_row": {
+            "cnd": "LP",
+            "var": "Holofoil",
+            "var_a": "H",
+            "vid": 3,
+            "lng": "EN",
+            "mkt": "307.13",
+            "low": "278.75",
+            "hi": "335.4",
+            "cnt": 25
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "7436749",
+          "source_row": {
+            "cnd": "MP",
+            "var": "Holofoil",
+            "var_a": "H",
+            "vid": 3,
+            "lng": "EN",
+            "mkt": "314.65",
+            "low": "250.24",
+            "hi": "357.48",
+            "cnt": 16
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "7436750",
+          "source_row": {
+            "cnd": "HP",
+            "var": "Holofoil",
+            "var_a": "H",
+            "vid": 3,
+            "lng": "EN",
+            "mkt": "266.04",
+            "low": "228.12",
+            "hi": 300,
+            "cnt": 3
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "7436751",
+          "source_row": {
+            "cnd": "DMG",
+            "var": "Holofoil",
+            "var_a": "H",
+            "vid": 3,
+            "lng": "EN",
+            "mkt": "283.46",
+            "low": "210.39",
+            "hi": "324.99",
+            "cnt": 11
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        }
+      ],
+      "issues": [
+        "Condition price inversion: a played condition exceeds NM; retained without adjustment"
+      ],
+      "limitations": [
+        "Provider-reported benchmark, not independently authenticated TCGplayer data or transactions",
+        "Currency USD follows upstream convention; response has no currency field",
+        "No per-SKU sale date, sold count, methodology, shipping/tax definition or price-observation timestamp",
+        "Set update time is not proof of a recent sale or a fresh individual price",
+        "No automatic valuation; commercial reuse and upstream redistribution rights unresolved",
+        "Edition unspecified in source; not filled from requested standard edition"
+      ],
+      "retrieved_at": "2026-10-26T15:30:11.229077+00:00",
+      "case_id": "modern-chase",
+      "original_ai_proposal_usd": "345"
+    },
+    {
+      "provider": "tcgcsv",
+      "requested_identity": {
+        "game": "pokemon",
+        "name": "Charizard",
+        "set_name": "base set",
+        "number": "4/102",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "LP",
+        "graded": false
+      },
+      "product_id": 42382,
+      "source_urls": [
+        "https://tcgcsv.com/tcgplayer/3/604/products",
+        "https://tcgcsv.com/tcgplayer/3/604/prices"
+      ],
+      "status": "retrieved_generic_reference",
+      "price_type": "published_market_reference",
+      "independent_upstream_verification": false,
+      "eligible_for_automatic_valuation": false,
+      "fields": {
+        "name": {
+          "value": "Charizard",
+          "basis": "structured_metadata",
+          "locator": "/results/36/name",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/604/products",
+          "content_sha256": "d36ae814e13a5b0520fa889f90363095f047d901348118786041045211477155"
+        },
+        "number": {
+          "value": "004/102",
+          "basis": "structured_metadata",
+          "locator": "/results/36/extendedData",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/604/products",
+          "content_sha256": "d36ae814e13a5b0520fa889f90363095f047d901348118786041045211477155"
+        },
+        "product_url": {
+          "value": "https://www.tcgplayer.com/product/42382/pokemon-base-set-charizard",
+          "basis": "structured_metadata",
+          "locator": "/results/36/url",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/604/products",
+          "content_sha256": "d36ae814e13a5b0520fa889f90363095f047d901348118786041045211477155"
+        },
+        "market_price": {
+          "value": "954.65",
+          "basis": "structured_metadata",
+          "locator": "/results/36/marketPrice",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/604/prices",
+          "content_sha256": "584876e4d6d15bd1efe66b5d686904a4dd1c210ef890b2274ab7672c562bf1ac"
+        },
+        "finish": {
+          "value": "holo",
+          "basis": "structured_metadata",
+          "locator": "/results/36/subTypeName",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/604/prices",
+          "content_sha256": "584876e4d6d15bd1efe66b5d686904a4dd1c210ef890b2274ab7672c562bf1ac"
+        },
+        "condition": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/604/prices",
+          "content_sha256": "584876e4d6d15bd1efe66b5d686904a4dd1c210ef890b2274ab7672c562bf1ac"
+        },
+        "language": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/604/prices",
+          "content_sha256": "584876e4d6d15bd1efe66b5d686904a4dd1c210ef890b2274ab7672c562bf1ac"
+        },
+        "edition": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/604/prices",
+          "content_sha256": "584876e4d6d15bd1efe66b5d686904a4dd1c210ef890b2274ab7672c562bf1ac"
+        },
+        "graded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/604/prices",
+          "content_sha256": "584876e4d6d15bd1efe66b5d686904a4dd1c210ef890b2274ab7672c562bf1ac"
+        },
+        "updated_at": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/604/prices",
+          "content_sha256": "584876e4d6d15bd1efe66b5d686904a4dd1c210ef890b2274ab7672c562bf1ac"
+        },
+        "shipping_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/604/prices",
+          "content_sha256": "584876e4d6d15bd1efe66b5d686904a4dd1c210ef890b2274ab7672c562bf1ac"
+        },
+        "tax_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/604/prices",
+          "content_sha256": "584876e4d6d15bd1efe66b5d686904a4dd1c210ef890b2274ab7672c562bf1ac"
+        },
+        "currency": {
+          "value": "USD",
+          "basis": "inferred",
+          "locator": "/results/36",
+          "method": "USD explicitly documented at https://tcgcsv.com/docs",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/604/prices",
+          "content_sha256": "584876e4d6d15bd1efe66b5d686904a4dd1c210ef890b2274ab7672c562bf1ac"
+        }
+      },
+      "related_rows": [
+        {
+          "productId": 42382,
+          "lowPrice": "475.0",
+          "midPrice": "587.98",
+          "highPrice": "3499.1",
+          "marketPrice": "954.65",
+          "directLowPrice": null,
+          "subTypeName": "Holofoil"
+        }
+      ],
+      "issues": [],
+      "limitations": [
+        "Product/subtype benchmark mixes conditions; cannot value requested condition",
+        "Language/edition/grading not established by price row",
+        "No per-price update timestamp; export build/HTTP dates are distinct",
+        "USD documented externally; no shipping/tax exclusion flag on marketPrice",
+        "Upstream commercial redistribution rights not established"
+      ],
+      "retrieved_at": "2026-10-26T15:29:39.198153+00:00",
+      "case_id": "vintage-charizard-lp",
+      "original_ai_proposal_usd": "365"
+    },
+    {
+      "provider": "tcgtracking",
+      "requested_identity": {
+        "game": "pokemon",
+        "name": "Charizard",
+        "set_name": "base set",
+        "number": "4/102",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "condition": "LP",
+        "graded": false
+      },
+      "product_id": 42382,
+      "source_urls": [
+        "https://openapi.tcgtracking.com/v1/3/sets/604/cards",
+        "https://openapi.tcgtracking.com/v1/3/sets/604/skus"
+      ],
+      "status": "retrieved_condition_reference",
+      "price_type": "published_market_reference",
+      "independent_upstream_verification": false,
+      "eligible_for_automatic_valuation": false,
+      "fields": {
+        "name": {
+          "value": "Charizard",
+          "basis": "structured_metadata",
+          "locator": "/products/3/name",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/cards",
+          "content_sha256": "09893e9d51ed192dd039e192cf49bee26ec673d6b833c39f22e106366bd51cc1"
+        },
+        "number": {
+          "value": "004/102",
+          "basis": "structured_metadata",
+          "locator": "/products/3/number",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/cards",
+          "content_sha256": "09893e9d51ed192dd039e192cf49bee26ec673d6b833c39f22e106366bd51cc1"
+        },
+        "set_name": {
+          "value": "Base Set",
+          "basis": "structured_metadata",
+          "locator": "/set_name",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/cards",
+          "content_sha256": "09893e9d51ed192dd039e192cf49bee26ec673d6b833c39f22e106366bd51cc1"
+        },
+        "market_price": {
+          "value": "527.7",
+          "basis": "structured_metadata",
+          "locator": "/products/42382/2999653/mkt",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/skus",
+          "content_sha256": "e485d6b88a269e57c606c0f8485d002d76d66237124fa8a3a85043b285b0d057"
+        },
+        "sku_id": {
+          "value": "2999653",
+          "basis": "structured_metadata",
+          "locator": "/products/42382/2999653",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/skus",
+          "content_sha256": "e485d6b88a269e57c606c0f8485d002d76d66237124fa8a3a85043b285b0d057"
+        },
+        "condition": {
+          "value": "LP",
+          "basis": "structured_metadata",
+          "locator": "/products/42382/2999653/cnd",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/skus",
+          "content_sha256": "e485d6b88a269e57c606c0f8485d002d76d66237124fa8a3a85043b285b0d057"
+        },
+        "language": {
+          "value": "english",
+          "basis": "structured_metadata",
+          "locator": "/products/42382/2999653/lng",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/skus",
+          "content_sha256": "e485d6b88a269e57c606c0f8485d002d76d66237124fa8a3a85043b285b0d057"
+        },
+        "finish": {
+          "value": "holo",
+          "basis": "structured_metadata",
+          "locator": "/products/42382/2999653/var",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/skus",
+          "content_sha256": "e485d6b88a269e57c606c0f8485d002d76d66237124fa8a3a85043b285b0d057"
+        },
+        "edition": {
+          "value": "unlimited",
+          "basis": "structured_metadata",
+          "locator": "/products/3/ext_data/TCGplayer Tip",
+          "method": "explicit_print_run_sentence",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/cards",
+          "content_sha256": "09893e9d51ed192dd039e192cf49bee26ec673d6b833c39f22e106366bd51cc1"
+        },
+        "updated_at": {
+          "value": "2026-10-25T13:36:43-04:00",
+          "basis": "structured_metadata",
+          "locator": "/updated",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/skus",
+          "content_sha256": "e485d6b88a269e57c606c0f8485d002d76d66237124fa8a3a85043b285b0d057"
+        },
+        "currency": {
+          "value": "USD",
+          "basis": "inferred",
+          "locator": "/products/42382/2999653/mkt",
+          "method": "TCGplayer-price convention; API does not emit currency",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/skus",
+          "content_sha256": "e485d6b88a269e57c606c0f8485d002d76d66237124fa8a3a85043b285b0d057"
+        },
+        "shipping_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/skus",
+          "content_sha256": "e485d6b88a269e57c606c0f8485d002d76d66237124fa8a3a85043b285b0d057"
+        },
+        "tax_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/skus",
+          "content_sha256": "e485d6b88a269e57c606c0f8485d002d76d66237124fa8a3a85043b285b0d057"
+        },
+        "graded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/skus",
+          "content_sha256": "e485d6b88a269e57c606c0f8485d002d76d66237124fa8a3a85043b285b0d057"
+        }
+      },
+      "related_rows": [
+        {
+          "sku_id": "2999652",
+          "source_row": {
+            "cnd": "NM",
+            "var": "Holofoil",
+            "var_a": "H",
+            "vid": 3,
+            "lng": "EN",
+            "mkt": "954.65",
+            "low": 500,
+            "hi": 1500,
+            "cnt": 14
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "2999653",
+          "source_row": {
+            "cnd": "LP",
+            "var": "Holofoil",
+            "var_a": "H",
+            "vid": 3,
+            "lng": "EN",
+            "mkt": "527.7",
+            "low": "400.75",
+            "hi": "839.98",
+            "cnt": 25
+          },
+          "selection_exclusions": []
+        },
+        {
+          "sku_id": "2999654",
+          "source_row": {
+            "cnd": "MP",
+            "var": "Holofoil",
+            "var_a": "H",
+            "vid": 3,
+            "lng": "EN",
+            "mkt": "364.73",
+            "low": "311.99",
+            "hi": "499.99",
+            "cnt": 25
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "2999655",
+          "source_row": {
+            "cnd": "HP",
+            "var": "Holofoil",
+            "var_a": "H",
+            "vid": 3,
+            "lng": "EN",
+            "mkt": "247.58",
+            "low": "174.51",
+            "hi": "284.97",
+            "cnt": 25
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "2999656",
+          "source_row": {
+            "cnd": "DMG",
+            "var": "Holofoil",
+            "var_a": "H",
+            "vid": 3,
+            "lng": "EN",
+            "mkt": "208.33",
+            "low": 180,
+            "hi": "239.99",
+            "cnt": 25
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        }
+      ],
+      "issues": [],
+      "limitations": [
+        "Provider-reported benchmark, not independently authenticated TCGplayer data or transactions",
+        "Currency USD follows upstream convention; response has no currency field",
+        "No per-SKU sale date, sold count, methodology, shipping/tax definition or price-observation timestamp",
+        "Set update time is not proof of a recent sale or a fresh individual price",
+        "No automatic valuation; commercial reuse and upstream redistribution rights unresolved"
+      ],
+      "retrieved_at": "2026-10-26T15:30:08.309895+00:00",
+      "case_id": "vintage-charizard-lp",
+      "original_ai_proposal_usd": "365"
+    },
+    {
+      "provider": "tcgcsv",
+      "requested_identity": {
+        "game": "pokemon",
+        "name": "Gengar",
+        "set_name": "fossil",
+        "number": "5/62",
+        "language": "english",
+        "edition": "first edition",
+        "finish": "holo",
+        "condition": "LP",
+        "graded": false
+      },
+      "product_id": 106521,
+      "source_urls": [
+        "https://tcgcsv.com/tcgplayer/3/630/products",
+        "https://tcgcsv.com/tcgplayer/3/630/prices"
+      ],
+      "status": "retrieved_generic_reference",
+      "price_type": "published_market_reference",
+      "independent_upstream_verification": false,
+      "eligible_for_automatic_valuation": false,
+      "fields": {
+        "name": {
+          "value": "Gengar (5)",
+          "basis": "structured_metadata",
+          "locator": "/results/50/name",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/630/products",
+          "content_sha256": "9cebb7e233640072077c33ba8dab2e2d6648cf8dd9aea9053a68f484209b0822"
+        },
+        "number": {
+          "value": "05/62",
+          "basis": "structured_metadata",
+          "locator": "/results/50/extendedData",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/630/products",
+          "content_sha256": "9cebb7e233640072077c33ba8dab2e2d6648cf8dd9aea9053a68f484209b0822"
+        },
+        "product_url": {
+          "value": "https://www.tcgplayer.com/product/106521/pokemon-fossil-gengar-5",
+          "basis": "structured_metadata",
+          "locator": "/results/50/url",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/630/products",
+          "content_sha256": "9cebb7e233640072077c33ba8dab2e2d6648cf8dd9aea9053a68f484209b0822"
+        },
+        "market_price": {
+          "value": "374.66",
+          "basis": "structured_metadata",
+          "locator": "/results/100/marketPrice",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/630/prices",
+          "content_sha256": "1e8567f7889deb053eb11bb1aaf53bbec2932aee2a5ef068c5e28930ee005f11"
+        },
+        "finish": {
+          "value": "holo",
+          "basis": "structured_metadata",
+          "locator": "/results/100/subTypeName",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/630/prices",
+          "content_sha256": "1e8567f7889deb053eb11bb1aaf53bbec2932aee2a5ef068c5e28930ee005f11"
+        },
+        "condition": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/630/prices",
+          "content_sha256": "1e8567f7889deb053eb11bb1aaf53bbec2932aee2a5ef068c5e28930ee005f11"
+        },
+        "language": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/630/prices",
+          "content_sha256": "1e8567f7889deb053eb11bb1aaf53bbec2932aee2a5ef068c5e28930ee005f11"
+        },
+        "edition": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/630/prices",
+          "content_sha256": "1e8567f7889deb053eb11bb1aaf53bbec2932aee2a5ef068c5e28930ee005f11"
+        },
+        "graded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/630/prices",
+          "content_sha256": "1e8567f7889deb053eb11bb1aaf53bbec2932aee2a5ef068c5e28930ee005f11"
+        },
+        "updated_at": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/630/prices",
+          "content_sha256": "1e8567f7889deb053eb11bb1aaf53bbec2932aee2a5ef068c5e28930ee005f11"
+        },
+        "shipping_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/630/prices",
+          "content_sha256": "1e8567f7889deb053eb11bb1aaf53bbec2932aee2a5ef068c5e28930ee005f11"
+        },
+        "tax_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/630/prices",
+          "content_sha256": "1e8567f7889deb053eb11bb1aaf53bbec2932aee2a5ef068c5e28930ee005f11"
+        },
+        "currency": {
+          "value": "USD",
+          "basis": "inferred",
+          "locator": "/results/100",
+          "method": "USD explicitly documented at https://tcgcsv.com/docs",
+          "source_url": "https://tcgcsv.com/tcgplayer/3/630/prices",
+          "content_sha256": "1e8567f7889deb053eb11bb1aaf53bbec2932aee2a5ef068c5e28930ee005f11"
+        }
+      },
+      "related_rows": [
+        {
+          "productId": 106521,
+          "lowPrice": "234.56",
+          "midPrice": "600.0",
+          "highPrice": "999.99",
+          "marketPrice": "374.66",
+          "directLowPrice": null,
+          "subTypeName": "1st Edition Holofoil"
+        },
+        {
+          "productId": 106521,
+          "lowPrice": "130.0",
+          "midPrice": "190.0",
+          "highPrice": "1394.8",
+          "marketPrice": "218.48",
+          "directLowPrice": "187.49",
+          "subTypeName": "Unlimited Holofoil"
+        }
+      ],
+      "issues": [],
+      "limitations": [
+        "Product/subtype benchmark mixes conditions; cannot value requested condition",
+        "Language/edition/grading not established by price row",
+        "No per-price update timestamp; export build/HTTP dates are distinct",
+        "USD documented externally; no shipping/tax exclusion flag on marketPrice",
+        "Upstream commercial redistribution rights not established"
+      ],
+      "retrieved_at": "2026-10-26T15:29:39.959057+00:00",
+      "case_id": "first-edition-gengar",
+      "original_ai_proposal_usd": "320"
+    },
+    {
+      "provider": "tcgtracking",
+      "requested_identity": {
+        "game": "pokemon",
+        "name": "Gengar",
+        "set_name": "fossil",
+        "number": "5/62",
+        "language": "english",
+        "edition": "first edition",
+        "finish": "holo",
+        "condition": "LP",
+        "graded": false
+      },
+      "product_id": 106521,
+      "source_urls": [
+        "https://openapi.tcgtracking.com/v1/3/sets/630/cards",
+        "https://openapi.tcgtracking.com/v1/3/sets/630/skus"
+      ],
+      "status": "retrieved_condition_reference",
+      "price_type": "published_market_reference",
+      "independent_upstream_verification": false,
+      "eligible_for_automatic_valuation": false,
+      "fields": {
+        "name": {
+          "value": "Gengar (5)",
+          "basis": "structured_metadata",
+          "locator": "/products/4/name",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/cards",
+          "content_sha256": "a351f253b0ab10ef8508b664df44593fd41799fffc9e53470beaa7bcd8dbe3da"
+        },
+        "number": {
+          "value": "05/62",
+          "basis": "structured_metadata",
+          "locator": "/products/4/number",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/cards",
+          "content_sha256": "a351f253b0ab10ef8508b664df44593fd41799fffc9e53470beaa7bcd8dbe3da"
+        },
+        "set_name": {
+          "value": "Fossil",
+          "basis": "structured_metadata",
+          "locator": "/set_name",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/cards",
+          "content_sha256": "a351f253b0ab10ef8508b664df44593fd41799fffc9e53470beaa7bcd8dbe3da"
+        },
+        "market_price": {
+          "value": "458.05",
+          "basis": "structured_metadata",
+          "locator": "/products/106521/2995236/mkt",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+          "content_sha256": "a2f98161b8c32209b87d1444273d52037d3400c2129ee0b0e02592969cea455c"
+        },
+        "sku_id": {
+          "value": "2995236",
+          "basis": "structured_metadata",
+          "locator": "/products/106521/2995236",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+          "content_sha256": "a2f98161b8c32209b87d1444273d52037d3400c2129ee0b0e02592969cea455c"
+        },
+        "condition": {
+          "value": "LP",
+          "basis": "structured_metadata",
+          "locator": "/products/106521/2995236/cnd",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+          "content_sha256": "a2f98161b8c32209b87d1444273d52037d3400c2129ee0b0e02592969cea455c"
+        },
+        "language": {
+          "value": "english",
+          "basis": "structured_metadata",
+          "locator": "/products/106521/2995236/lng",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+          "content_sha256": "a2f98161b8c32209b87d1444273d52037d3400c2129ee0b0e02592969cea455c"
+        },
+        "finish": {
+          "value": "holo",
+          "basis": "structured_metadata",
+          "locator": "/products/106521/2995236/var",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+          "content_sha256": "a2f98161b8c32209b87d1444273d52037d3400c2129ee0b0e02592969cea455c"
+        },
+        "edition": {
+          "value": "first edition",
+          "basis": "structured_metadata",
+          "locator": "/products/106521/2995236/var",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+          "content_sha256": "a2f98161b8c32209b87d1444273d52037d3400c2129ee0b0e02592969cea455c"
+        },
+        "updated_at": {
+          "value": "2026-10-25T13:36:43-04:00",
+          "basis": "structured_metadata",
+          "locator": "/updated",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+          "content_sha256": "a2f98161b8c32209b87d1444273d52037d3400c2129ee0b0e02592969cea455c"
+        },
+        "currency": {
+          "value": "USD",
+          "basis": "inferred",
+          "locator": "/products/106521/2995236/mkt",
+          "method": "TCGplayer-price convention; API does not emit currency",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+          "content_sha256": "a2f98161b8c32209b87d1444273d52037d3400c2129ee0b0e02592969cea455c"
+        },
+        "shipping_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+          "content_sha256": "a2f98161b8c32209b87d1444273d52037d3400c2129ee0b0e02592969cea455c"
+        },
+        "tax_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+          "content_sha256": "a2f98161b8c32209b87d1444273d52037d3400c2129ee0b0e02592969cea455c"
+        },
+        "graded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+          "content_sha256": "a2f98161b8c32209b87d1444273d52037d3400c2129ee0b0e02592969cea455c"
+        }
+      },
+      "related_rows": [
+        {
+          "sku_id": "2995235",
+          "source_row": {
+            "cnd": "NM",
+            "var": "1st Edition Holofoil",
+            "var_a": "1EH",
+            "vid": 8,
+            "lng": "EN",
+            "mkt": "374.66",
+            "low": "48.99",
+            "hi": 725,
+            "cnt": 3
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "2995230",
+          "source_row": {
+            "cnd": "NM",
+            "var": "Unlimited Holofoil",
+            "var_a": "ULH",
+            "vid": 9,
+            "lng": "EN",
+            "mkt": "218.48",
+            "low": 175,
+            "hi": "329.97",
+            "cnt": 25
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown",
+            "edition mismatch"
+          ]
+        },
+        {
+          "sku_id": "2995236",
+          "source_row": {
+            "cnd": "LP",
+            "var": "1st Edition Holofoil",
+            "var_a": "1EH",
+            "vid": 8,
+            "lng": "EN",
+            "mkt": "458.05",
+            "low": "338.99",
+            "hi": "600.99",
+            "cnt": 10
+          },
+          "selection_exclusions": []
+        },
+        {
+          "sku_id": "2995231",
+          "source_row": {
+            "cnd": "LP",
+            "var": "Unlimited Holofoil",
+            "var_a": "ULH",
+            "vid": 9,
+            "lng": "EN",
+            "mkt": "146.12",
+            "low": "124.98",
+            "hi": "179.99",
+            "cnt": 25
+          },
+          "selection_exclusions": [
+            "edition mismatch"
+          ]
+        },
+        {
+          "sku_id": "2995237",
+          "source_row": {
+            "cnd": "MP",
+            "var": "1st Edition Holofoil",
+            "var_a": "1EH",
+            "vid": 8,
+            "lng": "EN",
+            "mkt": "300.82",
+            "low": 100,
+            "hi": 386,
+            "cnt": 14
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "2995232",
+          "source_row": {
+            "cnd": "MP",
+            "var": "Unlimited Holofoil",
+            "var_a": "ULH",
+            "vid": 9,
+            "lng": "EN",
+            "mkt": "108.77",
+            "low": "92.5",
+            "hi": "137.91",
+            "cnt": 25
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown",
+            "edition mismatch"
+          ]
+        },
+        {
+          "sku_id": "2995238",
+          "source_row": {
+            "cnd": "HP",
+            "var": "1st Edition Holofoil",
+            "var_a": "1EH",
+            "vid": 8,
+            "lng": "EN",
+            "mkt": "231.89",
+            "low": "208.51",
+            "hi": 255,
+            "cnt": 9
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "2995233",
+          "source_row": {
+            "cnd": "HP",
+            "var": "Unlimited Holofoil",
+            "var_a": "ULH",
+            "vid": 9,
+            "lng": "EN",
+            "mkt": "80.15",
+            "low": "73.99",
+            "hi": "90.79",
+            "cnt": 25
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown",
+            "edition mismatch"
+          ]
+        },
+        {
+          "sku_id": "2995239",
+          "source_row": {
+            "cnd": "DMG",
+            "var": "1st Edition Holofoil",
+            "var_a": "1EH",
+            "vid": 8,
+            "lng": "EN",
+            "mkt": "157.08",
+            "low": "144.8",
+            "hi": "179.99",
+            "cnt": 3
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "2995234",
+          "source_row": {
+            "cnd": "DMG",
+            "var": "Unlimited Holofoil",
+            "var_a": "ULH",
+            "vid": 9,
+            "lng": "EN",
+            "mkt": "50.8",
+            "low": 21,
+            "hi": "61.79",
+            "cnt": 25
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown",
+            "edition mismatch"
+          ]
+        }
+      ],
+      "issues": [
+        "Condition price inversion: NM below selected played condition; review liquidity/methodology"
+      ],
+      "limitations": [
+        "Provider-reported benchmark, not independently authenticated TCGplayer data or transactions",
+        "Currency USD follows upstream convention; response has no currency field",
+        "No per-SKU sale date, sold count, methodology, shipping/tax definition or price-observation timestamp",
+        "Set update time is not proof of a recent sale or a fresh individual price",
+        "No automatic valuation; commercial reuse and upstream redistribution rights unresolved"
+      ],
+      "retrieved_at": "2026-10-26T15:30:09.355903+00:00",
+      "case_id": "first-edition-gengar",
+      "original_ai_proposal_usd": "320"
+    },
+    {
+      "provider": "tcgcsv",
+      "requested_identity": {
+        "game": "pokemon",
+        "name": "Charizard ex",
+        "set_name": "pokemon card 151",
+        "number": "201/165",
+        "language": "japanese",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "product_id": 566544,
+      "source_urls": [
+        "https://tcgcsv.com/tcgplayer/85/23599/products",
+        "https://tcgcsv.com/tcgplayer/85/23599/prices"
+      ],
+      "status": "retrieved_generic_reference",
+      "price_type": "published_market_reference",
+      "independent_upstream_verification": false,
+      "eligible_for_automatic_valuation": false,
+      "fields": {
+        "name": {
+          "value": "Charizard ex - 201/165",
+          "basis": "structured_metadata",
+          "locator": "/results/200/name",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/85/23599/products",
+          "content_sha256": "437d67c592397ab99d2fdd7b73625392364208c483ca7ad6ec276283dfe6167d"
+        },
+        "number": {
+          "value": "201/165",
+          "basis": "structured_metadata",
+          "locator": "/results/200/extendedData",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/85/23599/products",
+          "content_sha256": "437d67c592397ab99d2fdd7b73625392364208c483ca7ad6ec276283dfe6167d"
+        },
+        "product_url": {
+          "value": "https://www.tcgplayer.com/product/566544/pokemon-japan-sv2a-pokemon-card-151-charizard-ex-201-165",
+          "basis": "structured_metadata",
+          "locator": "/results/200/url",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/85/23599/products",
+          "content_sha256": "437d67c592397ab99d2fdd7b73625392364208c483ca7ad6ec276283dfe6167d"
+        },
+        "market_price": {
+          "value": "388.35",
+          "basis": "structured_metadata",
+          "locator": "/results/200/marketPrice",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/85/23599/prices",
+          "content_sha256": "9def777e71960a05789c487ce2f99f26cf3a75d388f825df050bc258e69f772e"
+        },
+        "finish": {
+          "value": "holo",
+          "basis": "structured_metadata",
+          "locator": "/results/200/subTypeName",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/85/23599/prices",
+          "content_sha256": "9def777e71960a05789c487ce2f99f26cf3a75d388f825df050bc258e69f772e"
+        },
+        "condition": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/85/23599/prices",
+          "content_sha256": "9def777e71960a05789c487ce2f99f26cf3a75d388f825df050bc258e69f772e"
+        },
+        "language": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/85/23599/prices",
+          "content_sha256": "9def777e71960a05789c487ce2f99f26cf3a75d388f825df050bc258e69f772e"
+        },
+        "edition": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/85/23599/prices",
+          "content_sha256": "9def777e71960a05789c487ce2f99f26cf3a75d388f825df050bc258e69f772e"
+        },
+        "graded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/85/23599/prices",
+          "content_sha256": "9def777e71960a05789c487ce2f99f26cf3a75d388f825df050bc258e69f772e"
+        },
+        "updated_at": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/85/23599/prices",
+          "content_sha256": "9def777e71960a05789c487ce2f99f26cf3a75d388f825df050bc258e69f772e"
+        },
+        "shipping_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/85/23599/prices",
+          "content_sha256": "9def777e71960a05789c487ce2f99f26cf3a75d388f825df050bc258e69f772e"
+        },
+        "tax_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://tcgcsv.com/tcgplayer/85/23599/prices",
+          "content_sha256": "9def777e71960a05789c487ce2f99f26cf3a75d388f825df050bc258e69f772e"
+        },
+        "currency": {
+          "value": "USD",
+          "basis": "inferred",
+          "locator": "/results/200",
+          "method": "USD explicitly documented at https://tcgcsv.com/docs",
+          "source_url": "https://tcgcsv.com/tcgplayer/85/23599/prices",
+          "content_sha256": "9def777e71960a05789c487ce2f99f26cf3a75d388f825df050bc258e69f772e"
+        }
+      },
+      "related_rows": [
+        {
+          "productId": 566544,
+          "lowPrice": "365.0",
+          "midPrice": "396.22",
+          "highPrice": "449.99",
+          "marketPrice": "388.35",
+          "directLowPrice": null,
+          "subTypeName": "Holofoil"
+        }
+      ],
+      "issues": [],
+      "limitations": [
+        "Product/subtype benchmark mixes conditions; cannot value requested condition",
+        "Language/edition/grading not established by price row",
+        "No per-price update timestamp; export build/HTTP dates are distinct",
+        "USD documented externally; no shipping/tax exclusion flag on marketPrice",
+        "Upstream commercial redistribution rights not established"
+      ],
+      "retrieved_at": "2026-10-26T15:30:27.818045+00:00",
+      "case_id": "japanese-charizard",
+      "original_ai_proposal_usd": "390"
+    },
+    {
+      "provider": "tcgtracking",
+      "requested_identity": {
+        "game": "pokemon",
+        "name": "Charizard ex",
+        "set_name": "pokemon card 151",
+        "number": "201/165",
+        "language": "japanese",
+        "edition": "standard",
+        "finish": "holo",
+        "condition": "NM",
+        "graded": false
+      },
+      "product_id": 566544,
+      "source_urls": [
+        "https://openapi.tcgtracking.com/v1/85/sets/23599/cards",
+        "https://openapi.tcgtracking.com/v1/85/sets/23599/skus"
+      ],
+      "status": "retrieved_condition_reference",
+      "price_type": "published_market_reference",
+      "independent_upstream_verification": false,
+      "eligible_for_automatic_valuation": false,
+      "fields": {
+        "name": {
+          "value": "Charizard ex - 201/165",
+          "basis": "structured_metadata",
+          "locator": "/products/506/name",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/cards",
+          "content_sha256": "106b5452e85719e3b1ae5c498125a83685edac51b1c11e8f7b9f5f446e04818a"
+        },
+        "number": {
+          "value": "201/165",
+          "basis": "structured_metadata",
+          "locator": "/products/506/number",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/cards",
+          "content_sha256": "106b5452e85719e3b1ae5c498125a83685edac51b1c11e8f7b9f5f446e04818a"
+        },
+        "set_name": {
+          "value": "SV2a: Pokemon Card 151",
+          "basis": "structured_metadata",
+          "locator": "/set_name",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/cards",
+          "content_sha256": "106b5452e85719e3b1ae5c498125a83685edac51b1c11e8f7b9f5f446e04818a"
+        },
+        "market_price": {
+          "value": "388.35",
+          "basis": "structured_metadata",
+          "locator": "/products/566544/8115821/mkt",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+          "content_sha256": "36b0d50f08a016ee9f9e4ccb80651771c747ed3a09aee53bd54fa5ad7079d15c"
+        },
+        "sku_id": {
+          "value": "8115821",
+          "basis": "structured_metadata",
+          "locator": "/products/566544/8115821",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+          "content_sha256": "36b0d50f08a016ee9f9e4ccb80651771c747ed3a09aee53bd54fa5ad7079d15c"
+        },
+        "condition": {
+          "value": "NM",
+          "basis": "structured_metadata",
+          "locator": "/products/566544/8115821/cnd",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+          "content_sha256": "36b0d50f08a016ee9f9e4ccb80651771c747ed3a09aee53bd54fa5ad7079d15c"
+        },
+        "language": {
+          "value": "japanese",
+          "basis": "structured_metadata",
+          "locator": "/products/566544/8115821/lng",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+          "content_sha256": "36b0d50f08a016ee9f9e4ccb80651771c747ed3a09aee53bd54fa5ad7079d15c"
+        },
+        "finish": {
+          "value": "holo",
+          "basis": "structured_metadata",
+          "locator": "/products/566544/8115821/var",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+          "content_sha256": "36b0d50f08a016ee9f9e4ccb80651771c747ed3a09aee53bd54fa5ad7079d15c"
+        },
+        "edition": {
+          "value": null,
+          "basis": "missing",
+          "locator": "/products/566544/8115821/var",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+          "content_sha256": "36b0d50f08a016ee9f9e4ccb80651771c747ed3a09aee53bd54fa5ad7079d15c"
+        },
+        "updated_at": {
+          "value": "2026-10-25T13:37:40-04:00",
+          "basis": "structured_metadata",
+          "locator": "/updated",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+          "content_sha256": "36b0d50f08a016ee9f9e4ccb80651771c747ed3a09aee53bd54fa5ad7079d15c"
+        },
+        "currency": {
+          "value": "USD",
+          "basis": "inferred",
+          "locator": "/products/566544/8115821/mkt",
+          "method": "TCGplayer-price convention; API does not emit currency",
+          "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+          "content_sha256": "36b0d50f08a016ee9f9e4ccb80651771c747ed3a09aee53bd54fa5ad7079d15c"
+        },
+        "shipping_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+          "content_sha256": "36b0d50f08a016ee9f9e4ccb80651771c747ed3a09aee53bd54fa5ad7079d15c"
+        },
+        "tax_excluded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+          "content_sha256": "36b0d50f08a016ee9f9e4ccb80651771c747ed3a09aee53bd54fa5ad7079d15c"
+        },
+        "graded": {
+          "value": null,
+          "basis": "missing",
+          "locator": "",
+          "method": "documented_json_field",
+          "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+          "content_sha256": "36b0d50f08a016ee9f9e4ccb80651771c747ed3a09aee53bd54fa5ad7079d15c"
+        }
+      },
+      "related_rows": [
+        {
+          "sku_id": "8115821",
+          "source_row": {
+            "cnd": "NM",
+            "var": "Holofoil",
+            "var_a": "H",
+            "vid": 3,
+            "lng": "JP",
+            "mkt": "388.35",
+            "low": 375,
+            "hi": 420,
+            "cnt": 25
+          },
+          "selection_exclusions": []
+        },
+        {
+          "sku_id": "8115822",
+          "source_row": {
+            "cnd": "LP",
+            "var": "Holofoil",
+            "var_a": "H",
+            "vid": 3,
+            "lng": "JP",
+            "mkt": "364.7",
+            "low": "321.76",
+            "hi": 385,
+            "cnt": 7
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "8115823",
+          "source_row": {
+            "cnd": "MP",
+            "var": "Holofoil",
+            "var_a": "H",
+            "vid": 3,
+            "lng": "JP",
+            "mkt": 325,
+            "low": 300,
+            "hi": 350,
+            "cnt": 2
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown"
+          ]
+        },
+        {
+          "sku_id": "8115824",
+          "source_row": {
+            "cnd": "HP",
+            "var": "Holofoil",
+            "var_a": "H",
+            "vid": 3,
+            "lng": "JP"
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown",
+            "no reported market price"
+          ]
+        },
+        {
+          "sku_id": "8115825",
+          "source_row": {
+            "cnd": "DMG",
+            "var": "Holofoil",
+            "var_a": "H",
+            "vid": 3,
+            "lng": "JP"
+          },
+          "selection_exclusions": [
+            "condition mismatch or unknown",
+            "no reported market price"
+          ]
+        }
+      ],
+      "issues": [],
+      "limitations": [
+        "Provider-reported benchmark, not independently authenticated TCGplayer data or transactions",
+        "Currency USD follows upstream convention; response has no currency field",
+        "No per-SKU sale date, sold count, methodology, shipping/tax definition or price-observation timestamp",
+        "Set update time is not proof of a recent sale or a fresh individual price",
+        "No automatic valuation; commercial reuse and upstream redistribution rights unresolved",
+        "Edition unspecified in source; not filled from requested standard edition"
+      ],
+      "retrieved_at": "2026-10-26T15:30:28.649660+00:00",
+      "case_id": "japanese-charizard",
+      "original_ai_proposal_usd": "390"
+    }
+  ],
+  "documents": [
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/23228/products",
+      "retrieved_at": "2026-10-26T15:29:37.153357+00:00",
+      "sha256": "b491b378f1ca1d602a46ff45c0770af5174498ac5d2c5f4b90556b2297d0afba"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/23228/prices",
+      "retrieved_at": "2026-10-26T15:29:37.620974+00:00",
+      "sha256": "b11fd17f75f2da8b7ed571bab7da3bf51377a9db40cba2ef4c2799a4624994e5"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/23228/cards",
+      "retrieved_at": "2026-10-26T15:30:09.900625+00:00",
+      "sha256": "1ec13ba3c553b82caf22896acc33ebb00b5d97bfe10839bfb8d1193aeac60ed4"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+      "retrieved_at": "2026-10-26T15:30:10.259413+00:00",
+      "sha256": "96c048e2c98b645676cc110ebebc60430aadb21737600db81839236a33d8b782"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/23237/products",
+      "retrieved_at": "2026-10-26T15:29:37.940404+00:00",
+      "sha256": "448255c2c192a6948245806461fde37df0df1de55fed3ec335cd321a1b136036"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/23237/prices",
+      "retrieved_at": "2026-10-26T15:29:38.289430+00:00",
+      "sha256": "89d98606b4c8088fac27bceff62a406ff6c9f3e3b17d2a993588a78eda31e0b7"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/23237/cards",
+      "retrieved_at": "2026-10-26T15:30:10.735086+00:00",
+      "sha256": "22387340de6025a63b719d5c7ddc4f6a4656b1ec1afc0e689c9d3a603f19f110"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+      "retrieved_at": "2026-10-26T15:30:11.229077+00:00",
+      "sha256": "b928aad9dd82ac6292675500cab104c0677a95c121102a9d0d7bec99a3a29226"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/604/products",
+      "retrieved_at": "2026-10-26T15:29:38.729131+00:00",
+      "sha256": "d36ae814e13a5b0520fa889f90363095f047d901348118786041045211477155"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/604/prices",
+      "retrieved_at": "2026-10-26T15:29:39.198153+00:00",
+      "sha256": "584876e4d6d15bd1efe66b5d686904a4dd1c210ef890b2274ab7672c562bf1ac"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/604/cards",
+      "retrieved_at": "2026-10-26T15:30:07.648379+00:00",
+      "sha256": "09893e9d51ed192dd039e192cf49bee26ec673d6b833c39f22e106366bd51cc1"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/604/skus",
+      "retrieved_at": "2026-10-26T15:30:08.309895+00:00",
+      "sha256": "e485d6b88a269e57c606c0f8485d002d76d66237124fa8a3a85043b285b0d057"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/630/products",
+      "retrieved_at": "2026-10-26T15:29:39.580182+00:00",
+      "sha256": "9cebb7e233640072077c33ba8dab2e2d6648cf8dd9aea9053a68f484209b0822"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/630/prices",
+      "retrieved_at": "2026-10-26T15:29:39.959057+00:00",
+      "sha256": "1e8567f7889deb053eb11bb1aaf53bbec2932aee2a5ef068c5e28930ee005f11"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/630/cards",
+      "retrieved_at": "2026-10-26T15:30:08.917499+00:00",
+      "sha256": "a351f253b0ab10ef8508b664df44593fd41799fffc9e53470beaa7bcd8dbe3da"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+      "retrieved_at": "2026-10-26T15:30:09.355903+00:00",
+      "sha256": "a2f98161b8c32209b87d1444273d52037d3400c2129ee0b0e02592969cea455c"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/85/23599/products",
+      "retrieved_at": "2026-10-26T15:30:27.268395+00:00",
+      "sha256": "437d67c592397ab99d2fdd7b73625392364208c483ca7ad6ec276283dfe6167d"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/85/23599/prices",
+      "retrieved_at": "2026-10-26T15:30:27.818045+00:00",
+      "sha256": "9def777e71960a05789c487ce2f99f26cf3a75d388f825df050bc258e69f772e"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets/23599/cards",
+      "retrieved_at": "2026-10-26T15:30:28.128812+00:00",
+      "sha256": "106b5452e85719e3b1ae5c498125a83685edac51b1c11e8f7b9f5f446e04818a"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+      "retrieved_at": "2026-10-26T15:30:28.649660+00:00",
+      "sha256": "36b0d50f08a016ee9f9e4ccb80651771c747ed3a09aee53bd54fa5ad7079d15c"
+    }
+  ],
+  "condition_references": 5,
+  "generic_references": 5,
+  "approved_valuations": 0
+}
