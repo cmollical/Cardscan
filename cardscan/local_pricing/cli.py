@@ -71,26 +71,36 @@ def main():
     s=sub.add_parser('sync');s.add_argument('--set',action='append',default=[],help='Exact category:group; repeatable. Defaults to five researched sets.')
     s.add_argument('--max-requests',type=int,default=40)
     s.add_argument('--all-pokemon',action='store_true');s.add_argument('--max-sets',type=int,default=20)
+    d=sub.add_parser('discover');d.add_argument('--fetch-metadata',action='store_true');d.add_argument('--max-requests',type=int,default=4)
+    s.add_argument('--dry-run',action='store_true');s.add_argument('--execute',action='store_true');s.add_argument('--resume',action='store_true');s.add_argument('--progress',action='store_true')
     sub.add_parser('status')
-    args=p.parse_args();db=Database(args.db);db.migrate()
+    args=p.parse_args();db=Database(args.db)
+    if not (args.command=='sync' and args.dry_run) and not (args.command=='discover' and not args.fetch_metadata):db.migrate()
     if args.command=='replay':result=replay_originals(db,args.documents)
     elif args.command=='seed':result=seed(db,args.fixture)
-    elif args.command=='sync':
-        scopes=[tuple(map(int,value.split(':'))) for value in args.set] if args.set else [(3,23228),(3,23237),(3,604),(3,630),(85,23599)]
+    elif args.command in ('sync','discover'):
+        from .discovery import discover,select_scopes
         client=DailyClient(db,max_requests=args.max_requests)
-        if args.all_pokemon:
-            if not 1<=args.max_sets<=1000:p.error('max-sets must be 1..1000')
-            # Category metadata is fetched once/day. Scope selection is local and
-            # least-recently-synced first to permit bounded incremental expansion.
-            with sync_lock(db):
-                all_scopes=[]
-                for cat in (3,85):
-                    from .importers import decode
-                    groups=decode(client.get(f'https://tcgcsv.com/tcgplayer/{cat}/groups')['payload'])['results']
-                    all_scopes.extend((cat,x['groupId']) for x in groups)
-                status={(int(r['category_id']),int(r['source_set_id'])):r['last_success_at'] or '' for r in db.sync_status() if r['provider']=='tcgtracking'}
-                scopes=sorted(all_scopes,key=lambda key:(status.get(key,''),key))[:args.max_sets]
-        result=synchronize(db,scopes,client=client)
+        if args.command=='discover':result=discover(db,client=client if args.fetch_metadata else None)
+        else:
+            if not args.dry_run and not args.execute:p.error('Use --dry-run to review scopes or --execute for bounded provider synchronization')
+            if args.all_pokemon:
+                discovery=discover(db) # explicit metadata-discovery step precedes expansion
+                selection=select_scopes(db,discovery,max_sets=args.max_sets)
+            else:
+                scopes=[tuple(map(int,value.split(':'))) for value in args.set] if args.set else [(3,23228),(3,23237),(3,604),(3,630),(85,23599)]
+                try:discovery=discover(db)
+                except ValueError:discovery={'sets':[]}
+                selection=select_scopes(db,discovery,max_sets=args.max_sets,explicit=scopes)
+            selection['request_budget']=args.max_requests
+            selection['budget_sufficient_for_uncached_exports']=selection['maximum_export_requests']+3<=args.max_requests
+            if args.dry_run:result=selection
+            else:
+                import sys
+                scopes=[(x['category'],x['group']) for x in selection['selected_sets']]
+                providers={(x['category'],x['group']):x['providers'] for x in selection['selected_sets']}
+                callback=(lambda r:print(json.dumps(r),file=sys.stderr,flush=True)) if args.progress else None
+                result=synchronize(db,scopes,client=client,resume=args.resume,progress=callback,provider_scopes=providers)
     elif args.command=='status':result={'items':db.sync_status()}
     else:result=db.health()
     print(json_text(result),end='')

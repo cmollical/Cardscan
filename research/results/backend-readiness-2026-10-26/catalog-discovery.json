@@ -1,0 +1,62 @@
+{
+  "mode": "offline_cached_metadata",
+  "categories": [
+    {
+      "category": 3,
+      "catalog_scope": "english_catalog",
+      "tcgcsv_sets": 220,
+      "tcgtracking_sets": 287,
+      "shared_set_ids": 220,
+      "products_reported": 32882,
+      "skus_reported": 223155
+    },
+    {
+      "category": 85,
+      "catalog_scope": "japanese_catalog",
+      "tcgcsv_sets": 461,
+      "tcgtracking_sets": 461,
+      "shared_set_ids": 461,
+      "products_reported": 30741,
+      "skus_reported": 182508
+    }
+  ],
+  "documents": [
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/groups",
+      "retrieved_at": "2026-10-26T15:29:08.868419+00:00",
+      "source_hash": "36766b358e7bbd16e80a669e6fc8aa46efbbddcbf74c886d89f4eafeb1d71bc9"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets",
+      "retrieved_at": "2026-10-26T15:29:35.895470+00:00",
+      "source_hash": "5001890788b16d304ec472f307dfaaaca453cfd8481ce8d9e1087dd247bf4ab6"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/85/groups",
+      "retrieved_at": "2026-10-26T15:29:36.668716+00:00",
+      "source_hash": "d48ea645875df658b29b10b57dd60c66fd60c072f2e0e74477e0bb0a3e4437a9"
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets",
+      "retrieved_at": "2026-10-26T16:45:20.190328+00:00",
+      "source_hash": "34bb4399207946784c5a4e918fdb18a649e8c7bb7cb86a2ff0efe05ffe76157e"
+    }
+  ],
+  "new_requests": 0,
+  "full_export_request_estimate": 2858,
+  "notes": [
+    "Provider counts are reported metadata, not independently counted downloaded cards.",
+    "Provider category/set IDs are joined exactly; differing names are not fuzzy matched.",
+    "No full catalog download was performed."
+  ],
+  "union_set_scopes": 748,
+  "full_catalog_price_exports_downloaded": false,
+  "full_catalog_projections": {
+    "request_estimate": 2863,
+    "export_requests": 2858,
+    "accepted_export_bytes_point_estimate": 214502648.5395652,
+    "snapshot_database_bytes_point_estimate": 1034807846.2886957,
+    "sync_seconds_point_estimate": 1403.213703348324,
+    "basis": "Projection from this non-random ten-set sample and provider metadata, not a full-catalog measurement; excludes historical growth."
+  }
+}

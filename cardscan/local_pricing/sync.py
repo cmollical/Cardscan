@@ -31,6 +31,10 @@ def sync_lock(db):
         finally:fcntl.flock(f,fcntl.LOCK_UN)
 
 
+class RequestBudgetExceeded(ValueError):
+    pass
+
+
 class DailyClient:
     def __init__(self,db,*,now=None,max_requests=40,opener=None,sleeper=time.sleep):
         if not 1<=max_requests<=1000:raise ValueError('Request budget must be 1..1000')
@@ -52,7 +56,7 @@ class DailyClient:
             if old.get('status')=='success' and cached:
                 return self._document(cached)
             raise ValueError('Endpoint retry not eligible until '+old['next_attempt_at'])
-        if self.requests>=self.max_requests:raise ValueError('Sync request budget exhausted')
+        if self.requests>=self.max_requests:raise RequestBudgetExceeded('Sync request budget exhausted')
         next_time=(datetime.fromisoformat(self.now)+timedelta(hours=24)).isoformat()
         # Persist attempt BEFORE network I/O. Crash/restart cannot bypass cooldown.
         with self.db.transaction() as c:
@@ -95,8 +99,8 @@ class DailyClient:
             return dict(url=url,payload=payload,retrieved_at=self.now,kind='original',original_hash=sha256(payload).hexdigest())
         except Exception as exc:
             with self.db.transaction() as c:
-                c.execute("UPDATE endpoints SET status='failed',error=? WHERE url=?",(type(exc).__name__,url))
-            raise ValueError('Export request failed: '+type(exc).__name__) from exc
+                c.execute("UPDATE endpoints SET status='failed',error=? WHERE url=?",(type(exc).__name__+': '+str(exc) if isinstance(exc,ValueError) else type(exc).__name__,url))
+            raise ValueError('Export request failed: '+type(exc).__name__+(': '+str(exc) if isinstance(exc,ValueError) else '')) from exc
 
     @staticmethod
     def _document(row):
@@ -104,7 +108,7 @@ class DailyClient:
                     kind=row['payload_kind'],original_hash=row['original_source_hash'])
 
 
-def synchronize(db,scopes,*,client=None):
+def synchronize(db,scopes,*,client=None,resume=False,progress=None,provider_scopes=None):
     """scopes are exact (category,group) pairs; sets imported atomically per provider.
 
     TCGCSV global marker avoids unchanged price downloads; endpoint cooldowns
@@ -125,6 +129,12 @@ def synchronize(db,scopes,*,client=None):
         for category,group in sorted(set((int(a),int(b)) for a,b in scopes)):
             if category not in (3,85):raise ValueError('Pokemon categories only')
             for provider in ('tcgcsv','tcgtracking'):
+                if provider_scopes is not None and provider not in provider_scopes.get((category,group),()):continue
+                if resume:
+                    with db.connect(readonly=True) as c:
+                        prior=c.execute('SELECT status,last_success_at FROM sync_state WHERE provider=? AND category_id=? AND source_set_id=?',(provider,str(category),str(group))).fetchone()
+                    if prior and prior['status']=='success' and prior['last_success_at'] and prior['last_success_at'][:10]==client.now[:10]:
+                        outcomes.append({'provider':provider,'category':category,'source_set_id':group,'status':'checkpoint_skipped'});continue
                 before=client.requests
                 with db.transaction() as c:
                     c.execute("INSERT INTO sync_state(provider,category_id,source_set_id,last_attempt_at,status) VALUES(?,?,?,?,'attempting') ON CONFLICT(provider,category_id,source_set_id) DO UPDATE SET last_attempt_at=excluded.last_attempt_at,status='attempting'",(provider,str(category),str(group),client.now))
@@ -148,9 +158,17 @@ def synchronize(db,scopes,*,client=None):
                     if provider=='tcgcsv':
                         with db.transaction() as c:c.execute('UPDATE sync_state SET export_marker=? WHERE provider=? AND category_id=? AND source_set_id=?',(marker,provider,str(category),str(group)))
                     outcomes.append({**result,'status':'success','category':category,'source_set_id':group})
+                    if progress:progress(outcomes[-1])
                 except (ValueError,KeyError) as exc:
+                    if isinstance(exc,RequestBudgetExceeded):
+                        with db.transaction() as c:
+                            c.execute("UPDATE sync_state SET status='deferred_budget',errors_json=?,retry_after=NULL,request_count=request_count+? WHERE provider=? AND category_id=? AND source_set_id=?",(json.dumps([str(exc)]),client.requests-before,provider,str(category),str(group)))
+                        outcomes.append({'provider':provider,'category':category,'source_set_id':group,'status':'deferred_budget'})
+                        if progress:progress(outcomes[-1])
+                        return {'sets':outcomes,'requests':client.requests,'status':'budget_exhausted','resume_required':True}
                     retry=(datetime.fromisoformat(client.now)+timedelta(hours=24)).isoformat()
                     with db.transaction() as c:
                         c.execute("UPDATE sync_state SET status='failed',errors_json=?,retry_after=?,request_count=request_count+? WHERE provider=? AND category_id=? AND source_set_id=?",(json.dumps([str(exc)]),retry,client.requests-before,provider,str(category),str(group)))
                     outcomes.append({'provider':provider,'category':category,'source_set_id':group,'status':'failed','error':str(exc)})
-    return {'sets':outcomes,'requests':client.requests,'status':'success' if all(x['status']=='success' for x in outcomes) else 'partial_failure'}
+                    if progress:progress(outcomes[-1])
+    return {'sets':outcomes,'requests':client.requests,'status':'success' if all(x['status'] in ('success','checkpoint_skipped') for x in outcomes) else 'partial_failure'}

@@ -25,8 +25,14 @@ def create_app(path=None):
         except Exception:raise HTTPException(503,detail={'code':'database_unavailable'})
 
     @app.get('/cards/search')
-    def search(q:str=Query('',max_length=200),game:Literal['pokemon']='pokemon',limit:int=Query(25,ge=1,le=100),offset:int=Query(0,ge=0)):
-        return lookup.search(q,game=game,limit=limit,offset=offset)
+    def search(q:str=Query('',max_length=200),game:Literal['pokemon']='pokemon',limit:int=Query(25,ge=1,le=100),offset:int=Query(0,ge=0),set_name:str|None=Query(None,max_length=200),number:str|None=Query(None,max_length=40),language:str|None=Query(None,max_length=50),tcgplayer_product_id:int|None=Query(None,gt=0)):
+        return lookup.search(q,game=game,limit=limit,offset=offset,set_name=set_name,number=number,language=language,tcgplayer_product_id=tcgplayer_product_id)
+
+    @app.get('/cards/product/{tcgplayer_product_id}')
+    def product(tcgplayer_product_id:int):
+        result=lookup.product(tcgplayer_product_id)
+        if result is None:raise HTTPException(404,detail={'code':'product_not_found'})
+        return result
 
     @app.get('/cards/{card_id}')
     def card(card_id:int):
@@ -36,7 +42,7 @@ def create_app(path=None):
 
     @app.get('/prices/lookup')
     def price_lookup(*,game:Literal['pokemon'],set_name:str=Query(min_length=1,max_length=200),
-                     number:str=Query(pattern=r'^\d+/\d+$',max_length=30),language:str=Query(min_length=1,max_length=50),
+                     number:str=Query(pattern=r'^[A-Za-z]*\d+/[A-Za-z]*\d+$',max_length=30),language:str=Query(min_length=1,max_length=50),
                      finish:Literal['holo','non-holo','reverse holo'],condition:Literal['NM','LP','MP','HP','DMG'],
                      graded:bool,edition:Literal['standard','unlimited','first edition','shadowless']|None=None,tcgplayer_product_id:int|None=Query(None,gt=0)):
         return lookup.lookup(game=game,set_name=set_name,number=number,language=language,edition=edition,finish=finish,condition=condition,graded=graded,tcgplayer_product_id=tcgplayer_product_id)
@@ -46,14 +52,14 @@ def create_app(path=None):
         return lookup.lookup_sku(provider,provider_sku_id)
 
     @app.get('/prices/history/{sku_id}')
-    def history(sku_id:int,limit:int=Query(100,ge=1,le=500),offset:int=Query(0,ge=0)):
-        result=lookup.history(sku_id,limit=limit,offset=offset)
+    def history(sku_id:int,limit:int=Query(100,ge=1,le=500),offset:int=Query(0,ge=0),order:Literal['asc','desc']='desc'):
+        result=lookup.history(sku_id,limit=limit,offset=offset,order=order)
         if result is None:raise HTTPException(404,detail={'code':'sku_not_found'})
         return result
 
     @app.get('/prices/product-history/{card_id}')
-    def product_history(card_id:int,subtype:str=Query(min_length=1,max_length=100),limit:int=Query(100,ge=1,le=500),offset:int=Query(0,ge=0)):
-        result=lookup.generic_history(card_id,subtype,limit=limit,offset=offset)
+    def product_history(card_id:int,subtype:str=Query(min_length=1,max_length=100),limit:int=Query(100,ge=1,le=500),offset:int=Query(0,ge=0),order:Literal['asc','desc']='desc'):
+        result=lookup.generic_history(card_id,subtype,limit=limit,offset=offset,order=order)
         if result is None:raise HTTPException(404,detail={'code':'card_not_found'})
         return result
 

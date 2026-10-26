@@ -1,0 +1,18 @@
+{
+  "url": "https://tcgcsv.com/archive/tcgplayer/prices-2026-09-26.ppmd.7z",
+  "archive_date": "2026-09-26",
+  "started_at": "2026-10-26T16:44:30.466340+00:00",
+  "head_status": 403,
+  "disk_free_bytes": 31897780224,
+  "authorized_archive_limit": 1,
+  "reason_for_GET": "Docs describe GET downloads; HEAD denial does not establish a GET result. One ordinary documented GET, no credentials/challenge handling or retry.",
+  "get_status": 403,
+  "error_headers": {
+    "Content-Type": "text/plain",
+    "Server": "envoy",
+    "X-Mitmproxy-Blocked-Reason": null
+  },
+  "error_preview": "The price archive has been temporarily removed due to rising server costs and its growing moderation burden. Prices are still being archived behind-the-scenes. My goal is to share the price archive once I can get further clarification from TCGplayer, and standup a reliable way to cover my operating costs.\n\nIf you were previously relying on the price archive to pull daily pricing, please instead process categories, groups, and prices by making multiple requests. This will primarily help by reducing overall b",
+  "downloaded_archives": 0,
+  "download_duration_seconds": 0.25346335299946077
+}

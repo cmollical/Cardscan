@@ -1,0 +1,115 @@
+{
+  "scope": "Bounded ten additional sets actually attempted; future execution requires explicit --execute and provider guidance",
+  "sets": [
+    {
+      "category": 3,
+      "group": 635,
+      "name": "Jungle",
+      "providers": [
+        "tcgcsv",
+        "tcgtracking"
+      ],
+      "products_reported": 70,
+      "skus_reported": 646
+    },
+    {
+      "category": 3,
+      "group": 1373,
+      "name": "Team Rocket",
+      "providers": [
+        "tcgcsv",
+        "tcgtracking"
+      ],
+      "products_reported": 89,
+      "skus_reported": 836
+    },
+    {
+      "category": 3,
+      "group": 1396,
+      "name": "Neo Genesis",
+      "providers": [
+        "tcgcsv",
+        "tcgtracking"
+      ],
+      "products_reported": 117,
+      "skus_reported": 1116
+    },
+    {
+      "category": 3,
+      "group": 2848,
+      "name": "SWSH07: Evolving Skies",
+      "providers": [
+        "tcgcsv",
+        "tcgtracking"
+      ],
+      "products_reported": 288,
+      "skus_reported": 1968
+    },
+    {
+      "category": 3,
+      "group": 23120,
+      "name": "SV02: Paldea Evolved",
+      "providers": [
+        "tcgcsv",
+        "tcgtracking"
+      ],
+      "products_reported": 315,
+      "skus_reported": 2347
+    },
+    {
+      "category": 85,
+      "group": 23601,
+      "name": "SV4a: Shiny Treasure ex",
+      "providers": [
+        "tcgcsv",
+        "tcgtracking"
+      ],
+      "products_reported": 486,
+      "skus_reported": 2422
+    },
+    {
+      "category": 85,
+      "group": 23645,
+      "name": "S12a: VSTAR Universe",
+      "providers": [
+        "tcgcsv",
+        "tcgtracking"
+      ],
+      "products_reported": 353,
+      "skus_reported": 1757
+    },
+    {
+      "category": 85,
+      "group": 23722,
+      "name": "Pokemon Jungle",
+      "providers": [
+        "tcgcsv",
+        "tcgtracking"
+      ],
+      "products_reported": 49,
+      "skus_reported": 241
+    },
+    {
+      "category": 85,
+      "group": 23723,
+      "name": "Mystery of the Fossils",
+      "providers": [
+        "tcgcsv",
+        "tcgtracking"
+      ],
+      "products_reported": 48,
+      "skus_reported": 240
+    },
+    {
+      "category": 85,
+      "group": 23909,
+      "name": "SV8a: Terastal Fest ex",
+      "providers": [
+        "tcgcsv",
+        "tcgtracking"
+      ],
+      "products_reported": 487,
+      "skus_reported": 2622
+    }
+  ]
+}

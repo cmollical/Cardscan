@@ -15,14 +15,26 @@ class Lookup:
         if max_age_hours <= 0:raise ValueError('Positive freshness window required')
         self.db,self.max_age_hours=db,max_age_hours
 
-    def search(self, q='', *, game='pokemon', limit=25, offset=0):
+    def search(self, q='', *, game='pokemon', limit=25, offset=0,set_name=None,number=None,language=None,tcgplayer_product_id=None):
         if not 1<=limit<=100 or offset<0:raise ValueError('Invalid pagination')
         # Substring catalog search is discovery, never an exact identity join.
         with self.db.connect(readonly=True) as c:
-            where='WHERE g.name=? AND instr(lower(p.name),lower(?))>0'
-            total=c.execute('SELECT COUNT(*) FROM products p JOIN games g ON g.id=p.game_id '+where,(game,q)).fetchone()[0]
-            items=page(c.execute('SELECT p.*,s.name AS set_name FROM products p JOIN games g ON g.id=p.game_id JOIN sets s ON s.id=p.set_id '+where+' ORDER BY p.id LIMIT ? OFFSET ?',(game,q,limit,offset)))
-            return {'items':items,'total':total,'limit':limit,'offset':offset}
+            clauses=['g.name=?','instr(lower(p.name),lower(?))>0'];values=[game,q]
+            if set_name is not None:
+                clauses.append('EXISTS(SELECT 1 FROM set_aliases a WHERE a.set_id=p.set_id AND a.alias=?)');values.append(set_name.casefold())
+            if number is not None:clauses.append('p.collector_number=?');values.append(canonical_number(number))
+            if tcgplayer_product_id is not None:clauses.append('p.tcgplayer_product_id=?');values.append(str(tcgplayer_product_id))
+            if language is not None:
+                clauses.append('EXISTS(SELECT 1 FROM skus v WHERE v.product_id=p.id AND v.language=?)');values.append(language.casefold())
+            where=' WHERE '+' AND '.join(clauses)
+            total=c.execute('SELECT COUNT(*) FROM products p JOIN games g ON g.id=p.game_id '+where,values).fetchone()[0]
+            items=page(c.execute('SELECT p.*,s.name AS set_name FROM products p JOIN games g ON g.id=p.game_id JOIN sets s ON s.id=p.set_id '+where+' ORDER BY p.id LIMIT ? OFFSET ?',(*values,limit,offset)))
+            return {'items':items,'total':total,'limit':limit,'offset':offset,'match_policy':'catalog_candidates_not_approved_identification'}
+
+    def product(self,tcgplayer_product_id):
+        with self.db.connect(readonly=True) as c:
+            row=c.execute('SELECT id FROM products WHERE tcgplayer_product_id=?',(str(tcgplayer_product_id),)).fetchone()
+        return self.card(row[0]) if row else None
 
     def card(self, card_id):
         with self.db.connect(readonly=True) as c:
@@ -30,14 +42,16 @@ class Lookup:
             if not r:return None
             result=dict(r)
             result['variants']=page(c.execute('SELECT * FROM skus WHERE product_id=? ORDER BY provider,provider_sku_id',(card_id,)))
-            result['generic_references']=page(c.execute("SELECT * FROM observations WHERE product_id=? AND price_type='generic_market_reference' ORDER BY snapshot_date DESC,retrieved_at DESC,id DESC",(card_id,)))
+            result['generic_references']=page(c.execute("""SELECT * FROM observations WHERE id IN (
+                SELECT id FROM (SELECT id,ROW_NUMBER() OVER (PARTITION BY provider,subtype ORDER BY snapshot_date DESC,retrieved_at DESC,id DESC) rank
+                  FROM observations WHERE product_id=? AND price_type='generic_market_reference') WHERE rank=1) ORDER BY provider,subtype""",(card_id,)))
             return result
 
-    def history(self, sku_id, *, limit=100, offset=0):
-        if not 1<=limit<=500 or offset<0:raise ValueError('Invalid pagination')
+    def history(self, sku_id, *, limit=100, offset=0,order='desc'):
+        if not 1<=limit<=500 or offset<0 or order not in ('asc','desc'):raise ValueError('Invalid pagination/order')
         with self.db.connect(readonly=True) as c:
             if not c.execute('SELECT 1 FROM skus WHERE id=?',(sku_id,)).fetchone():return None
-            return {'sku_id':sku_id,'items':page(c.execute('SELECT * FROM observations WHERE sku_id=? ORDER BY snapshot_date DESC,retrieved_at DESC,id DESC LIMIT ? OFFSET ?',(sku_id,limit,offset))),
+            return {'sku_id':sku_id,'items':page(c.execute(f'SELECT * FROM observations WHERE sku_id=? ORDER BY snapshot_date {order},retrieved_at {order},id {order} LIMIT ? OFFSET ?',(sku_id,limit,offset))),
                     'total':c.execute('SELECT COUNT(*) FROM observations WHERE sku_id=?',(sku_id,)).fetchone()[0], 'limit':limit,'offset':offset}
 
     def _candidate(self,c,row,now):
@@ -115,14 +129,14 @@ class Lookup:
                 result.update(status='ambiguous_match',market_price=None,currency=None)
             return result
 
-    def generic_history(self,card_id,subtype,*,limit=100,offset=0):
-        if not 1<=limit<=500 or offset<0:raise ValueError('Invalid pagination')
+    def generic_history(self,card_id,subtype,*,limit=100,offset=0,order='desc'):
+        if not 1<=limit<=500 or offset<0 or order not in ('asc','desc'):raise ValueError('Invalid pagination/order')
         with self.db.connect(readonly=True) as c:
             if not c.execute('SELECT 1 FROM products WHERE id=?',(card_id,)).fetchone():return None
             params=(card_id,subtype)
             where=" WHERE product_id=? AND subtype=? AND price_type='generic_market_reference'"
             return {'card_id':card_id,'subtype':subtype,'condition':None,'price_type':'generic_market_reference',
-                    'items':page(c.execute('SELECT * FROM observations'+where+' ORDER BY snapshot_date DESC,id DESC LIMIT ? OFFSET ?',(*params,limit,offset))),
+                    'items':page(c.execute('SELECT * FROM observations'+where+f' ORDER BY snapshot_date {order},id {order} LIMIT ? OFFSET ?',(*params,limit,offset))),
                     'total':c.execute('SELECT COUNT(*) FROM observations'+where,params).fetchone()[0], 'limit':limit,'offset':offset}
 
     def comparisons(self,*,sku_id=None,card_id=None,subtype=None):

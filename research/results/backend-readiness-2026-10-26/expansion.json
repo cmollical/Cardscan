@@ -1,0 +1,176 @@
+{
+  "sets": [
+    {
+      "products": 70,
+      "provider": "tcgcsv",
+      "set_id": 6,
+      "status": "success",
+      "category": 3,
+      "source_set_id": 635
+    },
+    {
+      "products": 64,
+      "provider": "tcgtracking",
+      "set_id": 6,
+      "status": "success",
+      "category": 3,
+      "source_set_id": 635
+    },
+    {
+      "products": 89,
+      "provider": "tcgcsv",
+      "set_id": 7,
+      "status": "success",
+      "category": 3,
+      "source_set_id": 1373
+    },
+    {
+      "products": 83,
+      "provider": "tcgtracking",
+      "set_id": 7,
+      "status": "success",
+      "category": 3,
+      "source_set_id": 1373
+    },
+    {
+      "products": 117,
+      "provider": "tcgcsv",
+      "set_id": 8,
+      "status": "success",
+      "category": 3,
+      "source_set_id": 1396
+    },
+    {
+      "products": 111,
+      "provider": "tcgtracking",
+      "set_id": 8,
+      "status": "success",
+      "category": 3,
+      "source_set_id": 1396
+    },
+    {
+      "products": 288,
+      "provider": "tcgcsv",
+      "set_id": 9,
+      "status": "success",
+      "category": 3,
+      "source_set_id": 2848
+    },
+    {
+      "products": 255,
+      "provider": "tcgtracking",
+      "set_id": 9,
+      "status": "success",
+      "category": 3,
+      "source_set_id": 2848
+    },
+    {
+      "products": 315,
+      "provider": "tcgcsv",
+      "set_id": 10,
+      "status": "success",
+      "category": 3,
+      "source_set_id": 23120
+    },
+    {
+      "products": 288,
+      "provider": "tcgtracking",
+      "set_id": 10,
+      "status": "success",
+      "category": 3,
+      "source_set_id": 23120
+    },
+    {
+      "products": 486,
+      "provider": "tcgcsv",
+      "set_id": 11,
+      "status": "success",
+      "category": 85,
+      "source_set_id": 23601
+    },
+    {
+      "products": 484,
+      "provider": "tcgtracking",
+      "set_id": 11,
+      "status": "success",
+      "category": 85,
+      "source_set_id": 23601
+    },
+    {
+      "provider": "tcgcsv",
+      "category": 85,
+      "source_set_id": 23645,
+      "status": "failed",
+      "error": "Export request failed: ValueError"
+    },
+    {
+      "products": 351,
+      "provider": "tcgtracking",
+      "set_id": 12,
+      "status": "success",
+      "category": 85,
+      "source_set_id": 23645
+    },
+    {
+      "products": 49,
+      "provider": "tcgcsv",
+      "set_id": 13,
+      "status": "success",
+      "category": 85,
+      "source_set_id": 23722
+    },
+    {
+      "products": 48,
+      "provider": "tcgtracking",
+      "set_id": 13,
+      "status": "success",
+      "category": 85,
+      "source_set_id": 23722
+    },
+    {
+      "provider": "tcgcsv",
+      "category": 85,
+      "source_set_id": 23723,
+      "status": "failed",
+      "error": "Export request failed: ValueError"
+    },
+    {
+      "products": 48,
+      "provider": "tcgtracking",
+      "set_id": 14,
+      "status": "success",
+      "category": 85,
+      "source_set_id": 23723
+    },
+    {
+      "products": 487,
+      "provider": "tcgcsv",
+      "set_id": 15,
+      "status": "success",
+      "category": 85,
+      "source_set_id": 23909
+    },
+    {
+      "products": 485,
+      "provider": "tcgtracking",
+      "set_id": 15,
+      "status": "success",
+      "category": 85,
+      "source_set_id": 23909
+    }
+  ],
+  "requests": 38,
+  "status": "partial_failure",
+  "elapsed_seconds": 18.65714511099941,
+  "peak_rss_kib": 58180,
+  "existing_observations_unchanged": true,
+  "counts": {
+    "sets": 15,
+    "products": 3509,
+    "skus": 21735,
+    "observations": 25812,
+    "quality_issues": 14
+  },
+  "source_bytes_stored": 8202312,
+  "database_bytes": 57753600
+}

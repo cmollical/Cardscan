@@ -1,0 +1,356 @@
+{
+  "scope": "Minimal metadata/hashes only; full responses remain local",
+  "requests": [
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/1373/cards",
+      "original_source_hash": "abdf6f24ca86d9e4533ea9f7fed2ee39450f0cd3392a8fa39a4ba214e2ee7840",
+      "content_hash": "abdf6f24ca86d9e4533ea9f7fed2ee39450f0cd3392a8fa39a4ba214e2ee7840",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 173607,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/1373/skus",
+      "original_source_hash": "99dc9203fe47f011aefa8ecd5d56bd22634e69f20b1112a3432e26f33c17c9da",
+      "content_hash": "99dc9203fe47f011aefa8ecd5d56bd22634e69f20b1112a3432e26f33c17c9da",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 98587,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/1396/cards",
+      "original_source_hash": "1ef16d1d4b33342e0778b5720613cece86d53b7c190c932bc55fe1e7d608c7a4",
+      "content_hash": "1ef16d1d4b33342e0778b5720613cece86d53b7c190c932bc55fe1e7d608c7a4",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 227112,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/1396/skus",
+      "original_source_hash": "ba62740ec7fbca4e2bc859e20ed4930beb5bc405b29b206c9fb80dd7aada82a9",
+      "content_hash": "ba62740ec7fbca4e2bc859e20ed4930beb5bc405b29b206c9fb80dd7aada82a9",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 130382,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/23120/cards",
+      "original_source_hash": "e71fda85794454502d2c5298fee4e443aa001a9e54cd792c017f285953129c64",
+      "content_hash": "e71fda85794454502d2c5298fee4e443aa001a9e54cd792c017f285953129c64",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 536442,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/23120/skus",
+      "original_source_hash": "e2e4fa8dd27e8aa41287419646a0df78a8822b561e4fca684ba18464a802836e",
+      "content_hash": "e2e4fa8dd27e8aa41287419646a0df78a8822b561e4fca684ba18464a802836e",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 237898,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/2848/cards",
+      "original_source_hash": "a2596ecb69b17e1c732a3425e8de5792046cbf1243b166e2ffe58bc7a2074fcd",
+      "content_hash": "a2596ecb69b17e1c732a3425e8de5792046cbf1243b166e2ffe58bc7a2074fcd",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 492674,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/2848/skus",
+      "original_source_hash": "feee7deb10ff2e644e86d17b1c0a7db47fbdbc77a4cd2ef31e171ce05ee96909",
+      "content_hash": "feee7deb10ff2e644e86d17b1c0a7db47fbdbc77a4cd2ef31e171ce05ee96909",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 206653,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/635/cards",
+      "original_source_hash": "c75754e19cf348bf7417306c94ae5090feb9c7b54d2a2384df781f04f58b8e48",
+      "content_hash": "c75754e19cf348bf7417306c94ae5090feb9c7b54d2a2384df781f04f58b8e48",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 132080,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/3/sets/635/skus",
+      "original_source_hash": "d69dcab227ee464d304b43def4207cd592fe307abeda13d9657c7934cc0fd0cf",
+      "content_hash": "d69dcab227ee464d304b43def4207cd592fe307abeda13d9657c7934cc0fd0cf",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 76427,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets",
+      "original_source_hash": "34bb4399207946784c5a4e918fdb18a649e8c7bb7cb86a2ff0efe05ffe76157e",
+      "content_hash": "34bb4399207946784c5a4e918fdb18a649e8c7bb7cb86a2ff0efe05ffe76157e",
+      "retrieved_at": "2026-10-26T16:45:20.190328+00:00",
+      "bytes": 447945,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets/23601/cards",
+      "original_source_hash": "e2a803eddf61bbf033dfee7eafd54404cba3a142cd22c00e85293a4b2a044fec",
+      "content_hash": "e2a803eddf61bbf033dfee7eafd54404cba3a142cd22c00e85293a4b2a044fec",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 824295,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets/23601/skus",
+      "original_source_hash": "b284a49592290a16864d1975e9632eaddb7c71f4f732937eca1f20609c06e215",
+      "content_hash": "b284a49592290a16864d1975e9632eaddb7c71f4f732937eca1f20609c06e215",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 214553,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets/23645/cards",
+      "original_source_hash": "a3dd015eb01f73dcadea3e5cc1f1efc774b10b46f1709181008a738b3958f2e4",
+      "content_hash": "a3dd015eb01f73dcadea3e5cc1f1efc774b10b46f1709181008a738b3958f2e4",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 323384,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets/23645/skus",
+      "original_source_hash": "8a0161eb58acb6a917727881b61527a2e09c79d864339f577b0e0397e92b8f6e",
+      "content_hash": "8a0161eb58acb6a917727881b61527a2e09c79d864339f577b0e0397e92b8f6e",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 157875,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets/23722/cards",
+      "original_source_hash": "6c9e67c85c76a73f5181574078375af728be154455cda41b5b5ce4e425606f10",
+      "content_hash": "6c9e67c85c76a73f5181574078375af728be154455cda41b5b5ce4e425606f10",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 46864,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets/23722/skus",
+      "original_source_hash": "b658f001e15181d629dc58b7cc3adf8251b4c01ef7680cc61f6dad7648ceee56",
+      "content_hash": "b658f001e15181d629dc58b7cc3adf8251b4c01ef7680cc61f6dad7648ceee56",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 27066,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets/23723/cards",
+      "original_source_hash": "cf20649a8030705b2df40309fff2cc3642b55352323385a01246abc2564cd650",
+      "content_hash": "cf20649a8030705b2df40309fff2cc3642b55352323385a01246abc2564cd650",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 47441,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets/23723/skus",
+      "original_source_hash": "3bf93014cc9732afe22203f51fef2309c6df5e0777759b0f5c463e0d7d063dfa",
+      "content_hash": "3bf93014cc9732afe22203f51fef2309c6df5e0777759b0f5c463e0d7d063dfa",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 26962,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets/23909/cards",
+      "original_source_hash": "e1ecc7520b09fc8d3d24246e715a56af6bdccf5457b91dd55fb274850af17259",
+      "content_hash": "e1ecc7520b09fc8d3d24246e715a56af6bdccf5457b91dd55fb274850af17259",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 922512,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://openapi.tcgtracking.com/v1/85/sets/23909/skus",
+      "original_source_hash": "29121d70af8d1a9d4e6182cebf64b931afdcae75223e69479dbefb00139b6338",
+      "content_hash": "29121d70af8d1a9d4e6182cebf64b931afdcae75223e69479dbefb00139b6338",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 228481,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/1373/prices",
+      "original_source_hash": "ba114096e695bf1c8a73671ba1da5ee6dd4a37e880026ba6a7316f3b8046c797",
+      "content_hash": "ba114096e695bf1c8a73671ba1da5ee6dd4a37e880026ba6a7316f3b8046c797",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 26597,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/1373/products",
+      "original_source_hash": "f20bf0ac316667f49dbe54604ccf442ca313da95a29517ca05e862bf651fb22d",
+      "content_hash": "f20bf0ac316667f49dbe54604ccf442ca313da95a29517ca05e862bf651fb22d",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 105680,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/1396/prices",
+      "original_source_hash": "fdfe341cf9c76d16bec962a8a750153100b7531142e7defa05f6d1ee70056038",
+      "content_hash": "fdfe341cf9c76d16bec962a8a750153100b7531142e7defa05f6d1ee70056038",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 34419,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/1396/products",
+      "original_source_hash": "27bec59967a2a38bb14d7efd090c86550bf9d4cddcca5d871ceed1a42c020e38",
+      "content_hash": "27bec59967a2a38bb14d7efd090c86550bf9d4cddcca5d871ceed1a42c020e38",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 131288,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/23120/prices",
+      "original_source_hash": "90ac1b79a6285ffeaa6e027afdd4a653d8f323a427cf888bf93056253435bdaa",
+      "content_hash": "90ac1b79a6285ffeaa6e027afdd4a653d8f323a427cf888bf93056253435bdaa",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 74661,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/23120/products",
+      "original_source_hash": "464c8266ceed28fbbde27c3753d8f5bc74fc0dd5bb953fa7d8cb24f018147449",
+      "content_hash": "464c8266ceed28fbbde27c3753d8f5bc74fc0dd5bb953fa7d8cb24f018147449",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 377240,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/2848/prices",
+      "original_source_hash": "41c437a0efba4d7abd96051efa6e2ed4c74a105cc08bef5398545ebb60eae208",
+      "content_hash": "41c437a0efba4d7abd96051efa6e2ed4c74a105cc08bef5398545ebb60eae208",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 63495,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/2848/products",
+      "original_source_hash": "47152ef78f868a5b685c11278549c3bf511490660fd7c637962d3aa55920c6a8",
+      "content_hash": "47152ef78f868a5b685c11278549c3bf511490660fd7c637962d3aa55920c6a8",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 333886,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/635/prices",
+      "original_source_hash": "73580869899efd6927cf56047a34b650c8008025097c2653377dfb9e9875457a",
+      "content_hash": "73580869899efd6927cf56047a34b650c8008025097c2653377dfb9e9875457a",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 20745,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/3/635/products",
+      "original_source_hash": "0d6cc9260f801783c4b14f3d1d44b9230cdc7b862cdea63b2d171c244a9ba861",
+      "content_hash": "0d6cc9260f801783c4b14f3d1d44b9230cdc7b862cdea63b2d171c244a9ba861",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 81220,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/85/23601/prices",
+      "original_source_hash": "0e39f5f65f84bdff6663306d993a79dd3be40c4f4284a891c7523f9ee9fcfc85",
+      "content_hash": "0e39f5f65f84bdff6663306d993a79dd3be40c4f4284a891c7523f9ee9fcfc85",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 72330,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/85/23601/products",
+      "original_source_hash": "ae3eeb983ba4a256ba07ad5c63d5adf0c56baa1ba394b420998fb9ef706b617b",
+      "content_hash": "ae3eeb983ba4a256ba07ad5c63d5adf0c56baa1ba394b420998fb9ef706b617b",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 574556,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/85/23645/products",
+      "original_source_hash": null,
+      "content_hash": null,
+      "retrieved_at": null,
+      "bytes": null,
+      "status": "failed",
+      "error": "ValueError"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/85/23722/prices",
+      "original_source_hash": "a6f1f79929be65d88bb372c75acd4cb08d92c09e04dbdf07e23ab75322dec049",
+      "content_hash": "a6f1f79929be65d88bb372c75acd4cb08d92c09e04dbdf07e23ab75322dec049",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 7359,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/85/23722/products",
+      "original_source_hash": "67030082c2ff74c89ce2777e0e9d7071d57e54334684a621f21dc51674528ec7",
+      "content_hash": "67030082c2ff74c89ce2777e0e9d7071d57e54334684a621f21dc51674528ec7",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 58085,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/85/23723/products",
+      "original_source_hash": null,
+      "content_hash": null,
+      "retrieved_at": null,
+      "bytes": null,
+      "status": "failed",
+      "error": "ValueError"
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/85/23909/prices",
+      "original_source_hash": "b6d15149e50a2ded78ab0710b4c9cf4b5bf3ba1ff39f6fa03c38a4e17ce187b1",
+      "content_hash": "b6d15149e50a2ded78ab0710b4c9cf4b5bf3ba1ff39f6fa03c38a4e17ce187b1",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 77754,
+      "status": "success",
+      "error": null
+    },
+    {
+      "url": "https://tcgcsv.com/tcgplayer/85/23909/products",
+      "original_source_hash": "4fe3c6cb424c76a148a338970428895e97eecdfc44bf76f059fee4723a65a421",
+      "content_hash": "4fe3c6cb424c76a148a338970428895e97eecdfc44bf76f059fee4723a65a421",
+      "retrieved_at": "2026-10-26T16:48:34.596666+00:00",
+      "bytes": 583757,
+      "status": "success",
+      "error": null
+    }
+  ]
+}

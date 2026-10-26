@@ -1,0 +1,16 @@
+{
+  "transport": "actual uvicorn loopback HTTP",
+  "health": {
+    "status": "ok",
+    "schema_version": 4,
+    "products": 3509,
+    "skus": 21735
+  },
+  "exact_product": "42382",
+  "candidate_count": 2,
+  "sku": "2999653",
+  "market_reference": "527.7",
+  "history_order": "ascending",
+  "all_checks_passed": true,
+  "external_requests": 0
+}

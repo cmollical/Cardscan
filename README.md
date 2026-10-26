@@ -88,3 +88,5 @@ or absence of later refunds. No full inventory interface or PWA has been built.
 Structured API investigation: [working condition-SKU proof of concept and provider comparison](docs/alternative-pricing-apis.md) (2026-10-26). Free TCGTracking and TCGCSV adapters are separate from valuation; retrieved references are not automatically approved prices.
 
 [Local SQLite pricing backend, read-only HTTP API, mandatory append-only history, sync and archive backfill plan](docs/local-pricing-backend.md) are implemented for personal research. No paid service or scanner is required.
+
+[Backend readiness and bounded 15-set expansion](docs/backend-readiness-2026-10-26.md): 21,735 SKUs; historical archive access is currently withdrawn by TCGCSV. Updated sync requires `--execute`; use `--dry-run` for offline planning.

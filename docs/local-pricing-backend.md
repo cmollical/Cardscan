@@ -186,13 +186,13 @@ converted into sold counts or liquidity scores.
 
 ```bash
 # Five researched sets, bounded request budget, no automatic retries:
-python -m cardscan.local_pricing.cli sync --max-requests 40
+python -m cardscan.local_pricing.cli sync --execute --max-requests 40
 
 # Explicit set/category (repeat --set to select more):
-python -m cardscan.local_pricing.cli sync --set 3:604 --set 85:23599
+python -m cardscan.local_pricing.cli sync --execute --set 3:604 --set 85:23599
 
 # Bounded incremental catalog expansion; least recently synced sets first:
-python -m cardscan.local_pricing.cli sync --all-pokemon --max-sets 20 --max-requests 100
+python -m cardscan.local_pricing.cli sync --execute --all-pokemon --max-sets 20 --max-requests 100
 
 python -m cardscan.local_pricing.cli status
 ```
@@ -337,3 +337,5 @@ shipping/tax/methodology plus TCGTracking licensing. Then authorize **one real
 historical archive** to measure actual extracted rows, processing time and disk
 cost before any 365-day generic backfill. Continue collecting condition snapshots
 locally at permitted daily cadence. No new AI spending or PWA work is needed.
+
+Current follow-up: [bounded expansion, schema 4, candidate API improvements and archive withdrawal](backend-readiness-2026-10-26.md). The archive-format description above records prior documentation; actual October 26 download access is blocked.

@@ -10,8 +10,12 @@ from .database import utc
 
 
 def canonical_number(raw):
-    key = number_key(raw)
-    return f'{key[0]}/{key[1]}' if key else raw or None
+    match=re.fullmatch(r'([A-Za-z]*)(\d+)/([A-Za-z]*)(\d+)',raw or '')
+    return f'{match[1].upper()}{int(match[2])}/{match[3].upper()}{int(match[4])}' if match else raw or None
+
+
+def full_number(raw):
+    return bool(re.fullmatch(r'[A-Za-z]*\d+/[A-Za-z]*\d+',raw or ''))
 
 
 def decode(payload):
@@ -74,7 +78,7 @@ class Importer:
             previous=c.execute('SELECT last_success_at FROM sync_state WHERE provider=? AND category_id=? AND source_set_id=?',(provider,str(category),str(source_set))).fetchone()
             if previous and previous[0] and previous[0]>captured_at:
                 return {'provider':provider,'set_id':sid,'status':'older_snapshot_skipped','products':0}
-            c.execute('UPDATE sets SET last_catalog_sync=MAX(COALESCE(last_catalog_sync,?),?) WHERE id=?',(stamp,stamp,sid))
+            c.execute('UPDATE sets SET last_catalog_sync=MAX(COALESCE(last_catalog_sync,?),?) WHERE id=?',(captured_at,captured_at,sid))
             c.execute('INSERT INTO set_mappings VALUES(?,?,?,?) ON CONFLICT DO NOTHING',(provider,str(category),str(source_set),sid))
             for alias in {source_name.casefold(),*(a.casefold() for a in aliases)}:
                 c.execute('INSERT INTO set_aliases VALUES(?,?,?) ON CONFLICT DO NOTHING',(sid,alias,'explicit reviewed source-ID/set-alias mapping'))
@@ -125,13 +129,16 @@ class Importer:
                         language=LANGUAGES.get(row.get('lng'))
                         finish,edition=VARIANTS.get(row.get('var'),(None,None))
                         edition_basis='variant_field' if edition else 'missing'
+                        if row.get('var') in ('1st Edition','Unlimited'):
+                            edition={'1st Edition':'first edition','Unlimited':'unlimited'}[row['var']]
+                            edition_basis='explicit_variant_edition_label_v2'
                         if edition is None and 'This version from the Unlimited print run' in p.get('ext_data',{}).get('TCGplayer Tip',''):
                             edition='unlimited';edition_basis='explicit_product_print_run_sentence'
                         old=c.execute('SELECT * FROM skus WHERE provider=? AND provider_sku_id=?',(provider,str(sku))).fetchone()
                         identity=(pid,condition,language,edition,finish)
                         if old and tuple(old[k] for k in ['product_id','condition','language','edition','finish'])!=identity:
                             raise ValueError('Existing SKU identity changed; review required')
-                        completeness={k:v is not None for k,v in dict(condition=condition,language=language,edition=edition,finish=finish,number=number_key(p.get('number')),graded=False).items()}
+                        completeness={k:v is not None for k,v in dict(condition=condition,language=language,edition=edition,finish=finish,number=True if full_number(p.get('number')) else None,graded=False).items()}
                         provenance={'condition':'/cnd','language':'/lng','finish':'/var','edition':edition_basis,
                                     'graded':'raw reference scope from existing TCGTracking adapter contract; not an observed physical card grade'}
                         c.execute('''INSERT INTO skus(product_id,provider,provider_sku_id,condition,language,edition,finish,graded,raw_variant_json,completeness_json,provenance_json)
@@ -161,7 +168,7 @@ class Importer:
             c.execute('''INSERT INTO sync_state(provider,category_id,source_set_id,last_attempt_at,last_success_at,source_marker,status)
                          VALUES(?,?,?,?,?,?,'success') ON CONFLICT(provider,category_id,source_set_id) DO UPDATE SET
                          last_success_at=excluded.last_success_at,source_marker=excluded.source_marker,status='success',errors_json='[]',retry_after=NULL''',
-                      (provider,str(category),str(source_set),stamp,stamp,marker))
+                      (provider,str(category),str(source_set),captured_at,captured_at,marker))
             return {'products':len(products),'provider':provider,'set_id':sid}
 
     def _observation(self,c,pid,sku,provider,amount,updated,document,docid,locator,row,warnings,snapshot_date,captured_at,capture_kind):

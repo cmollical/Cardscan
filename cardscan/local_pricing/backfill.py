@@ -19,6 +19,7 @@ from cardscan.structured_prices import json_text,price
 from .database import Database,utc
 from .importers import Importer,decode
 from .sync import sync_lock
+from .archive_stream import file_hash,stream_members
 
 FIRST=date(2024,2,8)
 
@@ -41,12 +42,12 @@ def plan(days=365):
             'downloads_executed':0,'requires_bulk_authorization':True}
 
 
-def import_entry(db,day,category,group,payload,*,archive_hash,retrieved_at,member,archive_path):
+def import_entry(db,day,category,group,payload,*,archive_hash,retrieved_at,member,archive_path,parsed=None):
     """Atomic member import, append-only generic history; unresolved exact IDs staged."""
     day=date.fromisoformat(day).isoformat()
     if date.fromisoformat(day)<FIRST or date.fromisoformat(day)>date.today():raise ValueError('Invalid archive date')
     if int(category) not in (3,85):raise ValueError('Pokemon categories only')
-    rows=decode(payload)
+    rows=decode(payload) if parsed is None else parsed
     if rows.get('success') is not True or not isinstance(rows.get('results'),list):raise ValueError('Invalid historical price export')
     digest=sha256(payload).hexdigest();now=utc(retrieved_at)
     with db.transaction() as c:
@@ -83,7 +84,7 @@ def download_archive(path,day,*,opener=None):
     """Immutable local files are never downloaded again. Atomic complete download."""
     if path.exists():
         metadata=path.with_suffix(path.suffix+'.json')
-        if metadata.exists() and json.loads(metadata.read_text())['sha256']!=sha256(path.read_bytes()).hexdigest():
+        if metadata.exists() and json.loads(metadata.read_text())['sha256']!=file_hash(path):
             raise ValueError('Cached archive hash mismatch; do not silently re-download')
         return False
     url=f'https://tcgcsv.com/archive/tcgplayer/prices-{day}.ppmd.7z'
@@ -97,7 +98,8 @@ def download_archive(path,day,*,opener=None):
                     total+=len(chunk)
                     if total>16_000_000:raise ValueError('Archive exceeds configured 16 MB safety bound')
                     digest.update(chunk);f.write(chunk)
-        if partial.read_bytes()[:6]!=b'7z\xbc\xaf\x27\x1c':raise ValueError('Not a 7z archive; no HTML/challenge handling')
+        with partial.open('rb') as header:
+            if header.read(6)!=b'7z\xbc\xaf\x27\x1c':raise ValueError('Not a 7z archive; no HTML/challenge handling')
         partial.replace(path)
         path.with_suffix(path.suffix+'.json').write_text(json.dumps({'url':url,'retrieved_at':utc(),'sha256':digest.hexdigest(),'bytes':total},indent=2))
         return True
@@ -144,18 +146,26 @@ def run(db,start,end,directory,*,allow_download=False,max_archives=1):
             try:
                 downloaded=download_archive(path,day) if allow_download else False
                 if not path.exists():raise ValueError('Archive absent locally; downloads disabled')
-                digest=sha256(path.read_bytes()).hexdigest();members=0
+                digest=file_hash(path);members=0
                 sidecar=path.with_suffix(path.suffix+'.json')
                 if sidecar.exists() and json.loads(sidecar.read_text())['sha256']!=digest:raise ValueError('Cached archive hash mismatch')
                 if old and old['content_hash'] and old['content_hash']!=digest:raise ValueError('Immutable archive content changed')
-                with TemporaryDirectory(prefix='cardscan-pokemon-') as tmp:
-                    for member,cat,group in extract_members(path,day,tmp):
-                        payload=Path(tmp,member).read_bytes()
-                        import_entry(db,day,cat,group,payload,archive_hash=digest,retrieved_at=now,member=member,archive_path=path)
-                        members+=1
+                def on_member(member,payload,stats):
+                    matched=re.fullmatch(re.escape(day)+r'/(3|85)/(\d+)/prices',member)
+                    parsed_started=time.perf_counter();parsed=decode(payload)
+                    stats['parsing_seconds']+=time.perf_counter()-parsed_started
+                    before=time.perf_counter()
+                    result=import_entry(db,day,int(matched[1]),int(matched[2]),payload,archive_hash=digest,
+                                 retrieved_at=now,member=member,archive_path=path,parsed=parsed)
+                    stats['import_seconds']+=time.perf_counter()-before
+                    key='english_records' if matched[1]=='3' else 'japanese_records'
+                    stats[key]=stats.get(key,0)+len(parsed['results'])
+                    stats['unresolved_records']=stats.get('unresolved_records',0)+result['unresolved']
+                streaming=stream_members(path,day,on_member)
+                members=streaming['completed_members']
                 with db.transaction() as c:
                     c.execute("UPDATE archive_imports SET status='complete',completed_at=?,content_hash=? WHERE archive_date=?",(utc(),digest,day))
-                out.append({'date':day,'status':'complete','downloaded':downloaded,'members':members})
+                out.append({'date':day,'status':'complete','downloaded':downloaded,'members':members,'streaming':streaming})
             except Exception as exc:
                 with db.transaction() as c:c.execute("UPDATE archive_imports SET status='failed',error=? WHERE archive_date=?",(type(exc).__name__+': '+str(exc),day))
                 out.append({'date':day,'status':'failed','error':str(exc)})

@@ -1,2 +1,2 @@
 # Optional archive backfill support (PPMd extraction). No paid service.
-py7zr>=1,<2
+py7zr>=1.1.4,<2

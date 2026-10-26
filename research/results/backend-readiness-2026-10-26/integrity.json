@@ -1,0 +1,27 @@
+{
+  "baseline_observations": 9217,
+  "original_observations_byte_identical": true,
+  "current_observations": 25812,
+  "current_observation_hash": "5984eb30da5622d38bfb724841b71ec472f05924dd306fa1cf07522bffd8d29f",
+  "sku_completeness": {
+    "total": 21735,
+    "condition_unknown": 0,
+    "language_unknown": 0,
+    "finish_unknown": 2520,
+    "edition_unknown": 18525
+  },
+  "prices_by_provider": [
+    {
+      "provider": "tcgcsv",
+      "rows": 4077,
+      "missing_prices": 27
+    },
+    {
+      "provider": "tcgtracking",
+      "rows": 21735,
+      "missing_prices": 8172
+    }
+  ],
+  "audited_literal_edition_enrichments": 2520,
+  "archive_imports_completed": 0
+}

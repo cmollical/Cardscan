@@ -1,0 +1,86 @@
+{
+  "sample_status": "provider_archive_withdrawn_http_403",
+  "real_archives_downloaded": 0,
+  "historical_rows_imported": 0,
+  "archive_database_growth_bytes": 0,
+  "compressed_archive_size": null,
+  "total_uncompressed_size": null,
+  "pokemon_extracted_size": null,
+  "english_records": null,
+  "japanese_records": null,
+  "parsing_seconds": null,
+  "import_seconds": null,
+  "peak_temporary_disk_bytes": null,
+  "peak_memory_bytes": null,
+  "projections": [
+    {
+      "days": 30,
+      "archive_download_bytes_unvalidated_planning_bounds": [
+        60000000,
+        120000000
+      ],
+      "historical_database_bytes_measured_projection": null,
+      "processing_seconds_measured_projection": null,
+      "peak_disk_bytes_measured_projection": null,
+      "peak_memory_bytes_measured_projection": null,
+      "reason": "No real archive available: provider temporarily withdrew downloads; no grounded sample-based resource extrapolation possible.",
+      "prior_capacity_planning_database_gb_not_measurement": [
+        3.287671232876712,
+        12.32876712328767
+      ]
+    },
+    {
+      "days": 90,
+      "archive_download_bytes_unvalidated_planning_bounds": [
+        180000000,
+        360000000
+      ],
+      "historical_database_bytes_measured_projection": null,
+      "processing_seconds_measured_projection": null,
+      "peak_disk_bytes_measured_projection": null,
+      "peak_memory_bytes_measured_projection": null,
+      "reason": "No real archive available: provider temporarily withdrew downloads; no grounded sample-based resource extrapolation possible.",
+      "prior_capacity_planning_database_gb_not_measurement": [
+        9.863013698630137,
+        36.986301369863014
+      ]
+    },
+    {
+      "days": 180,
+      "archive_download_bytes_unvalidated_planning_bounds": [
+        360000000,
+        720000000
+      ],
+      "historical_database_bytes_measured_projection": null,
+      "processing_seconds_measured_projection": null,
+      "peak_disk_bytes_measured_projection": null,
+      "peak_memory_bytes_measured_projection": null,
+      "reason": "No real archive available: provider temporarily withdrew downloads; no grounded sample-based resource extrapolation possible.",
+      "prior_capacity_planning_database_gb_not_measurement": [
+        19.726027397260275,
+        73.97260273972603
+      ]
+    },
+    {
+      "days": 365,
+      "archive_download_bytes_unvalidated_planning_bounds": [
+        730000000,
+        1460000000
+      ],
+      "historical_database_bytes_measured_projection": null,
+      "processing_seconds_measured_projection": null,
+      "peak_disk_bytes_measured_projection": null,
+      "peak_memory_bytes_measured_projection": null,
+      "reason": "No real archive available: provider temporarily withdrew downloads; no grounded sample-based resource extrapolation possible.",
+      "prior_capacity_planning_database_gb_not_measurement": [
+        40.0,
+        150.0
+      ]
+    }
+  ],
+  "notes": [
+    "The prior 2\u20134 MB/day documentation is not an active download guarantee.",
+    "No additional archive URL/date/mirror was attempted after the withdrawal notice.",
+    "Streaming mechanism tested using synthetic local PPMd archives; not evidence of real archive ingestion."
+  ]
+}
