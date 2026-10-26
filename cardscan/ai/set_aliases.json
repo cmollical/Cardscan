@@ -1,0 +1,77 @@
+{
+  "version": "reviewed-set-aliases-2026-10-26",
+  "reviewer": "CardScan assistant engineering mapping review; not an independent human pricing review",
+  "scope": "Only these catalog sets and exact labels. No fuzzy matching or inferred language/collector denominator.",
+  "entries": [
+    {
+      "catalog_source": "https://api.tcgdex.net/v2/en/sets/sv03",
+      "catalog_id": "sv03",
+      "catalog_name": "Obsidian Flames",
+      "catalog_sha256": "50a43a93aefa9f4a409c573a6523709306fe64c13675a11f39df21ccbc0842c8",
+      "catalog_retrieved_at": "2026-10-26T14:05:47.997973+00:00",
+      "game": "pokemon",
+      "language": "english",
+      "canonical_set_name": "obsidian flames",
+      "aliases": [
+        "obsidian flames",
+        "Pokemon Obsidian Flames"
+      ]
+    },
+    {
+      "catalog_source": "https://api.tcgdex.net/v2/en/sets/sv03.5",
+      "catalog_id": "sv03.5",
+      "catalog_name": "151",
+      "catalog_sha256": "c08470d9f287a71176ed0d5c8a32c719e1e247d4985ad9da9cc3e1d05f541364",
+      "catalog_retrieved_at": "2026-10-26T14:05:47.999777+00:00",
+      "game": "pokemon",
+      "language": "english",
+      "canonical_set_name": "151",
+      "aliases": [
+        "151",
+        "SV: Scarlet & Violet 151",
+        "Pokemon Scarlet & Violet 151",
+        "Pokémon Scarlet & Violet 151"
+      ]
+    },
+    {
+      "catalog_source": "https://api.tcgdex.net/v2/en/sets/base1",
+      "catalog_id": "base1",
+      "catalog_name": "Base Set",
+      "catalog_sha256": "fbf0c46daf1faa242732b4531cc2842c9b5018da67000dac879c7180fe4524dd",
+      "catalog_retrieved_at": "2026-10-26T14:05:47.903540+00:00",
+      "game": "pokemon",
+      "language": "english",
+      "canonical_set_name": "base set",
+      "aliases": [
+        "base set"
+      ]
+    },
+    {
+      "catalog_source": "https://api.tcgdex.net/v2/en/sets/base3",
+      "catalog_id": "base3",
+      "catalog_name": "Fossil",
+      "catalog_sha256": "c5a6339aac4b450168ad9788094d36f4e9bce0dd21089428f420cecf8a3e742a",
+      "catalog_retrieved_at": "2026-10-26T14:05:48.074252+00:00",
+      "game": "pokemon",
+      "language": "english",
+      "canonical_set_name": "fossil",
+      "aliases": [
+        "fossil"
+      ]
+    },
+    {
+      "catalog_source": "https://api.tcgdex.net/v2/ja/sets/sv2a",
+      "catalog_id": "SV2a",
+      "catalog_name": "ポケモンカード151",
+      "catalog_sha256": "085cd429aa271efd077ab282e8d4d5638e769e1fc92cfce0758ea3857d64e4e5",
+      "catalog_retrieved_at": "2026-10-26T14:05:48.215863+00:00",
+      "game": "pokemon",
+      "language": "japanese",
+      "canonical_set_name": "pokemon card 151",
+      "aliases": [
+        "pokemon card 151",
+        "ポケモンカード151"
+      ]
+    }
+  ]
+}

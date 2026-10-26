@@ -120,7 +120,8 @@ class MarketProviderTests(unittest.TestCase):
         self.assertEqual(self.store.ledger(),[])
 
     def test_official_request_schema_usage_and_conservative_cost_accounting(self):
-        r=self.value(authorize_paid=True);self.assertEqual(r['status'],'estimated')
+        r=self.value(authorize_paid=True);self.assertEqual(r['status'],'provisional_estimate')
+        self.assertIsNone(r['accepted_valuation'])
         self.assertEqual(r['estimated_api_cost_usd'],'0.0265')
         req=self.client.responses.create.call_args.kwargs
         self.assertEqual(req['tools'][0]['type'],'web_search');self.assertTrue(req['text']['format']['strict'])
@@ -131,7 +132,7 @@ class MarketProviderTests(unittest.TestCase):
         r=response();r['output'].insert(1,{'id':'ws_open','type':'web_search_call','status':'completed','action':{'type':'open_page','url':'https://example.org/synthetic/market'}})
         r['output'].insert(2,{'id':'ws_ignored','type':'web_search_call','status':'searching','action':{'type':'open_page','url':None}})
         self.client.responses.create.return_value=r
-        out=self.value(authorize_paid=True);self.assertEqual(out['status'],'estimated')
+        out=self.value(authorize_paid=True);self.assertEqual(out['status'],'provisional_estimate')
         self.assertEqual(out['api_usage']['search_calls'],3)
         self.assertEqual(out['search_action_audit']['completed_search_actions'],1)
 
@@ -144,7 +145,7 @@ class MarketProviderTests(unittest.TestCase):
     def test_invalid_synthesis_is_quarantined_not_issued(self):
         d=estimate();d['sources'][0]['condition_label']='LP'
         self.client.responses.create.return_value=response(d)
-        out=self.value(authorize_paid=True);self.assertEqual(out['status'],'invalid_estimate')
+        out=self.value(authorize_paid=True);self.assertEqual(out['status'],'insufficient_evidence')
         self.assertIsNone(out['estimate']);self.assertIn('quarantined_estimate',out)
 
     def test_timeout_api_errors_and_rate_limit_hold_reservation_and_stop(self):

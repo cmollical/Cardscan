@@ -14,7 +14,9 @@ explicitly. Its [first authorized five-card run](research/results/ai-market-five
 produced five AI proposals, all rejected by validation; none is independently
 validated. The existing
 strict engine remains unchanged. Independent [source-verification adapters](docs/reference-verification.md)
-are also preserved. Full mocked suite: **156 tests pass**; this is not evidence
+are also preserved. The [offline normalization replay](docs/market-normalization-and-benchmarks.md)
+retains **3 provisional estimates**, abstains on **2**, and approves **0**; no new
+paid API calls were made. Full offline suite: **188 tests pass**; this is not evidence
 of real-world pricing accuracy.
 
 The new `OpenAIWebSearchProvider` uses the official Responses API with web search,

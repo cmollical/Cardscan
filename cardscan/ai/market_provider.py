@@ -10,6 +10,7 @@ from .accounting_audit import search_action_audit
 from .costs import Settings, usage_cost
 from .market_models import MarketEstimate
 from .market_policy import validate_estimate
+from .market_review import review_proposal
 from .provider import output_text, source_urls
 from .storage import BudgetError
 
@@ -121,15 +122,22 @@ class AIResearchValuationProvider:
                 raise ValueError('Token usage outside reservation assumptions')
             parsed=MarketEstimate.model_validate_json(output_text(raw))
             result['consulted_urls']=source_urls(raw)
-            estimate,errors=validate_estimate(target,parsed,result['consulted_urls'],as_of,self.settings.max_age_days)
-            if errors:
-                result.update(status='invalid_estimate',validation_errors=errors,quarantined_estimate=estimate)
+            _,legacy_errors=validate_estimate(target,parsed,result['consulted_urls'],as_of,self.settings.max_age_days)
+            review=review_proposal(target,parsed,result['consulted_urls'],as_of,raw['id'],max_age_days=self.settings.max_age_days,
+                                   research_retrieved_at=result['retrieved_at'])
+            result.update(status=review['result_status'],normalization_review=review,legacy_validation_errors=legacy_errors,
+                          validation_errors=review['remaining_validation_errors'],accepted_valuation=review['accepted_valuation'])
+            if review['display_estimate'] is None:
+                result['quarantined_estimate']=parsed.model_dump()
             else:
-                estimate['identity_provenance']='requested_target_echo, not independently observed source identity'
-                for row in estimate['source_audit']:
-                    row['research_retrieved_at']=result['retrieved_at']
-                    row['source_page_retrieved_at']=None
-                result.update(status='estimated' if not parsed.insufficient_evidence else 'insufficient_evidence',estimate=estimate)
+                estimate=review['normalization']['normalized_proposal'].copy()
+                estimate.update(recommendation='usable_estimate' if review['result_status']=='usable_estimate' else 'review_recommended',
+                                review_recommended=review['result_status']!='usable_estimate',insufficient_evidence=False,
+                                valuation_type='generic_ungraded_reference' if review['display_estimate']['scope']=='generic_reference_not_requested_condition'
+                                else 'condition_specific_market_estimate' if review['result_status']=='usable_estimate' else 'provisional_condition_estimate',
+                                identity_provenance='requested target echo, not source observation',
+                                approved_inventory_price=False)
+                result['estimate']=estimate
             if Decimal(result['estimated_api_cost_usd'])>self.settings.reservation():
                 result['stop_experiment']=True
         except (ValueError,TypeError,KeyError,AttributeError) as exc:

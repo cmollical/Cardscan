@@ -1,0 +1,153 @@
+{
+  "protocol": "independent-benchmark-evaluation-v1",
+  "cases": [
+    {
+      "case_id": "modern-common",
+      "result_status": "insufficient_evidence",
+      "benchmark_status": "unavailable_or_ineligible",
+      "absolute_dollar_error": null,
+      "absolute_percentage_error": null,
+      "within_10_percent": null,
+      "within_20_percent": null,
+      "estimated_range_contains_benchmark": null,
+      "benchmark_rejection_reasons": [
+        "benchmark_not_independently_reviewed",
+        "independent_reviewer_required",
+        "independent_reference_required",
+        "explicit_condition_benchmark_required",
+        "benchmark_source_methodology_notes_required",
+        "benchmark_dates_required",
+        "valid_explicit_usd_benchmark_price_required"
+      ],
+      "approved_valuation": false,
+      "approved_inventory_price": false
+    },
+    {
+      "case_id": "modern-chase",
+      "result_status": "provisional_estimate",
+      "benchmark_status": "unavailable_or_ineligible",
+      "absolute_dollar_error": null,
+      "absolute_percentage_error": null,
+      "within_10_percent": null,
+      "within_20_percent": null,
+      "estimated_range_contains_benchmark": null,
+      "benchmark_rejection_reasons": [
+        "benchmark_not_independently_reviewed",
+        "independent_reviewer_required",
+        "independent_reference_required",
+        "explicit_condition_benchmark_required",
+        "benchmark_source_methodology_notes_required",
+        "benchmark_dates_required",
+        "valid_explicit_usd_benchmark_price_required"
+      ],
+      "approved_valuation": false,
+      "approved_inventory_price": false
+    },
+    {
+      "case_id": "vintage-charizard-lp",
+      "result_status": "insufficient_evidence",
+      "benchmark_status": "unavailable_or_ineligible",
+      "absolute_dollar_error": null,
+      "absolute_percentage_error": null,
+      "within_10_percent": null,
+      "within_20_percent": null,
+      "estimated_range_contains_benchmark": null,
+      "benchmark_rejection_reasons": [
+        "benchmark_not_independently_reviewed",
+        "independent_reviewer_required",
+        "independent_reference_required",
+        "explicit_condition_benchmark_required",
+        "benchmark_source_methodology_notes_required",
+        "benchmark_dates_required",
+        "valid_explicit_usd_benchmark_price_required"
+      ],
+      "approved_valuation": false,
+      "approved_inventory_price": false
+    },
+    {
+      "case_id": "first-edition-gengar",
+      "result_status": "provisional_estimate",
+      "benchmark_status": "unavailable_or_ineligible",
+      "absolute_dollar_error": null,
+      "absolute_percentage_error": null,
+      "within_10_percent": null,
+      "within_20_percent": null,
+      "estimated_range_contains_benchmark": null,
+      "benchmark_rejection_reasons": [
+        "benchmark_not_independently_reviewed",
+        "independent_reviewer_required",
+        "independent_reference_required",
+        "explicit_condition_benchmark_required",
+        "benchmark_source_methodology_notes_required",
+        "benchmark_dates_required",
+        "valid_explicit_usd_benchmark_price_required"
+      ],
+      "approved_valuation": false,
+      "approved_inventory_price": false
+    },
+    {
+      "case_id": "japanese-charizard",
+      "result_status": "provisional_estimate",
+      "benchmark_status": "unavailable_or_ineligible",
+      "absolute_dollar_error": null,
+      "absolute_percentage_error": null,
+      "within_10_percent": null,
+      "within_20_percent": null,
+      "estimated_range_contains_benchmark": null,
+      "benchmark_rejection_reasons": [
+        "benchmark_not_independently_reviewed",
+        "independent_reviewer_required",
+        "independent_reference_required",
+        "explicit_condition_benchmark_required",
+        "benchmark_source_methodology_notes_required",
+        "benchmark_dates_required",
+        "valid_explicit_usd_benchmark_price_required"
+      ],
+      "approved_valuation": false,
+      "approved_inventory_price": false
+    }
+  ],
+  "accuracy_by_status": {
+    "usable_estimate": {
+      "scored_estimates": 0,
+      "median_absolute_percentage_error": null,
+      "median_absolute_dollar_error": null,
+      "percentage_within_10_percent": null,
+      "percentage_within_20_percent": null,
+      "percentage_ranges_containing_benchmark": null,
+      "validated_success_percentage": null
+    },
+    "provisional_estimate": {
+      "scored_estimates": 0,
+      "median_absolute_percentage_error": null,
+      "median_absolute_dollar_error": null,
+      "percentage_within_10_percent": null,
+      "percentage_within_20_percent": null,
+      "percentage_ranges_containing_benchmark": null,
+      "validated_success_percentage": null
+    }
+  },
+  "coverage": {
+    "planned_cards": 5,
+    "usable_estimate": 0,
+    "provisional_estimate": 3,
+    "insufficient_evidence": 2,
+    "usable_estimate_coverage": 0.0,
+    "provisional_estimate_coverage": 0.6,
+    "abstention_rate": 0.4
+  },
+  "matching": {
+    "human_reviewed_printing_failures": null,
+    "human_printing_review_count": 0,
+    "human_reviewed_condition_failures": null,
+    "human_condition_review_count": 0,
+    "policy_known_printing_mismatch_rows": 0,
+    "policy_known_condition_mismatch_rows": 1
+  },
+  "max_reference_date_difference_days": 0,
+  "limitations": [
+    "Manual verification is an attestation, not software authentication.",
+    "Provisional errors are reported separately and never counted as approved valuations.",
+    "Absent eligible benchmark values leave pricing accuracy unmeasured."
+  ]
+}

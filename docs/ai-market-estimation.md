@@ -7,6 +7,12 @@ completed five requests for a conservative $0.18680975 estimate. The model propo
 five prices; validation accepted none. Authorization is consumed and disabled.
 Mocked test outputs demonstrate contracts and behavior, not real pricing accuracy.
 
+Update 2026-10-26: [lossless normalization and exact-response replay](market-normalization-and-benchmarks.md)
+now yield three provisional and two insufficient outcomes from those same saved
+responses, with no usable/approved valuations and no additional paid calls. The
+new independent benchmark workflow reports accuracy separately by outcome; prices
+remain blank until genuine independent references are supplied.
+
 ## How it differs from verified-sales pricing
 
 | Method | Evidence and calculation | Meaning of result |
@@ -26,7 +32,12 @@ ledger infrastructure but never reads or writes a valuation cache.
   [schema](../experiments/market-ai/schema.json) is generated from this contract.
 - `market_provider.py`: official Responses SDK, web search, low reasoning, server-side
   credentials, no SDK retries, strict schema, response IDs, raw-response audit.
-- `market_policy.py`: target matching, evidence classification, condition/identity
+- `market_policy.py`: unchanged original validation baseline for reproducible comparison.
+- `normalization.py`, `market_review.py`: lossless monetary and reviewed label
+  mappings, stable row/page/transaction identities and three-outcome review.
+- `market_replay.py`, `benchmarks.py`: exact saved-response replay and independent
+  benchmark comparison, with provisional and usable statistics separated.
+  The review layer handles target matching, evidence classification, condition/identity
   contradictions, range checks and source-URL grounding. It never calculates a
   sales median or manufactures missing source fields.
 - `market_budget.py`: atomic experiment-wide budget and one-attempt-per-case slots,

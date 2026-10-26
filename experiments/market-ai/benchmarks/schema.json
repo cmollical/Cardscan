@@ -1,0 +1,385 @@
+{
+  "$defs": {
+    "Benchmark": {
+      "additionalProperties": false,
+      "properties": {
+        "case_id": {
+          "title": "Case Id",
+          "type": "string"
+        },
+        "card_identity": {
+          "$ref": "#/$defs/ObservedIdentity"
+        },
+        "requested_condition": {
+          "enum": [
+            "NM",
+            "LP",
+            "MP",
+            "HP",
+            "DMG"
+          ],
+          "title": "Requested Condition",
+          "type": "string"
+        },
+        "reference_market_value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference Market Value"
+        },
+        "reference_low": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference Low"
+        },
+        "reference_high": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference High"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Currency"
+        },
+        "reference_date": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference Date"
+        },
+        "reference_source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reference Source"
+        },
+        "reference_urls": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Reference Urls",
+          "type": "array"
+        },
+        "reference_methodology": {
+          "enum": [
+            "collector_assessment",
+            "shop_assessment",
+            "independently_reviewed_comps",
+            "published_reference",
+            "unknown"
+          ],
+          "title": "Reference Methodology",
+          "type": "string"
+        },
+        "condition_specificity": {
+          "enum": [
+            "explicit_condition",
+            "generic_ungraded",
+            "mixed",
+            "unknown"
+          ],
+          "title": "Condition Specificity",
+          "type": "string"
+        },
+        "verification_status": {
+          "enum": [
+            "draft",
+            "independently_reviewed",
+            "rejected"
+          ],
+          "title": "Verification Status",
+          "type": "string"
+        },
+        "reviewer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reviewer"
+        },
+        "reviewed_on": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reviewed On"
+        },
+        "reviewer_notes": {
+          "title": "Reviewer Notes",
+          "type": "string"
+        },
+        "independent_of_ai": {
+          "title": "Independent Of Ai",
+          "type": "boolean"
+        },
+        "used_ai_proposal_as_ground_truth": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Used Ai Proposal As Ground Truth"
+        },
+        "output_review": {
+          "$ref": "#/$defs/OutputReview"
+        }
+      },
+      "required": [
+        "case_id",
+        "card_identity",
+        "requested_condition",
+        "reference_market_value",
+        "reference_low",
+        "reference_high",
+        "currency",
+        "reference_date",
+        "reference_source",
+        "reference_urls",
+        "reference_methodology",
+        "condition_specificity",
+        "verification_status",
+        "reviewer",
+        "reviewed_on",
+        "reviewer_notes",
+        "independent_of_ai",
+        "used_ai_proposal_as_ground_truth",
+        "output_review"
+      ],
+      "title": "Benchmark",
+      "type": "object"
+    },
+    "ObservedIdentity": {
+      "additionalProperties": false,
+      "properties": {
+        "game": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Game"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Name"
+        },
+        "set_name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Set Name"
+        },
+        "number": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Number"
+        },
+        "language": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Language"
+        },
+        "edition": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Edition"
+        },
+        "finish": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Finish"
+        },
+        "condition": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Condition"
+        },
+        "graded": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Graded"
+        }
+      },
+      "required": [
+        "game",
+        "name",
+        "set_name",
+        "number",
+        "language",
+        "edition",
+        "finish",
+        "condition",
+        "graded"
+      ],
+      "title": "ObservedIdentity",
+      "type": "object"
+    },
+    "OutputReview": {
+      "additionalProperties": false,
+      "properties": {
+        "correct_card_printing": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Correct Card Printing"
+        },
+        "correct_condition_handling": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Correct Condition Handling"
+        },
+        "unsupported_pricing_claims": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Unsupported Pricing Claims"
+        },
+        "notes": {
+          "title": "Notes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "correct_card_printing",
+        "correct_condition_handling",
+        "unsupported_pricing_claims",
+        "notes"
+      ],
+      "title": "OutputReview",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "const": "independent-benchmarks-v1",
+      "title": "Version",
+      "type": "string"
+    },
+    "benchmarks": {
+      "items": {
+        "$ref": "#/$defs/Benchmark"
+      },
+      "title": "Benchmarks",
+      "type": "array"
+    }
+  },
+  "required": [
+    "version",
+    "benchmarks"
+  ],
+  "title": "BenchmarkDataset",
+  "type": "object"
+}
