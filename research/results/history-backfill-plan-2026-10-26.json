@@ -1,0 +1,27 @@
+{
+  "days": 365,
+  "archive_bytes_estimate": [
+    730000000,
+    1460000000
+  ],
+  "archive_scope": "all games; no documented Pokemon-only download",
+  "generic_observation_rows_estimate": [
+    23222395,
+    46444790
+  ],
+  "database_bytes_estimate": [
+    23779732480,
+    95118929920
+  ],
+  "working_disk_guidance": "For 365 days reserve ~40–150 GB including SQLite indexes, retained extracted price evidence, archives and WAL headroom; measure one real sample first.",
+  "assumptions": [
+    "Current documented catalog sample: 32,882 English + 30,741 Japan products, not historical daily counts",
+    "1–2 generic subtypes/product, 1–2 KiB per stored observation including indexes (planning assumptions)",
+    "Archive 2–4 MB/day is documented, not a measured full-year total",
+    "Only category 3 and 85 price entries extracted; solid archive may decode other games",
+    "Processing time unmeasured for actual PPMd archives: allow hours, potentially a day; benchmark before bulk"
+  ],
+  "time_model": "days * (archive_bytes / measured_download_rate + measured_PPMd_decode_time + measured_insert_time)",
+  "downloads_executed": 0,
+  "requires_bulk_authorization": true
+}

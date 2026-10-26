@@ -1,0 +1,14 @@
+{
+  "transport": "actual loopback HTTP via uvicorn",
+  "health": {
+    "status": "ok",
+    "schema_version": 3,
+    "products": 1209,
+    "skus": 7625
+  },
+  "sku_id": "2999653",
+  "market_price": "527.7",
+  "status": "exact_match",
+  "source": "local database",
+  "external_requests": 0
+}

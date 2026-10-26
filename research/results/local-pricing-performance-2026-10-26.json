@@ -1,0 +1,64 @@
+{
+  "measured_at": "2026-10-26T16:15:09.192336+00:00",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "scope": "Local indexed SQLite lookups including per-call read-only connection, JSON decode and freshness; warm OS cache. No HTTP/AI/camera latency.",
+  "source_as_of": "2026-10-26T16:00:00Z",
+  "counts": {
+    "games": 1,
+    "sets": 5,
+    "products": 1209,
+    "skus": 7625,
+    "observations": 9217
+  },
+  "database_bytes": 20561920,
+  "import_seconds": 1.36355632,
+  "results": {
+    "100_sequential_exact_sku": {
+      "lookups": 100,
+      "correct": 100,
+      "median_ms": 0.5404745,
+      "p95_ms": 0.726723,
+      "maximum_ms": 1.854551
+    },
+    "1000_sequential_exact_sku": {
+      "lookups": 1000,
+      "correct": 1000,
+      "median_ms": 0.5295695,
+      "p95_ms": 0.853819,
+      "maximum_ms": 7.72065
+    },
+    "1000_same_card": {
+      "lookups": 1000,
+      "correct": 1000,
+      "median_ms": 0.517317,
+      "p95_ms": 0.783747,
+      "maximum_ms": 2.833534
+    },
+    "100_missing": {
+      "lookups": 100,
+      "correct": 100,
+      "median_ms": 0.37941899999999995,
+      "p95_ms": 0.55581,
+      "maximum_ms": 0.658981
+    },
+    "100_ambiguous_variant": {
+      "lookups": 100,
+      "correct": 100,
+      "median_ms": 0.755802,
+      "p95_ms": 1.154952,
+      "maximum_ms": 1.834636
+    },
+    "100_full_identity": {
+      "lookups": 100,
+      "correct": 100,
+      "median_ms": 0.6581585000000001,
+      "p95_ms": 0.989412,
+      "maximum_ms": 2.89557
+    }
+  },
+  "all_correct": true,
+  "paid_api_calls": 0,
+  "accuracy_ground_truth": false,
+  "import_scope": "20 retained full provider exports, five sets, no network"
+}

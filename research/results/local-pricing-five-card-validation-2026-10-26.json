@@ -1,0 +1,679 @@
+{
+  "source": "saved October 26 provider responses; no current price claims",
+  "cases": [
+    {
+      "case_id": "modern-common",
+      "sku_lookup": {
+        "status": "exact_match",
+        "requested_identity": {
+          "provider": "tcgtracking",
+          "provider_sku_id": "7335315"
+        },
+        "market_price": "0.32",
+        "currency": "USD",
+        "price_type": "sku_market_reference",
+        "candidates": [
+          {
+            "id": 251,
+            "product_id": 40,
+            "provider": "tcgtracking",
+            "provider_sku_id": "7335315",
+            "condition": "NM",
+            "language": "english",
+            "edition": null,
+            "finish": "non-holo",
+            "graded": 0,
+            "active": 1,
+            "name": "Charmander",
+            "collector_number": "26/197",
+            "tcgplayer_product_id": "509703",
+            "set_name": "SV03: Obsidian Flames",
+            "provenance": {
+              "condition": "/cnd",
+              "language": "/lng",
+              "finish": "/var",
+              "edition": "missing",
+              "graded": "raw reference scope from existing TCGTracking adapter contract; not an observed physical card grade"
+            },
+            "completeness": {
+              "condition": true,
+              "language": true,
+              "edition": false,
+              "finish": true,
+              "number": true,
+              "graded": true
+            },
+            "raw_variant": {
+              "cnd": "NM",
+              "var": "Normal",
+              "var_a": "N",
+              "vid": 1,
+              "lng": "EN",
+              "mkt": "0.32",
+              "low": "0.04",
+              "hi": "1.49",
+              "cnt": 25
+            },
+            "observation": {
+              "id": 688,
+              "product_id": 40,
+              "sku_id": 251,
+              "provider": "tcgtracking",
+              "market_price": "0.32",
+              "currency": "USD",
+              "price_type": "sku_market_reference",
+              "source_updated_at": "2026-10-25T17:36:32.000000+00:00",
+              "retrieved_at": "2026-10-26T15:30:10.259413+00:00",
+              "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+              "document_id": 4,
+              "locator": "/products/509703/7335315",
+              "evidence_json": "{\n  \"source_row\": {\n    \"cnd\": \"NM\",\n    \"var\": \"Normal\",\n    \"var_a\": \"N\",\n    \"vid\": 1,\n    \"lng\": \"EN\",\n    \"mkt\": \"0.32\",\n    \"low\": \"0.04\",\n    \"hi\": \"1.49\",\n    \"cnt\": 25\n  },\n  \"currency_basis\": \"TCGplayer USD convention; currency absent in export\",\n  \"update_scope\": \"set_export\",\n  \"independently_authenticated\": false\n}\n",
+              "warnings_json": "[]\n",
+              "missing_json": "[\n  \"shipping_exclusion\",\n  \"tax_exclusion\",\n  \"individual_price_age\",\n  \"upstream_verification\"\n]\n",
+              "fingerprint": "e60ea31a109d9d3437dac1aec02977b85c7fc275cfb887d4267dfe12da413c13",
+              "snapshot_date": "2026-10-26",
+              "captured_at": "2026-10-26T15:30:10.259413+00:00",
+              "capture_kind": "original_import",
+              "subtype": null,
+              "missing_fields": [
+                "shipping_exclusion",
+                "tax_exclusion",
+                "individual_price_age",
+                "upstream_verification"
+              ]
+            },
+            "warnings": [
+              "provider_reported_reference_not_verified_transaction",
+              "shipping_and_tax_basis_unconfirmed",
+              "edition_unknown"
+            ],
+            "identity_complete": false,
+            "freshness": {
+              "age_hours": 22.391111111111112,
+              "max_age_hours": 48,
+              "basis": "set_export_update_or_retrieval",
+              "individual_price_age_known": false,
+              "stale": false
+            }
+          }
+        ],
+        "approved_inventory_price": false,
+        "card_id": 40,
+        "sku_id": 251,
+        "provider_sku_id": "7335315",
+        "tcgplayer_product_id": "509703",
+        "condition": "NM",
+        "language": "english",
+        "edition": null,
+        "finish": "non-holo",
+        "graded": false,
+        "card_name": "Charmander",
+        "collector_number": "26/197",
+        "set_name": "SV03: Obsidian Flames",
+        "source": "tcgtracking",
+        "identity_complete": false,
+        "warnings": [
+          "provider_reported_reference_not_verified_transaction",
+          "shipping_and_tax_basis_unconfirmed",
+          "edition_unknown"
+        ],
+        "freshness": {
+          "age_hours": 22.391111111111112,
+          "max_age_hours": 48,
+          "basis": "set_export_update_or_retrieval",
+          "individual_price_age_known": false,
+          "stale": false
+        },
+        "source_updated_at": "2026-10-25T17:36:32.000000+00:00",
+        "retrieved_at": "2026-10-26T15:30:10.259413+00:00",
+        "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23228/skus",
+        "evidence_document_id": 4,
+        "snapshot_date": "2026-10-26",
+        "captured_at": "2026-10-26T15:30:10.259413+00:00",
+        "capture_kind": "original_import"
+      },
+      "attribute_lookup_status": "ambiguous_match",
+      "attribute_lookup_price": null
+    },
+    {
+      "case_id": "modern-chase",
+      "sku_lookup": {
+        "status": "exact_match",
+        "requested_identity": {
+          "provider": "tcgtracking",
+          "provider_sku_id": "7436747"
+        },
+        "market_price": "294.42",
+        "currency": "USD",
+        "price_type": "sku_market_reference",
+        "candidates": [
+          {
+            "id": 3821,
+            "product_id": 476,
+            "provider": "tcgtracking",
+            "provider_sku_id": "7436747",
+            "condition": "NM",
+            "language": "english",
+            "edition": null,
+            "finish": "holo",
+            "graded": 0,
+            "active": 1,
+            "name": "Charizard ex - 199/165",
+            "collector_number": "199/165",
+            "tcgplayer_product_id": "517045",
+            "set_name": "SV: Scarlet & Violet 151",
+            "provenance": {
+              "condition": "/cnd",
+              "language": "/lng",
+              "finish": "/var",
+              "edition": "missing",
+              "graded": "raw reference scope from existing TCGTracking adapter contract; not an observed physical card grade"
+            },
+            "completeness": {
+              "condition": true,
+              "language": true,
+              "edition": false,
+              "finish": true,
+              "number": true,
+              "graded": true
+            },
+            "raw_variant": {
+              "cnd": "NM",
+              "var": "Holofoil",
+              "var_a": "H",
+              "vid": 3,
+              "lng": "EN",
+              "mkt": "294.42",
+              "low": 260,
+              "hi": "349.99",
+              "cnt": 25
+            },
+            "observation": {
+              "id": 4659,
+              "product_id": 476,
+              "sku_id": 3821,
+              "provider": "tcgtracking",
+              "market_price": "294.42",
+              "currency": "USD",
+              "price_type": "sku_market_reference",
+              "source_updated_at": "2026-10-25T17:36:32.000000+00:00",
+              "retrieved_at": "2026-10-26T15:30:11.229077+00:00",
+              "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+              "document_id": 8,
+              "locator": "/products/517045/7436747",
+              "evidence_json": "{\n  \"source_row\": {\n    \"cnd\": \"NM\",\n    \"var\": \"Holofoil\",\n    \"var_a\": \"H\",\n    \"vid\": 3,\n    \"lng\": \"EN\",\n    \"mkt\": \"294.42\",\n    \"low\": 260,\n    \"hi\": \"349.99\",\n    \"cnt\": 25\n  },\n  \"currency_basis\": \"TCGplayer USD convention; currency absent in export\",\n  \"update_scope\": \"set_export\",\n  \"independently_authenticated\": false\n}\n",
+              "warnings_json": "[\n  \"condition_price_inversion\"\n]\n",
+              "missing_json": "[\n  \"shipping_exclusion\",\n  \"tax_exclusion\",\n  \"individual_price_age\",\n  \"upstream_verification\"\n]\n",
+              "fingerprint": "c103e6dd19d14b3c17569894bb1a3c04fcacf3370c26ada29568a5507891db9b",
+              "snapshot_date": "2026-10-26",
+              "captured_at": "2026-10-26T15:30:11.229077+00:00",
+              "capture_kind": "original_import",
+              "subtype": null,
+              "missing_fields": [
+                "shipping_exclusion",
+                "tax_exclusion",
+                "individual_price_age",
+                "upstream_verification"
+              ]
+            },
+            "warnings": [
+              "condition_price_inversion",
+              "provider_reported_reference_not_verified_transaction",
+              "shipping_and_tax_basis_unconfirmed",
+              "edition_unknown"
+            ],
+            "identity_complete": false,
+            "freshness": {
+              "age_hours": 22.391111111111112,
+              "max_age_hours": 48,
+              "basis": "set_export_update_or_retrieval",
+              "individual_price_age_known": false,
+              "stale": false
+            }
+          }
+        ],
+        "approved_inventory_price": false,
+        "card_id": 476,
+        "sku_id": 3821,
+        "provider_sku_id": "7436747",
+        "tcgplayer_product_id": "517045",
+        "condition": "NM",
+        "language": "english",
+        "edition": null,
+        "finish": "holo",
+        "graded": false,
+        "card_name": "Charizard ex - 199/165",
+        "collector_number": "199/165",
+        "set_name": "SV: Scarlet & Violet 151",
+        "source": "tcgtracking",
+        "identity_complete": false,
+        "warnings": [
+          "condition_price_inversion",
+          "provider_reported_reference_not_verified_transaction",
+          "shipping_and_tax_basis_unconfirmed",
+          "edition_unknown"
+        ],
+        "freshness": {
+          "age_hours": 22.391111111111112,
+          "max_age_hours": 48,
+          "basis": "set_export_update_or_retrieval",
+          "individual_price_age_known": false,
+          "stale": false
+        },
+        "source_updated_at": "2026-10-25T17:36:32.000000+00:00",
+        "retrieved_at": "2026-10-26T15:30:11.229077+00:00",
+        "source_url": "https://openapi.tcgtracking.com/v1/3/sets/23237/skus",
+        "evidence_document_id": 8,
+        "snapshot_date": "2026-10-26",
+        "captured_at": "2026-10-26T15:30:11.229077+00:00",
+        "capture_kind": "original_import"
+      },
+      "attribute_lookup_status": "ambiguous_match",
+      "attribute_lookup_price": null
+    },
+    {
+      "case_id": "vintage-charizard-lp",
+      "sku_lookup": {
+        "status": "exact_match",
+        "requested_identity": {
+          "provider": "tcgtracking",
+          "provider_sku_id": "2999653"
+        },
+        "market_price": "527.7",
+        "currency": "USD",
+        "price_type": "sku_market_reference",
+        "candidates": [
+          {
+            "id": 4097,
+            "product_id": 548,
+            "provider": "tcgtracking",
+            "provider_sku_id": "2999653",
+            "condition": "LP",
+            "language": "english",
+            "edition": "unlimited",
+            "finish": "holo",
+            "graded": 0,
+            "active": 1,
+            "name": "Charizard",
+            "collector_number": "4/102",
+            "tcgplayer_product_id": "42382",
+            "set_name": "Base Set",
+            "provenance": {
+              "condition": "/cnd",
+              "language": "/lng",
+              "finish": "/var",
+              "edition": "explicit_product_print_run_sentence",
+              "graded": "raw reference scope from existing TCGTracking adapter contract; not an observed physical card grade"
+            },
+            "completeness": {
+              "condition": true,
+              "language": true,
+              "edition": true,
+              "finish": true,
+              "number": true,
+              "graded": true
+            },
+            "raw_variant": {
+              "cnd": "LP",
+              "var": "Holofoil",
+              "var_a": "H",
+              "vid": 3,
+              "lng": "EN",
+              "mkt": "527.7",
+              "low": "400.75",
+              "hi": "839.98",
+              "cnt": 25
+            },
+            "observation": {
+              "id": 5043,
+              "product_id": 548,
+              "sku_id": 4097,
+              "provider": "tcgtracking",
+              "market_price": "527.7",
+              "currency": "USD",
+              "price_type": "sku_market_reference",
+              "source_updated_at": "2026-10-25T17:36:43.000000+00:00",
+              "retrieved_at": "2026-10-26T15:30:08.309895+00:00",
+              "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/skus",
+              "document_id": 12,
+              "locator": "/products/42382/2999653",
+              "evidence_json": "{\n  \"source_row\": {\n    \"cnd\": \"LP\",\n    \"var\": \"Holofoil\",\n    \"var_a\": \"H\",\n    \"vid\": 3,\n    \"lng\": \"EN\",\n    \"mkt\": \"527.7\",\n    \"low\": \"400.75\",\n    \"hi\": \"839.98\",\n    \"cnt\": 25\n  },\n  \"currency_basis\": \"TCGplayer USD convention; currency absent in export\",\n  \"update_scope\": \"set_export\",\n  \"independently_authenticated\": false\n}\n",
+              "warnings_json": "[]\n",
+              "missing_json": "[\n  \"shipping_exclusion\",\n  \"tax_exclusion\",\n  \"individual_price_age\",\n  \"upstream_verification\"\n]\n",
+              "fingerprint": "f6f1eb53c445bf0539e3e9250c3f2835a23f631174ec5863768315e362be4b67",
+              "snapshot_date": "2026-10-26",
+              "captured_at": "2026-10-26T15:30:08.309895+00:00",
+              "capture_kind": "original_import",
+              "subtype": null,
+              "missing_fields": [
+                "shipping_exclusion",
+                "tax_exclusion",
+                "individual_price_age",
+                "upstream_verification"
+              ]
+            },
+            "warnings": [
+              "provider_reported_reference_not_verified_transaction",
+              "shipping_and_tax_basis_unconfirmed"
+            ],
+            "identity_complete": true,
+            "freshness": {
+              "age_hours": 22.388055555555557,
+              "max_age_hours": 48,
+              "basis": "set_export_update_or_retrieval",
+              "individual_price_age_known": false,
+              "stale": false
+            }
+          }
+        ],
+        "approved_inventory_price": false,
+        "card_id": 548,
+        "sku_id": 4097,
+        "provider_sku_id": "2999653",
+        "tcgplayer_product_id": "42382",
+        "condition": "LP",
+        "language": "english",
+        "edition": "unlimited",
+        "finish": "holo",
+        "graded": false,
+        "card_name": "Charizard",
+        "collector_number": "4/102",
+        "set_name": "Base Set",
+        "source": "tcgtracking",
+        "identity_complete": true,
+        "warnings": [
+          "provider_reported_reference_not_verified_transaction",
+          "shipping_and_tax_basis_unconfirmed"
+        ],
+        "freshness": {
+          "age_hours": 22.388055555555557,
+          "max_age_hours": 48,
+          "basis": "set_export_update_or_retrieval",
+          "individual_price_age_known": false,
+          "stale": false
+        },
+        "source_updated_at": "2026-10-25T17:36:43.000000+00:00",
+        "retrieved_at": "2026-10-26T15:30:08.309895+00:00",
+        "source_url": "https://openapi.tcgtracking.com/v1/3/sets/604/skus",
+        "evidence_document_id": 12,
+        "snapshot_date": "2026-10-26",
+        "captured_at": "2026-10-26T15:30:08.309895+00:00",
+        "capture_kind": "original_import"
+      },
+      "attribute_lookup_status": "exact_match",
+      "attribute_lookup_price": "527.7"
+    },
+    {
+      "case_id": "first-edition-gengar",
+      "sku_lookup": {
+        "status": "exact_match",
+        "requested_identity": {
+          "provider": "tcgtracking",
+          "provider_sku_id": "2995236"
+        },
+        "market_price": "458.05",
+        "currency": "USD",
+        "price_type": "sku_market_reference",
+        "candidates": [
+          {
+            "id": 4928,
+            "product_id": 671,
+            "provider": "tcgtracking",
+            "provider_sku_id": "2995236",
+            "condition": "LP",
+            "language": "english",
+            "edition": "first edition",
+            "finish": "holo",
+            "graded": 0,
+            "active": 1,
+            "name": "Gengar (5)",
+            "collector_number": "5/62",
+            "tcgplayer_product_id": "106521",
+            "set_name": "Fossil",
+            "provenance": {
+              "condition": "/cnd",
+              "language": "/lng",
+              "finish": "/var",
+              "edition": "variant_field",
+              "graded": "raw reference scope from existing TCGTracking adapter contract; not an observed physical card grade"
+            },
+            "completeness": {
+              "condition": true,
+              "language": true,
+              "edition": true,
+              "finish": true,
+              "number": true,
+              "graded": true
+            },
+            "raw_variant": {
+              "cnd": "LP",
+              "var": "1st Edition Holofoil",
+              "var_a": "1EH",
+              "vid": 8,
+              "lng": "EN",
+              "mkt": "458.05",
+              "low": "338.99",
+              "hi": "600.99",
+              "cnt": 10
+            },
+            "observation": {
+              "id": 6002,
+              "product_id": 671,
+              "sku_id": 4928,
+              "provider": "tcgtracking",
+              "market_price": "458.05",
+              "currency": "USD",
+              "price_type": "sku_market_reference",
+              "source_updated_at": "2026-10-25T17:36:43.000000+00:00",
+              "retrieved_at": "2026-10-26T15:30:09.355903+00:00",
+              "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+              "document_id": 16,
+              "locator": "/products/106521/2995236",
+              "evidence_json": "{\n  \"source_row\": {\n    \"cnd\": \"LP\",\n    \"var\": \"1st Edition Holofoil\",\n    \"var_a\": \"1EH\",\n    \"vid\": 8,\n    \"lng\": \"EN\",\n    \"mkt\": \"458.05\",\n    \"low\": \"338.99\",\n    \"hi\": \"600.99\",\n    \"cnt\": 10\n  },\n  \"currency_basis\": \"TCGplayer USD convention; currency absent in export\",\n  \"update_scope\": \"set_export\",\n  \"independently_authenticated\": false\n}\n",
+              "warnings_json": "[\n  \"condition_price_inversion\"\n]\n",
+              "missing_json": "[\n  \"shipping_exclusion\",\n  \"tax_exclusion\",\n  \"individual_price_age\",\n  \"upstream_verification\"\n]\n",
+              "fingerprint": "1a5a071ccaaa553e82d5aa83f27d9f230bc711878e46af5f2efe37970dd472e2",
+              "snapshot_date": "2026-10-26",
+              "captured_at": "2026-10-26T15:30:09.355903+00:00",
+              "capture_kind": "original_import",
+              "subtype": null,
+              "missing_fields": [
+                "shipping_exclusion",
+                "tax_exclusion",
+                "individual_price_age",
+                "upstream_verification"
+              ]
+            },
+            "warnings": [
+              "condition_price_inversion",
+              "provider_reported_reference_not_verified_transaction",
+              "shipping_and_tax_basis_unconfirmed"
+            ],
+            "identity_complete": true,
+            "freshness": {
+              "age_hours": 22.388055555555557,
+              "max_age_hours": 48,
+              "basis": "set_export_update_or_retrieval",
+              "individual_price_age_known": false,
+              "stale": false
+            }
+          }
+        ],
+        "approved_inventory_price": false,
+        "card_id": 671,
+        "sku_id": 4928,
+        "provider_sku_id": "2995236",
+        "tcgplayer_product_id": "106521",
+        "condition": "LP",
+        "language": "english",
+        "edition": "first edition",
+        "finish": "holo",
+        "graded": false,
+        "card_name": "Gengar (5)",
+        "collector_number": "5/62",
+        "set_name": "Fossil",
+        "source": "tcgtracking",
+        "identity_complete": true,
+        "warnings": [
+          "condition_price_inversion",
+          "provider_reported_reference_not_verified_transaction",
+          "shipping_and_tax_basis_unconfirmed"
+        ],
+        "freshness": {
+          "age_hours": 22.388055555555557,
+          "max_age_hours": 48,
+          "basis": "set_export_update_or_retrieval",
+          "individual_price_age_known": false,
+          "stale": false
+        },
+        "source_updated_at": "2026-10-25T17:36:43.000000+00:00",
+        "retrieved_at": "2026-10-26T15:30:09.355903+00:00",
+        "source_url": "https://openapi.tcgtracking.com/v1/3/sets/630/skus",
+        "evidence_document_id": 16,
+        "snapshot_date": "2026-10-26",
+        "captured_at": "2026-10-26T15:30:09.355903+00:00",
+        "capture_kind": "original_import"
+      },
+      "attribute_lookup_status": "exact_match",
+      "attribute_lookup_price": "458.05"
+    },
+    {
+      "case_id": "japanese-charizard",
+      "sku_lookup": {
+        "status": "exact_match",
+        "requested_identity": {
+          "provider": "tcgtracking",
+          "provider_sku_id": "8115821"
+        },
+        "market_price": "388.35",
+        "currency": "USD",
+        "price_type": "sku_market_reference",
+        "candidates": [
+          {
+            "id": 6036,
+            "product_id": 890,
+            "provider": "tcgtracking",
+            "provider_sku_id": "8115821",
+            "condition": "NM",
+            "language": "japanese",
+            "edition": null,
+            "finish": "holo",
+            "graded": 0,
+            "active": 1,
+            "name": "Charizard ex - 201/165",
+            "collector_number": "201/165",
+            "tcgplayer_product_id": "566544",
+            "set_name": "SV2a: Pokemon Card 151",
+            "provenance": {
+              "condition": "/cnd",
+              "language": "/lng",
+              "finish": "/var",
+              "edition": "missing",
+              "graded": "raw reference scope from existing TCGTracking adapter contract; not an observed physical card grade"
+            },
+            "completeness": {
+              "condition": true,
+              "language": true,
+              "edition": false,
+              "finish": true,
+              "number": true,
+              "graded": true
+            },
+            "raw_variant": {
+              "cnd": "NM",
+              "var": "Holofoil",
+              "var_a": "H",
+              "vid": 3,
+              "lng": "JP",
+              "mkt": "388.35",
+              "low": 375,
+              "hi": 420,
+              "cnt": 25
+            },
+            "observation": {
+              "id": 7628,
+              "product_id": 890,
+              "sku_id": 6036,
+              "provider": "tcgtracking",
+              "market_price": "388.35",
+              "currency": "USD",
+              "price_type": "sku_market_reference",
+              "source_updated_at": "2026-10-25T17:37:40.000000+00:00",
+              "retrieved_at": "2026-10-26T15:30:28.649660+00:00",
+              "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+              "document_id": 20,
+              "locator": "/products/566544/8115821",
+              "evidence_json": "{\n  \"source_row\": {\n    \"cnd\": \"NM\",\n    \"var\": \"Holofoil\",\n    \"var_a\": \"H\",\n    \"vid\": 3,\n    \"lng\": \"JP\",\n    \"mkt\": \"388.35\",\n    \"low\": 375,\n    \"hi\": 420,\n    \"cnt\": 25\n  },\n  \"currency_basis\": \"TCGplayer USD convention; currency absent in export\",\n  \"update_scope\": \"set_export\",\n  \"independently_authenticated\": false\n}\n",
+              "warnings_json": "[]\n",
+              "missing_json": "[\n  \"shipping_exclusion\",\n  \"tax_exclusion\",\n  \"individual_price_age\",\n  \"upstream_verification\"\n]\n",
+              "fingerprint": "81ebcb87f4ef6e50f570598291b068bd84963f9b64940b8eb08f04fa33a0ce5d",
+              "snapshot_date": "2026-10-26",
+              "captured_at": "2026-10-26T15:30:28.649660+00:00",
+              "capture_kind": "original_import",
+              "subtype": null,
+              "missing_fields": [
+                "shipping_exclusion",
+                "tax_exclusion",
+                "individual_price_age",
+                "upstream_verification"
+              ]
+            },
+            "warnings": [
+              "provider_reported_reference_not_verified_transaction",
+              "shipping_and_tax_basis_unconfirmed",
+              "edition_unknown"
+            ],
+            "identity_complete": false,
+            "freshness": {
+              "age_hours": 22.372222222222224,
+              "max_age_hours": 48,
+              "basis": "set_export_update_or_retrieval",
+              "individual_price_age_known": false,
+              "stale": false
+            }
+          }
+        ],
+        "approved_inventory_price": false,
+        "card_id": 890,
+        "sku_id": 6036,
+        "provider_sku_id": "8115821",
+        "tcgplayer_product_id": "566544",
+        "condition": "NM",
+        "language": "japanese",
+        "edition": null,
+        "finish": "holo",
+        "graded": false,
+        "card_name": "Charizard ex - 201/165",
+        "collector_number": "201/165",
+        "set_name": "SV2a: Pokemon Card 151",
+        "source": "tcgtracking",
+        "identity_complete": false,
+        "warnings": [
+          "provider_reported_reference_not_verified_transaction",
+          "shipping_and_tax_basis_unconfirmed",
+          "edition_unknown"
+        ],
+        "freshness": {
+          "age_hours": 22.372222222222224,
+          "max_age_hours": 48,
+          "basis": "set_export_update_or_retrieval",
+          "individual_price_age_known": false,
+          "stale": false
+        },
+        "source_updated_at": "2026-10-25T17:37:40.000000+00:00",
+        "retrieved_at": "2026-10-26T15:30:28.649660+00:00",
+        "source_url": "https://openapi.tcgtracking.com/v1/85/sets/23599/skus",
+        "evidence_document_id": 20,
+        "snapshot_date": "2026-10-26",
+        "captured_at": "2026-10-26T15:30:28.649660+00:00",
+        "capture_kind": "original_import"
+      },
+      "attribute_lookup_status": "ambiguous_match",
+      "attribute_lookup_price": null
+    }
+  ],
+  "exact_sku_references": 5,
+  "fully_specified_attribute_matches": 2,
+  "attribute_uncertainties": 3,
+  "independent_accuracy_metrics": null
+}

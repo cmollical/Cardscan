@@ -1,0 +1,16 @@
+ALTER TABLE observations ADD COLUMN snapshot_date TEXT;
+ALTER TABLE observations ADD COLUMN captured_at TEXT;
+ALTER TABLE observations ADD COLUMN capture_kind TEXT;
+UPDATE observations SET snapshot_date=substr(retrieved_at,1,10),captured_at=retrieved_at,capture_kind='original_import';
+CREATE INDEX snapshot_sku ON observations(sku_id,snapshot_date DESC,id DESC);
+CREATE INDEX snapshot_product ON observations(product_id,price_type,snapshot_date DESC,id DESC);
+ALTER TABLE observations ADD COLUMN subtype TEXT;
+UPDATE observations SET subtype=json_extract(evidence_json,'$.source_row.subTypeName') WHERE price_type='generic_market_reference';
+CREATE INDEX product_subtype_history ON observations(product_id,subtype,snapshot_date DESC,id DESC);
+CREATE TRIGGER history_no_update BEFORE UPDATE ON observations BEGIN SELECT RAISE(ABORT,'Historical observations are append-only'); END;
+CREATE TRIGGER history_no_delete BEFORE DELETE ON observations BEGIN SELECT RAISE(ABORT,'Historical observations are append-only'); END;
+CREATE TRIGGER snapshot_required BEFORE INSERT ON observations WHEN NEW.snapshot_date IS NULL OR NEW.captured_at IS NULL OR NEW.capture_kind IS NULL BEGIN SELECT RAISE(ABORT,'Snapshot provenance required'); END;
+CREATE TABLE archive_imports(archive_date TEXT PRIMARY KEY, archive_path TEXT NOT NULL, content_hash TEXT, status TEXT NOT NULL, last_attempt_at TEXT NOT NULL, completed_at TEXT, members_imported INTEGER NOT NULL DEFAULT 0, unresolved_rows INTEGER NOT NULL DEFAULT 0, error TEXT);
+CREATE TABLE archive_members(archive_date TEXT NOT NULL REFERENCES archive_imports(archive_date), member TEXT NOT NULL, content_hash TEXT NOT NULL, imported_at TEXT NOT NULL, row_count INTEGER NOT NULL, PRIMARY KEY(archive_date,member));
+CREATE TABLE historical_unmatched(archive_date TEXT NOT NULL, category_id TEXT NOT NULL, source_set_id TEXT NOT NULL, source_product_id TEXT NOT NULL, subtype TEXT NOT NULL, market_price TEXT, document_id INTEGER NOT NULL REFERENCES documents(id), raw_json TEXT NOT NULL, reason TEXT NOT NULL, PRIMARY KEY(archive_date,category_id,source_set_id,source_product_id,subtype));
+PRAGMA user_version=3;

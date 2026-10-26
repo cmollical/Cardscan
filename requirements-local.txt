@@ -1,0 +1,5 @@
+# Local read-only pricing API; no OpenAI dependency required.
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+# TestClient for offline API verification.
+httpx>=0.27,<1
