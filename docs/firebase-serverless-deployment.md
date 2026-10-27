@@ -98,9 +98,15 @@ IAM, Cloud Build image, Cloud Run job, initial snapshot, Secret Manager values, 
 Run API, Vercel frontend, and a daily Scheduler trigger with retries disabled. The
 initial snapshot contained 1,209 products and 7,625 SKUs. Production checks through
 the Vercel same-origin proxy returned 200 for health, login and authenticated
-inventory; an anonymous protected request returned 401. Upload, private image,
-catalog, pricing and CSV workflows should still receive an interactive owner
-acceptance pass before relying on the deployment.
+inventory; an anonymous protected request returned 401.
+
+AI was enabled on revision `tallybinder-api-00008-wmt` with a restricted OpenAI key
+in Secret Manager. A live synthetic-photo acceptance request exercised upload,
+Firestore reservation, authenticated Cloud Tasks delivery, the Responses API,
+result polling and cost settlement. The placeholder was correctly reported as not
+being a real card, the task endpoint returned 204, the queue drained, and the app
+recorded `$0.0011295` for the request. Real-card identification and condition output
+still require human review as designed.
 
 ## Local verification
 
