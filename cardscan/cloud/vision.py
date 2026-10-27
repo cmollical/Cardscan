@@ -10,6 +10,8 @@ from uuid import NAMESPACE_URL, uuid5
 
 from google.api_core.exceptions import AlreadyExists
 from google.cloud import firestore, tasks_v2
+from google.auth.transport.requests import Request as GoogleRequest
+from google.oauth2 import id_token
 
 from cardscan.app.models import Assessment, Identification
 from cardscan.app.store import AppError
@@ -34,7 +36,7 @@ class CloudTasksDispatcher:
             ),
             "http_request": {
                 "http_method": tasks_v2.HttpMethod.POST,
-                "url": f"{self.worker_url}/tasks/vision/{quote(str(job_id), safe='')}",
+                "url": f"{self.worker_url}/internal/tasks/vision/{quote(str(job_id), safe='')}",
                 "headers": {"Content-Type": "application/json"},
                 "oidc_token": {
                     "service_account_email": self.service_account,
@@ -46,6 +48,24 @@ class CloudTasksDispatcher:
             self.client.create_task(parent=parent, task=task)
         except AlreadyExists:
             pass
+
+
+def verify_task_identity(authorization, audience, service_account, *, request=None):
+    """Verify a Google-signed OIDC token and its exact task-caller identity."""
+    prefix = "Bearer "
+    if not authorization.startswith(prefix):
+        raise AppError("task_identity_required", 401)
+    try:
+        claims = id_token.verify_oauth2_token(
+            authorization[len(prefix) :],
+            request or GoogleRequest(),
+            audience=audience,
+        )
+    except Exception:
+        raise AppError("task_identity_invalid", 401) from None
+    if claims.get("email") != service_account or claims.get("email_verified") is not True:
+        raise AppError("task_identity_invalid", 403)
+    return claims
 
 
 class FirestoreJobs:

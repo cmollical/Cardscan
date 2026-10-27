@@ -3,13 +3,19 @@
 import os
 
 from google.cloud import firestore, storage
+from fastapi import Request
+from fastapi.responses import Response
 from starlette.concurrency import run_in_threadpool
 
 from cardscan.app.vision import VisionSettings
 from cardscan.cloud.firestore_store import FirestoreStore
 from cardscan.cloud.media import CloudMediaStore
 from cardscan.cloud.snapshot import PricingSnapshot
-from cardscan.cloud.vision import CloudTasksDispatcher, FirestoreJobs
+from cardscan.cloud.vision import (
+    CloudTasksDispatcher,
+    FirestoreJobs,
+    verify_task_identity,
+)
 from cardscan.local_pricing.api import create_app
 
 
@@ -37,6 +43,17 @@ app = create_app(
     jobs=jobs,
     job_dispatch=dispatcher,
 )
+
+
+@app.post("/internal/tasks/vision/{job_id}", status_code=204)
+def run_vision_task(job_id: str, request: Request):
+    verify_task_identity(
+        request.headers.get("authorization", ""),
+        os.environ["TALLYBINDER_VISION_WORKER_URL"].rstrip("/"),
+        os.environ["TALLYBINDER_TASKS_SERVICE_ACCOUNT"],
+    )
+    jobs.run(job_id)
+    return Response(status_code=204)
 
 
 @app.middleware("http")

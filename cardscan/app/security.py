@@ -134,13 +134,14 @@ class CloudGuard(BaseHTTPMiddleware):
             return await call_next(request)
         path = request.url.path
         public = path in ("/health", "/app/config", "/auth/login")
-        if not public and not s.authenticated(request):
+        internal = path.startswith("/internal/tasks/vision/")
+        if not public and not internal and not s.authenticated(request):
             return JSONResponse(
                 {"detail": {"code": "sign_in_required"}},
                 status_code=401,
                 headers={"Cache-Control": "no-store"},
             )
-        if request.method not in ("GET", "HEAD", "OPTIONS"):
+        if not internal and request.method not in ("GET", "HEAD", "OPTIONS"):
             if request.headers.get("x-tallybinder-client") != "web":
                 return JSONResponse(
                     {"detail": {"code": "client_header_required"}}, status_code=403
@@ -155,12 +156,20 @@ class CloudGuard(BaseHTTPMiddleware):
             "login"
             if path == "/auth/login"
             else (
-                "upload"
+                "internal"
+                if internal
+                else "upload"
                 if path == "/media/upload"
                 else "public" if public else "private"
             )
         )
-        limit = {"login": 10, "upload": 120, "public": 240, "private": 1800}[kind]
+        limit = {
+            "login": 10,
+            "upload": 120,
+            "internal": 120,
+            "public": 240,
+            "private": 1800,
+        }[kind]
         if not s.allowed(kind, limit):
             return JSONResponse(
                 {"detail": {"code": "request_rate_limited"}},

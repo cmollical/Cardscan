@@ -10,7 +10,12 @@ from uuid import uuid4
 
 from cardscan.app.models import JobWrite
 from cardscan.app.vision import VisionSettings
-from cardscan.cloud.vision import CloudTasksDispatcher, FirestoreJobs
+from cardscan.app.store import AppError
+from cardscan.cloud.vision import (
+    CloudTasksDispatcher,
+    FirestoreJobs,
+    verify_task_identity,
+)
 
 
 class Snapshot:
@@ -154,12 +159,35 @@ class ServerlessVisionTests(unittest.TestCase):
         call = client.create_task.call_args.kwargs
         request = call["task"]["http_request"]
         self.assertEqual(call["parent"], "queue")
-        self.assertEqual(request["url"], "https://worker.example/tasks/vision/job-id")
+        self.assertEqual(
+            request["url"],
+            "https://worker.example/internal/tasks/vision/job-id",
+        )
         self.assertEqual(request["oidc_token"]["audience"], "https://worker.example")
         self.assertEqual(
             request["oidc_token"]["service_account_email"],
             "tasks@example.iam.gserviceaccount.com",
         )
+
+    def test_task_identity_requires_google_signature_and_exact_service_account(self):
+        expected = "tasks@example.iam.gserviceaccount.com"
+        with patch(
+            "cardscan.cloud.vision.id_token.verify_oauth2_token",
+            return_value={"email": expected, "email_verified": True},
+        ) as verify:
+            claims = verify_task_identity(
+                "Bearer signed", "https://api.example", expected, request=Mock()
+            )
+        self.assertEqual(claims["email"], expected)
+        self.assertEqual(verify.call_args.kwargs["audience"], "https://api.example")
+        with patch(
+            "cardscan.cloud.vision.id_token.verify_oauth2_token",
+            return_value={"email": "other@example.com", "email_verified": True},
+        ), self.assertRaises(AppError) as wrong:
+            verify_task_identity(
+                "Bearer signed", "https://api.example", expected, request=Mock()
+            )
+        self.assertEqual(wrong.exception.status, 403)
 
 
 if __name__ == "__main__":
