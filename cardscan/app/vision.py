@@ -296,6 +296,28 @@ def supports_collector_number(evidence, number):
     )
 
 
+def split_set_code_language(value):
+    """Separate a short printed set code from an adjacent language mark."""
+    match = re.fullmatch(
+        r"(\S+)\s+(EN|JP|FR|DE|IT|ES|PT|KO|SC|TC)", (value or "").strip(), re.I
+    )
+    if not match:
+        return None
+    languages = {
+        "en": "english",
+        "jp": "japanese",
+        "fr": "french",
+        "de": "german",
+        "it": "italian",
+        "es": "spanish",
+        "pt": "portuguese",
+        "ko": "korean",
+        "sc": "simplified chinese",
+        "tc": "traditional chinese",
+    }
+    return match[1], languages[match[2].casefold()]
+
+
 class Jobs:
     def __init__(self, store, media, settings=None, provider=None):
         self.store, self.db, self.media = store, store.db, media
@@ -666,6 +688,20 @@ class Jobs:
                 name, limit=10, number=number, set_name=set_label
             )["items"]
             cards = [card for card in cards if card["name"].casefold() == name.casefold()]
+            if not cards and (separated := split_set_code_language(set_label)):
+                set_code, language = separated
+                cards = self.store.lookup.search(
+                    name, limit=10, number=number, set_name=set_code
+                )["items"]
+                cards = [
+                    card for card in cards if card["name"].casefold() == name.casefold()
+                ]
+                if cards:
+                    claim["raw_set_code"] = set_label
+                    claim["set_code"] = set_code
+                    claim["set_code_resolution"] = "adjacent_language_mark_separated"
+                    if not claim.get("language"):
+                        claim["language"] = language
             if not cards:
                 unmatched.append(
                     {"claim": claim, "issues": ["exact_printing_not_in_catalog"]}
@@ -685,6 +721,8 @@ class Jobs:
                         issues.append("model_" + key + "_conflicts_with_catalog")
                 if claim.get("set_code_resolution") == "catalog_guided_visual_reread":
                     issues.append("catalog_guided_set_code_reread")
+                if claim.get("set_code_resolution") == "adjacent_language_mark_separated":
+                    issues.append("adjacent_language_mark_separated")
                 candidates.append(
                     {
                         "claim": claim,

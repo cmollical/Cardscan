@@ -573,9 +573,9 @@ class TallyBinderTests(unittest.TestCase):
                 "readings": [
                     dict(
                         name="Flaaffy",
-                        set_code="CRI",
+                        set_code="CRI EN",
                         collector_number="028/086",
-                        language="english",
+                        language=None,
                         edition=None,
                         finish=None,
                         rarity=None,
@@ -583,7 +583,7 @@ class TallyBinderTests(unittest.TestCase):
                 ],
                 "observations": [
                     "Card name Flaaffy is visible at the top.",
-                    "Collector line 028/086 and set code CRI are visible at the bottom.",
+                    "Collector line 028/086 and set code CRI EN are visible at the bottom.",
                 ],
                 "limitations": [],
                 "recommended_condition": "LP",
@@ -604,6 +604,10 @@ class TallyBinderTests(unittest.TestCase):
         self.assertEqual(candidate["card"]["name"], "Flaaffy")
         self.assertEqual(candidate["card"]["collector_number"], "28/86")
         self.assertEqual(candidate["claim"]["collector_number"], "028/086")
+        self.assertEqual(candidate["claim"]["raw_set_code"], "CRI EN")
+        self.assertEqual(candidate["claim"]["set_code"], "CRI")
+        self.assertEqual(candidate["claim"]["language"], "english")
+        self.assertIn("adjacent_language_mark_separated", candidate["issues"])
         self.assertEqual(state["result"]["unmatched_claims"], [])
 
     def test_ai_name_only_or_internally_unsupported_claim_is_not_clickable(self):
