@@ -14,16 +14,25 @@ from fastapi import (
     Request,
     UploadFile,
 )
-from fastapi.responses import FileResponse, Response
+from fastapi.responses import Response
 from .models import SessionWrite, IntakeWrite, ListingWrite, JobWrite, Condition
 from .store import Store, AppError
 from .media import MediaStore, MAX_BYTES
 from .vision import Jobs, VisionSettings
 
 
-def register(app, db, *, media_root=None, settings=None, vision_provider=None):
-    store = Store(db)
-    media = MediaStore(
+def register(
+    app,
+    db,
+    *,
+    media_root=None,
+    settings=None,
+    vision_provider=None,
+    store=None,
+    media=None,
+):
+    store = store or Store(db)
+    media = media or MediaStore(
         db,
         media_root
         or os.getenv("TALLYBINDER_MEDIA_DIR", str(db.path.parent / "photos")),
@@ -119,8 +128,8 @@ def register(app, db, *, media_root=None, settings=None, vision_provider=None):
 
     @router.get("/media/{id}")
     def image(id: UUID):
-        return FileResponse(
-            media.file(id),
+        return Response(
+            content=media.read(id),
             media_type="image/jpeg",
             headers={"Cache-Control": "no-store", "X-Content-Type-Options": "nosniff"},
         )

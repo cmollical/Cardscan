@@ -1,0 +1,3 @@
+-r requirements-cloud.txt
+google-cloud-firestore==2.34.1
+google-cloud-storage==3.17.1

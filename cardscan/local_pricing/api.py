@@ -9,7 +9,15 @@ from .database import Database
 from .lookup import Lookup
 
 
-def create_app(path=None,*,media_root=None,vision_settings=None,vision_provider=None):
+def create_app(
+    path=None,
+    *,
+    media_root=None,
+    vision_settings=None,
+    vision_provider=None,
+    app_store=None,
+    media_store=None,
+):
     db=Database(path or os.environ.get('TALLYBINDER_DB',os.environ.get('CARDSCAN_PRICING_DB','local-evidence/pricing.sqlite')))
     lookup=Lookup(db)
     app=FastAPI(title='TallyBinder API',version='1.0',
@@ -82,7 +90,15 @@ def create_app(path=None,*,media_root=None,vision_settings=None,vision_provider=
 
     from cardscan.app.routes import register
     from cardscan.app.limits import BodyLimits
-    register(app,db,media_root=media_root,settings=vision_settings,vision_provider=vision_provider)
+    register(
+        app,
+        db,
+        media_root=media_root,
+        settings=vision_settings,
+        vision_provider=vision_provider,
+        store=app_store,
+        media=media_store,
+    )
     app.add_middleware(BodyLimits)
     from cardscan.app.security import configure
     configure(app)

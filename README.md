@@ -15,12 +15,18 @@ No paid AI calls are needed for the complete manual workflow.
 
 ## Cloud deployment preparation
 
-The recommended architecture is **Vercel Hobby + an Oracle Always Free ARM VM**,
-with persistent SQLite/photos and a separate vision worker. A single-VM frontend
-fallback is included. This remains conditional on account eligibility, free capacity
-and actual cloud acceptance; nothing has been publicly deployed.
+The current target is **Vercel Hobby + serverless Google Cloud/Firebase**. Cloud Run
+serves FastAPI, Firestore stores mutable intake/inventory state, Cloud Storage holds
+private photos and a versioned pricing snapshot, and a scheduled Cloud Run Job
+publishes a bounded daily refresh. SQLite remains the relational pricing format but
+is never opened for writes from a Cloud Storage mount. See the
+[serverless deployment runbook](docs/firebase-serverless-deployment.md).
 
-- [Deployment runbook and required owner actions](docs/cloud-deployment.md)
+The earlier persistent-VM deployment remains documented as a fallback, but it is no
+longer the selected architecture.
+
+- [Selected Firebase/Cloud Run deployment](docs/firebase-serverless-deployment.md)
+- [Earlier VM deployment fallback](docs/cloud-deployment.md)
 - [Official free-tier limits and capacity comparison](docs/free-tier-hosting-research.md)
 - [Architecture decision](docs/cloud-deployment-decision.md)
 
