@@ -13,10 +13,17 @@ from google.cloud import firestore, tasks_v2
 from google.auth.transport.requests import Request as GoogleRequest
 from google.oauth2 import id_token
 
-from cardscan.app.models import Assessment, Identification
+from cardscan.app.models import Assessment, CatalogGuidedIdentification, Identification
 from cardscan.app.principal import owner_scope
 from cardscan.app.store import AppError
-from cardscan.app.vision import Jobs, OpenAIVisionProvider, VisionSettings
+from cardscan.app.vision import (
+    Jobs,
+    OpenAIVisionProvider,
+    VisionSettings,
+    checked_usage,
+    combined_usage,
+    usage_cost,
+)
 from cardscan.local_pricing.database import utc
 
 
@@ -72,6 +79,7 @@ def verify_task_identity(authorization, audience, service_account, *, request=No
 class FirestoreJobs:
     def __init__(self, store, media, settings=None, provider=None, *, dispatcher=None):
         self.store = store
+        self.db = store.db
         self.media = media
         self.client = store.client
         self.prefix = store.prefix
@@ -140,7 +148,7 @@ class FirestoreJobs:
             raise AppError("intake_revision_conflict", 409)
         if not intake["front_id"] or (value.kind == "condition" and not intake["back_id"]):
             raise AppError("required_photos_missing", 422)
-        reserve = self.settings.reserve()
+        reserve = self.settings.reserve(value.kind)
         if reserve > Decimal(self.settings.per_job_limit):
             raise AppError("vision_per_job_reserve_exceeds_limit", 429)
         day = utc()[:10]
@@ -228,7 +236,7 @@ class FirestoreJobs:
                 if job["kind"] == "condition":
                     paths.append(self.media.file(intake["back_id"]))
                 settings = VisionSettings(**job["settings"])
-                if settings.model != job["model"] or settings.reserve() > Decimal(job["reserved_usd"]):
+                if settings.model != job["model"] or settings.reserve(job["kind"]) > Decimal(job["reserved_usd"]):
                     raise AppError("job_settings_reservation_mismatch", 409)
                 provider = (
                     OpenAIVisionProvider(settings)
@@ -236,25 +244,38 @@ class FirestoreJobs:
                     else self.provider
                 )
                 response = provider.research(job["kind"], paths)
-                usage = response.get("usage")
-                if not isinstance(usage, dict) or any(
-                    type(usage.get(key)) is not int or usage[key] < 0
-                    for key in ("input_tokens", "output_tokens")
-                ):
-                    raise ValueError("Usage unavailable; reservation held")
-                cost = str(
-                    (
-                        Decimal(usage["input_tokens"]) * Decimal(settings.input_rate)
-                        + Decimal(usage["output_tokens"]) * Decimal(settings.output_rate)
+                usages = [
+                    checked_usage(
+                        response, settings.max_input_tokens, settings.max_output_tokens
                     )
-                    / 1_000_000
-                )
-                if usage["input_tokens"] > settings.max_input_tokens or usage["output_tokens"] > settings.max_output_tokens:
-                    raise ValueError("Usage exceeded reservation assumptions")
+                ]
+                usage = combined_usage(usages)
+                cost = usage_cost(usage, settings)
                 schema = Identification if job["kind"] == "identify" else Assessment
                 result = schema.model_validate_json(response["result_text"]).model_dump()
                 if job["kind"] == "identify":
                     result = Jobs.cross_reference(self, result)
+                    guidance = Jobs.catalog_guidance(self, result)
+                    if not result["catalog_candidates"] and guidance:
+                        usage = None
+                        cost = None
+                        refinement = provider.resolve_set_codes(paths, guidance)
+                        usages.append(
+                            checked_usage(
+                                refinement,
+                                settings.refinement_max_input_tokens,
+                                settings.refinement_max_output_tokens,
+                            )
+                        )
+                        usage = combined_usage(usages)
+                        cost = usage_cost(usage, settings)
+                        resolution = CatalogGuidedIdentification.model_validate_json(
+                            refinement["result_text"]
+                        ).model_dump()
+                        result = Jobs.apply_catalog_guidance(
+                            self, result, guidance, resolution
+                        )
+                        result = Jobs.cross_reference(self, result)
                 elif result["recommended_condition"] and re.search(
                     r"\b(?:condition (?:is |remains )?unknown|cannot (?:determine|assess) (?:the )?condition|insufficient (?:photo|image)(?:s| evidence)? to (?:determine|assess) (?:the )?condition)\b",
                     " ".join(result["observations"] + result["limitations"]),

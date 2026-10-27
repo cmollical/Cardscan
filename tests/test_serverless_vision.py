@@ -87,6 +87,7 @@ class Store:
 
     def __init__(self, intake):
         self.client = Client()
+        self.db = Mock()
         self.value = intake
         self.lookup = Mock()
         self.lookup.search.return_value = {"items": []}

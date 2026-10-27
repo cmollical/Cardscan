@@ -87,6 +87,7 @@ Never place OpenAI credentials in `NEXT_PUBLIC_*` variables or frontend files.
 | `TALLYBINDER_AI_INPUT_RATE`, `TALLYBINDER_AI_OUTPUT_RATE` | Reviewed USD/million token estimates |
 | `TALLYBINDER_AI_MAX_INPUT_TOKENS` | Conservative model context reservation; default 400,000 |
 | `TALLYBINDER_AI_MAX_OUTPUT_TOKENS` | Request output cap; default 2,000 |
+| `TALLYBINDER_AI_REFINEMENT_MAX_INPUT_TOKENS`, `TALLYBINDER_AI_REFINEMENT_MAX_OUTPUT_TOKENS` | Optional catalog-guided set-code reread caps; defaults 40,000 / 500 |
 | `TALLYBINDER_AI_PER_JOB_USD`, `TALLYBINDER_AI_DAILY_USD` | Default $0.50/request and $5/day safeguards |
 | `TALLYBINDER_AI_DAILY_JOBS` | Default 30 attempted jobs/day |
 
@@ -98,9 +99,10 @@ No web search tools are enabled. Requests use structured outputs and `store=fals
 this does not claim zero retention under all provider policies.
 
 Default rates reuse the existing reviewed model rate card: $0.75/M input and
-$4.50/M output. A conservative **$0.309** reservation covers full configured input
-context plus capped output, not a prediction of normal image cost. Actual completed
-usage is recorded and releases unused reserve. Unknown usage/errors retain reserve.
+$4.50/M output. A conservative **$0.34125** identification reservation covers the
+initial request plus one optional bounded catalog-guided set-code reread; condition
+review reserves **$0.309**. These are not predictions of normal image cost. Actual
+completed usage is recorded and releases unused reserve. Unknown usage/errors retain reserve.
 Two AI jobs per card reserve separately. Custom models require explicitly reviewed
 rates and input context. Estimates exclude discounts and must be rechecked against
 [OpenAI pricing](https://developers.openai.com/api/docs/pricing) before enabling.

@@ -39,11 +39,14 @@ precondition prevents concurrent jobs from silently overwriting each other.
 The production AI path is durable and does not use instance background work. The API
 atomically reserves a per-job and daily budget in Firestore, creates an idempotent
 job, and enqueues a named Cloud Task. A Google-signed internal API endpoint verifies
-the exact task-caller identity and atomically claims the job before making one OpenAI
+the exact task-caller identity and atomically claims the job before making an OpenAI
 request. A repeated delivery sees the claimed or finished state and cannot create a
-second paid attempt. Identification is reconciled
-against the local catalog; condition review remains preliminary and both require
-explicit human confirmation in the UI before pricing or inventory changes.
+second paid job. Identification is reconciled against the local catalog. If the raw
+set code does not match, exact visible name and full collector number narrow a small
+database-derived code list for one bounded visual reread; the model may choose only
+from that list or abstain. Raw and resolved readings are retained. Condition review
+remains preliminary, and both workflows require explicit human confirmation in the
+UI before pricing or inventory changes.
 
 ## User accounts and data isolation
 
@@ -88,7 +91,8 @@ The service runs the API module, and the daily job overrides the command with
 - Model: `gpt-5.4-mini`; image input and strict structured outputs only.
 - OpenAI key: Cloud Run Secret Manager injection; never sent to Vercel or an API
   response payload.
-- Per authorized request reserve: `$0.309` at reviewed maximum token assumptions.
+- Per authorized identification reserve: `$0.34125`, including one optional bounded
+  catalog-guided visual reread. Condition review reserves `$0.309`.
 - Per-user daily ceiling: 30 jobs and `$5.00` reserved spend.
 - Cloud Tasks: one concurrent dispatch; the Firestore claim makes delivery retries
   idempotent.

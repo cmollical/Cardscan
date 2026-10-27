@@ -86,6 +86,17 @@ class Identification(Strict):
     limitations: list[str] = Field(max_length=12)
 
 
+class SetCodeResolution(Strict):
+    reading_index: int = Field(ge=0, le=4)
+    selected_set_code: str | None
+    observation: str
+
+
+class CatalogGuidedIdentification(Strict):
+    resolutions: list[SetCodeResolution] = Field(max_length=5)
+    limitations: list[str] = Field(max_length=5)
+
+
 class Assessment(Strict):
     recommended_condition: Condition | None
     observations: list[str] = Field(max_length=15)

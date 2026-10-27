@@ -475,6 +475,72 @@ class TallyBinderTests(unittest.TestCase):
         self.assertEqual(state["intake_estimated_cost_usd"], "0.0012")
         self.assertTrue(state["intake_cost_complete"])
 
+    def test_catalog_guided_set_code_reread_uses_dynamic_database_codes(self):
+        with self.db.transaction() as connection:
+            game_id = connection.execute(
+                "SELECT id FROM games WHERE name='pokemon'"
+            ).fetchone()[0]
+            set_id = connection.execute(
+                "INSERT INTO sets(game_id,name) VALUES(?,?)",
+                (game_id, "Synthetic dynamic set"),
+            ).lastrowid
+            connection.execute(
+                "INSERT INTO set_aliases(set_id,alias,provenance) VALUES(?,?,?)",
+                (set_id, "asc", "synthetic dynamic provider metadata"),
+            )
+            connection.execute(
+                "INSERT INTO products(game_id,set_id,name,collector_number,tcgplayer_product_id) VALUES(?,?,?,?,?)",
+                (game_id, set_id, "Drampa", "176/217", "9999998"),
+            )
+        self.provider.research.return_value = ai_response(
+            {
+                "readings": [
+                    dict(
+                        name="Drampa",
+                        set_code="ASCE",
+                        collector_number="176/217",
+                        language=None,
+                        edition=None,
+                        finish=None,
+                        rarity=None,
+                    )
+                ],
+                "observations": [
+                    "The name Drampa is visible near the top.",
+                    "The bottom collector line shows 176/217 beside ASCE.",
+                ],
+                "limitations": [],
+            }
+        )
+        self.provider.resolve_set_codes.return_value = ai_response(
+            {
+                "resolutions": [
+                    {
+                        "reading_index": 0,
+                        "selected_set_code": "asc",
+                        "observation": "The printed set code is ASC; the adjacent EN language mark is separate.",
+                    }
+                ],
+                "limitations": [],
+            }
+        )
+        draft = self.intake()
+        job = self.client.post(
+            "/intake/" + draft["id"] + "/jobs",
+            json={"kind": "identify", "authorize_paid": True, "expected_revision": 1},
+        ).json()
+        state = self.client.get("/jobs/" + job["id"]).json()
+        self.assertEqual(state["status"], "completed")
+        self.assertEqual(len(state["result"]["catalog_candidates"]), 1)
+        candidate = state["result"]["catalog_candidates"][0]
+        self.assertEqual(candidate["claim"]["raw_set_code"], "ASCE")
+        self.assertEqual(candidate["claim"]["set_code"], "asc")
+        self.assertIn("catalog_guided_set_code_reread", candidate["issues"])
+        guidance = self.provider.resolve_set_codes.call_args.args[1]
+        self.assertEqual(guidance[0]["candidate_set_codes"], ["asc"])
+        self.assertEqual(state["estimated_cost_usd"], "0.0024")
+        self.assertFalse(candidate["approved"])
+
     def test_ai_name_only_or_internally_unsupported_claim_is_not_clickable(self):
         result = {
             "readings": [
@@ -662,6 +728,39 @@ class TallyBinderTests(unittest.TestCase):
                 "data:image/jpeg;base64,"
             )
         )
+        client.responses.create.return_value["output"][0]["content"][0]["text"] = json.dumps(
+            {
+                "resolutions": [
+                    {
+                        "reading_index": 0,
+                        "selected_set_code": "asc",
+                        "observation": "ASC is visible beside the collector number.",
+                    }
+                ],
+                "limitations": [],
+            }
+        )
+        provider.resolve_set_codes(
+            [self.app.state.media.file(self.front)],
+            [
+                {
+                    "reading_index": 0,
+                    "name": "Drampa",
+                    "collector_number": "176/217",
+                    "raw_set_code": "ASCE",
+                    "candidate_set_codes": ["asc"],
+                    "catalog_card_ids": [1],
+                }
+            ],
+        )
+        refined = client.responses.create.call_args.kwargs
+        self.assertEqual(
+            refined["max_output_tokens"], self.settings.refinement_max_output_tokens
+        )
+        self.assertEqual(refined["tools"], [])
+        refinement_prompt = refined["input"][0]["content"][0]["text"]
+        self.assertIn('"candidate_set_codes":["asc"]', refinement_prompt)
+        self.assertIn("must not be appended", refinement_prompt)
 
     def test_contradictory_ai_condition_is_withheld_and_preserved_for_review(self):
         self.provider.research.return_value = ai_response(
