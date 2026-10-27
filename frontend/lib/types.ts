@@ -29,6 +29,9 @@ export type Price = {
     source_url: string;
   }>;
   candidates?: unknown[];
+  required_fields?: Array<"language" | "finish">;
+  available_languages?: string[];
+  available_finishes?: Array<"holo" | "non-holo" | "reverse holo">;
 };
 export type Draft = {
   id: string;

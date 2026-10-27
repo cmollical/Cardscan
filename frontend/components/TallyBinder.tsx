@@ -545,11 +545,12 @@ export default function TallyBinder() {
   async function confirmIdentity() {
     await price();
   }
-  async function price() {
-    if (!current) return;
+  async function price(draft?: Draft) {
+    const target = draft || current;
+    if (!target) return;
     setNotice("");
     try {
-      const d = await sync(current);
+      const d = await sync(target);
       await remember({ ...d, stage: "pricing", pricing: null });
       go("pricing");
       setWorking(d.id, "Looking up exact SKU…");
@@ -569,8 +570,14 @@ export default function TallyBinder() {
     } catch (e) {
       setNotice(message(e));
     } finally {
-      if (current) setWorking(current.id, "");
+      setWorking(target.id, "");
     }
+  }
+  async function chooseVariant(changes: Partial<Fields>) {
+    if (!current) return;
+    const d = editFields(latest(current.id) || current, changes);
+    await remember(d);
+    await price(d);
   }
   async function startJob(kind: "identify" | "condition") {
     if (!current) return;
@@ -1329,6 +1336,66 @@ export default function TallyBinder() {
                   )}
                   {view === "pricing" && (
                     <>
+                      {current.pricing?.status ===
+                        "variant_selection_required" && (
+                        <section className="panel variant-resolver">
+                          <span className="eyebrow">ONE DETAIL LEFT</span>
+                          <h2>Choose the exact printing</h2>
+                          <p className="caption">
+                            This card has more than one priced catalog variant.
+                            Choose what you see in hand and we’ll load its{" "}
+                            {current.fields.condition} reference.
+                          </p>
+                          {!!current.pricing.available_languages?.length && (
+                            <fieldset>
+                              <legend>Language</legend>
+                              <div className="variant-options">
+                                {current.pricing.available_languages.map(
+                                  (language) => (
+                                    <button
+                                      key={language}
+                                      onClick={() =>
+                                        void chooseVariant({ language })
+                                      }
+                                      disabled={!!busy[current.id]}
+                                    >
+                                      <span>{language}</span>
+                                      <ChevronRight size={17} />
+                                    </button>
+                                  ),
+                                )}
+                              </div>
+                            </fieldset>
+                          )}
+                          {!!current.pricing.available_finishes?.length && (
+                            <fieldset>
+                              <legend>Finish</legend>
+                              <div className="variant-options">
+                                {current.pricing.available_finishes.map(
+                                  (finish) => (
+                                    <button
+                                      key={finish}
+                                      onClick={() =>
+                                        void chooseVariant({ finish })
+                                      }
+                                      disabled={!!busy[current.id]}
+                                    >
+                                      <span>
+                                        {finish === "holo"
+                                          ? "Holofoil"
+                                          : finish === "non-holo"
+                                            ? "Non-holo"
+                                            : "Reverse holo"}
+                                      </span>
+                                      <ChevronRight size={17} />
+                                    </button>
+                                  ),
+                                )}
+                              </div>
+                            </fieldset>
+                          )}
+                        </section>
+                      )}
                       <section className="price-panel">
                         <div className="section-heading">
                           <span className="eyebrow">
@@ -1352,6 +1419,9 @@ export default function TallyBinder() {
                               ? "Confirm the identity and condition to request an exact lookup."
                               : current.pricing.status === "ambiguous_match"
                                 ? "Printing information is incomplete or ambiguous. Choose a manual selling price."
+                                : current.pricing.status ===
+                                    "variant_selection_required"
+                                  ? "Choose the missing printing detail above to load the exact price."
                                 : current.pricing.status === "price_unavailable"
                                   ? "No reported price for this exact SKU. You can still set your own selling price."
                                   : "Provider-reported market reference, not an authenticated individual sale.")}

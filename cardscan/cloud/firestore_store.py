@@ -5,7 +5,7 @@ from io import StringIO
 import os
 from uuid import NAMESPACE_URL, uuid5
 
-from cardscan.app.store import AppError, Store, identity_key
+from cardscan.app.store import AppError, Store, identity_key, missing_variant_result
 from cardscan.local_pricing.database import utc
 from cardscan.local_pricing.importers import canonical_number
 
@@ -176,11 +176,7 @@ class FirestoreStore(Store):
         ):
             raise AppError("catalog_identity_mismatch", 422)
         if not fields["finish"] or not fields["language"]:
-            result = {
-                "status": "price_unavailable",
-                "market_price": None,
-                "warnings": ["Confirm language and finish to request an exact price."],
-            }
+            result = missing_variant_result(card, fields)
         else:
             result = self.lookup.lookup(
                 game=fields["game"],

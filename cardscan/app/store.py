@@ -39,6 +39,48 @@ def identity_key(fields):
     ).hexdigest()
 
 
+def missing_variant_result(card, fields):
+    """Describe only catalog-backed choices needed for an exact SKU lookup."""
+    variants = [
+        variant
+        for variant in card["variants"]
+        if variant["active"]
+        and variant["condition"] == fields["condition"]
+        and not bool(variant["graded"])
+        and (
+            not fields.get("edition")
+            or variant["edition"] in (None, fields["edition"])
+        )
+    ]
+    if fields.get("language"):
+        variants = [
+            variant
+            for variant in variants
+            if variant["language"] == fields["language"]
+        ]
+    if fields.get("finish"):
+        variants = [
+            variant for variant in variants if variant["finish"] == fields["finish"]
+        ]
+    required = [
+        key for key in ("language", "finish") if not fields.get(key)
+    ]
+    choices = {
+        ("available_finishes" if key == "finish" else "available_languages"): sorted(
+            {variant[key] for variant in variants if variant[key] is not None}
+        )
+        for key in required
+    }
+    readable = " and ".join(required)
+    return {
+        "status": "variant_selection_required",
+        "market_price": None,
+        "required_fields": required,
+        "warnings": [f"Choose {readable} to request an exact price."],
+        **choices,
+    }
+
+
 class Store:
     def __init__(self, db, owner=OWNER):
         self.db, self._owner = db, owner
@@ -181,11 +223,7 @@ class Store:
         ):
             raise AppError("catalog_identity_mismatch", 422)
         if not f["finish"] or not f["language"]:
-            result = {
-                "status": "price_unavailable",
-                "market_price": None,
-                "warnings": ["Confirm language and finish to request an exact price."],
-            }
+            result = missing_variant_result(card, f)
         else:
             result = self.lookup.lookup(
                 game=f["game"],

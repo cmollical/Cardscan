@@ -236,6 +236,32 @@ class TallyBinderTests(unittest.TestCase):
         self.assertIsNone(result.json()["listing"]["market_reference"])
         self.assertEqual(result.json()["listing"]["listing_price"], "0.10")
 
+    def test_missing_finish_returns_catalog_backed_choices(self):
+        with self.db.transaction() as connection:
+            row = dict(
+                connection.execute(
+                    "SELECT * FROM skus WHERE provider_sku_id='2999653'"
+                ).fetchone()
+            )
+            row.pop("id")
+            row["provider_sku_id"] = "finish-choice-test"
+            row["finish"] = "reverse holo"
+            connection.execute(
+                "INSERT INTO skus(" + ",".join(row) + ") VALUES(" +
+                ",".join("?" for _ in row) + ")",
+                tuple(row.values()),
+            )
+        draft = self.intake({**FIELDS, "finish": None})
+        result = self.client.post(
+            "/intake/" + draft["id"] + "/price", params={"revision": 1}
+        ).json()
+        self.assertEqual(result["status"], "variant_selection_required")
+        self.assertEqual(result["required_fields"], ["finish"])
+        self.assertEqual(result["available_finishes"], ["holo", "reverse holo"])
+        self.assertEqual(
+            result["warnings"], ["Choose finish to request an exact price."]
+        )
+
     def test_approved_listing_publishes_with_audited_result(self):
         d = self.intake()
         saved = self.client.post("/inventory", json=self.listing(d)).json()
