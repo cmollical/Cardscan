@@ -551,6 +551,61 @@ class TallyBinderTests(unittest.TestCase):
         self.assertEqual(state["estimated_cost_usd"], "0.0024")
         self.assertFalse(candidate["approved"])
 
+    def test_ai_matches_zero_padded_visible_collector_number(self):
+        with self.db.transaction() as connection:
+            game_id = connection.execute(
+                "SELECT id FROM games WHERE name='pokemon'"
+            ).fetchone()[0]
+            set_id = connection.execute(
+                "INSERT INTO sets(game_id,name) VALUES(?,?)",
+                (game_id, "ME04: Chaos Rising"),
+            ).lastrowid
+            connection.execute(
+                "INSERT INTO set_aliases(set_id,alias,provenance) VALUES(?,?,?)",
+                (set_id, "cri", "synthetic provider metadata"),
+            )
+            connection.execute(
+                "INSERT INTO products(game_id,set_id,name,collector_number,tcgplayer_product_id) VALUES(?,?,?,?,?)",
+                (game_id, set_id, "Flaaffy", "28/86", "9999997"),
+            )
+        self.provider.research.return_value = ai_response(
+            {
+                "readings": [
+                    dict(
+                        name="Flaaffy",
+                        set_code="CRI",
+                        collector_number="028/086",
+                        language="english",
+                        edition=None,
+                        finish=None,
+                        rarity=None,
+                    )
+                ],
+                "observations": [
+                    "Card name Flaaffy is visible at the top.",
+                    "Collector line 028/086 and set code CRI are visible at the bottom.",
+                ],
+                "limitations": [],
+                "recommended_condition": "LP",
+                "condition_observations": ["Synthetic edge wear."],
+                "condition_limitations": [],
+                "additional_photos_helpful": False,
+            }
+        )
+        draft = self.intake()
+        job = self.client.post(
+            "/intake/" + draft["id"] + "/jobs",
+            json={"kind": "identify", "authorize_paid": True, "expected_revision": 1},
+        ).json()
+        state = self.client.get("/jobs/" + job["id"]).json()
+        self.assertEqual(state["status"], "completed")
+        self.assertEqual(len(state["result"]["catalog_candidates"]), 1)
+        candidate = state["result"]["catalog_candidates"][0]
+        self.assertEqual(candidate["card"]["name"], "Flaaffy")
+        self.assertEqual(candidate["card"]["collector_number"], "28/86")
+        self.assertEqual(candidate["claim"]["collector_number"], "028/086")
+        self.assertEqual(state["result"]["unmatched_claims"], [])
+
     def test_ai_name_only_or_internally_unsupported_claim_is_not_clickable(self):
         result = {
             "readings": [

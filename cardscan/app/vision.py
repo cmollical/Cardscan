@@ -283,6 +283,19 @@ def withhold_contradictory_condition(
     return result
 
 
+def supports_collector_number(evidence, number):
+    """Compare visible collector numbers after removing display-only zero padding."""
+    expected = canonical_number(number)
+    return bool(expected) and any(
+        canonical_number(value) == expected
+        for value in re.findall(
+            r"(?<![A-Za-z0-9])([A-Za-z]*\d+/[A-Za-z]*\d+)(?![A-Za-z0-9])",
+            evidence,
+            re.I,
+        )
+    )
+
+
 class Jobs:
     def __init__(self, store, media, settings=None, provider=None):
         self.store, self.db, self.media = store, store.db, media
@@ -541,11 +554,7 @@ class Jobs:
                 or not number
                 or not full_number(number)
                 or name.casefold() not in evidence.casefold()
-                or not re.search(
-                    rf"(?<![A-Za-z0-9]){re.escape(number)}(?![A-Za-z0-9])",
-                    evidence,
-                    re.I,
-                )
+                or not supports_collector_number(evidence, number)
             ):
                 continue
             cards = self.store.lookup.search(name, limit=100, number=number)["items"]
@@ -642,11 +651,7 @@ class Jobs:
                 issues.append("visible_name_full_number_and_set_code_required")
             if name and name.casefold() not in evidence.casefold():
                 issues.append("name_not_supported_by_observation")
-            if number and not re.search(
-                rf"(?<![A-Za-z0-9]){re.escape(number)}(?![A-Za-z0-9])",
-                evidence,
-                re.I,
-            ):
+            if number and not supports_collector_number(evidence, number):
                 issues.append("collector_number_not_supported_by_observation")
             if set_label and not re.search(
                 rf"(?<![A-Za-z0-9]){re.escape(set_label)}(?![A-Za-z0-9])",
