@@ -90,6 +90,8 @@ type Job = {
     recommended_condition?: Condition | null;
     observations: string[];
     limitations: string[];
+    condition_observations?: string[];
+    condition_limitations?: string[];
     catalog_candidates?: Array<{
       claim: Partial<Fields>;
       card: Card;
@@ -325,7 +327,20 @@ export default function TallyBinder() {
           !autoPickedJobs.current.has(data.id)
         ) {
           autoPickedJobs.current.add(data.id);
-          void pick(candidates[0].card, true);
+          void pick(
+            candidates[0].card,
+            true,
+            data.result?.recommended_condition || null,
+          );
+        } else if (
+          data.status === "completed" &&
+          data.result?.recommended_condition &&
+          !data.stale_for_intake &&
+          !draft.fields.condition &&
+          !autoPickedJobs.current.has(data.id + ":condition")
+        ) {
+          autoPickedJobs.current.add(data.id + ":condition");
+          void edit({ condition: data.result.recommended_condition });
         }
         if (data.status === "queued" || data.status === "running")
           timer = setTimeout(() => void poll(), 1500);
@@ -465,7 +480,11 @@ export default function TallyBinder() {
     const d = editFields(latest(current.id) || current, changes);
     await remember(d);
   }
-  async function pick(card: Card, automatic = false) {
+  async function pick(
+    card: Card,
+    automatic = false,
+    recommendedCondition: Condition | null = null,
+  ) {
     if (!current) return;
     setWorking(current.id, "Loading printing…");
     try {
@@ -475,7 +494,8 @@ export default function TallyBinder() {
         const values = new Set(variants.map((v) => v[key]));
         return values.size === 1 ? [...values][0] : null;
       };
-      const d = editFields(latest(current.id) || current, {
+      const draft = latest(current.id) || current;
+      const d = editFields(draft, {
         product_id: Number(full.tcgplayer_product_id),
         name: full.name,
         set_name: full.set_name,
@@ -486,13 +506,14 @@ export default function TallyBinder() {
         rarity: full.metadata_json
           ? JSON.parse(full.metadata_json).rarity || null
           : null,
+        condition: draft.fields.condition || recommendedCondition,
       });
       await remember(d);
       setResults([]);
       setSearch("");
       if (automatic)
         setNotice(
-          "Exact catalog match filled in below. Review the details and confirm the identity.",
+          "Exact catalog match and photo-based condition filled in below. Review both before confirming.",
         );
     } catch (e) {
       setNotice(message(e));
@@ -520,14 +541,7 @@ export default function TallyBinder() {
     }
   }
   async function confirmIdentity() {
-    if (!current) return;
-    try {
-      const d = await sync(current);
-      await remember({ ...d, stage: "condition" });
-      go("condition");
-    } catch (e) {
-      setNotice(message(e));
-    }
+    await price();
   }
   async function price() {
     if (!current) return;
@@ -698,7 +712,7 @@ export default function TallyBinder() {
       return;
     }
     setSelected(d.id);
-    go(d.stage);
+    go(d.stage === "condition" ? "identity" : d.stage);
     setNotice("");
   }
   const step = (stage: Exclude<Draft["stage"], "capture">) => {
@@ -1010,7 +1024,7 @@ export default function TallyBinder() {
                   </div>
                   <nav className="steps" aria-label="Review steps">
                     {(
-                      ["identity", "condition", "pricing", "listing"] as const
+                      ["identity", "pricing", "listing"] as const
                     ).map((s, i) => (
                       <button
                         key={s}
@@ -1020,10 +1034,8 @@ export default function TallyBinder() {
                         <b>{i + 1}</b>
                         <span>
                           {s === "identity"
-                            ? "Identify"
-                            : s === "condition"
-                              ? "Condition"
-                              : s === "pricing"
+                            ? "Review"
+                            : s === "pricing"
                                 ? "Price"
                                 : "Listing"}
                         </span>
@@ -1115,7 +1127,7 @@ export default function TallyBinder() {
                         <span>
                           <strong>
                             {config?.ai_enabled
-                              ? "Research the front photo with AI"
+                              ? "Identify & assess condition with AI"
                               : "AI is optional"}
                           </strong>
                           <small>
@@ -1130,7 +1142,15 @@ export default function TallyBinder() {
                         <JobPanel
                           job={job}
                           selectedProductId={current.fields.product_id}
-                          onPick={(c) => void pick(c)}
+                          selectedCondition={current.fields.condition}
+                          onPick={(c) =>
+                            void pick(
+                              c,
+                              false,
+                              job.result?.recommended_condition || null,
+                            )
+                          }
+                          onCondition={(c) => void edit({ condition: c })}
                         />
                       )}
                       <section className="panel">
@@ -1173,20 +1193,59 @@ export default function TallyBinder() {
                           {field("Rarity (optional)", "rarity")}
                         </div>
                         <p className="caption">
-                          Unknown attributes stay unspecified. AI and catalog
-                          candidates are never automatically approved.
+                          Unknown attributes stay unspecified. AI suggestions
+                          are filled for review, never finally approved for you.
                         </p>
+                      </section>
+                      <div className="condition-photos">
+                        <Photo
+                          blob={current.front}
+                          id={current.front_id}
+                          alt="Front photo"
+                        />
+                        <Photo
+                          blob={current.back}
+                          id={current.back_id}
+                          alt="Back photo"
+                        />
+                      </div>
+                      <section className="panel">
+                        <h2>Confirm the condition</h2>
+                        <p className="caption">
+                          The AI recommendation is preselected when available.
+                          Check corners, edges, whitening, scratches and creases
+                          yourself before continuing.
+                        </p>
+                        <div className="condition-options">
+                          {conditions.map((c) => (
+                            <button
+                              key={c}
+                              aria-pressed={current.fields.condition === c}
+                              className={
+                                current.fields.condition === c ? "selected" : ""
+                              }
+                              onClick={() => void edit({ condition: c })}
+                            >
+                              <b>{c}</b>
+                              <span>{labels[c]}</span>
+                              {current.fields.condition === c && (
+                                <Check size={17} />
+                              )}
+                            </button>
+                          ))}
+                        </div>
                       </section>
                       <button
                         className="primary"
                         disabled={
                           !current.fields.product_id ||
                           !current.fields.language ||
+                          !current.fields.condition ||
                           !!busy[current.id]
                         }
                         onClick={() => void confirmIdentity()}
                       >
-                        Confirm identity <ArrowRight size={18} />
+                        Confirm card & get price <ArrowRight size={18} />
                       </button>
                     </>
                   )}
@@ -1882,11 +1941,13 @@ function Empty({
 function JobPanel({
   job,
   selectedProductId,
+  selectedCondition,
   onPick,
   onCondition,
 }: {
   job: Job;
   selectedProductId?: number | null;
+  selectedCondition?: Condition | null;
   onPick?: (c: Card) => void;
   onCondition?: (c: Condition) => void;
 }) {
@@ -1950,7 +2011,9 @@ function JobPanel({
               className="secondary"
               onClick={() => onCondition?.(job.result!.recommended_condition!)}
             >
-              Use {labels[job.result.recommended_condition]} recommendation
+              {selectedCondition === job.result.recommended_condition
+                ? `${labels[job.result.recommended_condition]} filled below`
+                : `Use ${labels[job.result.recommended_condition]} recommendation`}
             </button>
           )}
           <ul>
@@ -1960,6 +2023,21 @@ function JobPanel({
           </ul>
           {job.result?.limitations.map((s, i) => (
             <p key={i} className="caption">
+              {s}
+            </p>
+          ))}
+          {job.result?.condition_observations?.length ? (
+            <>
+              <h3>Condition review</h3>
+              <ul>
+                {job.result.condition_observations.map((s, i) => (
+                  <li key={i}>{s}</li>
+                ))}
+              </ul>
+            </>
+          ) : null}
+          {job.result?.condition_limitations?.map((s, i) => (
+            <p key={`condition-${i}`} className="caption">
               {s}
             </p>
           ))}

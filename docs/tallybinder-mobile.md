@@ -94,7 +94,10 @@ Never place OpenAI credentials in `NEXT_PUBLIC_*` variables or frontend files.
 AI settings do not authorize calls in this development assignment. No paid calls
 were executed. Deployment operators must deliberately enable AI, supply credentials
 and confirm each request in the app. Manual identification and condition selection
-work without a key. Identification sends the front photo; condition sends both.
+work without a key. The combined identification review sends the front and back
+photos once, returning structured printing evidence and a preliminary condition
+recommendation in the same paid request. Both remain editable and require one
+explicit human confirmation before pricing.
 No web search tools are enabled. Requests use structured outputs and `store=false`;
 this does not claim zero retention under all provider policies.
 
@@ -154,7 +157,7 @@ administrative synchronization endpoint was added.
 | GET | `/intake` | Paginated durable intake |
 | PUT / GET | `/intake/{id}` | Revision-checked draft / current state |
 | POST | `/intake/{id}/price?revision=N` | Local exact lookup, never live provider retrieval |
-| POST | `/intake/{id}/jobs` | Explicitly authorized identification/condition job |
+| POST | `/intake/{id}/jobs` | Explicitly authorized combined identity/condition review (legacy condition jobs remain readable) |
 | GET | `/jobs/{id}` | Result, usage, cost, status and stale-result indicator |
 | POST / GET | `/inventory` | Approved listing creation / paginated search |
 | GET / PUT / DELETE | `/inventory/{id}` | Read, revision-checked edit, confirmed soft delete |

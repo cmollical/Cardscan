@@ -86,6 +86,10 @@ class CloudDeploymentTests(unittest.TestCase):
                     "readings": [],
                     "observations": [],
                     "limitations": ["Synthetic fixture."],
+                    "recommended_condition": "LP",
+                    "condition_observations": ["Synthetic edge wear."],
+                    "condition_limitations": ["Synthetic photos."],
+                    "additional_photos_helpful": False,
                 }
             ),
             "usage": {"input_tokens": 1000, "output_tokens": 100},

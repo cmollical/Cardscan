@@ -4,7 +4,6 @@ from dataclasses import asdict
 from decimal import Decimal
 import json
 import os
-import re
 from urllib.parse import quote
 from uuid import NAMESPACE_URL, uuid5
 
@@ -23,6 +22,7 @@ from cardscan.app.vision import (
     checked_usage,
     combined_usage,
     usage_cost,
+    withhold_contradictory_condition,
 )
 from cardscan.local_pricing.database import utc
 
@@ -146,7 +146,7 @@ class FirestoreJobs:
         intake = self.store.intake(id)
         if intake["revision"] != value.expected_revision:
             raise AppError("intake_revision_conflict", 409)
-        if not intake["front_id"] or (value.kind == "condition" and not intake["back_id"]):
+        if not intake["front_id"] or not intake["back_id"]:
             raise AppError("required_photos_missing", 422)
         reserve = self.settings.reserve(value.kind)
         if reserve > Decimal(self.settings.per_job_limit):
@@ -155,7 +155,7 @@ class FirestoreJobs:
         job_id = str(
             uuid5(
                 NAMESPACE_URL,
-                f"tallybinder:{self.store.owner}:{id}:{value.kind}:{intake['revision']}",
+                f"tallybinder:{self.store.owner}:{id}:{value.kind}:combined-review-v1:{intake['revision']}",
             )
         )
         ref = self._jobs().document(job_id)
@@ -232,9 +232,10 @@ class FirestoreJobs:
                 intake = self.store.intake(job["intake_id"])
                 if intake["revision"] != job["intake_revision"]:
                     raise AppError("draft_changed_before_job_started", 409)
-                paths = [self.media.file(intake["front_id"])]
-                if job["kind"] == "condition":
-                    paths.append(self.media.file(intake["back_id"]))
+                paths = [
+                    self.media.file(intake["front_id"]),
+                    self.media.file(intake["back_id"]),
+                ]
                 settings = VisionSettings(**job["settings"])
                 if settings.model != job["model"] or settings.reserve(job["kind"]) > Decimal(job["reserved_usd"]):
                     raise AppError("job_settings_reservation_mismatch", 409)
@@ -255,11 +256,14 @@ class FirestoreJobs:
                 result = schema.model_validate_json(response["result_text"]).model_dump()
                 if job["kind"] == "identify":
                     result = Jobs.cross_reference(self, result)
+                    result = withhold_contradictory_condition(
+                        result, "condition_observations", "condition_limitations"
+                    )
                     guidance = Jobs.catalog_guidance(self, result)
                     if not result["catalog_candidates"] and guidance:
                         usage = None
                         cost = None
-                        refinement = provider.resolve_set_codes(paths, guidance)
+                        refinement = provider.resolve_set_codes(paths[:1], guidance)
                         usages.append(
                             checked_usage(
                                 refinement,
@@ -276,14 +280,8 @@ class FirestoreJobs:
                             self, result, guidance, resolution
                         )
                         result = Jobs.cross_reference(self, result)
-                elif result["recommended_condition"] and re.search(
-                    r"\b(?:condition (?:is |remains )?unknown|cannot (?:determine|assess) (?:the )?condition|insufficient (?:photo|image)(?:s| evidence)? to (?:determine|assess) (?:the )?condition)\b",
-                    " ".join(result["observations"] + result["limitations"]),
-                    re.I,
-                ):
-                    result["model_proposed_condition"] = result["recommended_condition"]
-                    result["recommended_condition"] = None
-                    result["limitations"].append("Contradictory condition proposal withheld; manual inspection required.")
+                else:
+                    result = withhold_contradictory_condition(result)
                 result["provenance"] = "AI photo interpretation; human confirmation required"
                 result["limitations"] += ["Phone photos may miss surface damage, dents and other defects."]
                 ref.update(

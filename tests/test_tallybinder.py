@@ -457,6 +457,10 @@ class TallyBinderTests(unittest.TestCase):
                 "Collector number 4/102 and set code base set are visible at the bottom.",
             ],
             "limitations": ["Synthetic test, not real identification."],
+            "recommended_condition": "LP",
+            "condition_observations": ["Synthetic edge wear."],
+            "condition_limitations": ["Synthetic photos."],
+            "additional_photos_helpful": False,
         }
         self.provider.research.return_value = ai_response(result)
         d = self.intake()
@@ -471,6 +475,8 @@ class TallyBinderTests(unittest.TestCase):
         self.assertTrue(state["result"]["catalog_candidates"][0]["issues"])
         self.assertEqual(self.client.get("/intake/" + d["id"]).json()["fields"], FIELDS)
         self.assertEqual(self.provider.research.call_count, 1)
+        self.assertEqual(len(self.provider.research.call_args.args[1]), 2)
+        self.assertEqual(state["result"]["recommended_condition"], "LP")
         self.assertEqual(state["estimated_cost_usd"], "0.0012")
         self.assertEqual(state["intake_estimated_cost_usd"], "0.0012")
         self.assertTrue(state["intake_cost_complete"])
@@ -510,6 +516,10 @@ class TallyBinderTests(unittest.TestCase):
                     "The bottom collector line shows 176/217 beside ASCE.",
                 ],
                 "limitations": [],
+                "recommended_condition": "LP",
+                "condition_observations": ["Synthetic edge wear."],
+                "condition_limitations": [],
+                "additional_photos_helpful": False,
             }
         )
         self.provider.resolve_set_codes.return_value = ai_response(
@@ -560,6 +570,10 @@ class TallyBinderTests(unittest.TestCase):
                 "Set code appears to be ASC.",
             ],
             "limitations": [],
+            "recommended_condition": None,
+            "condition_observations": [],
+            "condition_limitations": ["Synthetic photo is insufficient."],
+            "additional_photos_helpful": True,
         }
         self.provider.research.return_value = ai_response(result)
         draft = self.intake()
@@ -707,6 +721,10 @@ class TallyBinderTests(unittest.TestCase):
                                     "readings": [],
                                     "observations": [],
                                     "limitations": [],
+                                    "recommended_condition": None,
+                                    "condition_observations": [],
+                                    "condition_limitations": [],
+                                    "additional_photos_helpful": True,
                                 }
                             ),
                         }

@@ -18,20 +18,21 @@ export function Photo({
   const [src, setSrc] = useState("");
   useEffect(() => {
     let alive = true;
-    let url = "";
     setSrc("");
     const load = async () => {
       try {
         const data = blob || (id ? await download("/media/" + id) : null);
         if (!data || !alive) return;
-        url = URL.createObjectURL(data);
-        setSrc(url);
+        const reader = new FileReader();
+        reader.onload = () => {
+          if (alive && typeof reader.result === "string") setSrc(reader.result);
+        };
+        reader.readAsDataURL(data);
       } catch {}
     };
     void load();
     return () => {
       alive = false;
-      if (url) URL.revokeObjectURL(url);
     };
   }, [blob, id]);
   return src ? (

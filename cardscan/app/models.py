@@ -84,6 +84,10 @@ class Identification(Strict):
     readings: list[VisibleIdentityReading] = Field(max_length=5)
     observations: list[str] = Field(max_length=12)
     limitations: list[str] = Field(max_length=12)
+    recommended_condition: Condition | None
+    condition_observations: list[str] = Field(max_length=15)
+    condition_limitations: list[str] = Field(max_length=12)
+    additional_photos_helpful: bool
 
 
 class SetCodeResolution(Strict):
