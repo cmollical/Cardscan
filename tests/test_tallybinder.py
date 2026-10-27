@@ -621,7 +621,7 @@ class TallyBinderTests(unittest.TestCase):
             )
             connection.execute(
                 "INSERT INTO products(game_id,set_id,name,collector_number,tcgplayer_product_id) VALUES(?,?,?,?,?)",
-                (game_id, set_id, "Flaaffy", "28/86", "9999997"),
+                (game_id, set_id, "Flaaffy - 028/086", "28/86", "9999997"),
             )
         self.provider.research.return_value = ai_response(
             {

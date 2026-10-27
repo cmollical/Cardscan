@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 import json
 
 from .database import utc
-from .importers import canonical_number
+from .importers import canonical_number, canonical_product_name
 
 
 def page(rows):
@@ -29,6 +29,8 @@ class Lookup:
             where=' WHERE '+' AND '.join(clauses)
             total=c.execute('SELECT COUNT(*) FROM products p JOIN games g ON g.id=p.game_id '+where,values).fetchone()[0]
             items=page(c.execute('SELECT p.*,s.name AS set_name FROM products p JOIN games g ON g.id=p.game_id JOIN sets s ON s.id=p.set_id '+where+' ORDER BY p.id LIMIT ? OFFSET ?',(*values,limit,offset)))
+            for item in items:
+                item['name']=canonical_product_name(item['name'],item['collector_number'])
             return {'items':items,'total':total,'limit':limit,'offset':offset,'match_policy':'catalog_candidates_not_approved_identification'}
 
     def product(self,tcgplayer_product_id):
@@ -41,6 +43,7 @@ class Lookup:
             r=c.execute('SELECT p.*,s.name AS set_name,g.name AS game FROM products p JOIN sets s ON s.id=p.set_id JOIN games g ON g.id=p.game_id WHERE p.id=?',(card_id,)).fetchone()
             if not r:return None
             result=dict(r)
+            result['name']=canonical_product_name(result['name'],result['collector_number'])
             result['variants']=page(c.execute('SELECT * FROM skus WHERE product_id=? ORDER BY provider,provider_sku_id',(card_id,)))
             result['generic_references']=page(c.execute("""SELECT * FROM observations WHERE id IN (
                 SELECT id FROM (SELECT id,ROW_NUMBER() OVER (PARTITION BY provider,subtype ORDER BY snapshot_date DESC,retrieved_at DESC,id DESC) rank

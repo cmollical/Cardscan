@@ -14,6 +14,15 @@ def canonical_number(raw):
     return f'{match[1].upper()}{int(match[2])}/{match[3].upper()}{int(match[4])}' if match else raw or None
 
 
+def canonical_product_name(raw, number):
+    """Remove a provider-added collector suffix only when it matches the card."""
+    name = (raw or '').strip()
+    match = re.fullmatch(r'(.+?)\s+-\s+([A-Za-z]*\d+/[A-Za-z]*\d+)', name)
+    if match and canonical_number(match[2]) == canonical_number(number):
+        return match[1].strip()
+    return name
+
+
 def full_number(raw):
     return bool(re.fullmatch(r'[A-Za-z]*\d+/[A-Za-z]*\d+',raw or ''))
 
@@ -98,10 +107,11 @@ class Importer:
                 seen.add(source_id)
                 if provider=='tcgcsv' and (p.get('groupId')!=int(source_set) or p.get('categoryId')!=int(category)):
                     raise ValueError('Product category/group mismatch')
-                name=p.get('name')
-                if not isinstance(name,str) or not name.strip():raise ValueError('Product name missing')
+                provider_name=p.get('name')
+                if not isinstance(provider_name,str) or not provider_name.strip():raise ValueError('Product name missing')
                 nums=[x.get('value') for x in p.get('extendedData',[]) if x.get('name')=='Number']
                 raw_number=(nums[0] if len(nums)==1 else None) if provider=='tcgcsv' else p.get('number')
+                name=canonical_product_name(provider_name,raw_number)
                 old=c.execute('SELECT * FROM products WHERE tcgplayer_product_id=?',(source_id,)).fetchone()
                 number=canonical_number(raw_number)
                 if old and (old['set_id']!=sid or (number and old['collector_number'] and number!=old['collector_number'])):
@@ -111,7 +121,7 @@ class Importer:
                     c.execute('UPDATE products SET name=?,collector_number=COALESCE(?,collector_number),raw_collector_number=COALESCE(?,raw_collector_number) WHERE id=?',(name,number,raw_number,pid))
                 else:
                     pid=c.execute('INSERT INTO products(game_id,set_id,name,collector_number,raw_collector_number,tcgplayer_product_id,metadata_json) VALUES(?,?,?,?,?,?,?)',
-                                  (gid,sid,name,number,raw_number,source_id,json_text({'rarity':p.get('rarity'),'language_scope':'unknown'}))).lastrowid
+                                  (gid,sid,name,number,raw_number,source_id,json_text({'rarity':p.get('rarity'),'language_scope':'unknown','provider_name':provider_name}))).lastrowid
                 products[source_id]=(pid,p,i)
                 c.execute('INSERT INTO product_sources VALUES(?,?,?,?,?) ON CONFLICT(provider,source_product_id) DO UPDATE SET document_id=excluded.document_id,locator=excluded.locator',
                           (provider,source_id,pid,docids[suffixes[0]],f'/{"results" if provider=="tcgcsv" else "products"}/{i}'))
