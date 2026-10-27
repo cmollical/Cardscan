@@ -2,7 +2,9 @@
 
 import json
 import os
+from datetime import date
 from pathlib import Path
+import re
 import tempfile
 
 from cardscan.local_pricing.database import Database
@@ -34,10 +36,24 @@ def discovered_scopes(db, catalog, *, limit=14, expansion=10):
         for row in db.sync_status()
         if row["last_success_at"]
     }
-    rows = [row for row in catalog["sets"] if row.get("providers")]
+    def release_date(row):
+        raw = row.get("published_on") or ""
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}(?:T00:00:00(?:\.0+)?Z?)?", raw):
+            return None
+        try:
+            value = date.fromisoformat(raw[:10])
+        except ValueError:
+            return None
+        return value if value <= date.today() else None
+
+    rows = [
+        row
+        for row in catalog["sets"]
+        if row.get("providers") and release_date(row) is not None
+    ]
 
     def newest(row):
-        return (row.get("published_on") or "", row["group"])
+        return (release_date(row), row["group"])
 
     selected = []
     # Split expansion capacity across language catalogs, then use any spare slots.
@@ -66,6 +82,23 @@ def discovered_scopes(db, catalog, *, limit=14, expansion=10):
             break
         selected.append(row)
     return selected
+
+
+def require_publishable_sync(result, scopes):
+    if result.get("status") == "success":
+        return result
+    viable = {
+        scope: any(
+            item.get("status") in {"success", "checkpoint_skipped"}
+            for item in result.get("sets", [])
+            if (item.get("category"), item.get("source_set_id")) == scope
+        )
+        for scope in scopes
+    }
+    if not viable or not all(viable.values()):
+        raise RuntimeError("Pricing synchronization did not complete successfully")
+    result["status"] = "degraded_success"
+    return result
 
 
 def execute(bucket=None):
@@ -105,8 +138,7 @@ def execute(bucket=None):
             resume=True,
             provider_scopes=provider_scopes,
         )
-        if result.get("status") != "success":
-            raise RuntimeError("Pricing synchronization did not complete successfully")
+        result = require_publishable_sync(result, scopes)
         with db.connect() as connection:
             connection.execute("PRAGMA wal_checkpoint(TRUNCATE)")
         health = db.health()

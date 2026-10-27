@@ -441,11 +441,11 @@ class TallyBinderTests(unittest.TestCase):
 
     def test_mock_ai_identification_cross_references_catalog_but_never_approves(self):
         result = {
-            "candidates": [
+            "readings": [
                 dict(
                     name="Charizard",
-                    set_name="base set",
-                    number="4/102",
+                    set_code="base set",
+                    collector_number="4/102",
                     language="english",
                     edition="first edition",
                     finish="holo",
@@ -477,11 +477,11 @@ class TallyBinderTests(unittest.TestCase):
 
     def test_ai_name_only_or_internally_unsupported_claim_is_not_clickable(self):
         result = {
-            "candidates": [
+            "readings": [
                 dict(
                     name="Drampa",
-                    set_name="Obsidian Flames",
-                    number="161/197",
+                    set_code="Obsidian Flames",
+                    collector_number="161/197",
                     language="english",
                     edition=None,
                     finish=None,
@@ -638,7 +638,7 @@ class TallyBinderTests(unittest.TestCase):
                             "type": "output_text",
                             "text": json.dumps(
                                 {
-                                    "candidates": [],
+                                    "readings": [],
                                     "observations": [],
                                     "limitations": [],
                                 }

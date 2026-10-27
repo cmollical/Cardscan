@@ -1,11 +1,17 @@
 import os
+from datetime import date, timedelta
 from pathlib import Path
 from shutil import copyfile
 from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
 
-from cardscan.cloud.daily import configured_scopes, discovered_scopes, execute
+from cardscan.cloud.daily import (
+    configured_scopes,
+    discovered_scopes,
+    execute,
+    require_publishable_sync,
+)
 from cardscan.cloud.snapshot import PricingSnapshot
 from cardscan.local_pricing.cli import seed
 from cardscan.local_pricing.database import Database
@@ -104,7 +110,7 @@ class ServerlessTests(unittest.TestCase):
                         "category": category,
                         "group": category * 1000 + index,
                         "name": f"Catalog set {category}-{index}",
-                        "published_on": f"2026-{index + 1:02d}-01",
+                        "published_on": str(date.today() - timedelta(days=index * 30)),
                         "providers": ["tcgcsv", "tcgtracking"],
                     }
                     for category in (3, 85)
@@ -120,6 +126,50 @@ class ServerlessTests(unittest.TestCase):
                     [row["published_on"] for row in selected if row["category"] == 3],
                     reverse=True,
                 ),
+            )
+            catalog["sets"].extend(
+                [
+                    {
+                        "category": 3,
+                        "group": 999001,
+                        "name": "Undated bucket",
+                        "published_on": "2026-10-26T20:00:06.0248517Z",
+                        "providers": ["tcgcsv", "tcgtracking"],
+                    },
+                    {
+                        "category": 3,
+                        "group": 999002,
+                        "name": "Future set",
+                        "published_on": str(date.today() + timedelta(days=1)),
+                        "providers": ["tcgcsv", "tcgtracking"],
+                    },
+                ]
+            )
+            selected = discovered_scopes(db, catalog, limit=10, expansion=10)
+            self.assertNotIn(999001, {row["group"] for row in selected})
+            self.assertNotIn(999002, {row["group"] for row in selected})
+
+    def test_partial_provider_failure_requires_an_exact_set_success(self):
+        result = require_publishable_sync(
+            {
+                "status": "partial_failure",
+                "sets": [
+                    {"category": 3, "source_set_id": 1, "status": "success"},
+                    {"category": 3, "source_set_id": 1, "status": "failed"},
+                ],
+            },
+            [(3, 1)],
+        )
+        self.assertEqual(result["status"], "degraded_success")
+        with self.assertRaises(RuntimeError):
+            require_publishable_sync(
+                {
+                    "status": "partial_failure",
+                    "sets": [
+                        {"category": 3, "source_set_id": 1, "status": "failed"}
+                    ],
+                },
+                [(3, 1)],
             )
 
 

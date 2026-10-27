@@ -120,7 +120,7 @@ class ServerlessVisionTests(unittest.TestCase):
             provider = Mock()
             provider.research.return_value = {
                 "result_text": json.dumps(
-                    {"candidates": [], "observations": [], "limitations": []}
+                    {"readings": [], "observations": [], "limitations": []}
                 ),
                 "usage": {"input_tokens": 1000, "output_tokens": 100},
             }

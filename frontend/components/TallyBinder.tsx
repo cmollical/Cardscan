@@ -92,7 +92,7 @@ type Job = {
       issues: string[];
     }>;
     unmatched_claims?: Array<{
-      claim: Partial<Fields>;
+      claim: Record<string, string | null>;
       issues: string[];
     }>;
   };

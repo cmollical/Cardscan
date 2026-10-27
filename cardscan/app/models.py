@@ -70,10 +70,10 @@ class JobWrite(Strict):
     expected_revision: int = Field(ge=1)
 
 
-class SeenIdentity(Strict):
+class VisibleIdentityReading(Strict):
     name: str | None
-    set_name: str | None
-    number: str | None
+    collector_number: str | None
+    set_code: str | None
     language: str | None
     edition: str | None
     finish: str | None
@@ -81,7 +81,7 @@ class SeenIdentity(Strict):
 
 
 class Identification(Strict):
-    candidates: list[SeenIdentity] = Field(max_length=5)
+    readings: list[VisibleIdentityReading] = Field(max_length=5)
     observations: list[str] = Field(max_length=12)
     limitations: list[str] = Field(max_length=12)
 

@@ -83,7 +83,7 @@ class CloudDeploymentTests(unittest.TestCase):
         self.provider.research.return_value = {
             "result_text": json.dumps(
                 {
-                    "candidates": [],
+                    "readings": [],
                     "observations": [],
                     "limitations": ["Synthetic fixture."],
                 }
