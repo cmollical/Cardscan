@@ -98,11 +98,11 @@ class DatabaseTests(unittest.TestCase):
         r=self.lookup.lookup(game='pokemon',set_name='fossil',number='5/62',language='english',edition=None,finish='holo',condition='LP',graded=False,now=NOW)
         self.assertEqual(r['status'],'ambiguous_match');self.assertEqual(len(r['candidates']),2)
 
-    def test_missing_modern_edition_not_copied_from_request(self):
+    def test_unique_modern_sku_with_non_applicable_edition_is_exact(self):
         r=self.lookup.lookup(game='pokemon',set_name='151',number='199/165',language='english',edition='standard',finish='holo',condition='NM',graded=False,now=NOW)
-        self.assertEqual(r['status'],'ambiguous_match');self.assertIsNone(r['market_price'])
-        self.assertIsNone(r['candidates'][0]['edition'])
-        self.assertEqual(r['candidates'][0]['observation']['market_price'],'294.42')
+        self.assertEqual(r['status'],'exact_match');self.assertEqual(r['market_price'],'294.42')
+        self.assertEqual(r['provider_sku_id'],'7436747');self.assertIsNone(r['edition'])
+        self.assertIn('edition_unknown',r['warnings'])
 
     def test_missing_sku_unknown_provider_and_stale_price(self):
         self.assertEqual(self.lookup.lookup_sku('tcgtracking','999',now=NOW)['status'],'not_found')

@@ -83,7 +83,10 @@ class Lookup:
         if len({x['provider'] for x in candidates})>1:
             amounts={x['observation']['market_price'] for x in candidates if x['observation'] and x['observation']['market_price'] is not None}
             result['warnings']=['conflicting_provider_references' if len(amounts)>1 else 'multiple_provider_references_not_combined']
-        unknown=any(any(v is None for v in [r['condition'],r['language'],r['edition'],r['finish'],r['graded']]) for r in rows)
+        # Edition is legitimately not applicable to many modern printings. A single
+        # provider SKU may therefore be exact even though its edition column is null.
+        # Condition, language, finish and grading scope must still be explicit.
+        unknown=any(any(v is None for v in [r['condition'],r['language'],r['finish'],r['graded']]) for r in rows)
         if len(rows)>1 or (unknown and not by_sku):
             result['status']='ambiguous_match';return result
         r=candidates[0];obs=r['observation']
@@ -125,7 +128,7 @@ class Lookup:
         with self.db.connect(readonly=True) as c:
             rows=c.execute(self._select()+' WHERE '+' AND '.join(filters)+' ORDER BY v.id',values).fetchall()
             result=self._result(c,rows,utc(now),requested=identity)
-            if edition is None and rows:
+            if edition is None and any(row['edition'] is not None for row in rows):
                 result.update(status='ambiguous_match',market_price=None,currency=None)
             return result
 
