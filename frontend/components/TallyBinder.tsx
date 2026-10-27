@@ -1960,6 +1960,7 @@ function JobPanel({
   onPick?: (c: Card) => void;
   onCondition?: (c: Condition) => void;
 }) {
+  const candidates = job.result?.catalog_candidates || [];
   return (
     <section className="panel ai-result">
       <span className="eyebrow">PHOTO RESEARCH · HUMAN REVIEW REQUIRED</span>
@@ -1984,7 +1985,24 @@ function JobPanel({
         </p>
       ) : (
         <>
-          {job.result?.catalog_candidates?.map((c, i) => {
+          {!!candidates.length && (
+            <div className="candidate-intro">
+              <h3>
+                {candidates.length === 1
+                  ? "Review the matched printing"
+                  : "Choose the exact printing"}
+              </h3>
+              <p className="caption">
+                {candidates.length === 1
+                  ? "The photo resolved to one catalog entry."
+                  : String(candidates.length) +
+                    " catalog entries fit the visible evidence."}{" "}
+                Selecting one fills its catalog details and keeps the
+                photo-based condition recommendation below.
+              </p>
+            </div>
+          )}
+          {candidates.map((c, i) => {
             const selected =
               Number(c.card.tcgplayer_product_id) === selectedProductId;
             return (
@@ -2005,6 +2023,17 @@ function JobPanel({
                     ? " · " + c.issues.join(", ").replaceAll("_", " ")
                     : ""}
                 </small>
+                <span className="candidate-action">
+                  {selected ? (
+                    <>
+                      <Check size={15} /> Selected
+                    </>
+                  ) : (
+                    <>
+                      Select printing <ChevronRight size={16} />
+                    </>
+                  )}
+                </span>
               </button>
             );
           })}
