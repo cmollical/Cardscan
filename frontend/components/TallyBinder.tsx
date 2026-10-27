@@ -91,6 +91,10 @@ type Job = {
       match: string;
       issues: string[];
     }>;
+    unmatched_claims?: Array<{
+      claim: Partial<Fields>;
+      issues: string[];
+    }>;
   };
 };
 const conditions: Condition[] = ["NM", "LP", "MP", "HP", "DMG"];
@@ -1898,6 +1902,13 @@ function JobPanel({
               </small>
             </button>
           ))}
+          {job.result?.unmatched_claims?.length ? (
+            <p className="caption">
+              The photo reading did not resolve to an exact catalog printing, so
+              it was not offered as a selectable match. Check the printed card
+              number and set code below or search manually.
+            </p>
+          ) : null}
           {job.result?.recommended_condition && (
             <button
               className="secondary"

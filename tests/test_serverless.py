@@ -5,7 +5,7 @@ from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
 
-from cardscan.cloud.daily import configured_scopes, execute
+from cardscan.cloud.daily import configured_scopes, discovered_scopes, execute
 from cardscan.cloud.snapshot import PricingSnapshot
 from cardscan.local_pricing.cli import seed
 from cardscan.local_pricing.database import Database
@@ -76,7 +76,9 @@ class ServerlessTests(unittest.TestCase):
             seed(db)
             return {"status": "success", "sets": [], "requests": 0}
 
-        with patch("cardscan.cloud.daily.synchronize", side_effect=import_fixture):
+        with patch.dict(os.environ, {"TALLYBINDER_DAILY_SCOPES": "3:604"}), patch(
+            "cardscan.cloud.daily.synchronize", side_effect=import_fixture
+        ):
             result = execute(FakeBucket(blob))
         self.assertTrue(result["published"])
         self.assertEqual(blob.upload_match, 0)
@@ -91,6 +93,34 @@ class ServerlessTests(unittest.TestCase):
             ):
                 with self.assertRaises(ValueError):
                     configured_scopes()
+
+    def test_default_catalog_plan_rotates_unseen_sets_without_named_special_cases(self):
+        with TemporaryDirectory() as tmp:
+            db = Database(Path(tmp) / "plan.sqlite")
+            db.migrate()
+            catalog = {
+                "sets": [
+                    {
+                        "category": category,
+                        "group": category * 1000 + index,
+                        "name": f"Catalog set {category}-{index}",
+                        "published_on": f"2026-{index + 1:02d}-01",
+                        "providers": ["tcgcsv", "tcgtracking"],
+                    }
+                    for category in (3, 85)
+                    for index in range(6)
+                ]
+            }
+            selected = discovered_scopes(db, catalog, limit=10, expansion=10)
+            self.assertEqual(len(selected), 10)
+            self.assertEqual({row["category"] for row in selected}, {3, 85})
+            self.assertEqual(
+                [row["published_on"] for row in selected if row["category"] == 3],
+                sorted(
+                    [row["published_on"] for row in selected if row["category"] == 3],
+                    reverse=True,
+                ),
+            )
 
 
 if __name__ == "__main__":

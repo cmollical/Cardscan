@@ -452,7 +452,10 @@ class TallyBinderTests(unittest.TestCase):
                     rarity=None,
                 )
             ],
-            "observations": ["Synthetic visible text"],
+            "observations": [
+                "Name Charizard is visible at the top.",
+                "Collector number 4/102 and set code base set are visible at the bottom.",
+            ],
             "limitations": ["Synthetic test, not real identification."],
         }
         self.provider.research.return_value = ai_response(result)
@@ -471,6 +474,40 @@ class TallyBinderTests(unittest.TestCase):
         self.assertEqual(state["estimated_cost_usd"], "0.0012")
         self.assertEqual(state["intake_estimated_cost_usd"], "0.0012")
         self.assertTrue(state["intake_cost_complete"])
+
+    def test_ai_name_only_or_internally_unsupported_claim_is_not_clickable(self):
+        result = {
+            "candidates": [
+                dict(
+                    name="Drampa",
+                    set_name="Obsidian Flames",
+                    number="161/197",
+                    language="english",
+                    edition=None,
+                    finish=None,
+                    rarity=None,
+                )
+            ],
+            "observations": [
+                "Card name visible as Drampa.",
+                "The top-right HP value is 130.",
+                "Set code appears to be ASC.",
+            ],
+            "limitations": [],
+        }
+        self.provider.research.return_value = ai_response(result)
+        draft = self.intake()
+        job = self.client.post(
+            "/intake/" + draft["id"] + "/jobs",
+            json={"kind": "identify", "authorize_paid": True, "expected_revision": 1},
+        ).json()
+        state = self.client.get("/jobs/" + job["id"]).json()
+        self.assertEqual(state["result"]["catalog_candidates"], [])
+        self.assertIn(
+            "collector_number_not_supported_by_observation",
+            state["result"]["unmatched_claims"][0]["issues"],
+        )
+        self.assertTrue(any("no selectable printing" in value.lower() for value in state["result"]["limitations"]))
 
     def test_mock_ai_condition_human_override_stale_results_and_idempotent_jobs(self):
         self.provider.research.return_value = ai_response(
@@ -617,6 +654,9 @@ class TallyBinderTests(unittest.TestCase):
         self.assertEqual(args["tools"], [])
         self.assertFalse(args["store"])
         self.assertTrue(args["text"]["format"]["strict"])
+        prompt = args["input"][0]["content"][0]["text"]
+        self.assertIn("Never use HP", prompt)
+        self.assertIn("exact short set code", prompt)
         self.assertTrue(
             args["input"][0]["content"][1]["image_url"].startswith(
                 "data:image/jpeg;base64,"

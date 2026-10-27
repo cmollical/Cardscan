@@ -23,7 +23,10 @@ def discover(db,*,client=None):
                            'shared_set_ids':len(a.keys()&b.keys()),'products_reported':sum(x.get('product_count',0) for x in b.values()),
                            'skus_reported':sum(x.get('sku_count',0) for x in b.values())})
         for group in sorted(a.keys()|b.keys()):
-            scopes.append({'category':cat,'group':group,'name':(a.get(group) or b[group])['name'],
+            source=a.get(group) or b[group]
+            scopes.append({'category':cat,'group':group,'name':source['name'],
+                           'abbreviation':source.get('abbreviation'),
+                           'published_on':source.get('publishedOn') or source.get('published_on'),
                            'providers':(['tcgcsv'] if group in a else [])+(['tcgtracking'] if group in b else []),
                            'products_reported':b.get(group,{}).get('product_count'),
                            'skus_reported':b.get(group,{}).get('sku_count')})

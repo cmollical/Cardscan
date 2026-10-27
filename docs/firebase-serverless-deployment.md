@@ -98,11 +98,11 @@ The service runs the API module, and the daily job overrides the command with
 
 ## Daily pricing job
 
-The default approved scopes remain explicit and bounded:
-
-```text
-3:23228,3:23237,3:604,3:630,85:23599
-```
+The production job discovers provider set indexes and selects a bounded rotating
+batch without naming individual sets in application code. Each run admits up to ten
+previously unseen sets (split across English and Japanese catalogs) and refreshes up
+to four recently released imported sets. Explicit scope configuration remains
+available for recovery or a reviewed backfill.
 
 At most 64 provider requests are allowed per execution. Provider endpoint cooldown,
 conditional-request state, append-only observations and sync checkpoints live inside

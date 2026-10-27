@@ -74,6 +74,7 @@ class DatabaseTests(unittest.TestCase):
         r=self.lookup.lookup_sku('tcgtracking','2999653',now=NOW)
         self.assertNotEqual(str(r['sku_id']),r['provider_sku_id'])
         self.assertEqual(r['tcgplayer_product_id'],'42382')
+        self.assertGreater(self.lookup.search('Charmander',set_name='OBF',number='26/197')['total'],0)
 
     def query(self,**changes):
         d=dict(game='pokemon',set_name='base set',number='4/102',language='english',edition='unlimited',finish='holo',condition='LP',graded=False,now=NOW)

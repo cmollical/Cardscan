@@ -80,7 +80,12 @@ class Importer:
                 return {'provider':provider,'set_id':sid,'status':'older_snapshot_skipped','products':0}
             c.execute('UPDATE sets SET last_catalog_sync=MAX(COALESCE(last_catalog_sync,?),?) WHERE id=?',(captured_at,captured_at,sid))
             c.execute('INSERT INTO set_mappings VALUES(?,?,?,?) ON CONFLICT DO NOTHING',(provider,str(category),str(source_set),sid))
-            for alias in {source_name.casefold(),*(a.casefold() for a in aliases)}:
+            metadata_aliases = [
+                value
+                for value in ((set_metadata or {}).get('abbreviation'),)
+                if isinstance(value, str) and value.strip()
+            ]
+            for alias in {source_name.casefold(),*(a.casefold() for a in aliases),*(a.casefold() for a in metadata_aliases)}:
                 c.execute('INSERT INTO set_aliases VALUES(?,?,?) ON CONFLICT DO NOTHING',(sid,alias,'explicit reviewed source-ID/set-alias mapping'))
             rows=catalog.get('results') if provider=='tcgcsv' else catalog.get('products')
             if not isinstance(rows,list):raise ValueError('Invalid catalog export')
