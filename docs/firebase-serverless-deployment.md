@@ -119,7 +119,14 @@ initial snapshot contained 1,209 products and 7,625 SKUs. Production checks thro
 the Vercel same-origin proxy returned 200 for health, login and authenticated
 inventory; an anonymous protected request returned 401.
 
-AI was enabled on revision `tallybinder-api-00008-wmt` with a restricted OpenAI key
+Firebase Authentication is live on the Vercel production deployment with Google and
+email/password registration. The production API is revision
+`tallybinder-api-00009-b89`; anonymous configuration requests succeed while private
+inventory requests return `401 sign_in_required`. The only records created before
+account authentication are the synthetic acceptance-test draft, two test photos and
+its AI job; there is no legacy saved inventory to migrate.
+
+AI was enabled with a restricted OpenAI key
 in Secret Manager. A live synthetic-photo acceptance request exercised upload,
 Firestore reservation, authenticated Cloud Tasks delivery, the Responses API,
 result polling and cost settlement. The placeholder was correctly reported as not
@@ -132,7 +139,8 @@ still require human review as designed.
 The migration retains the local SQLite/filesystem implementation and its tests.
 Current verification before the production switch:
 
-- 297 Python tests pass, including Firestore job idempotency, authenticated task
+- 299 Python tests pass, including Firebase ID-token isolation, Firestore job
+  idempotency, authenticated task
   construction, snapshot validation and publish preconditions.
 - 14 frontend unit tests pass.
 - Next.js typecheck and production build pass.
