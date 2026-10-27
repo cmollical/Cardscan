@@ -121,7 +121,7 @@ inventory; an anonymous protected request returned 401.
 
 Firebase Authentication is live on the Vercel production deployment with Google and
 email/password registration. The production API is revision
-`tallybinder-api-00009-b89`; anonymous configuration requests succeed while private
+`tallybinder-api-00010-v7q`; anonymous configuration requests succeed while private
 inventory requests return `401 sign_in_required`. The only records created before
 account authentication are the synthetic acceptance-test draft, two test photos and
 its AI job; there is no legacy saved inventory to migrate.
@@ -149,6 +149,10 @@ The initial adapter targets the private ChatGPT Site **The Card Counter** at
 records and R2 for images and explicitly provides no checkout, payments or
 fulfillment. The adapter boundary can later implement Square, Shopify or another
 provider without changing the scan, human-review or inventory audit model.
+The production service keeps both its publish credential and the Site's private
+service-access credential in Secret Manager. A schema-7 pricing job execution and a
+non-mutating authenticated publish probe completed successfully before traffic was
+sent to the marketplace-enabled API revision.
 
 ## Local verification
 
