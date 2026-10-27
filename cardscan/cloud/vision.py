@@ -14,6 +14,7 @@ from google.auth.transport.requests import Request as GoogleRequest
 from google.oauth2 import id_token
 
 from cardscan.app.models import Assessment, Identification
+from cardscan.app.principal import owner_scope
 from cardscan.app.store import AppError
 from cardscan.app.vision import Jobs, OpenAIVisionProvider, VisionSettings
 from cardscan.local_pricing.database import utc
@@ -219,59 +220,60 @@ class FirestoreJobs:
         usage = None
         cost = None
         try:
-            intake = self.store.intake(job["intake_id"])
-            if intake["revision"] != job["intake_revision"]:
-                raise AppError("draft_changed_before_job_started", 409)
-            paths = [self.media.file(intake["front_id"])]
-            if job["kind"] == "condition":
-                paths.append(self.media.file(intake["back_id"]))
-            settings = VisionSettings(**job["settings"])
-            if settings.model != job["model"] or settings.reserve() > Decimal(job["reserved_usd"]):
-                raise AppError("job_settings_reservation_mismatch", 409)
-            provider = (
-                OpenAIVisionProvider(settings)
-                if isinstance(self.provider, OpenAIVisionProvider)
-                else self.provider
-            )
-            response = provider.research(job["kind"], paths)
-            usage = response.get("usage")
-            if not isinstance(usage, dict) or any(
-                type(usage.get(key)) is not int or usage[key] < 0
-                for key in ("input_tokens", "output_tokens")
-            ):
-                raise ValueError("Usage unavailable; reservation held")
-            cost = str(
-                (
-                    Decimal(usage["input_tokens"]) * Decimal(settings.input_rate)
-                    + Decimal(usage["output_tokens"]) * Decimal(settings.output_rate)
+            with owner_scope(job["owner_id"]):
+                intake = self.store.intake(job["intake_id"])
+                if intake["revision"] != job["intake_revision"]:
+                    raise AppError("draft_changed_before_job_started", 409)
+                paths = [self.media.file(intake["front_id"])]
+                if job["kind"] == "condition":
+                    paths.append(self.media.file(intake["back_id"]))
+                settings = VisionSettings(**job["settings"])
+                if settings.model != job["model"] or settings.reserve() > Decimal(job["reserved_usd"]):
+                    raise AppError("job_settings_reservation_mismatch", 409)
+                provider = (
+                    OpenAIVisionProvider(settings)
+                    if isinstance(self.provider, OpenAIVisionProvider)
+                    else self.provider
                 )
-                / 1_000_000
-            )
-            if usage["input_tokens"] > settings.max_input_tokens or usage["output_tokens"] > settings.max_output_tokens:
-                raise ValueError("Usage exceeded reservation assumptions")
-            schema = Identification if job["kind"] == "identify" else Assessment
-            result = schema.model_validate_json(response["result_text"]).model_dump()
-            if job["kind"] == "identify":
-                result = Jobs.cross_reference(self, result)
-            elif result["recommended_condition"] and re.search(
-                r"\b(?:condition (?:is |remains )?unknown|cannot (?:determine|assess) (?:the )?condition|insufficient (?:photo|image)(?:s| evidence)? to (?:determine|assess) (?:the )?condition)\b",
-                " ".join(result["observations"] + result["limitations"]),
-                re.I,
-            ):
-                result["model_proposed_condition"] = result["recommended_condition"]
-                result["recommended_condition"] = None
-                result["limitations"].append("Contradictory condition proposal withheld; manual inspection required.")
-            result["provenance"] = "AI photo interpretation; human confirmation required"
-            result["limitations"] += ["Phone photos may miss surface damage, dents and other defects."]
-            ref.update(
-                {
-                    "status": "completed",
-                    "result": result,
-                    "usage": usage,
-                    "estimated_cost_usd": cost,
-                    "finished_at": utc(),
-                }
-            )
+                response = provider.research(job["kind"], paths)
+                usage = response.get("usage")
+                if not isinstance(usage, dict) or any(
+                    type(usage.get(key)) is not int or usage[key] < 0
+                    for key in ("input_tokens", "output_tokens")
+                ):
+                    raise ValueError("Usage unavailable; reservation held")
+                cost = str(
+                    (
+                        Decimal(usage["input_tokens"]) * Decimal(settings.input_rate)
+                        + Decimal(usage["output_tokens"]) * Decimal(settings.output_rate)
+                    )
+                    / 1_000_000
+                )
+                if usage["input_tokens"] > settings.max_input_tokens or usage["output_tokens"] > settings.max_output_tokens:
+                    raise ValueError("Usage exceeded reservation assumptions")
+                schema = Identification if job["kind"] == "identify" else Assessment
+                result = schema.model_validate_json(response["result_text"]).model_dump()
+                if job["kind"] == "identify":
+                    result = Jobs.cross_reference(self, result)
+                elif result["recommended_condition"] and re.search(
+                    r"\b(?:condition (?:is |remains )?unknown|cannot (?:determine|assess) (?:the )?condition|insufficient (?:photo|image)(?:s| evidence)? to (?:determine|assess) (?:the )?condition)\b",
+                    " ".join(result["observations"] + result["limitations"]),
+                    re.I,
+                ):
+                    result["model_proposed_condition"] = result["recommended_condition"]
+                    result["recommended_condition"] = None
+                    result["limitations"].append("Contradictory condition proposal withheld; manual inspection required.")
+                result["provenance"] = "AI photo interpretation; human confirmation required"
+                result["limitations"] += ["Phone photos may miss surface damage, dents and other defects."]
+                ref.update(
+                    {
+                        "status": "completed",
+                        "result": result,
+                        "usage": usage,
+                        "estimated_cost_usd": cost,
+                        "finished_at": utc(),
+                    }
+                )
         except Exception as exc:
             error = exc.code if isinstance(exc, AppError) else "vision_failed_" + type(exc).__name__
             ref.update(

@@ -76,10 +76,18 @@ def register(
         return {
             "product_name": "TallyBinder",
             "auth_mode": (
-                "session" if app.state.security.settings.production else "bearer"
+                "firebase"
+                if app.state.security.settings.firebase_project_id
+                else "session"
+                if app.state.security.settings.production
+                else "bearer"
             ),
             "authenticated": app.state.security.authenticated(
-                request, allow_bearer=not app.state.security.settings.production
+                request,
+                allow_bearer=(
+                    bool(app.state.security.settings.firebase_project_id)
+                    or not app.state.security.settings.production
+                ),
             ),
             "ai_enabled": jobs.available(),
             "ai_pause_reason": jobs.pause_reason(),

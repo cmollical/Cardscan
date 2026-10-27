@@ -12,6 +12,8 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@firebase/app": "^0.16.4",
+    "@firebase/auth": "^1.13.8",
     "next": "^16.1.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

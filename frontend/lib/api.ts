@@ -1,3 +1,5 @@
+import { firebaseIdToken } from "./firebase";
+
 export class ApiError extends Error {
   constructor(
     public status: number,
@@ -17,7 +19,8 @@ export async function request<T>(
 ): Promise<T> {
   const headers = new Headers(options.headers);
   headers.set("X-TallyBinder-Client", "web");
-  if (token()) headers.set("Authorization", "Bearer " + token());
+  const identity = await firebaseIdToken();
+  if (identity || token()) headers.set("Authorization", "Bearer " + (identity || token()));
   if (options.body && !(options.body instanceof FormData))
     headers.set("Content-Type", "application/json");
   const response = await fetch("/api/backend" + path, {
@@ -41,14 +44,15 @@ export async function request<T>(
 }
 export async function download(path: string) {
   const headers = new Headers();
-  if (token()) headers.set("Authorization", "Bearer " + token());
+  const identity = await firebaseIdToken();
+  if (identity || token()) headers.set("Authorization", "Bearer " + (identity || token()));
   const response = await fetch("/api/backend" + path, {
     headers,
     cache: "no-store",
   });
   if (!response.ok)
     throw new Error(
-      "Download unavailable. Check your connection and access token.",
+      "Download unavailable. Check your connection and sign-in status.",
     );
   return response.blob();
 }

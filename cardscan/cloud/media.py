@@ -21,7 +21,7 @@ class CloudMediaStore:
         cache_root="/tmp/tallybinder-media",
     ):
         self.client = firestore_client
-        self.owner = owner
+        self._owner = owner
         self.prefix = prefix or os.getenv("TALLYBINDER_FIRESTORE_PREFIX", "tallybinder")
         if bucket is None:
             from google.cloud import storage
@@ -30,6 +30,12 @@ class CloudMediaStore:
             bucket = storage.Client().bucket(bucket_name)
         self.bucket = bucket
         self.cache_root = Path(cache_root)
+
+    @property
+    def owner(self):
+        from cardscan.app.principal import REQUEST_OWNER, current_owner
+
+        return current_owner() if self._owner == REQUEST_OWNER else self._owner
 
     def _collection(self):
         return self.client.collection(f"{self.prefix}_media")

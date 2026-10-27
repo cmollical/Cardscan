@@ -19,7 +19,8 @@ from cardscan.local_pricing.api import create_app
 from cardscan.app.security import COOKIE, CloudSettings, Security
 from cardscan.app.media import MediaStore
 from cardscan.app.models import SessionWrite, IntakeWrite, JobWrite
-from cardscan.app.store import Store
+from cardscan.app.principal import REQUEST_OWNER, owner_scope
+from cardscan.app.store import AppError, Store
 from cardscan.app.vision import Jobs, VisionSettings
 from cardscan.ops.backup import create, restore, digest
 from cardscan.ops.daily import plan, run
@@ -177,6 +178,50 @@ class CloudDeploymentTests(unittest.TestCase):
         )
         self.assertEqual(c.post("/auth/logout").status_code, 200)
         self.assertEqual(c.get("/inventory").status_code, 401)
+
+    def test_firebase_bearer_authenticates_config_with_verified_uid(self):
+        env = {**CLOUD, "TALLYBINDER_FIREBASE_PROJECT_ID": "tallybinder"}
+        with patch.dict(os.environ, env), patch(
+            "cardscan.app.security.id_token.verify_firebase_token",
+            return_value={"sub": "firebase-user-123", "exp": 9_999_999_999},
+        ) as verify:
+            app = create_app(
+                self.db.path,
+                media_root=self.media,
+                vision_settings=self.settings,
+                vision_provider=self.provider,
+            )
+            with TestClient(
+                app,
+                base_url="https://binder.example",
+                headers={**HEAD, "Authorization": "Bearer signed-firebase-token"},
+            ) as client:
+                response = client.get("/app/config")
+        self.assertEqual(response.status_code, 200, response.text)
+        self.assertEqual(response.json()["auth_mode"], "firebase")
+        self.assertTrue(response.json()["authenticated"])
+        self.assertEqual(verify.call_args.kwargs["audience"], "tallybinder")
+
+    def test_request_scoped_store_owner_isolated_and_restored(self):
+        store = Store(self.db, owner=REQUEST_OWNER)
+        alice_session = str(uuid4())
+        bob_session = str(uuid4())
+        with owner_scope("alice"):
+            self.assertEqual(store.owner, "alice")
+            store.session(SessionWrite(id=alice_session))
+        with owner_scope("bob"):
+            self.assertEqual(store.owner, "bob")
+            store.session(SessionWrite(id=bob_session))
+            with self.assertRaises(AppError):
+                store.put_intake(
+                    str(uuid4()),
+                    IntakeWrite(
+                        session_id=alice_session,
+                        expected_revision=0,
+                        fields=FIELDS,
+                    ),
+                )
+        self.assertEqual(store.owner, "local")
 
     def test_session_expiry_tampering_and_access_key_rotation(self):
         with patch.dict(os.environ, CLOUD):

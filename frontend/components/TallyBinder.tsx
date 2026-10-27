@@ -24,6 +24,8 @@ import {
 import Photos, { Photo } from "./Photos";
 import { allDrafts, putDraft } from "@/lib/drafts";
 import { ApiError, request, upload, download } from "@/lib/api";
+import { firebaseAuth } from "@/lib/firebase";
+import { signOut as firebaseSignOut } from "@firebase/auth";
 import { description, editFields, money } from "@/lib/workflow";
 import {
   emptyFields,
@@ -46,7 +48,7 @@ type View =
   | "inventory"
   | "settings";
 type Config = {
-  auth_mode?: "session" | "bearer";
+  auth_mode?: "firebase" | "session" | "bearer";
   ai_pause_reason?: string | null;
   authenticated?: boolean;
   ai_enabled: boolean;
@@ -213,12 +215,12 @@ export default function TallyBinder() {
         setReady(true);
         const cfg = await request<Config>("/app/config");
         if (alive) setConfig(cfg);
-        if (cfg.auth_mode === "session") {
+        if (cfg.auth_mode === "session" || cfg.auth_mode === "firebase") {
           localStorage.removeItem("tallybinder.accessToken");
           setAccessToken("");
           if (!cfg.authenticated) {
             setNotice(
-              "Sign in with your personal access key to connect your cloud binder.",
+              "Sign in to connect your cloud binder.",
             );
             go("settings");
             return;
@@ -1622,7 +1624,7 @@ export default function TallyBinder() {
                       available.
                     </p>
                   )}
-                  <label className="field">
+                  {config?.auth_mode !== "firebase" && <label className="field">
                     <span>
                       {config?.auth_mode === "session"
                         ? "Personal access key"
@@ -1635,8 +1637,8 @@ export default function TallyBinder() {
                       value={accessToken}
                       onChange={(e) => setAccessToken(e.target.value)}
                     />
-                  </label>
-                  <button
+                  </label>}
+                  {config?.auth_mode !== "firebase" && <button
                     className="secondary full"
                     onClick={() => {
                       if (config?.auth_mode === "session") {
@@ -1661,7 +1663,16 @@ export default function TallyBinder() {
                     {config?.auth_mode === "session"
                       ? "Sign in securely"
                       : "Save access token & reconnect"}
-                  </button>
+                  </button>}
+                  {config?.auth_mode === "firebase" && (
+                    <div className="account-row">
+                      <span>
+                        <small>Signed in as</small>
+                        <strong>{firebaseAuth?.currentUser?.email || "Firebase account"}</strong>
+                      </span>
+                      <ShieldCheck size={21} />
+                    </div>
+                  )}
                   {config?.auth_mode === "session" && (
                     <>
                       <p className="caption">
@@ -1679,6 +1690,16 @@ export default function TallyBinder() {
                         Sign out of cloud binder
                       </button>
                     </>
+                  )}
+                  {config?.auth_mode === "firebase" && firebaseAuth && (
+                    <button
+                      className="text-button"
+                      onClick={() => {
+                        if (firebaseAuth) void firebaseSignOut(firebaseAuth);
+                      }}
+                    >
+                      Sign out
+                    </button>
                   )}
                 </section>
                 <section className="panel">

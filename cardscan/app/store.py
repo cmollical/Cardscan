@@ -41,8 +41,14 @@ def identity_key(fields):
 
 class Store:
     def __init__(self, db, owner=OWNER):
-        self.db, self.owner = db, owner
+        self.db, self._owner = db, owner
         self.lookup = Lookup(db)
+
+    @property
+    def owner(self):
+        from .principal import REQUEST_OWNER, current_owner
+
+        return current_owner() if self._owner == REQUEST_OWNER else self._owner
 
     def session(self, value):
         with self.db.transaction() as c:

@@ -9,6 +9,7 @@ deployment completed successfully.
 ```text
 Vercel Next.js
     |
+    | Firebase Authentication ID token
     | same-origin /api/backend rewrite
     v
 Cloud Run FastAPI (scales to zero)
@@ -43,6 +44,24 @@ request. A repeated delivery sees the claimed or finished state and cannot creat
 second paid attempt. Identification is reconciled
 against the local catalog; condition review remains preliminary and both require
 explicit human confirmation in the UI before pricing or inventory changes.
+
+## User accounts and data isolation
+
+The frontend uses Firebase Authentication with Google and email/password providers.
+After sign-in, the Firebase browser SDK sends a short-lived ID token to the API on
+each request. Cloud Run verifies the token against the `tallybinder` Firebase project
+and derives the owner only from its signed `uid`; a browser cannot select or spoof an
+owner ID.
+
+Every mutable Firestore document is written with that verified owner, and reads for
+intake sessions, card drafts, inventory, photo metadata, AI jobs and daily AI budgets
+are filtered by it. Private image objects are also owner-namespaced. Cloud Tasks do
+not rely on browser identity: the queued job records its owner, and the authenticated
+worker restores that owner scope before reading photos or writing AI results.
+
+Vercel needs only the public `NEXT_PUBLIC_FIREBASE_*` web-app values listed in
+`frontend/.env.example`. Cloud Run needs `TALLYBINDER_FIREBASE_PROJECT_ID`. Neither
+the OpenAI key nor a Firebase service-account credential belongs in Vercel.
 
 ## Resources
 

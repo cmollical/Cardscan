@@ -1,4 +1,4 @@
-import TallyBinder from "@/components/TallyBinder";
+import AuthGate from "@/components/AuthGate";
 export default function Page() {
-  return <TallyBinder />;
+  return <AuthGate />;
 }

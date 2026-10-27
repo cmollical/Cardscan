@@ -8,6 +8,7 @@ from fastapi.responses import Response
 from starlette.concurrency import run_in_threadpool
 
 from cardscan.app.vision import VisionSettings
+from cardscan.app.principal import REQUEST_OWNER
 from cardscan.cloud.firestore_store import FirestoreStore
 from cardscan.cloud.media import CloudMediaStore
 from cardscan.cloud.snapshot import PricingSnapshot
@@ -25,8 +26,8 @@ firestore_client = firestore.Client(
     database=os.getenv("TALLYBINDER_FIRESTORE_DATABASE", "(default)")
 )
 bucket = storage.Client().bucket(os.environ["TALLYBINDER_STORAGE_BUCKET"])
-store = FirestoreStore(pricing_db, client=firestore_client)
-media = CloudMediaStore(firestore_client, bucket)
+store = FirestoreStore(pricing_db, client=firestore_client, owner=REQUEST_OWNER)
+media = CloudMediaStore(firestore_client, bucket, owner=REQUEST_OWNER)
 vision_settings = VisionSettings.environment()
 dispatcher = CloudTasksDispatcher() if vision_settings.enabled else None
 jobs = FirestoreJobs(

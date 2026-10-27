@@ -1,4 +1,4 @@
-"""Single-owner cloud sessions and bounded request rates; no secret in browser storage."""
+"""Firebase identity, legacy owner sessions and bounded request rates."""
 
 from collections import OrderedDict, deque
 from dataclasses import dataclass
@@ -9,6 +9,8 @@ import secrets
 import threading
 import time
 from urllib.parse import urlsplit
+from google.auth.transport.requests import Request as GoogleRequest
+from google.oauth2 import id_token
 from fastapi import Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
@@ -23,6 +25,7 @@ class CloudSettings:
     token: str
     secret: str
     origins: tuple[str, ...]
+    firebase_project_id: str = ""
     session_seconds: int = 43200
 
     @classmethod
@@ -30,6 +33,7 @@ class CloudSettings:
         production = os.getenv("TALLYBINDER_CLOUD", "false").lower() == "true"
         token = os.getenv("TALLYBINDER_ACCESS_TOKEN", "")
         secret = os.getenv("TALLYBINDER_SESSION_SECRET", "")
+        firebase_project_id = os.getenv("TALLYBINDER_FIREBASE_PROJECT_ID", "").strip()
         origins = tuple(
             x.strip()
             for x in os.getenv(
@@ -63,38 +67,72 @@ class CloudSettings:
                 )
             if mode != "external":
                 raise ValueError("Cloud requires the durable external vision worker")
-        return cls(production, token, secret, origins)
+        return cls(production, token, secret, origins, firebase_project_id)
 
 
 class Security:
     def __init__(self, settings, clock=time.time):
         self.settings, self.clock = settings, clock
         self.buckets = OrderedDict()
+        self.firebase_cache = OrderedDict()
         self.lock = threading.Lock()
 
-    def authenticated(self, request, *, allow_bearer=True):
+    def _firebase_principal(self, token):
+        digest = sha256(token.encode()).hexdigest()
+        now = self.clock()
+        with self.lock:
+            cached = self.firebase_cache.get(digest)
+            if cached and cached[0] > now:
+                self.firebase_cache.move_to_end(digest)
+                return cached[1]
+        claims = id_token.verify_firebase_token(
+            token,
+            GoogleRequest(),
+            audience=self.settings.firebase_project_id,
+        )
+        uid = claims.get("sub")
+        expires = claims.get("exp")
+        if not isinstance(uid, str) or not uid or not isinstance(expires, (int, float)):
+            raise ValueError("Invalid Firebase identity")
+        with self.lock:
+            self.firebase_cache[digest] = (min(float(expires), now + 300), uid)
+            self.firebase_cache.move_to_end(digest)
+            while len(self.firebase_cache) > 256:
+                self.firebase_cache.popitem(last=False)
+        return uid
+
+    def principal(self, request, *, allow_bearer=True):
         token = self.settings.token
-        if not token:
-            return not self.settings.production
-        if allow_bearer and hmac.compare_digest(
-            request.headers.get("authorization", "").encode(),
-            ("Bearer " + token).encode(),
-        ):
-            return True
+        authorization = request.headers.get("authorization", "")
+        bearer = authorization[7:] if authorization.startswith("Bearer ") else ""
+        if allow_bearer and bearer:
+            if token and hmac.compare_digest(bearer.encode(), token.encode()):
+                return "local"
+            if self.settings.firebase_project_id:
+                try:
+                    return self._firebase_principal(bearer)
+                except Exception:
+                    return None
+        if not token and not self.settings.firebase_project_id:
+            return "local" if not self.settings.production else None
         if not self.settings.production:
-            return False
+            return None
         value = request.cookies.get(COOKIE, "")
         try:
             issued, nonce, signature = value.split(".")
             age = self.clock() - int(issued)
             expected = self.sign(issued + "." + nonce)
-            return (
+            valid = (
                 0 <= age < self.settings.session_seconds
                 and len(nonce) == 32
                 and hmac.compare_digest(expected, signature)
             )
+            return "local" if valid else None
         except (ValueError, OverflowError):
-            return False
+            return None
+
+    def authenticated(self, request, *, allow_bearer=True):
+        return self.principal(request, allow_bearer=allow_bearer) is not None
 
     def sign(self, value):
         key = (
@@ -135,7 +173,8 @@ class CloudGuard(BaseHTTPMiddleware):
         path = request.url.path
         public = path in ("/health", "/app/config", "/auth/login")
         internal = path.startswith("/internal/tasks/vision/")
-        if not public and not internal and not s.authenticated(request):
+        principal = None if internal else s.principal(request)
+        if not public and not internal and principal is None:
             return JSONResponse(
                 {"detail": {"code": "sign_in_required"}},
                 status_code=401,
@@ -151,7 +190,7 @@ class CloudGuard(BaseHTTPMiddleware):
                 return JSONResponse(
                     {"detail": {"code": "origin_not_allowed"}}, status_code=403
                 )
-        # Global single-owner limits cannot be evaded with a spoofed forwarded IP.
+        # Identity-scoped limits cannot be evaded with a spoofed forwarded IP.
         kind = (
             "login"
             if path == "/auth/login"
@@ -170,13 +209,19 @@ class CloudGuard(BaseHTTPMiddleware):
             "public": 240,
             "private": 1800,
         }[kind]
-        if not s.allowed(kind, limit):
+        rate_key = kind if kind in ("login", "internal", "public") else f"{kind}:{principal}"
+        if not s.allowed(rate_key, limit):
             return JSONResponse(
                 {"detail": {"code": "request_rate_limited"}},
                 status_code=429,
                 headers={"Retry-After": "60", "Cache-Control": "no-store"},
             )
-        response = await call_next(request)
+        if principal is not None:
+            request.state.owner_id = principal
+        from .principal import owner_scope
+
+        with owner_scope(principal or "local"):
+            response = await call_next(request)
         response.headers["Cache-Control"] = "no-store, private"
         response.headers["CDN-Cache-Control"] = "no-store"
         response.headers["Vary"] = "Cookie, Authorization, Origin"
