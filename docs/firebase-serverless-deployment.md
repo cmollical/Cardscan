@@ -1,10 +1,8 @@
 # TallyBinder Firebase and Cloud Run deployment
 
-Status: **implementation complete locally; cloud deployment blocked by the linked
-billing account**. On October 27, 2026, Google reported that billing account
-`Firebase Payment` was past due or lacked valid payment information. Firestore was
-created successfully, but Google rejected Cloud Storage and Artifact Registry
-creation. No VM, Cloud Run service, bucket, container image or scheduler was created.
+Status: **backend deployed October 27, 2026; first Vercel production deployment
+pending**. The billing issue was repaired and the no-VM Google Cloud resources are
+live. The first bounded pricing sync completed successfully.
 
 ## Selected architecture
 
@@ -41,9 +39,12 @@ job implementation and explicit paid-use authorization.
 - Region: `us-east1`
 - Firestore Native `(default)`: created, free tier, delete protection enabled
 - Intended private bucket: `tallybinder-1031748906945-data`
-- Intended Artifact Registry repository: `tallybinder`
+- Artifact Registry repository: `tallybinder`
 - Runtime identities: `tallybinder-api` and `tallybinder-sync`
 - Vercel root directory: `frontend`
+- Cloud Run API: `https://tallybinder-api-1031748906945.us-east1.run.app`
+- Cloud Run job: `tallybinder-sync`
+- Cloud Scheduler: `tallybinder-daily-pricing`, 06:15 `America/New_York`
 
 The service and job share one image built from `deploy/Dockerfile.serverless`.
 The service runs its default Uvicorn command. The job overrides the command with
@@ -63,26 +64,22 @@ the published snapshot. A partial provider failure does not publish the modified
 snapshot. Cloud Scheduler should invoke one task once daily with job retries disabled;
 the provider cooldown and generation precondition are additional safeguards.
 
-## Resume after billing is repaired
+## Deployment record and remaining steps
 
-1. Verify the linked billing account is active. Do not enter payment credentials in
-   source files, chat or command output.
-2. Create the private `us-east1` bucket with uniform access and object versioning.
-3. Create the `us-east1` Docker repository and grant bucket object-user access only
-   to the API and sync service accounts.
-4. Build the serverless image with Cloud Build.
-5. Deploy and execute the sync job once. It initializes the five approved live sets
-   and publishes the first snapshot.
-6. Create two Secret Manager secrets: the personal access key and independent session
-   signing secret. Grant only the API identity access.
-7. Deploy Cloud Run with minimum instances zero, AI disabled, exact Vercel origin,
-   the private API service account and secrets mounted as environment variables.
-8. Import `cmollical/Cardscan` into Vercel using root `frontend` and set server-side
+Completed: private versioned bucket, Artifact Registry, restricted service-account
+IAM, Cloud Build image, Cloud Run job, initial snapshot, Secret Manager values, Cloud
+Run API, and a daily Scheduler trigger with retries disabled. The initial snapshot
+contained 1,209 products and 7,625 SKUs; the public health endpoint returned 200 and
+an anonymous protected request returned 401.
+
+Remaining:
+
+1. Deploy the connected Vercel project from `cmollical/Cardscan` using root
+   `frontend` and server-side
    `TALLYBINDER_BACKEND_URL` to the Cloud Run URL.
-9. Update the exact allowed origin if Vercel assigned a different production domain,
+2. Update the exact allowed origin if Vercel assigns a different production domain,
    then test login, upload, private image retrieval, catalog search, pricing, inventory,
    CSV export and session-cookie forwarding.
-10. Create a daily Cloud Scheduler trigger only after the first manual job succeeds.
 
 ## Local verification
 
