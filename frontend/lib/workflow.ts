@@ -24,6 +24,20 @@ export function editFields(draft: Draft, changes: Partial<Fields>): Draft {
     updated_at: new Date().toISOString(),
   };
 }
+export function shouldAutoSelectPrinting(
+  fields: Fields,
+  candidateCount: number,
+  stale = false,
+) {
+  return (
+    !stale &&
+    candidateCount === 1 &&
+    fields.product_id == null &&
+    !fields.name &&
+    !fields.set_name &&
+    !fields.number
+  );
+}
 export function description(draft: Draft) {
   const f = draft.fields;
   return `${f.name} from ${f.set_name}, card ${f.number}. ${f.language}; ${f.edition || "edition unspecified"}; ${f.finish || "finish unspecified"}. Raw card, ${f.condition || "condition to confirm"}. Condition confirmed by the seller; photos show the actual card.`;

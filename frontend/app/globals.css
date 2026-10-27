@@ -1037,6 +1037,16 @@ main {
   width: 100%;
   padding: 10px 0;
 }
+.candidate.selected {
+  background: #f0f3e8;
+  box-shadow: inset 3px 0 #79946a;
+  border-bottom-color: transparent;
+  border-radius: 9px;
+  padding: 10px 12px;
+}
+.candidate.selected small {
+  color: #607756;
+}
 .candidate strong,
 .candidate span,
 .candidate small {

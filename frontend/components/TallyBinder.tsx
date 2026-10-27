@@ -26,7 +26,12 @@ import { allDrafts, putDraft } from "@/lib/drafts";
 import { ApiError, request, upload, download } from "@/lib/api";
 import { firebaseAuth } from "@/lib/firebase";
 import { signOut as firebaseSignOut } from "@firebase/auth";
-import { description, editFields, money } from "@/lib/workflow";
+import {
+  description,
+  editFields,
+  money,
+  shouldAutoSelectPrinting,
+} from "@/lib/workflow";
 import {
   emptyFields,
   type Card,
@@ -160,6 +165,7 @@ export default function TallyBinder() {
   const [searching, setSearching] = useState(false);
   const [searchError, setSearchError] = useState("");
   const [job, setJob] = useState<Job | null>(null);
+  const autoPickedJobs = useRef(new Set<string>());
   const [accessToken, setAccessToken] = useState("");
   const current = drafts.find((d) => d.id === selected);
   const pending = drafts.filter((d) => !d.saved && d.stage !== "capture");
@@ -307,6 +313,20 @@ export default function TallyBinder() {
         const data = await request<Job>("/jobs/" + current.job_id);
         if (!alive) return;
         setJob(data);
+        const candidates = data.result?.catalog_candidates || [];
+        const draft = latest(current.id) || current;
+        if (
+          data.status === "completed" &&
+          shouldAutoSelectPrinting(
+            draft.fields,
+            candidates.length,
+            data.stale_for_intake,
+          ) &&
+          !autoPickedJobs.current.has(data.id)
+        ) {
+          autoPickedJobs.current.add(data.id);
+          void pick(candidates[0].card, true);
+        }
         if (data.status === "queued" || data.status === "running")
           timer = setTimeout(() => void poll(), 1500);
       } catch (e) {
@@ -445,7 +465,7 @@ export default function TallyBinder() {
     const d = editFields(latest(current.id) || current, changes);
     await remember(d);
   }
-  async function pick(card: Card) {
+  async function pick(card: Card, automatic = false) {
     if (!current) return;
     setWorking(current.id, "Loading printing…");
     try {
@@ -470,6 +490,10 @@ export default function TallyBinder() {
       await remember(d);
       setResults([]);
       setSearch("");
+      if (automatic)
+        setNotice(
+          "Exact catalog match filled in below. Review the details and confirm the identity.",
+        );
     } catch (e) {
       setNotice(message(e));
     } finally {
@@ -1103,7 +1127,11 @@ export default function TallyBinder() {
                         <ArrowRight size={18} />
                       </button>
                       {job?.kind === "identify" && (
-                        <JobPanel job={job} onPick={(c) => void pick(c)} />
+                        <JobPanel
+                          job={job}
+                          selectedProductId={current.fields.product_id}
+                          onPick={(c) => void pick(c)}
+                        />
                       )}
                       <section className="panel">
                         <h2>Confirm the printing</h2>
@@ -1853,10 +1881,12 @@ function Empty({
 }
 function JobPanel({
   job,
+  selectedProductId,
   onPick,
   onCondition,
 }: {
   job: Job;
+  selectedProductId?: number | null;
   onPick?: (c: Card) => void;
   onCondition?: (c: Condition) => void;
 }) {
@@ -1884,24 +1914,30 @@ function JobPanel({
         </p>
       ) : (
         <>
-          {job.result?.catalog_candidates?.map((c, i) => (
-            <button
-              className="candidate"
-              key={i}
-              onClick={() => onPick?.(c.card)}
-            >
-              <strong>{c.card.name}</strong>
-              <span>
-                {c.card.set_name} · {c.card.collector_number}
-              </span>
-              <small>
-                {c.match.replaceAll("_", " ")}
-                {c.issues.length
-                  ? " · " + c.issues.join(", ").replaceAll("_", " ")
-                  : ""}
-              </small>
-            </button>
-          ))}
+          {job.result?.catalog_candidates?.map((c, i) => {
+            const selected =
+              Number(c.card.tcgplayer_product_id) === selectedProductId;
+            return (
+              <button
+                className={`candidate${selected ? " selected" : ""}`}
+                key={i}
+                aria-pressed={selected}
+                onClick={() => onPick?.(c.card)}
+              >
+                <strong>{c.card.name}</strong>
+                <span>
+                  {c.card.set_name} · {c.card.collector_number}
+                </span>
+                <small>
+                  {selected ? "Filled in below · " : ""}
+                  {c.match.replaceAll("_", " ")}
+                  {c.issues.length
+                    ? " · " + c.issues.join(", ").replaceAll("_", " ")
+                    : ""}
+                </small>
+              </button>
+            );
+          })}
           {job.result?.unmatched_claims?.length ? (
             <p className="caption">
               The photo reading did not resolve to an exact catalog printing, so

@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { editFields, description, money } from "../lib/workflow";
+import {
+  editFields,
+  description,
+  money,
+  shouldAutoSelectPrinting,
+} from "../lib/workflow";
 import { emptyFields, type Draft } from "../lib/types";
 const draft: Draft = {
   id: "synthetic",
@@ -54,5 +59,21 @@ describe("review integrity", () => {
     expect(description(draft)).toContain("Raw card, LP");
     expect(money(null)).toBe("Price unavailable");
     expect(money("500")).toBe("$500.00");
+  });
+  it("prefills only one exact candidate into an untouched identity form", () => {
+    const blank = {
+      ...draft.fields,
+      product_id: null,
+      name: "",
+      set_name: "",
+      number: "",
+    };
+    expect(shouldAutoSelectPrinting(blank, 1)).toBe(true);
+    expect(shouldAutoSelectPrinting(blank, 2)).toBe(false);
+    expect(shouldAutoSelectPrinting(blank, 1, true)).toBe(false);
+    expect(shouldAutoSelectPrinting({ ...blank, name: "Manual entry" }, 1)).toBe(
+      false,
+    );
+    expect(shouldAutoSelectPrinting(draft.fields, 1)).toBe(false);
   });
 });
