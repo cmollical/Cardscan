@@ -9,6 +9,7 @@ from cardscan.app.vision import VisionSettings
 from cardscan.cloud.firestore_store import FirestoreStore
 from cardscan.cloud.media import CloudMediaStore
 from cardscan.cloud.snapshot import PricingSnapshot
+from cardscan.cloud.vision import CloudTasksDispatcher, FirestoreJobs
 from cardscan.local_pricing.api import create_app
 
 
@@ -20,11 +21,21 @@ firestore_client = firestore.Client(
 bucket = storage.Client().bucket(os.environ["TALLYBINDER_STORAGE_BUCKET"])
 store = FirestoreStore(pricing_db, client=firestore_client)
 media = CloudMediaStore(firestore_client, bucket)
+vision_settings = VisionSettings.environment()
+dispatcher = CloudTasksDispatcher() if vision_settings.enabled else None
+jobs = FirestoreJobs(
+    store,
+    media,
+    vision_settings,
+    dispatcher=dispatcher,
+)
 app = create_app(
     pricing_db.path,
     app_store=store,
     media_store=media,
-    vision_settings=VisionSettings.environment(),
+    vision_settings=vision_settings,
+    jobs=jobs,
+    job_dispatch=dispatcher,
 )
 
 

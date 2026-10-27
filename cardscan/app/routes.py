@@ -30,6 +30,8 @@ def register(
     vision_provider=None,
     store=None,
     media=None,
+    jobs=None,
+    job_dispatch=None,
 ):
     store = store or Store(db)
     media = media or MediaStore(
@@ -37,7 +39,7 @@ def register(
         media_root
         or os.getenv("TALLYBINDER_MEDIA_DIR", str(db.path.parent / "photos")),
     )
-    jobs = Jobs(store, media, settings, vision_provider)
+    jobs = jobs or Jobs(store, media, settings, vision_provider)
     app.state.store = store
     app.state.jobs = jobs
     app.state.media = media
@@ -79,14 +81,8 @@ def register(
             "authenticated": app.state.security.authenticated(
                 request, allow_bearer=not app.state.security.settings.production
             ),
-            "ai_enabled": jobs.settings.enabled
-            and (vision_provider is not None or bool(os.getenv("OPENAI_API_KEY")))
-            and not (db.path.parent / ".ai-restore-hold").exists(),
-            "ai_pause_reason": (
-                "restore_cost_review_required"
-                if (db.path.parent / ".ai-restore-hold").exists()
-                else None
-            ),
+            "ai_enabled": jobs.available(),
+            "ai_pause_reason": jobs.pause_reason(),
             "model": jobs.settings.model if jobs.settings.enabled else None,
             "max_reservation_usd": (
                 str(jobs.settings.reserve()) if jobs.settings.enabled else None
@@ -139,6 +135,8 @@ def register(
         record, new = jobs.enqueue(id, value)
         if new and os.getenv("TALLYBINDER_JOB_MODE", "background") == "background":
             tasks.add_task(jobs.run, record["id"])
+        elif job_dispatch is not None and record["status"] == "queued":
+            job_dispatch(record["id"])
         return record
 
     @router.get("/jobs/{id}")

@@ -30,8 +30,9 @@ longer the selected architecture.
 - [Official free-tier limits and capacity comparison](docs/free-tier-hosting-research.md)
 - [Architecture decision](docs/cloud-deployment-decision.md)
 
-Cloud mode adds secure browser sessions, restart-safe queued work, frozen per-job
-budgets, bounded daily synchronization, and checksummed database/photo backups.
+Cloud mode adds secure browser sessions, Firestore-backed restart-safe AI jobs,
+authenticated Cloud Tasks dispatch, frozen per-job budgets, bounded daily
+synchronization, and private versioned photo/snapshot storage.
 Local development remains supported below. No paid AI call or hosting upgrade was
 performed during deployment preparation.
 
@@ -77,4 +78,4 @@ options. Backend API docs: http://127.0.0.1:8000/docs.
 Existing deterministic valuation, AI research experiments, source evidence, and
 append-only price histories are preserved. Historical archive backfill is not part
 of this milestone. No repository rename, production deployment, Square integration,
-full-catalog import, paid AI execution or hosted scheduler is performed.
+full-catalog import or automatic approval of AI output is performed.

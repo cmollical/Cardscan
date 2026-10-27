@@ -153,6 +153,24 @@ class Jobs:
         self.settings = settings or VisionSettings.environment()
         self.provider = provider or OpenAIVisionProvider(self.settings)
 
+    def pause_reason(self):
+        return (
+            "restore_cost_review_required"
+            if (self.db.path.parent / ".ai-restore-hold").exists()
+            else None
+        )
+
+    def available(self):
+        return (
+            self.settings.enabled
+            and not self.pause_reason()
+            and (
+                not isinstance(self.provider, OpenAIVisionProvider)
+                or self.provider.client is not None
+                or bool(os.getenv("OPENAI_API_KEY"))
+            )
+        )
+
     def get(self, id):
         with self.db.connect(readonly=True) as c:
             r = c.execute(
@@ -206,7 +224,7 @@ class Jobs:
             and not os.getenv("OPENAI_API_KEY")
         ):
             raise AppError("ai_credentials_unavailable_use_manual_search", 503)
-        if (self.db.path.parent / ".ai-restore-hold").exists():
+        if self.pause_reason():
             raise AppError("vision_restore_cost_review_required", 503)
         intake = self.store.intake(id)
         if intake["revision"] != value.expected_revision:
