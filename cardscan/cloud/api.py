@@ -18,6 +18,7 @@ from cardscan.cloud.vision import (
     verify_task_identity,
 )
 from cardscan.local_pricing.api import create_app
+from cardscan.app.marketplace import MarketplacePublisher
 
 
 snapshot = PricingSnapshot()
@@ -36,6 +37,7 @@ jobs = FirestoreJobs(
     vision_settings,
     dispatcher=dispatcher,
 )
+marketplace = MarketplacePublisher()
 app = create_app(
     pricing_db.path,
     app_store=store,
@@ -43,6 +45,7 @@ app = create_app(
     vision_settings=vision_settings,
     jobs=jobs,
     job_dispatch=dispatcher,
+    marketplace=marketplace,
 )
 
 

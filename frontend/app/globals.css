@@ -1275,6 +1275,16 @@ dd {
   color: #a17c64;
   min-height: 44px;
 }
+
+.storefront-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--green, #163f35);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
 .auth-shell {
   min-height: 100dvh;
   background: var(--paper);

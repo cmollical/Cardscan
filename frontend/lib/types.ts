@@ -91,6 +91,12 @@ export type Inventory = {
     back_image_id: string;
     notes: string;
   };
+  publication?: {
+    status: "sending" | "published" | "failed";
+    provider: string;
+    external_listing_id?: string | null;
+    created_at: string;
+  } | null;
 };
 export const emptyFields: Fields = {
   game: "pokemon",

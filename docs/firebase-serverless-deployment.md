@@ -134,12 +134,29 @@ being a real card, the task endpoint returned 204, the queue drained, and the ap
 recorded `$0.0011295` for the request. Real-card identification and condition output
 still require human review as designed.
 
+## Demo marketplace publishing
+
+An approved inventory record can be pushed through the marketplace adapter without
+granting the storefront access to the user's binder or Firebase identity. The
+outbound payload freezes the listing revision, seller-approved title, description,
+condition, price, quantity, catalog fields and front image. Each attempt is recorded
+as `sending`, `published` or `failed` with its provider, external listing ID,
+timestamps, response and a payload/image fingerprint. Retrying is idempotent because
+the TallyBinder listing ID is also the external listing ID.
+
+The initial adapter targets the private ChatGPT Site **The Card Counter** at
+`https://tallybinder-demo-card-shop.cmollical.chatgpt.site`. It uses D1 for listing
+records and R2 for images and explicitly provides no checkout, payments or
+fulfillment. The adapter boundary can later implement Square, Shopify or another
+provider without changing the scan, human-review or inventory audit model.
+
 ## Local verification
 
 The migration retains the local SQLite/filesystem implementation and its tests.
 Current verification before the production switch:
 
-- 299 Python tests pass, including Firebase ID-token isolation, Firestore job
+- 300 Python tests pass, including Firebase ID-token isolation, marketplace
+  publication auditing, Firestore job
   idempotency, authenticated task
   construction, snapshot validation and publish preconditions.
 - 14 frontend unit tests pass.

@@ -48,10 +48,10 @@ class DatabaseTests(unittest.TestCase):
         with self.db.connect(readonly=True) as c:return {t:c.execute('SELECT COUNT(*) FROM '+t).fetchone()[0] for t in ['products','skus','observations','documents']}
 
     def test_migrations_idempotent_and_upgrade_from_version_one(self):
-        self.db.migrate();self.assertEqual(self.db.health()['schema_version'],6)
+        self.db.migrate();self.assertEqual(self.db.health()['schema_version'],7)
         old=Database(Path(self.tmp.name)/'old.sqlite')
         with old.connect() as c:c.executescript(Path('cardscan/local_pricing/schema.sql').read_text())
-        old.migrate();self.assertEqual(old.health()['schema_version'],6)
+        old.migrate();self.assertEqual(old.health()['schema_version'],7)
         newer=Database(Path(self.tmp.name)/'newer.sqlite')
         with newer.connect() as c:c.execute('PRAGMA user_version=99')
         with self.assertRaises(ValueError):newer.migrate()

@@ -476,7 +476,7 @@ class CloudDeploymentTests(unittest.TestCase):
                 before,
                 [tuple(x) for x in c.execute("SELECT * FROM observations ORDER BY id")],
             )
-        self.assertEqual(self.db.health()["schema_version"], 6)
+        self.assertEqual(self.db.health()["schema_version"], 7)
 
     def test_cross_day_queued_authorizations_cannot_bypass_execution_day_spending_limit(
         self,

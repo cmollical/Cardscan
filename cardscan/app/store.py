@@ -328,11 +328,37 @@ class Store:
                 "SELECT * FROM inventory_listings WHERE id=? AND owner_id=? AND deleted_at IS NULL",
                 (str(id), self.owner),
             ).fetchone()
+            publication = c.execute(
+                "SELECT * FROM marketplace_publications WHERE listing_id=? AND owner_id=? ORDER BY created_at DESC,id DESC LIMIT 1",
+                (str(id), self.owner),
+            ).fetchone()
         if not r:
             raise AppError("listing_not_found", 404)
         out = dict(r)
         out["listing"] = json.loads(out.pop("payload_json"))
+        out["publication"] = dict(publication) if publication else None
+        if out["publication"] and out["publication"].get("response_json"):
+            out["publication"]["response"] = json.loads(out["publication"].pop("response_json"))
         return out
+
+    def record_publication(self, listing_id, event):
+        with self.db.transaction() as c:
+            owned = c.execute(
+                "SELECT 1 FROM inventory_listings WHERE id=? AND owner_id=? AND deleted_at IS NULL",
+                (str(listing_id), self.owner),
+            ).fetchone()
+            if not owned:
+                raise AppError("listing_not_found", 404)
+            c.execute(
+                "INSERT INTO marketplace_publications VALUES(?,?,?,?,?,?,?,?,?,?,?)",
+                (
+                    event["id"], self.owner, str(listing_id), event["listing_revision"],
+                    event["provider"], event.get("external_listing_id"), event["status"],
+                    event.get("request_fingerprint"), json.dumps(event.get("response")) if event.get("response") is not None else None,
+                    event.get("error"), event["created_at"],
+                ),
+            )
+        return self.listing(listing_id)["publication"]
 
     def inventory(self, q="", condition=None, limit=50, offset=0):
         where = "owner_id=? AND deleted_at IS NULL AND instr(lower(payload_json),lower(?))>0"

@@ -3,7 +3,7 @@
 import hmac
 import os
 from pathlib import Path
-from uuid import UUID
+from uuid import UUID, uuid4
 from fastapi import (
     APIRouter,
     BackgroundTasks,
@@ -19,6 +19,8 @@ from .models import SessionWrite, IntakeWrite, ListingWrite, JobWrite, Condition
 from .store import Store, AppError
 from .media import MediaStore, MAX_BYTES
 from .vision import Jobs, VisionSettings
+from .marketplace import MarketplacePublisher
+from cardscan.local_pricing.database import utc
 
 
 def register(
@@ -32,6 +34,7 @@ def register(
     media=None,
     jobs=None,
     job_dispatch=None,
+    marketplace=None,
 ):
     store = store or Store(db)
     media = media or MediaStore(
@@ -40,9 +43,11 @@ def register(
         or os.getenv("TALLYBINDER_MEDIA_DIR", str(db.path.parent / "photos")),
     )
     jobs = jobs or Jobs(store, media, settings, vision_provider)
+    marketplace = marketplace or MarketplacePublisher()
     app.state.store = store
     app.state.jobs = jobs
     app.state.media = media
+    app.state.marketplace = marketplace
     token = os.getenv("TALLYBINDER_ACCESS_TOKEN", "")
     origins = set(
         os.getenv(
@@ -95,6 +100,8 @@ def register(
             "max_reservation_usd": (
                 str(jobs.settings.reserve()) if jobs.settings.enabled else None
             ),
+            "marketplace_enabled": marketplace.available(),
+            "storefront_url": marketplace.settings.storefront_url if marketplace.available() else None,
             "access_token_required": bool(token),
             "condition_notice": "Photo-based condition is preliminary; inspect surfaces and edges yourself.",
             "offline_notice": "The shell and unsent drafts can work offline. Identification, pricing and server inventory need the backend.",
@@ -182,6 +189,47 @@ def register(
     @router.put("/inventory/{id}")
     def edit(id: UUID, value: ListingWrite):
         return store.save_listing(value, id)
+
+    @router.post("/inventory/{id}/publish")
+    def publish(id: UUID):
+        if not marketplace.available():
+            raise AppError("marketplace_unavailable", 503)
+        listing = store.listing(id)
+        base = {
+            "listing_revision": listing["revision"],
+            "provider": marketplace.settings.provider,
+            "created_at": utc(),
+        }
+        store.record_publication(
+            id, {**base, "id": str(uuid4()), "status": "sending"}
+        )
+        try:
+            image = media.read(listing["listing"]["front_image_id"])
+            result = marketplace.publish(listing, image)
+        except Exception as exc:
+            store.record_publication(
+                id,
+                {
+                    **base,
+                    "id": str(uuid4()),
+                    "status": "failed",
+                    "error": type(exc).__name__,
+                    "created_at": utc(),
+                },
+            )
+            raise AppError("marketplace_publish_failed", 502) from None
+        return store.record_publication(
+            id,
+            {
+                **base,
+                "id": str(uuid4()),
+                "status": "published",
+                "external_listing_id": result["external_listing_id"],
+                "request_fingerprint": result["request_fingerprint"],
+                "response": result,
+                "created_at": utc(),
+            },
+        )
 
     @router.delete("/inventory/{id}")
     def delete(id: UUID, confirm: bool = False):

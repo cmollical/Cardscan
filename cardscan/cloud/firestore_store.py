@@ -281,11 +281,31 @@ class FirestoreStore(Store):
         return self.listing(expected_id)
 
     def listing(self, id):
+        from google.cloud.firestore_v1.base_query import FieldFilter
+
         snapshot = self._collection("listings").document(str(id)).get()
         data = snapshot.to_dict() if snapshot.exists else None
         if not data or data.get("owner_id") != self.owner or data.get("deleted_at"):
             raise AppError("listing_not_found", 404)
+        publications = list(
+            self._collection("publications")
+            .where(filter=FieldFilter("owner_id", "==", self.owner))
+            .stream()
+        )
+        events = [x.to_dict() for x in publications if x.to_dict().get("listing_id") == str(id)]
+        events.sort(key=lambda x: (x["created_at"], x["id"]), reverse=True)
+        data["publication"] = events[0] if events else None
         return data
+
+    def record_publication(self, listing_id, event):
+        listing = self._collection("listings").document(str(listing_id)).get()
+        data = listing.to_dict() if listing.exists else None
+        if not data or data.get("owner_id") != self.owner or data.get("deleted_at"):
+            raise AppError("listing_not_found", 404)
+        self._collection("publications").document(event["id"]).create(
+            {**event, "owner_id": self.owner, "listing_id": str(listing_id)}
+        )
+        return event
 
     def inventory(self, q="", condition=None, limit=50, offset=0):
         rows = [x.to_dict() for x in self._owner_documents("listings")]

@@ -19,6 +19,7 @@ def create_app(
     media_store=None,
     jobs=None,
     job_dispatch=None,
+    marketplace=None,
 ):
     db=Database(path or os.environ.get('TALLYBINDER_DB',os.environ.get('CARDSCAN_PRICING_DB','local-evidence/pricing.sqlite')))
     lookup=Lookup(db)
@@ -102,6 +103,7 @@ def create_app(
         media=media_store,
         jobs=jobs,
         job_dispatch=job_dispatch,
+        marketplace=marketplace,
     )
     app.add_middleware(BodyLimits)
     from cardscan.app.security import configure

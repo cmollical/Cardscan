@@ -55,6 +55,8 @@ type Config = {
   model: string | null;
   access_token_required: boolean;
   max_reservation_usd: string | null;
+  marketplace_enabled?: boolean;
+  storefront_url?: string | null;
 };
 type ServerDraft = {
   id: string;
@@ -633,6 +635,19 @@ export default function TallyBinder() {
       setNotice("Listing removed from inventory.");
     } catch (e) {
       setNotice(message(e));
+    }
+  }
+  async function publishListing(item: Inventory) {
+    setWorking(item.id, "Publishing…");
+    setNotice("");
+    try {
+      await request(`/inventory/${item.id}/publish`, { method: "POST" });
+      await loadInventory();
+      setNotice("Published to the demo card shop.");
+    } catch (e) {
+      setNotice(message(e));
+    } finally {
+      setWorking(item.id, "");
     }
   }
   async function exportCsv() {
@@ -1533,6 +1548,11 @@ export default function TallyBinder() {
                   <button onClick={() => void exportCsv()}>
                     <Download size={16} /> Export CSV
                   </button>
+                  {config?.storefront_url && (
+                    <a className="storefront-link" href={config.storefront_url} target="_blank" rel="noreferrer">
+                      View demo shop <ArrowRight size={15} />
+                    </a>
+                  )}
                 </div>
                 {inventory.length ? (
                   inventory.map((item) => (
@@ -1560,6 +1580,14 @@ export default function TallyBinder() {
                       </button>
                       <div className="inventory-foot">
                         <span>{item.listing.sku}</span>
+                        {config?.marketplace_enabled && (
+                          <button
+                            disabled={!!busy[item.id]}
+                            onClick={() => void publishListing(item)}
+                          >
+                            <CloudUpload size={15} /> {busy[item.id] || (item.publication?.status === "published" ? "Update Store" : "Push to Store")}
+                          </button>
+                        )}
                         <button
                           aria-label={"Delete " + item.listing.item_name}
                           onClick={() => void deleteListing(item)}

@@ -18,8 +18,30 @@ from cardscan.local_pricing.cli import seed
 from cardscan.local_pricing.api import create_app
 from cardscan.app.models import Assessment, Identification
 from cardscan.app.vision import VisionSettings, OpenAIVisionProvider
+from cardscan.app.marketplace import MarketplaceSettings
 
 HEADERS = {"X-TallyBinder-Client": "web"}
+
+
+class FakeMarketplace:
+    settings = MarketplaceSettings(
+        url="https://shop.example/api/publish",
+        token="x" * 32,
+        storefront_url="https://shop.example",
+    )
+
+    def available(self):
+        return True
+
+    def publish(self, record, front_image):
+        assert front_image.startswith(b"\xff\xd8")
+        return {
+            "provider": self.settings.provider,
+            "external_listing_id": record["id"],
+            "status": "published",
+            "published_at": "2026-10-27T00:00:00+00:00",
+            "request_fingerprint": "a" * 64,
+        }
 FIELDS = dict(
     game="pokemon",
     product_id=42382,
@@ -64,6 +86,7 @@ class TallyBinderTests(unittest.TestCase):
             media_root=Path(self.tmp.name) / "photos",
             vision_settings=self.settings,
             vision_provider=self.provider,
+            marketplace=FakeMarketplace(),
         )
         self.client = TestClient(self.app, headers=HEADERS)
         self.client.__enter__()
@@ -212,6 +235,17 @@ class TallyBinderTests(unittest.TestCase):
         self.assertEqual(result.status_code, 200, result.text)
         self.assertIsNone(result.json()["listing"]["market_reference"])
         self.assertEqual(result.json()["listing"]["listing_price"], "0.10")
+
+    def test_approved_listing_publishes_with_audited_result(self):
+        d = self.intake()
+        saved = self.client.post("/inventory", json=self.listing(d)).json()
+        result = self.client.post(f"/inventory/{saved['id']}/publish")
+        self.assertEqual(result.status_code, 200, result.text)
+        self.assertEqual(result.json()["status"], "published")
+        self.assertEqual(result.json()["external_listing_id"], saved["id"])
+        record = self.client.get(f"/inventory/{saved['id']}").json()
+        self.assertEqual(record["publication"]["status"], "published")
+        self.assertEqual(record["publication"]["request_fingerprint"], "a" * 64)
 
     def test_wrong_product_number_language_edition_finish_never_substitute(self):
         d = self.intake({**FIELDS, "number": "4/130"})

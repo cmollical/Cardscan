@@ -17,6 +17,8 @@ frontend/out/
 frontend/test-results/
 frontend/playwright-report/
 *.tsbuildinfo
+# ChatGPT Sites checkouts use their own managed source repositories.
+/sites/
 # Cloud operator credentials; committed examples contain no credentials.
 deploy/*.env
 deploy/*.env.*
