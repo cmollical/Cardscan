@@ -50,7 +50,13 @@ test("mobile manual capture → exact pricing → durable inventory → CSV → 
     .getByRole("button", { name: "Confirm condition & get price", exact: true })
     .click();
   await expect(page.locator(".price-value")).toHaveText("$527.70");
+  await expect(page.getByLabel("Listing price", { exact: true })).toHaveValue(
+    "527.70",
+  );
   await page.getByLabel("Listing price", { exact: true }).fill("500.00");
+  await expect(
+    page.getByRole("button", { name: "Reset to market reference" }),
+  ).toBeVisible();
   await page
     .getByRole("button", { name: "Preview listing", exact: true })
     .click();

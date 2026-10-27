@@ -1,4 +1,4 @@
-import type { Draft, Fields } from "./types";
+import type { Draft, Fields, Price } from "./types";
 export const identityKeys: (keyof Fields)[] = [
   "game",
   "product_id",
@@ -49,4 +49,14 @@ export function money(value: string | null | undefined) {
         style: "currency",
         currency: "USD",
       }).format(Number(value));
+}
+
+export function suggestedListingPrice(price: Price | null | undefined) {
+  if (
+    !price?.market_price ||
+    !["exact_match", "stale_price"].includes(price.status)
+  )
+    return "";
+  const amount = Number(price.market_price);
+  return Number.isFinite(amount) && amount >= 0 ? amount.toFixed(2) : "";
 }

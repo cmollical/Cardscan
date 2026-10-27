@@ -31,6 +31,7 @@ import {
   editFields,
   money,
   shouldAutoSelectPrinting,
+  suggestedListingPrice,
 } from "@/lib/workflow";
 import {
   emptyFields,
@@ -557,8 +558,14 @@ export default function TallyBinder() {
         { method: "POST" },
       );
       const now = latest(d.id);
-      if (now && sameIdentity(now.fields, d.fields))
-        await remember({ ...now, pricing: result });
+      if (now && sameIdentity(now.fields, d.fields)) {
+        const suggested = suggestedListingPrice(result);
+        await remember({
+          ...now,
+          pricing: result,
+          listing_price: now.listing_price || suggested,
+        });
+      }
     } catch (e) {
       setNotice(message(e));
     } finally {
@@ -1422,20 +1429,21 @@ export default function TallyBinder() {
                             />
                           </div>
                         </label>
-                        {current.pricing?.market_price &&
-                          ["exact_match", "stale_price"].includes(
-                            current.pricing.status,
-                          ) && (
+                        {suggestedListingPrice(current.pricing) &&
+                          current.listing_price !==
+                            suggestedListingPrice(current.pricing) && (
                             <button
                               className="text-button"
                               onClick={() =>
                                 void remember({
                                   ...current,
-                                  listing_price: current.pricing!.market_price!,
+                                  listing_price: suggestedListingPrice(
+                                    current.pricing,
+                                  ),
                                 })
                               }
                             >
-                              Use market reference as my asking price
+                              Reset to market reference
                             </button>
                           )}
                       </section>

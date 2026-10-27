@@ -4,6 +4,7 @@ import {
   description,
   money,
   shouldAutoSelectPrinting,
+  suggestedListingPrice,
 } from "../lib/workflow";
 import { emptyFields, type Draft } from "../lib/types";
 const draft: Draft = {
@@ -59,6 +60,18 @@ describe("review integrity", () => {
     expect(description(draft)).toContain("Raw card, LP");
     expect(money(null)).toBe("Price unavailable");
     expect(money("500")).toBe("$500.00");
+  });
+  it("formats exact and stale references as editable listing-price defaults", () => {
+    expect(suggestedListingPrice(draft.pricing)).toBe("527.70");
+    expect(
+      suggestedListingPrice({ status: "stale_price", market_price: "0.11" }),
+    ).toBe("0.11");
+    expect(
+      suggestedListingPrice({ status: "ambiguous_match", market_price: "1" }),
+    ).toBe("");
+    expect(
+      suggestedListingPrice({ status: "exact_match", market_price: null }),
+    ).toBe("");
   });
   it("prefills only one exact candidate into an untouched identity form", () => {
     const blank = {
