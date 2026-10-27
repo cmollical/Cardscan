@@ -4,6 +4,42 @@ import { Camera, ImagePlus, RefreshCw, X, Check } from "lucide-react";
 import { compressImage } from "@/lib/images";
 import { download } from "@/lib/api";
 
+const blobSources = new WeakMap<Blob, string>();
+const mediaSources = new Map<string, string>();
+const mediaCacheLimit = 24;
+
+function cachedMedia(id?: string | null) {
+  if (!id) return "";
+  const source = mediaSources.get(id) || "";
+  if (source) {
+    mediaSources.delete(id);
+    mediaSources.set(id, source);
+  }
+  return source;
+}
+
+function cacheMedia(id: string | null | undefined, source: string) {
+  if (!id) return;
+  mediaSources.delete(id);
+  mediaSources.set(id, source);
+  if (mediaSources.size > mediaCacheLimit) {
+    const oldest = mediaSources.keys().next().value;
+    if (oldest) mediaSources.delete(oldest);
+  }
+}
+
+function dataUrl(blob: Blob) {
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () =>
+      typeof reader.result === "string"
+        ? resolve(reader.result)
+        : reject(new Error("Photo could not be decoded."));
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(blob);
+  });
+}
+
 export function Photo({
   blob,
   id,
@@ -15,19 +51,34 @@ export function Photo({
   alt: string;
   className?: string;
 }) {
-  const [src, setSrc] = useState("");
+  const [src, setSrc] = useState(
+    () => (blob && blobSources.get(blob)) || cachedMedia(id),
+  );
   useEffect(() => {
     let alive = true;
-    setSrc("");
+    const cached = (blob && blobSources.get(blob)) || cachedMedia(id);
+    setSrc(cached || "");
+    if (cached)
+      return () => {
+        alive = false;
+      };
     const load = async () => {
       try {
-        const data = blob || (id ? await download("/media/" + id) : null);
-        if (!data || !alive) return;
-        const reader = new FileReader();
-        reader.onload = () => {
-          if (alive && typeof reader.result === "string") setSrc(reader.result);
-        };
-        reader.readAsDataURL(data);
+        let source = "";
+        if (blob) {
+          try {
+            source = await dataUrl(blob);
+          } catch {
+            // A persisted local blob can be unreadable on some mobile browsers.
+            // The uploaded media copy is the durable fallback after intake sync.
+          }
+        }
+        if (!source && id)
+          source = await dataUrl(await download("/media/" + id));
+        if (!source) return;
+        if (blob) blobSources.set(blob, source);
+        cacheMedia(id, source);
+        if (alive) setSrc(source);
       } catch {}
     };
     void load();
