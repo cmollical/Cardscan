@@ -98,6 +98,12 @@ work without a key. The combined identification review sends the front and back
 photos once, returning structured printing evidence and a preliminary condition
 recommendation in the same paid request. Both remain editable and require one
 explicit human confirmation before pricing.
+
+Condition recommendations apply TCGplayer's official Card Conditioning Standards
+(updated October 2026): severity points, condition point caps, imperfection-specific
+ceilings, and Damage-class rules. Photo uncertainty is never counted as wear; every
+recommended downgrade below Near Mint must cite a visible imperfection, side, and
+location. The app records the applied standard in each completed AI result.
 No web search tools are enabled. Requests use structured outputs and `store=false`;
 this does not claim zero retention under all provider policies.
 

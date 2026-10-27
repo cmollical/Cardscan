@@ -152,6 +152,10 @@ class ServerlessVisionTests(unittest.TestCase):
             result = jobs.get(first["id"])
             self.assertEqual(result["status"], "completed")
             self.assertEqual(result["estimated_cost_usd"], "0.0012")
+            self.assertEqual(
+                result["result"]["condition_standard"],
+                "TCGplayer Card Conditioning Standards, updated October 2026",
+            )
             self.assertEqual(provider.research.call_count, 1)
 
     def test_dispatcher_uses_private_oidc_target_and_deterministic_task(self):

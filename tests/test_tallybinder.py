@@ -741,6 +741,11 @@ class TallyBinderTests(unittest.TestCase):
         prompt = args["input"][0]["content"][0]["text"]
         self.assertIn("Never use HP", prompt)
         self.assertIn("exact short set code", prompt)
+        self.assertIn("TCGplayer Card Conditioning Standards", prompt)
+        self.assertIn("NM permits up to 3 points; LP up to 6", prompt)
+        self.assertIn("Surface wear/whitening exposing cardstock", prompt)
+        self.assertIn("do not count glare", prompt)
+        self.assertIn("Every downgrade below NM", prompt)
         self.assertTrue(
             args["input"][0]["content"][1]["image_url"].startswith(
                 "data:image/jpeg;base64,"

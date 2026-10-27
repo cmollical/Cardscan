@@ -92,6 +92,7 @@ type Job = {
     limitations: string[];
     condition_observations?: string[];
     condition_limitations?: string[];
+    condition_standard?: string;
     catalog_candidates?: Array<{
       claim: Partial<Fields>;
       card: Card;
@@ -2041,6 +2042,18 @@ function JobPanel({
               {s}
             </p>
           ))}
+          {job.result?.condition_standard && (
+            <p className="caption">
+              Applied rubric: {job.result.condition_standard}.{" "}
+              <a
+                href="https://help.tcgplayer.com/hc/en-us/articles/221430307-Card-Conditioning-Overview"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View the official guide
+              </a>
+            </p>
+          )}
         </>
       )}
       {job.estimated_cost_usd && (

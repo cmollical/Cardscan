@@ -155,7 +155,7 @@ class FirestoreJobs:
         job_id = str(
             uuid5(
                 NAMESPACE_URL,
-                f"tallybinder:{self.store.owner}:{id}:{value.kind}:combined-review-v1:{intake['revision']}",
+                f"tallybinder:{self.store.owner}:{id}:{value.kind}:tcgplayer-rubric-v2:{intake['revision']}",
             )
         )
         ref = self._jobs().document(job_id)
@@ -283,6 +283,9 @@ class FirestoreJobs:
                 else:
                     result = withhold_contradictory_condition(result)
                 result["provenance"] = "AI photo interpretation; human confirmation required"
+                result["condition_standard"] = (
+                    "TCGplayer Card Conditioning Standards, updated October 2026"
+                )
                 result["limitations"] += ["Phone photos may miss surface damage, dents and other defects."]
                 ref.update(
                     {
