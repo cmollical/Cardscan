@@ -30,10 +30,14 @@ class FakeMarketplace:
         storefront_url="https://shop.example",
     )
 
+    def __init__(self):
+        self.calls = 0
+
     def available(self):
         return True
 
     def publish(self, record, front_image):
+        self.calls += 1
         assert front_image.startswith(b"\xff\xd8")
         return {
             "provider": self.settings.provider,
@@ -81,12 +85,13 @@ class TallyBinderTests(unittest.TestCase):
         seed(self.db)
         self.provider = Mock()
         self.settings = VisionSettings(enabled=True)
+        self.marketplace = FakeMarketplace()
         self.app = create_app(
             self.db.path,
             media_root=Path(self.tmp.name) / "photos",
             vision_settings=self.settings,
             vision_provider=self.provider,
-            marketplace=FakeMarketplace(),
+            marketplace=self.marketplace,
         )
         self.client = TestClient(self.app, headers=HEADERS)
         self.client.__enter__()
@@ -272,6 +277,30 @@ class TallyBinderTests(unittest.TestCase):
         record = self.client.get(f"/inventory/{saved['id']}").json()
         self.assertEqual(record["publication"]["status"], "published")
         self.assertEqual(record["publication"]["request_fingerprint"], "a" * 64)
+        repeated = self.client.post(f"/inventory/{saved['id']}/publish")
+        self.assertEqual(repeated.status_code, 200, repeated.text)
+        self.assertEqual(self.marketplace.calls, 1)
+
+    def test_review_intake_can_be_deleted_but_inventory_cannot(self):
+        draft = self.intake()
+        self.assertEqual(
+            self.client.delete("/intake/" + draft["id"]).status_code, 422
+        )
+        deleted = self.client.delete(
+            "/intake/" + draft["id"], params={"confirm": "true"}
+        )
+        self.assertEqual(deleted.status_code, 200, deleted.text)
+        self.assertEqual(
+            self.client.get("/intake/" + draft["id"]).status_code, 404
+        )
+
+        saved_draft = self.intake()
+        listing = self.client.post("/inventory", json=self.listing(saved_draft))
+        self.assertEqual(listing.status_code, 200, listing.text)
+        blocked = self.client.delete(
+            "/intake/" + saved_draft["id"], params={"confirm": "true"}
+        )
+        self.assertEqual(blocked.status_code, 409, blocked.text)
 
     def test_wrong_product_number_language_edition_finish_never_substitute(self):
         d = self.intake({**FIELDS, "number": "4/130"})

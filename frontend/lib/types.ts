@@ -97,6 +97,7 @@ export type Inventory = {
   publication?: {
     status: "sending" | "published" | "failed";
     provider: string;
+    listing_revision: number;
     external_listing_id?: string | null;
     created_at: string;
   } | null;

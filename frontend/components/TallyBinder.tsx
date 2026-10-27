@@ -22,7 +22,7 @@ import {
   X,
 } from "lucide-react";
 import Photos, { Photo } from "./Photos";
-import { allDrafts, putDraft } from "@/lib/drafts";
+import { allDrafts, putDraft, removeDraft } from "@/lib/drafts";
 import { ApiError, request, upload, download } from "@/lib/api";
 import { firebaseAuth } from "@/lib/firebase";
 import { signOut as firebaseSignOut } from "@firebase/auth";
@@ -694,13 +694,48 @@ export default function TallyBinder() {
       setNotice(message(e));
     }
   }
+  async function deleteReviewItem(draft: Draft) {
+    if (
+      !window.confirm("Remove this card from review? This cannot be undone.")
+    )
+      return;
+    setWorking(draft.id, "Removing…");
+    setNotice("");
+    try {
+      if (draft.revision > 0) {
+        try {
+          await request("/intake/" + draft.id + "?confirm=true", {
+            method: "DELETE",
+          });
+        } catch (error) {
+          if (!(error instanceof ApiError) || error.status !== 404) throw error;
+        }
+      }
+      await removeDraft(draft.id);
+      ref.current = ref.current.filter((item) => item.id !== draft.id);
+      setDrafts(ref.current);
+      if (selected === draft.id) setSelected("");
+      setNotice("Card removed from review.");
+    } catch (e) {
+      setNotice(message(e));
+    } finally {
+      setWorking(draft.id, "");
+    }
+  }
   async function publishListing(item: Inventory) {
     setWorking(item.id, "Publishing…");
     setNotice("");
     try {
-      await request(`/inventory/${item.id}/publish`, { method: "POST" });
+      const publication = await request<{ status: string }>(
+        "/inventory/" + item.id + "/publish",
+        { method: "POST" },
+      );
       await loadInventory();
-      setNotice("Published to the demo card shop.");
+      setNotice(
+        publication.status === "published"
+          ? "Published to the demo card shop."
+          : "Store publishing is already in progress.",
+      );
     } catch (e) {
       setNotice(message(e));
     } finally {
@@ -983,8 +1018,27 @@ export default function TallyBinder() {
                 </div>
                 {pending.length ? (
                   pending.map((d) => (
-                    <div key={d.id}>
-                      <QueueRow draft={d} onClick={() => review(d)} />
+                    <article className="queue-item" key={d.id}>
+                      <QueueRow
+                        draft={d}
+                        onClick={() => review(d)}
+                        disabled={!!busy[d.id]}
+                      />
+                      <div className="queue-item-foot">
+                        <button
+                          className="queue-delete"
+                          disabled={!!busy[d.id]}
+                          aria-label={
+                            "Remove " +
+                            (d.fields.name || "card") +
+                            " from review"
+                          }
+                          onClick={() => void deleteReviewItem(d)}
+                        >
+                          <Trash2 size={15} />
+                          {busy[d.id] || "Remove from review"}
+                        </button>
+                      </div>
                       {d.error && (
                         <div className="queue-error">
                           <span>{d.error}</span>
@@ -998,7 +1052,7 @@ export default function TallyBinder() {
                           </button>
                         </div>
                       )}
-                    </div>
+                    </article>
                   ))
                 ) : (
                   <Empty
@@ -1727,6 +1781,29 @@ export default function TallyBinder() {
                 {inventory.length ? (
                   inventory.map((item) => (
                     <article className="inventory-card" key={item.id}>
+                      {item.publication?.status === "published" &&
+                        item.publication.listing_revision === item.revision && (
+                          <div className="store-live" role="status">
+                            <CheckCircle2 size={15} />
+                            <span>
+                              <strong>Live in store</strong>
+                              <small>Published successfully</small>
+                            </span>
+                          </div>
+                        )}
+                      {item.publication?.status === "sending" &&
+                        item.publication.listing_revision === item.revision && (
+                          <div
+                            className="store-live store-sending"
+                            role="status"
+                          >
+                            <LoaderCircle className="spin" size={15} />
+                            <span>
+                              <strong>Publishing to store</strong>
+                              <small>Please wait—this happens once.</small>
+                            </span>
+                          </div>
+                        )}
                       <button
                         className="inventory-open"
                         onClick={() => void openInventory(item)}
@@ -1751,12 +1828,31 @@ export default function TallyBinder() {
                       <div className="inventory-foot">
                         <span>{item.listing.sku}</span>
                         {config?.marketplace_enabled && (
-                          <button
-                            disabled={!!busy[item.id]}
-                            onClick={() => void publishListing(item)}
-                          >
-                            <CloudUpload size={15} /> {busy[item.id] || (item.publication?.status === "published" ? "Update Store" : "Push to Store")}
-                          </button>
+                          item.publication?.status === "published" &&
+                          item.publication.listing_revision === item.revision ? (
+                            <span className="store-published">
+                              <Check size={14} /> In store
+                            </span>
+                          ) : item.publication?.status === "sending" &&
+                            item.publication.listing_revision === item.revision ? (
+                            <span className="store-published">
+                              <LoaderCircle className="spin" size={14} />
+                              Publishing…
+                            </span>
+                          ) : (
+                            <button
+                              disabled={!!busy[item.id]}
+                              onClick={() => void publishListing(item)}
+                            >
+                              <CloudUpload size={15} />{" "}
+                              {busy[item.id] ||
+                                (item.publication?.status === "published"
+                                  ? "Publish changes"
+                                  : item.publication?.status === "failed"
+                                    ? "Retry store push"
+                                    : "Push to store")}
+                            </button>
+                          )
                         )}
                         <button
                           aria-label={"Delete " + item.listing.item_name}
@@ -1967,9 +2063,17 @@ export default function TallyBinder() {
     </div>
   );
 }
-function QueueRow({ draft, onClick }: { draft: Draft; onClick: () => void }) {
+function QueueRow({
+  draft,
+  onClick,
+  disabled = false,
+}: {
+  draft: Draft;
+  onClick: () => void;
+  disabled?: boolean;
+}) {
   return (
-    <button className="queue-row" onClick={onClick}>
+    <button className="queue-row" onClick={onClick} disabled={disabled}>
       <Photo blob={draft.front} id={draft.front_id} alt="Card preview" />
       <span>
         <strong>{draft.fields.name || "New card"}</strong>

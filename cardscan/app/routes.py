@@ -123,6 +123,12 @@ def register(
     def intake_get(id: UUID):
         return store.intake(id)
 
+    @router.delete("/intake/{id}")
+    def delete_intake(id: UUID, confirm: bool = False):
+        if not confirm:
+            raise AppError("delete_confirmation_required", 422)
+        return store.delete_intake(id)
+
     @router.post("/intake/{id}/price")
     def price(id: UUID, revision: int = Query(ge=1)):
         return store.price(id, revision)
@@ -195,6 +201,13 @@ def register(
         if not marketplace.available():
             raise AppError("marketplace_unavailable", 503)
         listing = store.listing(id)
+        publication = listing.get("publication")
+        if (
+            publication
+            and publication.get("status") in ("sending", "published")
+            and publication.get("listing_revision") == listing["revision"]
+        ):
+            return publication
         base = {
             "listing_revision": listing["revision"],
             "provider": marketplace.settings.provider,

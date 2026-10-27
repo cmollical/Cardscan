@@ -146,6 +146,29 @@ class Store:
             "offset": offset,
         }
 
+    def delete_intake(self, id):
+        with self.db.transaction() as c:
+            intake = c.execute(
+                "SELECT 1 FROM intake_cards WHERE id=? AND owner_id=?",
+                (str(id), self.owner),
+            ).fetchone()
+            if not intake:
+                raise AppError("intake_not_found", 404)
+            if c.execute(
+                "SELECT 1 FROM inventory_listings WHERE intake_id=? AND owner_id=?",
+                (str(id), self.owner),
+            ).fetchone():
+                raise AppError("intake_has_inventory_listing", 409)
+            c.execute(
+                "DELETE FROM vision_jobs WHERE intake_id=? AND owner_id=?",
+                (str(id), self.owner),
+            )
+            c.execute(
+                "DELETE FROM intake_cards WHERE id=? AND owner_id=?",
+                (str(id), self.owner),
+            )
+        return {"deleted": True}
+
     def put_intake(self, id, value):
         id = str(id)
         fields = value.fields.model_dump()

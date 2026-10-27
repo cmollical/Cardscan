@@ -68,7 +68,7 @@ class FirestoreStore(Store):
         if not snapshot.exists:
             raise AppError("intake_not_found", 404)
         result = snapshot.to_dict()
-        if result.get("owner_id") != self.owner:
+        if result.get("owner_id") != self.owner or result.get("deleted_at"):
             raise AppError("intake_not_found", 404)
         listing = self._collection("listings").document(self._listing_id(id)).get()
         listing_data = listing.to_dict() if listing.exists else None
@@ -81,7 +81,11 @@ class FirestoreStore(Store):
         return result
 
     def queue(self, limit=100, offset=0):
-        rows = [x.to_dict() for x in self._owner_documents("intakes")]
+        rows = [
+            x.to_dict()
+            for x in self._owner_documents("intakes")
+            if not x.to_dict().get("deleted_at")
+        ]
         rows.sort(key=lambda x: (x["updated_at"], x["id"]), reverse=True)
         selected = rows[offset : offset + limit]
         return {
@@ -90,6 +94,33 @@ class FirestoreStore(Store):
             "limit": limit,
             "offset": offset,
         }
+
+    def delete_intake(self, id):
+        id = str(id)
+        ref = self._collection("intakes").document(id)
+        listing_ref = self._collection("listings").document(self._listing_id(id))
+        transaction = self.client.transaction()
+
+        from google.cloud import firestore
+
+        @firestore.transactional
+        def write(txn):
+            current = ref.get(transaction=txn)
+            listing = listing_ref.get(transaction=txn)
+            data = current.to_dict() if current.exists else None
+            listing_data = listing.to_dict() if listing.exists else None
+            if (
+                not data
+                or data.get("owner_id") != self.owner
+                or data.get("deleted_at")
+            ):
+                raise AppError("intake_not_found", 404)
+            if listing_data and not listing_data.get("deleted_at"):
+                raise AppError("intake_has_inventory_listing", 409)
+            txn.update(ref, {"deleted_at": utc()})
+
+        write(transaction)
+        return {"deleted": True}
 
     def put_intake(self, id, value):
         id = str(id)
@@ -118,6 +149,8 @@ class FirestoreStore(Store):
             ):
                 raise AppError("photo_not_found", 404)
             previous = old.to_dict() if old.exists else None
+            if previous and previous.get("deleted_at"):
+                raise AppError("intake_not_found", 404)
             if previous and previous.get("owner_id") != self.owner:
                 raise AppError("intake_not_found", 404)
             if previous and previous["revision"] != value.expected_revision:
