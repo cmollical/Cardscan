@@ -170,11 +170,20 @@ class ServerlessTests(unittest.TestCase):
                         "published_on": str(date.today() + timedelta(days=1)),
                         "providers": ["tcgcsv", "tcgtracking"],
                     },
+                    {
+                        "category": 3,
+                        "group": 999003,
+                        "name": "Inactive provider tombstone",
+                        "published_on": str(date.today()),
+                        "providers": ["tcgtracking"],
+                        "products_reported": 0,
+                    },
                 ]
             )
             selected = discovered_scopes(db, catalog, limit=10, expansion=10)
             self.assertNotIn(999001, {row["group"] for row in selected})
             self.assertNotIn(999002, {row["group"] for row in selected})
+            self.assertNotIn(999003, {row["group"] for row in selected})
 
     def test_partial_provider_failure_requires_an_exact_set_success(self):
         result = require_publishable_sync(

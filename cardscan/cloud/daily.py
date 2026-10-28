@@ -49,7 +49,9 @@ def discovered_scopes(db, catalog, *, limit=14, expansion=10):
     rows = [
         row
         for row in catalog["sets"]
-        if row.get("providers") and release_date(row) is not None
+        if row.get("providers")
+        and release_date(row) is not None
+        and row.get("products_reported") != 0
     ]
 
     def newest(row):
