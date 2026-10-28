@@ -17,9 +17,12 @@ def canonical_number(raw):
 def canonical_product_name(raw, number):
     """Remove a provider-added collector suffix only when it matches the card."""
     name = (raw or '').strip()
-    match = re.fullmatch(r'(.+?)\s+-\s+([A-Za-z]*\d+/[A-Za-z]*\d+)', name)
+    match = re.fullmatch(
+        r'(.+?)\s+-\s+([A-Za-z]*\d+/[A-Za-z]*\d+)(\s+\([^()]+\))?',
+        name,
+    )
     if match and canonical_number(match[2]) == canonical_number(number):
-        return match[1].strip()
+        return (match[1] + (match[3] or '')).strip()
     return name
 
 

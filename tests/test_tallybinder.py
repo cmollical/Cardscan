@@ -16,6 +16,7 @@ from fastapi.testclient import TestClient
 from cardscan.local_pricing.database import Database
 from cardscan.local_pricing.cli import seed
 from cardscan.local_pricing.api import create_app
+from cardscan.local_pricing.importers import canonical_product_name
 from cardscan.app.models import Assessment, Identification
 from cardscan.app.vision import VisionSettings, OpenAIVisionProvider
 from cardscan.app.marketplace import MarketplaceSettings
@@ -731,6 +732,70 @@ class TallyBinderTests(unittest.TestCase):
             self.assertEqual(candidate["claim"]["language"], "english")
             self.assertIn("adjacent_language_mark_separated", candidate["issues"])
         self.provider.resolve_set_codes.assert_not_called()
+
+    def test_completed_identification_rejoins_new_catalog_without_another_ai_call(self):
+        self.provider.research.return_value = ai_response(
+            {
+                "readings": [
+                    dict(
+                        name="Backfill Trainer",
+                        set_code="NEWEN",
+                        collector_number="096/131",
+                        language=None,
+                        edition=None,
+                        finish=None,
+                        rarity=None,
+                    )
+                ],
+                "observations": [
+                    "Backfill Trainer is visible at the top.",
+                    "The collector line shows 096/131 beside NEWEN.",
+                ],
+                "limitations": [],
+                "recommended_condition": "LP",
+                "condition_observations": ["Synthetic edge wear."],
+                "condition_limitations": [],
+                "additional_photos_helpful": False,
+            }
+        )
+        draft = self.intake()
+        job = self.client.post(
+            "/intake/" + draft["id"] + "/jobs",
+            json={"kind": "identify", "authorize_paid": True, "expected_revision": 1},
+        ).json()
+        first = self.client.get("/jobs/" + job["id"]).json()
+        self.assertEqual(first["result"]["catalog_candidates"], [])
+        with self.db.transaction() as connection:
+            game_id = connection.execute(
+                "SELECT id FROM games WHERE name='pokemon'"
+            ).fetchone()[0]
+            set_id = connection.execute(
+                "INSERT INTO sets(game_id,name) VALUES(?,?)",
+                (game_id, "Newly backfilled set"),
+            ).lastrowid
+            connection.execute(
+                "INSERT INTO set_aliases(set_id,alias,provenance) VALUES(?,?,?)",
+                (set_id, "new", "synthetic provider metadata"),
+            )
+            connection.execute(
+                "INSERT INTO products(game_id,set_id,name,collector_number,tcgplayer_product_id) VALUES(?,?,?,?,?)",
+                (game_id, set_id, "Backfill Trainer", "96/131", "9999150"),
+            )
+        refreshed = self.client.get("/jobs/" + job["id"]).json()
+        self.assertEqual(len(refreshed["result"]["catalog_candidates"]), 1)
+        candidate = refreshed["result"]["catalog_candidates"][0]
+        self.assertEqual(candidate["card"]["name"], "Backfill Trainer")
+        self.assertEqual(candidate["claim"]["raw_set_code"], "NEWEN")
+        self.assertEqual(candidate["claim"]["set_code"], "NEW")
+        self.assertEqual(self.provider.research.call_count, 1)
+
+    def test_provider_collector_suffix_before_printing_label_is_normalized(self):
+        self.assertEqual(
+            canonical_product_name(
+                "Backfill Trainer - 096/131 (Poke Ball Pattern)", "96/131"
+            ),
+            "Backfill Trainer (Poke Ball Pattern)",
+        )
 
     def test_catalog_guided_collector_number_reread_offers_ambiguous_sets(self):
         with self.db.transaction() as connection:

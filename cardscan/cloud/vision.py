@@ -131,7 +131,7 @@ class FirestoreJobs:
                 Decimal(0),
             )
         )
-        return result
+        return Jobs.refresh_catalog_result(self, result)
 
     def get(self, id):
         snapshot = self._jobs().document(str(id)).get()

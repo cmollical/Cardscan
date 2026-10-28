@@ -354,6 +354,16 @@ class Jobs:
             )
         )
 
+    def refresh_catalog_result(self, record):
+        """Rejoin completed identity evidence to the current local catalog for free."""
+        if (
+            record.get("status") == "completed"
+            and record.get("kind") == "identify"
+            and isinstance(record.get("result"), dict)
+        ):
+            record["result"] = Jobs.cross_reference(self, record["result"])
+        return record
+
     def get(self, id):
         with self.db.connect(readonly=True) as c:
             r = c.execute(
@@ -396,7 +406,7 @@ class Jobs:
                 Decimal(0),
             )
         )
-        return r
+        return self.refresh_catalog_result(r)
 
     def enqueue(self, id, value):
         if not self.settings.enabled:
@@ -728,8 +738,13 @@ class Jobs:
                 issues.append("name_not_supported_by_observation")
             if number and not supports_collector_number(evidence, number):
                 issues.append("collector_number_not_supported_by_observation")
+            evidence_set_label = (
+                claim.get("raw_set_code")
+                if claim.get("set_code_resolution") and claim.get("raw_set_code")
+                else set_label
+            )
             if set_label and not re.search(
-                rf"(?<![A-Za-z0-9]){re.escape(set_label)}(?![A-Za-z0-9])",
+                rf"(?<![A-Za-z0-9]){re.escape(evidence_set_label)}(?![A-Za-z0-9])",
                 evidence,
                 re.I,
             ):
