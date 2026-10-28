@@ -602,10 +602,9 @@ class TallyBinderTests(unittest.TestCase):
         candidate = state["result"]["catalog_candidates"][0]
         self.assertEqual(candidate["claim"]["raw_set_code"], "ASCE")
         self.assertEqual(candidate["claim"]["set_code"], "asc")
-        self.assertIn("catalog_guided_set_code_reread", candidate["issues"])
-        guidance = self.provider.resolve_set_codes.call_args.args[1]
-        self.assertEqual(guidance[0]["candidate_set_codes"], ["asc"])
-        self.assertEqual(state["estimated_cost_usd"], "0.0024")
+        self.assertIn("adjacent_regulation_mark_separated", candidate["issues"])
+        self.provider.resolve_set_codes.assert_not_called()
+        self.assertEqual(state["estimated_cost_usd"], "0.0012")
         self.assertFalse(candidate["approved"])
 
     def test_ai_matches_zero_padded_visible_collector_number(self):
@@ -797,6 +796,45 @@ class TallyBinderTests(unittest.TestCase):
             "Backfill Trainer (Poke Ball Pattern)",
         )
 
+    def test_visible_name_and_number_offer_catalog_choice_without_set_code(self):
+        self.provider.research.return_value = ai_response(
+            {
+                "readings": [
+                    dict(
+                        name="Charizard",
+                        set_code=None,
+                        collector_number="4/102",
+                        language=None,
+                        edition=None,
+                        finish=None,
+                        rarity=None,
+                    )
+                ],
+                "observations": [
+                    "Charizard is visible at the top.",
+                    "The collector number 4/102 is visible; no expansion symbol is printed.",
+                ],
+                "limitations": [],
+                "recommended_condition": "LP",
+                "condition_observations": ["Synthetic edge wear."],
+                "condition_limitations": [],
+                "additional_photos_helpful": False,
+            }
+        )
+        draft = self.intake()
+        job = self.client.post(
+            "/intake/" + draft["id"] + "/jobs",
+            json={"kind": "identify", "authorize_paid": True, "expected_revision": 1},
+        ).json()
+        state = self.client.get("/jobs/" + job["id"]).json()
+        self.assertEqual(state["status"], "completed")
+        self.assertEqual(len(state["result"]["catalog_candidates"]), 1)
+        candidate = state["result"]["catalog_candidates"][0]
+        self.assertEqual(candidate["card"]["name"], "Charizard")
+        self.assertIn("set_identifier_not_visible", candidate["issues"])
+        self.assertFalse(candidate["approved"])
+        self.provider.resolve_set_codes.assert_not_called()
+
     def test_catalog_guided_collector_number_reread_offers_ambiguous_sets(self):
         with self.db.transaction() as connection:
             game_id = connection.execute(
@@ -867,7 +905,7 @@ class TallyBinderTests(unittest.TestCase):
             self.assertEqual(candidate["claim"]["raw_collector_number"], "87/165")
             self.assertEqual(candidate["claim"]["collector_number"], "179/165")
             self.assertIn("catalog_guided_collector_number_reread", candidate["issues"])
-            self.assertIn("catalog_set_code_unresolved", candidate["issues"])
+            self.assertIn("catalog_set_identifier_unresolved", candidate["issues"])
             self.assertFalse(candidate["approved"])
         guidance = self.provider.resolve_set_codes.call_args.args[1]
         self.assertEqual(guidance[0]["candidate_collector_numbers"], ["179/165"])
@@ -1061,7 +1099,8 @@ class TallyBinderTests(unittest.TestCase):
         self.assertTrue(args["text"]["format"]["strict"])
         prompt = args["input"][0]["content"][0]["text"]
         self.assertIn("Never use HP", prompt)
-        self.assertIn("exact short set code", prompt)
+        self.assertIn("exact short alphanumeric set code", prompt)
+        self.assertIn("only an expansion symbol", prompt)
         self.assertIn("TCGplayer Card Conditioning Standards", prompt)
         self.assertIn("NM permits up to 3 points; LP up to 6", prompt)
         self.assertIn("Surface wear/whitening exposing cardstock", prompt)
@@ -1071,6 +1110,16 @@ class TallyBinderTests(unittest.TestCase):
             args["input"][0]["content"][1]["image_url"].startswith(
                 "data:image/jpeg;base64,"
             )
+        )
+        self.assertEqual(
+            len(
+                [
+                    item
+                    for item in args["input"][0]["content"]
+                    if item["type"] == "input_image"
+                ]
+            ),
+            3,
         )
         client.responses.create.return_value["output"][0]["content"][0]["text"] = json.dumps(
             {
