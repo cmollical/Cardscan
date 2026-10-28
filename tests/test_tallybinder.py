@@ -582,6 +582,7 @@ class TallyBinderTests(unittest.TestCase):
                 "resolutions": [
                     {
                         "reading_index": 0,
+                        "selected_collector_number": None,
                         "selected_set_code": "asc",
                         "observation": "The printed set code is ASC; the adjacent EN language mark is separate.",
                     }
@@ -664,6 +665,147 @@ class TallyBinderTests(unittest.TestCase):
         self.assertEqual(candidate["claim"]["language"], "english")
         self.assertIn("adjacent_language_mark_separated", candidate["issues"])
         self.assertEqual(state["result"]["unmatched_claims"], [])
+
+    def test_ai_separates_catalog_validated_compact_language_mark_and_offers_variants(self):
+        with self.db.transaction() as connection:
+            game_id = connection.execute(
+                "SELECT id FROM games WHERE name='pokemon'"
+            ).fetchone()[0]
+            set_id = connection.execute(
+                "INSERT INTO sets(game_id,name) VALUES(?,?)",
+                (game_id, "Synthetic current set"),
+            ).lastrowid
+            connection.execute(
+                "INSERT INTO set_aliases(set_id,alias,provenance) VALUES(?,?,?)",
+                (set_id, "abc", "synthetic provider metadata"),
+            )
+            for suffix, product_id in (
+                ("", "9999100"),
+                (" (Pattern One)", "9999101"),
+                (" (Pattern Two)", "9999102"),
+            ):
+                connection.execute(
+                    "INSERT INTO products(game_id,set_id,name,collector_number,tcgplayer_product_id) VALUES(?,?,?,?,?)",
+                    (game_id, set_id, "Testmon" + suffix, "20/217", product_id),
+                )
+        self.provider.research.return_value = ai_response(
+            {
+                "readings": [
+                    dict(
+                        name="Testmon",
+                        set_code="ABCEN",
+                        collector_number="020/217",
+                        language=None,
+                        edition=None,
+                        finish=None,
+                        rarity=None,
+                    )
+                ],
+                "observations": [
+                    "Testmon is visible at the top.",
+                    "The collector line shows 020/217 beside ABCEN.",
+                ],
+                "limitations": [],
+                "recommended_condition": "NM",
+                "condition_observations": ["No visible wear in the synthetic photo."],
+                "condition_limitations": [],
+                "additional_photos_helpful": False,
+            }
+        )
+        draft = self.intake()
+        job = self.client.post(
+            "/intake/" + draft["id"] + "/jobs",
+            json={"kind": "identify", "authorize_paid": True, "expected_revision": 1},
+        ).json()
+        state = self.client.get("/jobs/" + job["id"]).json()
+        self.assertEqual(state["status"], "completed")
+        candidates = state["result"]["catalog_candidates"]
+        self.assertEqual(len(candidates), 3)
+        self.assertEqual(
+            {candidate["card"]["name"] for candidate in candidates},
+            {"Testmon", "Testmon (Pattern One)", "Testmon (Pattern Two)"},
+        )
+        for candidate in candidates:
+            self.assertEqual(candidate["claim"]["raw_set_code"], "ABCEN")
+            self.assertEqual(candidate["claim"]["set_code"], "ABC")
+            self.assertEqual(candidate["claim"]["language"], "english")
+            self.assertIn("adjacent_language_mark_separated", candidate["issues"])
+        self.provider.resolve_set_codes.assert_not_called()
+
+    def test_catalog_guided_collector_number_reread_offers_ambiguous_sets(self):
+        with self.db.transaction() as connection:
+            game_id = connection.execute(
+                "SELECT id FROM games WHERE name='pokemon'"
+            ).fetchone()[0]
+            for set_name, alias, product_id in (
+                ("Synthetic English set", "engset", "9999200"),
+                ("Synthetic Japanese set", "jpset", "9999201"),
+            ):
+                set_id = connection.execute(
+                    "INSERT INTO sets(game_id,name) VALUES(?,?)", (game_id, set_name)
+                ).lastrowid
+                connection.execute(
+                    "INSERT INTO set_aliases(set_id,alias,provenance) VALUES(?,?,?)",
+                    (set_id, alias, "synthetic provider metadata"),
+                )
+                connection.execute(
+                    "INSERT INTO products(game_id,set_id,name,collector_number,tcgplayer_product_id) VALUES(?,?,?,?,?)",
+                    (game_id, set_id, "Example Mime", "179/165", product_id),
+                )
+        self.provider.research.return_value = ai_response(
+            {
+                "readings": [
+                    dict(
+                        name="Example Mime",
+                        set_code="PHOTO",
+                        collector_number="87/165",
+                        language=None,
+                        edition=None,
+                        finish=None,
+                        rarity=None,
+                    )
+                ],
+                "observations": [
+                    "Example Mime is visible at the top.",
+                    "The blurred collector line appears to show 87/165 beside PHOTO.",
+                ],
+                "limitations": [],
+                "recommended_condition": "LP",
+                "condition_observations": ["Synthetic edge wear."],
+                "condition_limitations": [],
+                "additional_photos_helpful": False,
+            }
+        )
+        self.provider.resolve_set_codes.return_value = ai_response(
+            {
+                "resolutions": [
+                    {
+                        "reading_index": 0,
+                        "selected_collector_number": "179/165",
+                        "selected_set_code": None,
+                        "observation": "A closer read of the bottom line shows 179/165; PHOTO remains visible beside it.",
+                    }
+                ],
+                "limitations": [],
+            }
+        )
+        draft = self.intake()
+        job = self.client.post(
+            "/intake/" + draft["id"] + "/jobs",
+            json={"kind": "identify", "authorize_paid": True, "expected_revision": 1},
+        ).json()
+        state = self.client.get("/jobs/" + job["id"]).json()
+        self.assertEqual(state["status"], "completed")
+        candidates = state["result"]["catalog_candidates"]
+        self.assertEqual(len(candidates), 2)
+        for candidate in candidates:
+            self.assertEqual(candidate["claim"]["raw_collector_number"], "87/165")
+            self.assertEqual(candidate["claim"]["collector_number"], "179/165")
+            self.assertIn("catalog_guided_collector_number_reread", candidate["issues"])
+            self.assertIn("catalog_set_code_unresolved", candidate["issues"])
+            self.assertFalse(candidate["approved"])
+        guidance = self.provider.resolve_set_codes.call_args.args[1]
+        self.assertEqual(guidance[0]["candidate_collector_numbers"], ["179/165"])
 
     def test_ai_name_only_or_internally_unsupported_claim_is_not_clickable(self):
         result = {
@@ -870,6 +1012,7 @@ class TallyBinderTests(unittest.TestCase):
                 "resolutions": [
                     {
                         "reading_index": 0,
+                        "selected_collector_number": None,
                         "selected_set_code": "asc",
                         "observation": "ASC is visible beside the collector number.",
                     }
@@ -885,6 +1028,7 @@ class TallyBinderTests(unittest.TestCase):
                     "name": "Drampa",
                     "collector_number": "176/217",
                     "raw_set_code": "ASCE",
+                    "candidate_collector_numbers": ["176/217"],
                     "candidate_set_codes": ["asc"],
                     "catalog_card_ids": [1],
                 }
@@ -896,6 +1040,7 @@ class TallyBinderTests(unittest.TestCase):
         )
         self.assertEqual(refined["tools"], [])
         refinement_prompt = refined["input"][0]["content"][0]["text"]
+        self.assertIn('"candidate_collector_numbers":["176/217"]', refinement_prompt)
         self.assertIn('"candidate_set_codes":["asc"]', refinement_prompt)
         self.assertIn("must not be appended", refinement_prompt)
 

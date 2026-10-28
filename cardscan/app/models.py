@@ -92,6 +92,7 @@ class Identification(Strict):
 
 class SetCodeResolution(Strict):
     reading_index: int = Field(ge=0, le=4)
+    selected_collector_number: str | None
     selected_set_code: str | None
     observation: str
 
