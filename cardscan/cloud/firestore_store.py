@@ -10,6 +10,23 @@ from cardscan.local_pricing.database import utc
 from cardscan.local_pricing.importers import canonical_number
 
 
+def attach_latest_publications(rows, events):
+    """Join each listing to its newest publication event without another query."""
+    latest = {}
+    for event in events:
+        listing_id = str(event.get("listing_id") or "")
+        if not listing_id:
+            continue
+        key = (event.get("created_at", ""), event.get("id", ""))
+        previous = latest.get(listing_id)
+        if previous is None or key > previous[0]:
+            latest[listing_id] = (key, event)
+    return [
+        {**row, "publication": latest.get(str(row["id"]), (None, None))[1]}
+        for row in rows
+    ]
+
+
 class FirestoreStore(Store):
     """Store intake/inventory state in Firestore, leaving catalog reads in SQLite."""
 
@@ -310,21 +327,12 @@ class FirestoreStore(Store):
         return self.listing(expected_id)
 
     def listing(self, id):
-        from google.cloud.firestore_v1.base_query import FieldFilter
-
         snapshot = self._collection("listings").document(str(id)).get()
         data = snapshot.to_dict() if snapshot.exists else None
         if not data or data.get("owner_id") != self.owner or data.get("deleted_at"):
             raise AppError("listing_not_found", 404)
-        publications = list(
-            self._collection("publications")
-            .where(filter=FieldFilter("owner_id", "==", self.owner))
-            .stream()
-        )
-        events = [x.to_dict() for x in publications if x.to_dict().get("listing_id") == str(id)]
-        events.sort(key=lambda x: (x["created_at"], x["id"]), reverse=True)
-        data["publication"] = events[0] if events else None
-        return data
+        events = [x.to_dict() for x in self._owner_documents("publications")]
+        return attach_latest_publications([data], events)[0]
 
     def record_publication(self, listing_id, event):
         listing = self._collection("listings").document(str(listing_id)).get()
@@ -347,6 +355,8 @@ class FirestoreStore(Store):
             and (not condition or row.get("listing", {}).get("condition") == condition)
         ]
         rows.sort(key=lambda x: (x["updated_at"], x["id"]), reverse=True)
+        events = [x.to_dict() for x in self._owner_documents("publications")]
+        rows = attach_latest_publications(rows, events)
         return {
             "items": rows[offset : offset + limit],
             "total": len(rows),

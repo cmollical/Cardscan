@@ -13,6 +13,7 @@ from cardscan.cloud.daily import (
     require_publishable_sync,
 )
 from cardscan.cloud.snapshot import PricingSnapshot
+from cardscan.cloud.firestore_store import attach_latest_publications
 from cardscan.local_pricing.cli import seed
 from cardscan.local_pricing.database import Database
 
@@ -57,6 +58,32 @@ class FakeBucket:
 
 
 class ServerlessTests(unittest.TestCase):
+    def test_cloud_inventory_attaches_latest_publication_event(self):
+        rows = [
+            {"id": "listing-one", "revision": 1},
+            {"id": "listing-two", "revision": 1},
+        ]
+        events = [
+            {
+                "id": "event-sending",
+                "listing_id": "listing-one",
+                "listing_revision": 1,
+                "status": "sending",
+                "created_at": "2026-10-28T13:07:16+00:00",
+            },
+            {
+                "id": "event-published",
+                "listing_id": "listing-one",
+                "listing_revision": 1,
+                "status": "published",
+                "created_at": "2026-10-28T13:07:19+00:00",
+            },
+        ]
+        result = attach_latest_publications(rows, events)
+        self.assertEqual(result[0]["publication"]["status"], "published")
+        self.assertEqual(result[0]["publication"]["listing_revision"], 1)
+        self.assertIsNone(result[1]["publication"])
+
     def test_snapshot_downloads_and_validates_generation(self):
         with TemporaryDirectory() as tmp:
             source = Path(tmp) / "source.sqlite"
