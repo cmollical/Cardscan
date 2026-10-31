@@ -27,11 +27,14 @@ async function identify(page: Page) {
   await expect(page.getByLabel("Card name", { exact: true })).toHaveValue(
     "Charizard",
   );
+  await page
+    .getByRole("button", { name: "LP Lightly Played", exact: false })
+    .click();
   await expect(
-    page.getByRole("button", { name: "Confirm identity", exact: true }),
+    page.getByRole("button", { name: "Confirm card & get price", exact: true }),
   ).toBeEnabled();
   await page
-    .getByRole("button", { name: "Confirm identity", exact: true })
+    .getByRole("button", { name: "Confirm card & get price", exact: true })
     .click();
 }
 test("mobile manual capture → exact pricing → durable inventory → CSV → edit → confirmed delete", async ({
@@ -43,12 +46,6 @@ test("mobile manual capture → exact pricing → durable inventory → CSV → 
   ).toBeVisible();
   await capture(page);
   await identify(page);
-  await page
-    .getByRole("button", { name: "LP Lightly Played", exact: false })
-    .click();
-  await page
-    .getByRole("button", { name: "Confirm condition & get price", exact: true })
-    .click();
   await expect(page.locator(".price-value")).toHaveText("$527.70");
   await expect(page.getByLabel("Listing price", { exact: true })).toHaveValue(
     "527.70",
@@ -108,18 +105,12 @@ test("batch capture stays available, photos survive reload and identity changes 
   await page.getByRole("button", { name: "Review", exact: true }).click();
   await expect(page.locator(".queue-row")).toHaveCount(2);
   await identify(page);
-  await page
-    .getByRole("button", { name: "LP Lightly Played", exact: false })
-    .click();
-  await page
-    .getByRole("button", { name: "Confirm condition & get price", exact: true })
-    .click();
   await expect(page.locator(".price-value")).toHaveText("$527.70");
-  await page.getByRole("button", { name: "2 Condition", exact: true }).click();
+  await page.getByRole("button", { name: "1 Review", exact: true }).click();
   await page
     .getByRole("button", { name: "MP Moderately Played", exact: false })
     .click();
-  await page.getByRole("button", { name: "3 Price", exact: true }).click();
+  await page.getByRole("button", { name: "2 Price", exact: true }).click();
   await expect(page.locator(".price-value")).toHaveText("Price unavailable");
   await page
     .getByRole("button", { name: "Refresh exact price", exact: true })
