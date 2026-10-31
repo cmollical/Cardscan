@@ -238,6 +238,15 @@ class SyncTests(unittest.TestCase):
         lookup=Lookup(self.db);r=lookup.lookup_sku('tcgtracking','7335315',now=NOW)
         h=lookup.history(r['sku_id'])['items'];self.assertEqual(len(h),2);self.assertEqual(h[0]['market_price'],h[1]['market_price'])
 
+    def test_daily_cooldown_waits_out_scheduler_jitter_instead_of_replaying_cache(self):
+        synchronize(self.db,[(3,23228)],client=self.client())
+        sleeper=Mock()
+        client=DailyClient(self.db,now='2026-10-27T17:59:45Z',opener=self.opener,sleeper=sleeper)
+        result=synchronize(self.db,[(3,23228)],client=client)
+        self.assertGreater(result['requests'],0)
+        self.assertTrue(any(call.args[0]>=0 for call in sleeper.call_args_list))
+        self.assertGreaterEqual(datetime.fromisoformat(client.now),datetime.fromisoformat('2026-10-27T18:00:00+00:00'))
+
     def test_provider_failure_preserves_prior_prices_partial_state_and_no_retry(self):
         synchronize(self.db,[(3,23228)],client=self.client())
         original=self.response

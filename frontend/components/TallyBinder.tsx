@@ -1491,7 +1491,7 @@ export default function TallyBinder() {
                               <dd>{current.pricing.provider_sku_id}</dd>
                             </div>
                             <div>
-                              <dt>Updated</dt>
+                              <dt>Provider updated</dt>
                               <dd>
                                 {current.pricing.source_updated_at
                                   ? new Date(
@@ -1500,12 +1500,22 @@ export default function TallyBinder() {
                                   : "Not supplied"}
                               </dd>
                             </div>
+                            <div>
+                              <dt>TallyBinder checked</dt>
+                              <dd>
+                                {current.pricing.retrieved_at
+                                  ? new Date(
+                                      current.pricing.retrieved_at,
+                                    ).toLocaleString()
+                                  : "Not supplied"}
+                              </dd>
+                            </div>
                           </dl>
                         )}
                         {current.pricing?.status === "stale_price" && (
                           <div className="notice">
-                            This reference is stale. Review before setting your
-                            price.
+                            The provider&apos;s price update is more than 48 hours
+                            old. Review before setting your price.
                           </div>
                         )}
                         {current.pricing?.warnings?.map((w) => (

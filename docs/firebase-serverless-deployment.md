@@ -104,17 +104,22 @@ The service runs the API module, and the daily job overrides the command with
 
 The production job discovers provider set indexes and selects a bounded rotating
 batch without naming individual sets in application code. Each run admits up to ten
-previously unseen sets (split across English and Japanese catalogs) and refreshes up
-to four recently released imported sets. Only genuine, non-future release dates are
-eligible; undated promotional buckets are not treated as new releases. Explicit scope configuration remains
-available for recovery or a reviewed backfill.
+previously unseen sets (split across English and Japanese catalogs). Once imported,
+four slots keep recently released English and Japanese sets prioritized and the
+remaining slots rotate by the oldest provider success time. A refreshed set moves to
+the back of the rotation. Only genuine, non-future release dates are eligible;
+undated promotional buckets are not treated as new releases. Explicit scope
+configuration remains available for recovery or a reviewed backfill.
 
 At most 64 provider requests are allowed per execution. Provider endpoint cooldown,
 conditional-request state, append-only observations and sync checkpoints live inside
 the published snapshot. A provider-specific failure is publishable only when another
 approved provider successfully committed the same exact set; a set with no successful
 provider aborts publication. Cloud Scheduler should invoke one task once daily with job retries disabled;
-the provider cooldown and generation precondition are additional safeguards.
+the provider cooldown and generation precondition are additional safeguards. If a
+daily execution starts within 60 seconds of an otherwise successful endpoint's
+24-hour cooldown, it waits out that scheduler jitter instead of publishing a
+zero-request cached replay.
 
 ## Deployment record
 

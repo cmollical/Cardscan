@@ -54,8 +54,15 @@ class DailyClient:
             cached=c.execute('SELECT * FROM documents WHERE id=?',(old.get('document_id'),)).fetchone()
         if old.get('next_attempt_at') and self.now<old['next_attempt_at']:
             if old.get('status')=='success' and cached:
-                return self._document(cached)
-            raise ValueError('Endpoint retry not eligible until '+old['next_attempt_at'])
+                target=datetime.fromisoformat(old['next_attempt_at'])
+                wait=(target-datetime.fromisoformat(self.now)).total_seconds()
+                if wait<=60:
+                    # Cron start jitter must not turn a daily run into a zero-request
+                    # cached replay. Wait only for a near-expired successful cooldown.
+                    self.sleep(max(wait,0));self.now=utc(target.isoformat())
+                else:return self._document(cached)
+            else:
+                raise ValueError('Endpoint retry not eligible until '+old['next_attempt_at'])
         if self.requests>=self.max_requests:raise RequestBudgetExceeded('Sync request budget exhausted')
         next_time=(datetime.fromisoformat(self.now)+timedelta(hours=24)).isoformat()
         # Persist attempt BEFORE network I/O. Crash/restart cannot bypass cooldown.

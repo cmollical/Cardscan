@@ -185,6 +185,49 @@ class ServerlessTests(unittest.TestCase):
             self.assertNotIn(999002, {row["group"] for row in selected})
             self.assertNotIn(999003, {row["group"] for row in selected})
 
+    def test_imported_catalog_keeps_recent_sets_and_rotates_oldest_successes(self):
+        with TemporaryDirectory() as tmp:
+            db = Database(Path(tmp) / "rotation.sqlite")
+            db.migrate()
+            catalog = {
+                "sets": [
+                    {
+                        "category": category,
+                        "group": category * 1000 + index,
+                        "name": f"Imported set {category}-{index}",
+                        "published_on": str(date.today() - timedelta(days=index)),
+                        "providers": ["tcgtracking"],
+                        "products_reported": 10,
+                    }
+                    for category in (3, 85)
+                    for index in range(6)
+                ]
+            }
+            with db.transaction() as connection:
+                for row in catalog["sets"]:
+                    index = row["group"] % 1000
+                    connection.execute(
+                        """INSERT INTO sync_state(
+                            provider,category_id,source_set_id,last_success_at,status
+                        ) VALUES('tcgtracking',?,?,?,'success')""",
+                        (
+                            str(row["category"]),
+                            str(row["group"]),
+                            f"2026-10-{26 - index:02d}T10:00:00+00:00",
+                        ),
+                    )
+            selected = discovered_scopes(db, catalog, limit=10, expansion=6)
+            scopes = {(row["category"], row["group"]) for row in selected}
+            # Two newest per language remain prioritized.
+            for category in (3, 85):
+                self.assertIn((category, category * 1000), scopes)
+                self.assertIn((category, category * 1000 + 1), scopes)
+                # The three oldest remaining scopes per language rotate in.
+                self.assertTrue(
+                    {(category, category * 1000 + index) for index in (3, 4, 5)}
+                    <= scopes
+                )
+
     def test_partial_provider_failure_requires_an_exact_set_success(self):
         result = require_publishable_sync(
             {

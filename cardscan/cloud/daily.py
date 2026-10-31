@@ -31,11 +31,15 @@ def discovered_scopes(db, catalog, *, limit=14, expansion=10):
     """Choose a bounded, rotating catalog batch without naming particular sets."""
     if not 1 <= limit <= 14 or not 1 <= expansion <= limit:
         raise ValueError("Invalid bounded catalog plan")
-    successful = {
-        (int(row["category_id"]), int(row["source_set_id"])): row["last_success_at"]
-        for row in db.sync_status()
-        if row["last_success_at"]
-    }
+    successful = {}
+    for status in db.sync_status():
+        if not status["last_success_at"]:
+            continue
+        scope = (int(status["category_id"]), int(status["source_set_id"]))
+        successful[scope] = min(
+            successful.get(scope, status["last_success_at"]),
+            status["last_success_at"],
+        )
     def release_date(row):
         raw = row.get("published_on") or ""
         if not re.fullmatch(r"\d{4}-\d{2}-\d{2}(?:T00:00:00(?:\.0+)?Z?)?", raw):
@@ -57,32 +61,51 @@ def discovered_scopes(db, catalog, *, limit=14, expansion=10):
     def newest(row):
         return (release_date(row), row["group"])
 
+    def append_balanced(candidates, capacity, key, reverse=False):
+        """Use both language catalogs before filling spare capacity globally."""
+        if capacity <= 0:
+            return
+        target = min(limit, len(selected) + capacity)
+        ordered = {
+            category: sorted(
+                (row for row in candidates if row["category"] == category),
+                key=key,
+                reverse=reverse,
+            )
+            for category in (3, 85)
+        }
+        for category in (3, 85):
+            for row in ordered[category][: capacity // 2]:
+                if row not in selected:
+                    selected.append(row)
+        for row in sorted(candidates, key=key, reverse=reverse):
+            if len(selected) >= target:
+                break
+            if row not in selected:
+                selected.append(row)
+
     selected = []
     # Split expansion capacity across language catalogs, then use any spare slots.
     unseen = [row for row in rows if (row["category"], row["group"]) not in successful]
-    for category in (3, 85):
-        category_rows = sorted(
-            (row for row in unseen if row["category"] == category),
-            key=newest,
-            reverse=True,
-        )
-        selected.extend(category_rows[: expansion // 2])
-    for row in sorted(unseen, key=newest, reverse=True):
-        if len(selected) >= expansion:
-            break
-        if row not in selected:
-            selected.append(row)
+    append_balanced(unseen, expansion, newest, reverse=True)
 
-    # Keep recent imported sets fresh while the older catalog expands over time.
-    imported = sorted(
-        (row for row in rows if (row["category"], row["group"]) in successful),
-        key=newest,
-        reverse=True,
+    imported = [
+        row for row in rows if (row["category"], row["group"]) in successful
+    ]
+    # Preserve four slots for newly released sets, then rotate every other set by
+    # its oldest provider success. A set refreshed today moves to the back.
+    recent_capacity = min(4, limit - len(selected))
+    append_balanced(imported, recent_capacity, newest, reverse=True)
+    rotation = [row for row in imported if row not in selected]
+    append_balanced(
+        rotation,
+        limit - len(selected),
+        lambda row: (
+            successful[(row["category"], row["group"])],
+            release_date(row),
+            row["group"],
+        ),
     )
-    for row in imported:
-        if len(selected) >= limit:
-            break
-        selected.append(row)
     return selected
 
 
