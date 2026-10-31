@@ -9,8 +9,12 @@ import secrets
 import threading
 import time
 from urllib.parse import urlsplit
-from google.auth.transport.requests import Request as GoogleRequest
-from google.oauth2 import id_token
+try:
+    from google.auth.transport.requests import Request as GoogleRequest
+    from google.oauth2 import id_token
+except ModuleNotFoundError:  # Optional in the smaller local/private API image.
+    GoogleRequest = None
+    id_token = None
 from fastapi import Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
@@ -78,6 +82,8 @@ class Security:
         self.lock = threading.Lock()
 
     def _firebase_principal(self, token):
+        if id_token is None or GoogleRequest is None:
+            raise RuntimeError("Firebase authentication dependencies are unavailable")
         digest = sha256(token.encode()).hexdigest()
         now = self.clock()
         with self.lock:
