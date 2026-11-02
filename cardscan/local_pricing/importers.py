@@ -10,8 +10,13 @@ from .database import utc
 
 
 def canonical_number(raw):
-    match=re.fullmatch(r'([A-Za-z]*)(\d+)/([A-Za-z]*)(\d+)',raw or '')
-    return f'{match[1].upper()}{int(match[2])}/{match[3].upper()}{int(match[4])}' if match else raw or None
+    value=(raw or '').strip()
+    match=re.fullmatch(r'([A-Za-z]*)(\d+)/([A-Za-z]*)(\d+)',value)
+    if match:
+        return f'{match[1].upper()}{int(match[2])}/{match[3].upper()}{int(match[4])}'
+    if re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._/-]{0,39}',value) and re.search(r'[A-Za-z]',value) and re.search(r'\d',value):
+        return value.upper()
+    return value or None
 
 
 def canonical_product_name(raw, number):
@@ -28,6 +33,17 @@ def canonical_product_name(raw, number):
 
 def full_number(raw):
     return bool(re.fullmatch(r'[A-Za-z]*\d+/[A-Za-z]*\d+',raw or ''))
+
+
+def promo_number(raw):
+    """A printed alphanumeric promo identifier, not an expansion set code."""
+    value=(raw or '').strip()
+    return bool(re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._/-]{1,39}',value)
+                and re.search(r'[A-Za-z]',value) and re.search(r'\d',value))
+
+
+def catalog_number(raw):
+    return full_number(raw) or promo_number(raw)
 
 
 def decode(payload):
@@ -156,7 +172,7 @@ class Importer:
                         identity=(pid,condition,language,edition,finish)
                         if old and tuple(old[k] for k in ['product_id','condition','language','edition','finish'])!=identity:
                             raise ValueError('Existing SKU identity changed; review required')
-                        completeness={k:v is not None for k,v in dict(condition=condition,language=language,edition=edition,finish=finish,number=True if full_number(p.get('number')) else None,graded=False).items()}
+                        completeness={k:v is not None for k,v in dict(condition=condition,language=language,edition=edition,finish=finish,number=True if catalog_number(p.get('number')) else None,graded=False).items()}
                         provenance={'condition':'/cnd','language':'/lng','finish':'/var','edition':edition_basis,
                                     'graded':'raw reference scope from existing TCGTracking adapter contract; not an observed physical card grade'}
                         c.execute('''INSERT INTO skus(product_id,provider,provider_sku_id,condition,language,edition,finish,graded,raw_variant_json,completeness_json,provenance_json)

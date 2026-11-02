@@ -835,6 +835,115 @@ class TallyBinderTests(unittest.TestCase):
         self.assertFalse(candidate["approved"])
         self.provider.resolve_set_codes.assert_not_called()
 
+    def test_alphanumeric_promo_identifier_matches_as_collector_number(self):
+        with self.db.transaction() as connection:
+            game_id = connection.execute(
+                "SELECT id FROM games WHERE name='pokemon'"
+            ).fetchone()[0]
+            set_id = connection.execute(
+                "INSERT INTO sets(game_id,name) VALUES(?,?)",
+                (game_id, "Synthetic Black Star Promos"),
+            ).lastrowid
+            connection.execute(
+                "INSERT INTO set_aliases(set_id,alias,provenance) VALUES(?,?,?)",
+                (set_id, "promo", "synthetic provider metadata"),
+            )
+            connection.execute(
+                "INSERT INTO products(game_id,set_id,name,collector_number,tcgplayer_product_id) VALUES(?,?,?,?,?)",
+                (game_id, set_id, "Example GX", "SM36", "9999250"),
+            )
+        self.provider.research.return_value = ai_response(
+            {
+                "readings": [
+                    dict(
+                        name="Example GX",
+                        set_code=None,
+                        collector_number="SM36",
+                        language=None,
+                        edition=None,
+                        finish=None,
+                        rarity=None,
+                    )
+                ],
+                "observations": [
+                    "Example GX is visible at the top.",
+                    "The bottom collector identifier is SM36.",
+                ],
+                "limitations": [],
+                "recommended_condition": "LP",
+                "condition_observations": ["Synthetic edge wear."],
+                "condition_limitations": [],
+                "additional_photos_helpful": False,
+            }
+        )
+        draft = self.intake()
+        job = self.client.post(
+            "/intake/" + draft["id"] + "/jobs",
+            json={"kind": "identify", "authorize_paid": True, "expected_revision": 1},
+        ).json()
+        result = self.client.get("/jobs/" + job["id"]).json()["result"]
+        self.assertEqual(len(result["catalog_candidates"]), 1)
+        candidate = result["catalog_candidates"][0]
+        self.assertEqual(candidate["card"]["collector_number"], "SM36")
+        self.assertEqual(candidate["claim"]["collector_number"], "SM36")
+        self.assertIn("set_identifier_not_visible", candidate["issues"])
+
+    def test_visible_promo_identifier_misread_as_set_code_is_reclassified(self):
+        with self.db.transaction() as connection:
+            game_id = connection.execute(
+                "SELECT id FROM games WHERE name='pokemon'"
+            ).fetchone()[0]
+            set_id = connection.execute(
+                "INSERT INTO sets(game_id,name) VALUES(?,?)",
+                (game_id, "Synthetic Black Star Promos"),
+            ).lastrowid
+            connection.execute(
+                "INSERT INTO set_aliases(set_id,alias,provenance) VALUES(?,?,?)",
+                (set_id, "promo", "synthetic provider metadata"),
+            )
+            connection.execute(
+                "INSERT INTO products(game_id,set_id,name,collector_number,tcgplayer_product_id) VALUES(?,?,?,?,?)",
+                (game_id, set_id, "Example GX", "SM36", "9999251"),
+            )
+        self.provider.research.return_value = ai_response(
+            {
+                "readings": [
+                    dict(
+                        name="Example GX",
+                        set_code="SM36",
+                        collector_number="160/149",
+                        language=None,
+                        edition=None,
+                        finish=None,
+                        rarity=None,
+                    )
+                ],
+                "observations": [
+                    "Example GX is visible at the top.",
+                    "The bottom identifier area visibly shows SM36.",
+                ],
+                "limitations": [],
+                "recommended_condition": "MP",
+                "condition_observations": ["Synthetic surface wear."],
+                "condition_limitations": [],
+                "additional_photos_helpful": False,
+            }
+        )
+        draft = self.intake()
+        job = self.client.post(
+            "/intake/" + draft["id"] + "/jobs",
+            json={"kind": "identify", "authorize_paid": True, "expected_revision": 1},
+        ).json()
+        result = self.client.get("/jobs/" + job["id"]).json()["result"]
+        self.assertEqual(len(result["catalog_candidates"]), 1)
+        candidate = result["catalog_candidates"][0]
+        self.assertEqual(candidate["claim"]["raw_collector_number"], "160/149")
+        self.assertEqual(candidate["claim"]["raw_set_code"], "SM36")
+        self.assertEqual(candidate["claim"]["collector_number"], "SM36")
+        self.assertIsNone(candidate["claim"]["set_code"])
+        self.assertIn("promo_identifier_reclassified", candidate["issues"])
+        self.provider.resolve_set_codes.assert_not_called()
+
     def test_catalog_guided_collector_number_reread_offers_ambiguous_sets(self):
         with self.db.transaction() as connection:
             game_id = connection.execute(
